@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.ts --exec ts-node",
-    "test": "test"
+    "test": ""
   },
   "author": "los-ñoños",
   "license": "ISC",
