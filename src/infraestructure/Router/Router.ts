@@ -1,31 +1,27 @@
-import { Express, Request, Response } from 'express';
+import {Express,Request,Response} from 'express';
 import bodyParser = require('body-parser')
 
 class Router {
 
-    private express: Express;
+    private express :Express;
 
     constructor(
-        express: Express
+        express:Express
     ) {
         this.express = express;
     }
 
-    public up() {
-        this.userRoutes();
+    public up(){
+        this.userRoutes()
+
     }
 
-    private userRoutes() {
-        this.express.use(bodyParser.urlencoded({ extended: false }));
+    private userRoutes(){
+        this.express.use(bodyParser.urlencoded({extended: false}));
         this.express.use(bodyParser.json());
 
 
         //here routes
-        this.express.get('/', (req: Request, res: Response) => {
-            res.send("hola");
-        });
-
-        // this.express.get('apiv1/products', ProductController.GetAllProducts);
     }
 }
 

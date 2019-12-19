@@ -1,14 +1,14 @@
-import express, { Express } from 'express';
+import express, {Express} from 'express';
 import Router from './infraestructure/Router/Router'
 import "reflect-metadata";
 // import * as dotenv from 'dotenv';
 
 class App {
 
-    private express: Express;
+    private express :Express;
     private router: Router;
 
-    constructor() {
+    constructor(){
         // dotenv.config();
         this.express = express();
         // createConnectionDB();
@@ -17,8 +17,8 @@ class App {
         );
     }
 
-    public run() {
-        process
+    public run(){
+      process
             .on('unhandledRejection', (reason, p) => {
                 console.error(reason, 'Unhandled Rejection at Promise', p);
             })
@@ -30,8 +30,8 @@ class App {
         this.router.up();
     }
 
-    private upServer() {
-        this.express.listen(3000, function () {
+    private upServer(){
+        this.express.listen(3000, function(){
             console.log('Server is run in port 3000');
         });
     }
