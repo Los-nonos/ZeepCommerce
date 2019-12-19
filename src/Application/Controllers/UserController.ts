@@ -7,7 +7,7 @@ class UserController{
         const user = new User();
         user.Name = req.body.name;
 
-        res.status(201).json({message: "user created", user})
+        res.status(201).json({message: "User created", user})
     }
 }
 

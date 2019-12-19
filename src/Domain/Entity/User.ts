@@ -1,7 +1,9 @@
+import Person from "./Person";
 
 class User{
 
     public Name: string;
+    public UserName: string;
 
     constructor(){
 
@@ -12,6 +14,14 @@ class User{
         super(Id,Name,Surname);
     }
     */
+
+    setUserName(UserName: string):void{
+        this.UserName = UserName;
+    }
+
+    getUserName():string{
+        return this.UserName;
+    }
 }
 
 export default User;

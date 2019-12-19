@@ -1,6 +1,7 @@
 import {Express,Request,Response} from 'express';
 import bodyParser = require('body-parser')
 import UserController from '../../Application/Controllers/UserController';
+import ProductController from '../../Application/Controllers/ProductController';
 
 class Router {
 
@@ -24,11 +25,11 @@ class Router {
 
         //here routes
         this.express.get('/', (req: Request, res: Response)=> {
-            res.send("hola!!");
+            res.send("Server UP!!!");
         });
 
         this.express.post('/users', UserController.Create);
-
+        this.express.post('/products', ProductController.Create);
     }
 }
 
