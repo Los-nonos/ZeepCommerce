@@ -1,15 +1,19 @@
+
+import { Request, Response } from "express";
 import User from "../../domain/Entity/User";
-import { Request, Response } from 'express';
 
 class UserController {
+    public static Create(req: Request, res: Response){
+        const {name}: any = req.body;
 
-    public static Create(req: Request, res: Response): void {
+        if(!name){
+            res.status(400).json({message: 'not name found'});
+        }
+
         const user = new User();
-        user.name = req.body.name;
+        user.name = name;
 
-        // user.save();
-
-        res.status(201).json({ message: 'user created', user });
+        res.status(201).json({message: 'user created', user});
     }
 }
 
