@@ -6,11 +6,11 @@ import Product from '../../Domain/Entity/Product'
 export async function createConnectionDB(){
     await createConnection({
     type: "mysql",
-    host: 'localhost',
+    host: process.env.HOST_DB,
     port: 3306,
-    username: 'coders',
-    password: 'camp123',
-    database: 'coderscamp_db',
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_DB,
     synchronize: true,
     logging: true,
     entities: [User, Product]
