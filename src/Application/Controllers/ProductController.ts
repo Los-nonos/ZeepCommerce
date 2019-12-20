@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Product from '../../domain/Entity/Product';
+import Product from '../../Domain/Entity/Product';
 class ProductController {
     public static Create(req: Request, res: Response) {
         req.body

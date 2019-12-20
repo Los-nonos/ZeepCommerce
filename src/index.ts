@@ -1,8 +1,10 @@
 import express, {Express} from 'express';
-import Router from './infraestructure/Router/Router'
+import Router from './Infraestructure/Router/Router'
 import "reflect-metadata";
 import * as dotenv from 'dotenv';
-import { createConnectionDB } from './infraestructure/database/Configs';
+import { createConnectionDB } from './Infraestructure/Database/Configs';
+import container from './inversify.config';
+import TYPES from './types';
 
 class App {
 
@@ -14,7 +16,8 @@ class App {
         this.express = express();
         createConnectionDB();
         this.router = new Router(
-            this.express
+            this.express,
+            container.get(TYPES.IUserController),
         );
     }
 
