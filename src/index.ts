@@ -5,7 +5,6 @@ import * as dotenv from 'dotenv';
 import { createConnectionDB } from './Infraestructure/Database/Configs';
 import container from './inversify.config';
 import TYPES from './types';
-import UserController from './Application/Controllers/UserController';
 
 class App {
 
@@ -18,7 +17,7 @@ class App {
         createConnectionDB();
         this.router = new Router(
             this.express,
-            container.get(UserController),
+            container.get(TYPES.IUserController),
         );
     }
 
