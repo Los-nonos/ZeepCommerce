@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 
-interface UserControllerInterface{
+interface UserControllerInterface {
     Create(req: Request, res: Response): void;
 }
 

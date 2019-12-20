@@ -1,19 +1,23 @@
 
 import { Request, Response } from "express";
-import User from "../../domain/Entity/User";
+import User from "../../Domain/Entity/User";
+import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
+import { injectable } from "inversify";
 
-class UserController {
-    public static Create(req: Request, res: Response){
-        const {name}: any = req.body;
+@injectable()
+class UserController implements UserControllerInterface {
 
-        if(!name){
-            res.status(400).json({message: 'not name found'});
+    public Create(req: Request, res: Response) {
+        const { name }: any = req.body;
+
+        if (!name) {
+            res.status(400).json({ message: 'not name found' });
         }
 
         const user = new User();
         user.name = name;
 
-        res.status(201).json({message: 'user created', user});
+        res.status(201).json({ message: 'user created', user });
     }
 }
 

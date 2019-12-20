@@ -1,6 +1,6 @@
 import {createConnection} from 'typeorm';
-import User from '../../domain/Entity/User';
-import Product from '../../domain/Entity/Product'
+import User from '../../Domain/Entity/User';
+import Product from '../../Domain/Entity/Product'
 
 
 export async function createConnectionDB(){
