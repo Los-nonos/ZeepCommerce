@@ -1,17 +1,18 @@
 import express, {Express} from 'express';
 import Router from './infraestructure/Router/Router'
 import "reflect-metadata";
-// import * as dotenv from 'dotenv';
+import * as dotenv from 'dotenv';
+import { createConnectionDB } from './infraestructure/database/Configs';
 
 class App {
 
     private express :Express;
     private router: Router;
 
-    constructor(){
-        // dotenv.config();
+    constructor() {
+        dotenv.config();
         this.express = express();
-        // createConnectionDB();
+        createConnectionDB();
         this.router = new Router(
             this.express
         );
