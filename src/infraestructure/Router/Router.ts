@@ -1,5 +1,6 @@
 import {Express,Request,Response} from 'express';
 import bodyParser = require('body-parser')
+import UserController from '../../Application/Controllers/UserController';
 
 class Router {
 
@@ -22,6 +23,8 @@ class Router {
 
 
         //here routes
+
+        this.express.post('/users', UserController.Create);
     }
 }
 
