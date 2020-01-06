@@ -8,16 +8,27 @@ import { injectable } from "inversify";
 class UserController implements UserControllerInterface {
 
     public Create(req: Request, res: Response) {
-        const { name }: any = req.body;
+        const { name, lastname }: any = req.body;
 
         if (!name) {
             res.status(400).json({ message: 'not name found' });
         }
 
+        if (!lastname) {
+            res.status(400).json({ message: 'not lastname found' });
+        }
+
         const user = new User();
         user.name = name;
+        user.lastname = lastname;
 
-        res.status(201).json({ message: 'user created', user });
+        try {
+            user.save();
+
+            res.status(201).json({ message: 'user created', user });    
+        } catch (error) {
+            res.sendStatus(500);
+        }
     }
 }
 
