@@ -7,7 +7,7 @@ import { injectable } from "inversify";
 @injectable()
 class UserController implements UserControllerInterface {
 
-    public Create(req: Request, res: Response) {
+    public async Create(req: Request, res: Response) {
         const { name, lastname }: any = req.body;
 
         if (!name) {
@@ -23,7 +23,7 @@ class UserController implements UserControllerInterface {
         user.lastname = lastname;
 
         try {
-            user.save();
+            await user.save();
 
             res.status(201).json({ message: 'user created', user });    
         } catch (error) {

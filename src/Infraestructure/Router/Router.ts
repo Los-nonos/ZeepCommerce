@@ -45,6 +45,7 @@ class Router {
 
 
         this.express.post('/products', ProductController.Create);
+        this.express.delete('/products/:id', ProductController.Delete);
     }
 }
 
