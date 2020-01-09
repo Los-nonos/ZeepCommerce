@@ -1,22 +1,26 @@
 import { Request, Response } from 'express';
 import Product from '../../Domain/Entity/Product';
+import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface'
+import { injectable } from 'inversify';
 import ProductAdapter from '../Adapters/ProductAdapter';
 import ProductDeleteHandler from '../../Domain/Handlers/ProductDeleteHandler';
-class ProductController {
+
+@injectable()
+class ProductController implements ProductControllerInterface{
     
-    public static async Create(req: Request, res: Response) {
+    public async Create(req: Request, res: Response) {
         const { name, price, description }: any = req.body;
 
-        if (name == undefined) {
-            res.status(400).json({ message: 'El nombre del producto no se encontro.' })
+        if (!name) {
+            res.status(400).json({ message: 'Not product name foud' })
         }
 
-        if (price == undefined) {
-            res.status(400).json({ message: 'El precio del producto no se encontro.' })
+        if (!price) {
+            res.status(400).json({ message: 'Not product price found' })
         }
 
-        if (description == undefined) {
-            res.status(400).json({ message: 'La descripcion del producto no se encontro.' })
+        if (!description) {
+            res.status(400).json({ message: 'Not product description found' })
         }
 
         const product = new Product();
@@ -25,15 +29,20 @@ class ProductController {
         product.description = description;
 
         try {
-            await product.save();    
+            await product.save();  
+              
         } catch (error) {
             res.status(500).json({message: error.message});
         }
         
-        res.status(201).json({ message: 'El producto se creo correctamente', product })
+        res.status(201).json({ message: 'Product created correctly', product })
     }
 
-    public static async Delete(req: Request, res: Response) {
+    public async Edit(req: Request, res: Response){
+
+    }
+
+    public async Delete(req: Request, res: Response) {
         
         var adapter = new ProductAdapter();
         var command = adapter.DeleteAdapter(req);
