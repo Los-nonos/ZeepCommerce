@@ -1,4 +1,5 @@
 @import "https://use.fontawesome.com/releases/v5.5.0/css/all.css";
+@import "@material/image-list/mdc-image-list";
 
 .container-error{
   padding: 30px;
@@ -107,4 +108,13 @@ div.input-with-logo {
   /* border-radius: 30px; */
   min-width: 260px;
   margin: 0 10px;
+}
+
+.images-component{
+  @include mdc-image-list-masonry-columns(5);
+}
+@media (max-width: 599px) {
+  .images-component {
+    @include mdc-image-list-standard-columns(3);
+  }
 }
