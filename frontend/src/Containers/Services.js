@@ -11,9 +11,8 @@ class Services extends React.Component {
             <div class="services-section">
                 <div class="inner-width">
                     <h1 class="section-title">Our Services</h1>
-                    <div class="border"></div>
+                    <div class="border-service"></div>
                     <div class="services-container">
-
                         <div class="service-box">
                             <div class="service-icon">
                                 <i class="fas fa-paint-brush"></i>
