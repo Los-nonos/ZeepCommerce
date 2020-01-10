@@ -1,13 +1,10 @@
 import Product from "../Entity/Product";
 import ProductDeleteCommand from '../Commands/ProductDeleteCommand';
+import ProductDeleteHandlerInterface from '../../Infraestructure/Interfaces/ProductDeleteHandlerInterface';
 
-class ProductDeleteHandler{
+class ProductDeleteHandler implements ProductDeleteHandlerInterface{
 
-    constructor(){
-
-    }
-
-    public async handle(command: ProductDeleteCommand): Promise<string> {
+    public async Handle(command: ProductDeleteCommand): Promise <string> {
 
         const id = command.getId();
 

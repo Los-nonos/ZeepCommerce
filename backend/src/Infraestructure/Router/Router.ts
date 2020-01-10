@@ -1,8 +1,8 @@
 import { Express, Request, Response, NextFunction } from 'express';
 import bodyParser = require('body-parser')
-import co
 import ProductController from '../../Application/Controllers/ProductController';
 import UserControllerInterface from '../Interfaces/UserControllerInterface';
+import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
 import { inject } from 'inversify';
 import TYPES from '../../types';
 
@@ -14,13 +14,16 @@ class Router {
 
     private express: Express;
     private userController: UserControllerInterface;
+    private productController: ProductControllerInterface;
 
     constructor(
         express: Express,
-        @inject(TYPES.IUserController) userController: UserControllerInterface
+        @inject(TYPES.IUserController) userController: UserControllerInterface,
+        @inject(TYPES.IProductController) productController : ProductControllerInterface
     ) {
         this.express = express;
         this.userController = userController;
+        this.productController = productController;
     }
 
     public up() {
@@ -51,8 +54,9 @@ class Router {
         this.express.post('/users', this.userController.Create);
 
         //product routes
-        this.express.post('/products', ProductController.Create);
-        this.express.delete('/products/:id', ProductController.Delete);
+        this.express.post('/products', this.productController.Create);
+        this.express.post('/products/:id', this,this.productController.Edit);
+        this.express.delete('/products/:id', this.productController.Delete);
     }
 }
 

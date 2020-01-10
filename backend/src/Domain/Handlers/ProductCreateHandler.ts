@@ -3,7 +3,7 @@ import ProductCreateHandlerInterface from '../../Infraestructure/Interfaces/Prod
 
 class ProductCreateHandler implements  ProductCreateHandlerInterface{
 
-        public async Handle(command: any): Promise <void> {
+        public async Handle(command: any): Promise <string> {
 
             const {name, price, description}: any = command;
 
@@ -12,7 +12,15 @@ class ProductCreateHandler implements  ProductCreateHandlerInterface{
             product.price = price;
             product.description = description;
 
-            await product.save();
+            try{
+
+                await product.save();
+                return 'Product created';
+
+            } catch(error){
+
+                return error.message;
+            }
         }
 }
 

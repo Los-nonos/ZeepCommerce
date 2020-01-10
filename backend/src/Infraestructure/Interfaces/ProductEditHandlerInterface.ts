@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
 
-interface ProductCreateHandlerInterface {
+interface ProductEditHandlerInterface{
 
     Handle(req: Request, res: Response): Promise <string>;
 }
 
-export default ProductCreateHandlerInterface;
+export default ProductEditHandlerInterface;

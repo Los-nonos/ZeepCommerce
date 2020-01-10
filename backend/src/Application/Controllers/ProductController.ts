@@ -50,7 +50,7 @@ class ProductController implements ProductControllerInterface{
         var handler = new ProductDeleteHandler();
 
         try {
-            var response = await handler.handle(command);
+            var response = await handler.Handle(command);
             res.status(200).json({message: response});    
         } catch (error) {
             res.status(500).json({message: error.message});
