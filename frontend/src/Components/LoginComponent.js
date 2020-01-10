@@ -1,4 +1,5 @@
 import React from 'react';
+import ButtonRadious from './ButtonRadious';
 
 class LoginComponent extends React.Component{
 
@@ -18,7 +19,7 @@ class LoginComponent extends React.Component{
                     <i class="fas fa-lock"></i>
                     <input type="password" placeholder="Password" />
                 </div>
-                <input type="button" class="btn" value="Sign in" />
+                <ButtonRadious type="submit" text="Login" />
             </div>
         )
     }
