@@ -22,7 +22,7 @@ import SectionPills from "./Sections/SectionPills.js";
 import SectionNotifications from "./Sections/SectionNotifications.js";
 import SectionTypography from "./Sections/SectionTypography.js";
 import SectionJavascript from "./Sections/SectionJavascript.js";
-import SectionCarousel from "./Sections/SectionCarousel.js";
+// import SectionCarousel from "../LandingPage/Sections/SectionCarousel.js/index.js";
 import SectionCompletedExamples from "./Sections/SectionCompletedExamples.js";
 import SectionLogin from "./Sections/SectionLogin.js";
 import SectionExamples from "./Sections/SectionExamples.js";
@@ -71,7 +71,7 @@ export default function Components(props) {
         <SectionNotifications />
         <SectionTypography />
         <SectionJavascript />
-        <SectionCarousel />
+        {/* <SectionCarousel /> */}
         <SectionCompletedExamples />
         <SectionLogin />
         <GridItem md={12} className={classes.textCenter}>

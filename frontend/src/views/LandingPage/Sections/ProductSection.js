@@ -3,9 +3,12 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
-import Chat from "@material-ui/icons/Chat";
-import VerifiedUser from "@material-ui/icons/VerifiedUser";
-import Fingerprint from "@material-ui/icons/Fingerprint";
+import WebDesing from "@material-ui/icons/FormatPaintSharp";
+import WebDev from '@material-ui/icons/Code'
+import EditSection from "@material-ui/icons/EditSharp";
+import ResponsiveDesing from '@material-ui/icons/ViewArray';
+import Android from "@material-ui/icons/Android";
+import Database from '@material-ui/icons/DataUsage';
 // core components
 import GridContainer from "components/Grid/GridContainer.js";
 import GridItem from "components/Grid/GridItem.js";
@@ -35,27 +38,54 @@ export default function ProductSection() {
         <GridContainer>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Free Chat"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={Chat}
+              title="Web Designs"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque ratione rem porro, nihil."
+              icon={WebDesing}
               iconColor="info"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Verified Users"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={VerifiedUser}
+              title="Web Development"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque ratione rem porro, nihil."
+              icon={WebDev}
               iconColor="success"
               vertical
             />
           </GridItem>
           <GridItem xs={12} sm={12} md={4}>
             <InfoArea
-              title="Fingerprint"
-              description="Divide details about your product or agency work into parts. Write a few lines about each one. A paragraph describing a feature will be enough."
-              icon={Fingerprint}
+              title="Databases"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque ratione rem porro, nihil."
+              icon={Database}
+              iconColor="success"
+              vertical
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title="Edit Sections"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque ratione rem porro, nihil"
+              icon={EditSection}
+              iconColor="danger"
+              vertical
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title="Responsive Desings"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque ratione rem porro, nihil"
+              icon={ResponsiveDesing}
+              iconColor="danger"
+              vertical
+            />
+          </GridItem>
+          <GridItem xs={12} sm={12} md={4}>
+            <InfoArea
+              title="Android"
+              description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et eaque ratione rem porro, nihil."
+              icon={Android}
               iconColor="danger"
               vertical
             />
