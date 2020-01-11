@@ -1,10 +1,10 @@
 import { injectable } from "inversify";
 import { Response } from "express";
-import {InfraestructureError} from './Errors/InfraestructureError';
-import {ApplicationError} from './Errors/AppError';
+import { InfraestructureError } from "../ErrorHandler/Errors/InfraestructureError";
+import { ApplicationError } from "../ErrorHandler/Errors/AppError";
 
 @injectable()
-class ErrorHandler {
+export class ErrorHandler {
     public handle(error: Error, res: Response): void{
         if(error instanceof InfraestructureError){
             res.status(error.getStatusCode()).send(error.message);
@@ -13,5 +13,3 @@ class ErrorHandler {
         }
     }
 }
-
-export default ErrorHandler;

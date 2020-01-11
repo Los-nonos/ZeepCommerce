@@ -1,8 +1,10 @@
 import { Request } from "express";
 import NameSchema from "./Schemas/NameSchema";
 import DniSchema from "./Schemas/DniSchema";
-import UserDeleteCommand from "../../Domain/Commands/UserCommand";
+import UserDeleteCommand from "../../Domain/Commands/UserCommands/UserCommand";
 import IdSchema from "./Schemas/IdSchema";
+import { InvalidData } from "../../Infraestructure/ErrorHandler/Errors/InvalidData";
+import ShowUsercommand from "../../Domain/Commands/UserCommands/ShowUserCommand";
 
 class UserAdapter {
 
@@ -33,7 +35,16 @@ class UserAdapter {
         const resultId = IdSchema.validate({ id: id});
     }
 
+    public Show(req: Request){
+        const { id } = req.params;
 
+        const resultId = IdSchema.validate({ id });
+
+        if(resultId.error){
+            throw new InvalidData(resultId.error.message);
+        }
+        return new ShowUsercommand(resultId.value);
+    }
 
     public Delete(req: Request): UserDeleteCommand{
         const { id }: any = req.params;

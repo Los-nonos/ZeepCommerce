@@ -6,7 +6,7 @@ import TYPES from '../../types';
 
 import * as path from 'path';
 import container from '../../inversify.config';
-import { ErrorHandler } from '../ErrorHandler/ErrorHandler';
+import ErrorHandler from '../../Infraestructure/ErrorHandler/ErrorHandler';
 import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
 import UserController from '../../Application/Controllers/UserController';
 import ProductController from '../../Application/Controllers/ProductController';
@@ -56,7 +56,8 @@ class Router {
         });
 
         //user routes
-        this.express.post('/users', this.userController.Create);
+        this.express.post('/users/create', this.userController.Create);
+        this.express.get('/users/all/:id', this.userController.Show);
         this.express.post('/users/edit/:id', this.userController.Edit);
         this.express.get('/users/delete/:id', this.userController.Delete);
 

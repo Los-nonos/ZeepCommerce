@@ -5,6 +5,9 @@ import UserControllerInterface from "../../Infraestructure/Interfaces/UserContro
 import { injectable } from "inversify";
 import UserAdapter from "../Adapters/UserAdapter";
 import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
+import {InfraestructureError} from "../../Infraestructure/ErrorHandler/Errors/InfraestructureError";
+import {ApplicationError} from '../../Infraestructure/ErrorHandler/Errors/AppError';
+import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
 
 @injectable()
 class UserController implements UserControllerInterface {
@@ -37,7 +40,6 @@ class UserController implements UserControllerInterface {
         
     }
 
-    
     public async Delete(req: Request, res: Response) {
         
         var adapter = new UserAdapter();
@@ -49,6 +51,28 @@ class UserController implements UserControllerInterface {
             res.status(200).json({message: response});    
         } catch (error) {
             res.status(500).json({message: error.message});
+        }
+    }
+
+    public async Show(req: Request, res: Response){
+        try{
+            var adapter = new UserAdapter();  
+            
+            var handler = new UserShowHandler();
+
+            var command = adapter.Show(req);
+
+            res.status(200).json({message: "User found", user: Response});
+        }catch(error){
+            if(error instanceof InfraestructureError){
+                res.status(error.getStatusCode()).json({message: error.message});
+            }
+            else if(error instanceof ApplicationError){
+                res.status(500).json({ message: error.getDescription});
+            }
+            else{
+                res.status(500).json({ message: 'Unexpected error'});
+            }
         }
     }
 }
