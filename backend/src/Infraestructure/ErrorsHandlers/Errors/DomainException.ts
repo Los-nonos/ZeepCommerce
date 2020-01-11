@@ -1,4 +1,4 @@
-import {InfraestructureError} from "../Errors/InfraestructureError";
+import {InfraestructureError} from "./InfraestructureError";
 
 class DomainException extends InfraestructureError {
     constructor(message: string){

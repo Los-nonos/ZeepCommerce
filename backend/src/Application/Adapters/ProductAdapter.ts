@@ -1,7 +1,7 @@
 import IdSchema from "./Schemas/IdSchema";
 import NameSchema from "./Schemas/NameSchema";
 import {Request} from 'express';
-import ProductDeleteCommand from '../../Domain/Commands/ProductCommand';
+import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductCommand';
 import PriceSchema from "./Schemas/PriceSchema";
 import DescriptionSchema from "./Schemas/DescriptionSchema";
 

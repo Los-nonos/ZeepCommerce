@@ -1,5 +1,5 @@
 import Product from "../../Entity/Product";
-import ProductDeleteCommand from '../../Commands/ProductCommand';
+import ProductDeleteCommand from '../../Commands/ProductCommands/ProductCommand';
 
 class ProductDeleteHandler{
 

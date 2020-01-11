@@ -6,7 +6,7 @@ import TYPES from '../../types';
 
 import * as path from 'path';
 import container from '../../inversify.config';
-import ErrorHandler from '../../Infraestructure/ErrorHandler/ErrorHandler';
+import ErrorHandler from '../ErrorsHandlers/ErrorHandler';
 import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
 import UserController from '../../Application/Controllers/UserController';
 import ProductController from '../../Application/Controllers/ProductController';

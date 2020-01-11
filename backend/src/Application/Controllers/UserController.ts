@@ -5,8 +5,8 @@ import UserControllerInterface from "../../Infraestructure/Interfaces/UserContro
 import { injectable } from "inversify";
 import UserAdapter from "../Adapters/UserAdapter";
 import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
-import {InfraestructureError} from "../../Infraestructure/ErrorHandler/Errors/InfraestructureError";
-import {ApplicationError} from '../../Infraestructure/ErrorHandler/Errors/AppError';
+import {InfraestructureError} from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
+import {ApplicationError} from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
 import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
 
 @injectable()

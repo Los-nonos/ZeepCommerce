@@ -3,7 +3,7 @@ import NameSchema from "./Schemas/NameSchema";
 import DniSchema from "./Schemas/DniSchema";
 import UserDeleteCommand from "../../Domain/Commands/UserCommands/UserCommand";
 import IdSchema from "./Schemas/IdSchema";
-import { InvalidData } from "../../Infraestructure/ErrorHandler/Errors/InvalidData";
+import { InvalidData } from "../../Infraestructure/ErrorsHandlers/Errors/InvalidData";
 import ShowUsercommand from "../../Domain/Commands/UserCommands/ShowUserCommand";
 
 class UserAdapter {

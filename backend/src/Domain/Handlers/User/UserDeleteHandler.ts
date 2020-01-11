@@ -1,5 +1,5 @@
 import User from "../../Entity/User";
-import UserDeleteCommand from '../../Commands/UserCommand';
+import UserDeleteCommand from '../../Commands/UserCommands/UserCommand';
 
 class UserDeleteHandler{
 

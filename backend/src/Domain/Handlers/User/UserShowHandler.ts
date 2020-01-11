@@ -1,9 +1,9 @@
 import { injectable } from "inversify";
 import User from "../../Entity/User";
-import UnAuthorizedException from "../../../Infraestructure/ErrorHandler/Errors/UnAuthorizedException";
+import UnAuthorizedException from "../../../Infraestructure/ErrorsHandlers/Errors/UnAuthorizedException";
 import { useContainer, Entity } from "typeorm";
-import { EntityNotFound } from "../../../Infraestructure/ErrorHandler/Errors/EntityNotFound";
-import { DataBaseError } from "../../../Infraestructure/ErrorHandler/Errors/DataBaseError";
+import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
+import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
 
 
 @injectable

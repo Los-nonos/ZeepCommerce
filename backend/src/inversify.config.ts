@@ -3,7 +3,7 @@ import 'reflect-metadata';
 import TYPES from "./types";
 import UserControllerInterface from "./Infraestructure/Interfaces/UserControllerInterface";
 import UserController from "./Application/Controllers/UserController";
-import { ErrorHandler } from "./Infraestructure/ErrorHandler/ErrorHandler";
+import  ErrorHandler  from "./Infraestructure/ErrorsHandlers/ErrorHandler";
 import ProductControllerInterface from "./Infraestructure/Interfaces/ProductControllerInterface";
 import ProductController from "./Application/Controllers/ProductController";
 
