@@ -9,7 +9,7 @@ class UserAdapter {
     public Create(req: Request) {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = req.body;
 
-        const resultName = NameSchema.validate({ name: name });
+        const resultName = NameSchema.validate(name, NameSchema);
 
         if (resultName.error) {
             throw new Error(resultName.error.message);

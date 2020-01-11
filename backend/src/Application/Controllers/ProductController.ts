@@ -3,7 +3,9 @@ import Product from '../../Domain/Entity/Product';
 import ProductAdapter from '../Adapters/ProductAdapter';
 import ProductDeleteHandler from '../../Domain/Handlers/Product/ProductDeleteHandler';
 import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface';
+import { injectable } from 'inversify';
 
+@injectable()
 class ProductController implements ProductControllerInterface{
     
     public async Create(req: Request, res: Response) {

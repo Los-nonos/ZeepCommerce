@@ -57,8 +57,8 @@ class Router {
 
         //user routes
         this.express.post('/users', this.userController.Create);
-        this.express.post('/users/:id', this.userController.Edit);
-        this.express.get('/users/:id', this.userController.Delete);
+        this.express.post('/users/Edit/:id', this.userController.Edit);
+        this.express.get('/users/Delete/:id', this.userController.Delete);
 
         //product routes
         this.express.post('/products', this.productController.Create);

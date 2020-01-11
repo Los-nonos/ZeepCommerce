@@ -34,7 +34,7 @@ class UserController implements UserControllerInterface {
     }
 
     public async Edit(req: Request, res: Response){
-
+        
     }
 
     
