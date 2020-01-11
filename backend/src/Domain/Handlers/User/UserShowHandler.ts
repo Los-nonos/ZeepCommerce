@@ -4,15 +4,15 @@ import UnAuthorizedException from "../../../Infraestructure/ErrorsHandlers/Error
 import { useContainer, Entity } from "typeorm";
 import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
 import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
+import ShowUsercommand from "../../Commands/UserCommands/FindUserCommand";
 
 
-@injectable
 class UserShowHandler{
     constructor(){
 
     }
 
-    public async Show(command: ShowUserCommand){
+    public async Show(command: ShowUsercommand){
         try{
             const searchedUser: User = await User.findOne({ where: {id : command.GetId(), isBlocked: false}});
             

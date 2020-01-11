@@ -4,7 +4,8 @@ import DniSchema from "./Schemas/DniSchema";
 import UserDeleteCommand from "../../Domain/Commands/UserCommands/UserCommand";
 import IdSchema from "./Schemas/IdSchema";
 import { InvalidData } from "../../Infraestructure/ErrorsHandlers/Errors/InvalidData";
-import ShowUsercommand from "../../Domain/Commands/UserCommands/ShowUserCommand";
+import ShowUsercommand from "../../Domain/Commands/UserCommands/FindUserCommand";
+import EditUserCommand from "../../Domain/Commands/UserCommands/EditUserCommand";
 
 class UserAdapter {
 
@@ -31,8 +32,16 @@ class UserAdapter {
     
 
     public Edit(req: Request) {
-        const { id }: any = req.params;
+        const { id, name, lastName }: any = req.params;
+
         const resultId = IdSchema.validate({ id: id});
+
+        if(resultId.error){
+            throw new InvalidData('ID not valid or not found');
+        }
+        else{
+            return new EditUserCommand(resultId.value, name, lastName);
+        }
     }
 
     public Show(req: Request){

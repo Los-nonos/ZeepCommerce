@@ -8,6 +8,7 @@ import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
 import {InfraestructureError} from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
 import {ApplicationError} from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
 import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
+import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
 
 @injectable()
 class UserController implements UserControllerInterface {
@@ -37,17 +38,19 @@ class UserController implements UserControllerInterface {
     }
 
     public async Edit(req: Request, res: Response){
-        
+        const adapter = new UserAdapter();
+        const handler = new UserEditHandler();
+        const command = adapter.Edit(req);
     }
 
     public async Delete(req: Request, res: Response) {
         
-        var adapter = new UserAdapter();
-        var handler = new UserDeleteHandler();
-        var command = adapter.Delete(req);
+        const adapter = new UserAdapter();
+        const handler = new UserDeleteHandler();
+        const command = adapter.Delete(req);
 
         try {
-            var response = await handler.Delete(command);
+            const response = await handler.Delete(command);
             res.status(200).json({message: response});    
         } catch (error) {
             res.status(500).json({message: error.message});
@@ -55,14 +58,13 @@ class UserController implements UserControllerInterface {
     }
 
     public async ShowOne(req: Request, res: Response){
+        const adapter = new UserAdapter();  
+        const handler = new UserShowHandler();
+        const command = adapter.Show(req);
+
         try{
-            var adapter = new UserAdapter();  
-            
-            var handler = new UserShowHandler();
-
-            var command = adapter.Show(req);
-
-            res.status(200).json({message: "User found", user: Response});
+            const response = await handler.Show(command);
+            res.status(200).json({message: "User found", user: response});
         }catch(error){
             if(error instanceof InfraestructureError){
                 res.status(error.getStatusCode()).json({message: error.message});
