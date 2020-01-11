@@ -1,5 +1,5 @@
-import Product from "../Entity/Product";
-import ProductDeleteCommand from '../Commands/ProductDeleteCommand';
+import Product from "../../Entity/Product";
+import ProductDeleteCommand from '../../Commands/ProductCommand';
 
 class ProductDeleteHandler{
 
@@ -7,19 +7,19 @@ class ProductDeleteHandler{
 
     }
 
-    public async handle(command: ProductDeleteCommand): Promise<string> {
+    public async Delete(command: ProductDeleteCommand): Promise<string> {
 
         const id = command.getId();
 
         const product = await Product.findOne({Id: id});
 
         if (!product){
-            throw new Error('not found product');
+            throw new Error('Product not found.');
         }
 
         try {
             await product.remove();
-            return "product deleted";
+            return "Product deleted";
         } catch (error) {
             return error.message;
         }

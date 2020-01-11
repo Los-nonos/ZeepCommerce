@@ -3,6 +3,9 @@ import { Request, Response } from "express";
 import User from "../../Domain/Entity/User";
 import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
 import { injectable } from "inversify";
+import UserAdapter from "../Adapters/UserAdapter";
+import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
+import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
 
 @injectable()
 class UserController implements UserControllerInterface {
@@ -29,6 +32,19 @@ class UserController implements UserControllerInterface {
         } catch (error) {
             res.sendStatus(500);
         }
+    }
+
+    public static async Delete(req: Request, res: Response){
+        var adapter = new UserAdapter();
+        var handler = new UserDeleteHandler();
+        var command = adapter.Delete(req);
+        try {
+            var response = await handler.Delete(command);
+            res.status(200).json({message: response});    
+        } catch (error) {
+            res.status(500).json({message: error.message});
+        }
+        
     }
 }
 

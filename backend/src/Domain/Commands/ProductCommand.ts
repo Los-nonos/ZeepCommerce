@@ -1,4 +1,4 @@
-class ProductDeleteCommand {
+class ProductCommand {
 
     private id: number;
 
@@ -11,4 +11,4 @@ class ProductDeleteCommand {
     }
 }
 
-export default ProductDeleteCommand;
+export default ProductCommand;
