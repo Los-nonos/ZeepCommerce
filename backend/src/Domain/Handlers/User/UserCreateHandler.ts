@@ -13,8 +13,7 @@ class UserCreateHandler implements UserCreatedHandlerInterface {
             await user.save();
         }catch(error){
             return error.message;
-        }
-        
+        }        
     }
 
 }

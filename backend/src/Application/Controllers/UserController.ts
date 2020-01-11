@@ -27,11 +27,16 @@ class UserController implements UserControllerInterface {
 
         try {
             await user.save();
-
-            res.status(201).json({ message: 'user created', user });    
+            res.status(201).json({ message: 'User created', user });    
         } catch (error) {
             res.sendStatus(500);
         }
+    }
+
+    public async Edit(req: Request, res: Response){
+        var adapter = new UserAdapter();
+        var handler = new UserEditHandler();
+        var command = adapter.Edit(req);
     }
 
     public static async Delete(req: Request, res: Response){

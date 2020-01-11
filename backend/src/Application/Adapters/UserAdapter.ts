@@ -14,7 +14,6 @@ class UserAdapter {
         if (resultName.error) {
             throw new Error(resultName.error.message);
         }
-        
         const resultLastName = NameSchema.validate({ name: lastname });
 
         if (resultLastName.error) {
@@ -27,10 +26,14 @@ class UserAdapter {
             throw new Error(resultDNI.error.message);
         }
     }
+    
 
     public Edit(req: Request) {
-
+        const { id }: any = req.params;
+        const resultId = IdSchema.validate({ id: id});
     }
+
+
 
     public Delete(req: Request): UserDeleteCommand{
         const { id }: any = req.params;
