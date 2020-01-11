@@ -54,7 +54,7 @@ class UserController implements UserControllerInterface {
         }
     }
 
-    public async Show(req: Request, res: Response){
+    public async ShowOne(req: Request, res: Response){
         try{
             var adapter = new UserAdapter();  
             
