@@ -9,8 +9,12 @@ class UserCreateHandler implements UserCreatedHandlerInterface {
         const user = new User();
         user.name = name;
         user.lastname = lastname;
-
-        await user.save();
+        try{
+            await user.save();
+        }catch(error){
+            return error.message;
+        }
+        
     }
 
 }
