@@ -35,7 +35,6 @@ class UserController implements UserControllerInterface {
 
     public async Edit(req: Request, res: Response){
         var adapter = new UserAdapter();
-        var handler = new UserEditHandler();
         var command = adapter.Edit(req);
     }
 
