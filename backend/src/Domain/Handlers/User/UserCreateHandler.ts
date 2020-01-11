@@ -1,7 +1,6 @@
 import User from "../../Entity/User";
-import UserCreatedHandlerInterface from "../../../Infraestructure/Interfaces/UserCreatedHandlerInterface";
 
-class UserCreateHandler implements UserCreatedHandlerInterface {
+class UserCreateHandler{
 
     public async Create(command: any): Promise<void> {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = command;
