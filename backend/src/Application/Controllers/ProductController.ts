@@ -2,22 +2,23 @@ import { Request, Response } from 'express';
 import Product from '../../Domain/Entity/Product';
 import ProductAdapter from '../Adapters/ProductAdapter';
 import ProductDeleteHandler from '../../Domain/Handlers/Product/ProductDeleteHandler';
+import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface';
 
-class ProductController {
+class ProductController implements ProductControllerInterface{
     
-    public static async Create(req: Request, res: Response) {
+    public async Create(req: Request, res: Response) {
         const { name, price, description }: any = req.body;
 
         if (name == undefined) {
-            res.status(400).json({ message: 'El nombre del producto no se encontro.' })
+            res.status(400).json({ message: 'Product name not found.' })
         }
 
         if (price == undefined) {
-            res.status(400).json({ message: 'El precio del producto no se encontro.' })
+            res.status(400).json({ message: 'Product price not found.' })
         }
 
         if (description == undefined) {
-            res.status(400).json({ message: 'La descripcion del producto no se encontro.' })
+            res.status(400).json({ message: 'Product description not found.' })
         }
 
         const product = new Product();
@@ -31,10 +32,10 @@ class ProductController {
             res.status(500).json({message: error.message});
         }
         
-        res.status(201).json({ message: 'El producto se creo correctamente', product })
+        res.status(201).json({ message: 'Product created', product })
     }
 
-    public static async Delete(req: Request, res: Response) {
+    public async Delete(req: Request, res: Response) {
         
         var adapter = new ProductAdapter();
         var handler = new ProductDeleteHandler();

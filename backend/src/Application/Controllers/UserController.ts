@@ -13,11 +13,11 @@ class UserController implements UserControllerInterface {
         const { name, lastname }: any = req.body;
 
         if (!name) {
-            res.status(400).json({ message: 'not name found' });
+            res.status(400).json({ message: 'Name not found' });
         }
 
         if (!lastname) {
-            res.status(400).json({ message: 'not lastname found' });
+            res.status(400).json({ message: 'Last Name not found' });
         }
 
         const user = new User();
@@ -27,13 +27,15 @@ class UserController implements UserControllerInterface {
         try {
             await user.save();
 
-            res.status(201).json({ message: 'user created', user });    
+            res.status(201).json({ message: 'User created', user });    
         } catch (error) {
             res.sendStatus(500);
         }
     }
 
+    public async Edit(req: Request, res: Response){
 
+    }
 
     
     public async Delete(req: Request, res: Response) {
