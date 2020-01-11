@@ -1,7 +1,8 @@
 import { Request, Response } from 'express';
 import Product from '../../Domain/Entity/Product';
 import ProductAdapter from '../Adapters/ProductAdapter';
-import ProductDeleteHandler from '../../Domain/Handlers/ProductDeleteHandler';
+import ProductDeleteHandler from '../../Domain/Handlers/Product/ProductDeleteHandler';
+
 class ProductController {
     
     public static async Create(req: Request, res: Response) {
@@ -36,12 +37,11 @@ class ProductController {
     public static async Delete(req: Request, res: Response) {
         
         var adapter = new ProductAdapter();
-        var command = adapter.DeleteAdapter(req);
-
         var handler = new ProductDeleteHandler();
+        var command = adapter.Delete(req);
 
         try {
-            var response = await handler.handle(command);
+            var response = await handler.Delete(command);
             res.status(200).json({message: response});    
         } catch (error) {
             res.status(500).json({message: error.message});
