@@ -1,7 +1,7 @@
 let TYPES = {
     IHashService: Symbol("IHashService"),
     IUserController: Symbol("UserControllerInterface"),
-    IProductController: Symbol("ProductContollerInterface")
+    IProductController: Symbol('ProductControllerInterface'),
 };
 
 export default TYPES;
