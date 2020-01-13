@@ -3,8 +3,8 @@ import IdSchema from './Schemas/IdSchema';
 import NameSchema from './Schemas/NameSchema';
 import DescriptionSchema from './Schemas/DescriptionSchema';
 import PriceSchema from './Schemas/PriceSchema';
-import ProductCreateCommand from '../../Domain/Commands/ProductCreateAndEditCommand';
-import ProductEditCommand from '../../Domain/Commands/ProductEditCommand';
+import ProductCreateCommand from '../../Domain/Commands/ProductCreateCommand';
+import ProductEditCommand from '../../Domain/Commands/ProductCreateCommand';
 import ProductDeleteCommand from '../../Domain/Commands/ProductDeleteCommand';
 
 class ProductAdapter {
@@ -33,12 +33,11 @@ class ProductAdapter {
             throw new Error(resultDescription.error.message);
         }
 
-        return new ProductCreateCommand(resultId.value, resultName.value, 
-                                        resultPrice.value, resultDescription.value);
+        return new ProductCreateCommand(resultName.value, resultPrice.value, resultDescription.value);
     }
 
     public EditAdapter(req: Request): ProductEditCommand {
-        const { id }: any = req.params;
+        const { id, name, price, description }: any = req.params;
 
         const resultId = IdSchema.validate({ id: id });
 
@@ -46,7 +45,7 @@ class ProductAdapter {
             throw new Error(resultId.error.message);
         }
 
-        return new ProductEditCommand(resultId.value);
+        return new ProductEditCommand(name, price, description);
     }
 
     public DeleteAdapter(req: Request) : ProductDeleteCommand {

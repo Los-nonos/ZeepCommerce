@@ -1,5 +1,5 @@
 import Product from '../Entity/Product';
-import ProductCreateAndEditCommand from '../../Domain/Commands/ProductCreateAndEditCommand';
+import ProductCreateAndEditCommand from '../Commands/ProductCreateCommand';
 import ProductEditHandlerInterface from '../../Infraestructure/Interfaces/ProductEditHandlerInterface';
 
 class ProductEditHandler implements ProductEditHandlerInterface{

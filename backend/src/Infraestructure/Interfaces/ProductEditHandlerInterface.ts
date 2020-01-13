@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import ProductEditCommand from '../../Domain/Commands/ProductEditCommand';
 
 interface ProductEditHandlerInterface{
 
-    Handle(req: Request, res: Response): Promise <string>;
+    Handle(command: ProductEditCommand): Promise <string>;
 }
 
 export default ProductEditHandlerInterface;

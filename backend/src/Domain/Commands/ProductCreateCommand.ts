@@ -1,19 +1,13 @@
-class ProductCreateAndEditCommand{
+class ProductCreateCommand{
 
-    private id: number;
     private name: string;
     private price: number;
     private description: string;
 
-    constructor(id: number, name: string, price: number, description: string){
-        this.id = id;
+    constructor(name: string, price: number, description: string){
         this.name = name;
         this.price = price;
         this.description = description
-    }
-
-    public getId(): number {
-        return this.id;
     }
 
     public getName(): string {
@@ -30,4 +24,4 @@ class ProductCreateAndEditCommand{
 
 }
 
-export default ProductCreateAndEditCommand;
+export default ProductCreateCommand;

@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import ProductDeleteCommand from '../../Domain/Commands/ProductDeleteCommand';
 
 interface ProductDeleteHandlerInterface{
 
-    Handle(req: Request, res: Response): Promise <string>;
+    Handle(command: ProductDeleteCommand): Promise <string>;
 }
 
 export default ProductDeleteHandlerInterface;

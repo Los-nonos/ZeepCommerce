@@ -1,8 +1,8 @@
-import { Request, Response } from 'express';
+import ProductCreateCommand from '../../Domain/Commands/ProductCreateCommand';
 
 interface ProductCreateHandlerInterface {
 
-    Handle(req: Request): Promise <string>;
+    Handle(command: ProductCreateCommand): Promise <string>;
 }
 
 export default ProductCreateHandlerInterface;
