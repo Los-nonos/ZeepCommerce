@@ -14,22 +14,21 @@ class UserAdapter {
 
         const resultName = NameSchema.validate(name, NameSchema);
 
-        if (resultName.error) {
-            throw new Error(resultName.error.message);
-        }
-        const resultLastName = NameSchema.validate({ name: lastname });
-
-        if (resultLastName.error) {
-            throw new Error(resultLastName.error.message);
-        }
-
-        const resultDNI = DniSchema.validate({dni: dni});
-
-        if (resultDNI.error){
-            throw new Error(resultDNI.error.message);
-        }
-    }
+            if (resultName.error) {
+                throw new Error(resultName.error.message);
+            }
+            const resultLastName = NameSchema.validate({ name: lastname });
     
+            if (resultLastName.error) {
+                throw new Error(resultLastName.error.message);
+            }
+    
+            const resultDNI = DniSchema.validate({dni: dni});
+    
+            if (resultDNI.error){
+                throw new Error(resultDNI.error.message);
+            }    
+    }
 
     public Edit(req: Request) {
         const { id, name, lastName }: any = req.params;

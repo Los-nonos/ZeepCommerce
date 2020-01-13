@@ -1,8 +1,11 @@
 import User from "../../Entity/User";
-
+import CreateUserCommand from '../../Commands/UserCommands/CreateUserCommand';
 class UserCreateHandler{
 
-    public async Create(command: any): Promise<void> {
+    constructor(){
+
+    }
+    public async Create(command: any): Promise<string> {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = command;
 
         const user = new User();

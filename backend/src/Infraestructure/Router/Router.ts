@@ -11,6 +11,7 @@ import ProductControllerInterface from '../Interfaces/ProductControllerInterface
 import UserController from '../../Application/Controllers/UserController';
 import ProductController from '../../Application/Controllers/ProductController';
 
+@injectable()
 class Router {
 
     private express: Express;
@@ -59,7 +60,7 @@ class Router {
         this.express.post('/users/create', this.userController.Create);
         this.express.get('/users/:id', this.userController.ShowOne);
         this.express.post('/users/:id', this.userController.Edit);
-        this.express.get('/users/:id', this.userController.Delete);
+        this.express.delete('/users/:id', this.userController.Delete);
 
         //product routes
         this.express.post('/products', this.productController.Create);

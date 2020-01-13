@@ -12,11 +12,10 @@ class UserEditHandler{
             if(!user){
                 throw new EntityNotFound('User not found');
             }else{
-                const userEdit = new User();
-                userEdit.name = command.getUserName();
-                userEdit.lastname = command.getUserLastName();
+                user.name = command.getUserName();
+                user.lastname = command.getUserLastName();
                 
-                await userEdit.save();
+                await user.save();
     
                 return {message: 'User updated correctly!'};
             }
