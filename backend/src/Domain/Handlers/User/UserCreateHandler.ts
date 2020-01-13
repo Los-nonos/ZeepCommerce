@@ -1,9 +1,11 @@
 import User from "../../Entity/User";
-import UserCreatedHandlerInterface from "../../../Infraestructure/Interfaces/UserCreatedHandlerInterface";
+import CreateUserCommand from '../../Commands/UserCommands/CreateUserCommand';
+class UserCreateHandler{
 
-class UserCreateHandler implements UserCreatedHandlerInterface {
+    constructor(){
 
-    public async Create(command: any): Promise<void> {
+    }
+    public async Create(command: any): Promise<string> {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = command;
 
         const user = new User();

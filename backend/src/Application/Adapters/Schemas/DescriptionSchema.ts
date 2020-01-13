@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi';
 
-const DescriptionSchema = Joi.Objetc({
+const DescriptionSchema = Joi.object().keys({
     desciption: Joi.string().min(0).max(4000).required()
 })
 

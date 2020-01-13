@@ -1,25 +1,31 @@
 import { Express, Request, Response, NextFunction } from 'express';
 import bodyParser = require('body-parser')
-import ProductController from '../../Application/Controllers/ProductController';
 import UserControllerInterface from '../Interfaces/UserControllerInterface';
-import { inject } from 'inversify';
+import { inject, injectable } from 'inversify';
 import TYPES from '../../types';
 
 import * as path from 'path';
 import container from '../../inversify.config';
-import { ErrorHandler } from '../ErrorHandler/ErrorHandler';
+import ErrorHandler from '../ErrorsHandlers/ErrorHandler';
+import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
+import UserController from '../../Application/Controllers/UserController';
+import ProductController from '../../Application/Controllers/ProductController';
 
+@injectable()
 class Router {
 
     private express: Express;
-    private userController: UserControllerInterface;
+    private userController: UserController;
+    private productController: ProductController;
 
     constructor(
         express: Express,
-        @inject(TYPES.IUserController) userController: UserControllerInterface
+        @inject(TYPES.IUserController) userController: UserControllerInterface,
+        @inject(TYPES.IProductController) productController: ProductControllerInterface
     ) {
         this.express = express;
         this.userController = userController;
+        this.productController = productController;
     }
 
     public up() {
@@ -51,11 +57,14 @@ class Router {
         });
 
         //user routes
-        this.express.post('/users', this.userController.Create);
+        this.express.post('/users/create', this.userController.Create);
+        this.express.get('/users/:id', this.userController.ShowOne);
+        this.express.post('/users/:id', this.userController.Edit);
+        this.express.delete('/users/:id', this.userController.Delete);
 
         //product routes
-        this.express.post('/products', ProductController.Create);
-        this.express.delete('/products/:id', ProductController.Delete);
+        this.express.post('/products', this.productController.Create);
+        this.express.delete('/products/:id', this.productController.Delete);
     }
 }
 
