@@ -1,4 +1,6 @@
 import React from 'react';
+import InputWithLogo from '../Components/InputWithLogo';
+import ButtonRadious from '../Components/ButtonRadious';
 
 class Footer extends React.Component {
 
@@ -13,7 +15,7 @@ class Footer extends React.Component {
             <footer>
             <div class="footer-container">
               <div class="left-col">
-                {/* <img src={this.logo} alt="" class="logo" /> */}
+                {/* <img src={this.logo} alt="" class="logo-footer" /> */}
                 <div class="social-media">
                   <a href="#"><i class="fab fa-facebook-f"></i></a>
                   <a href="#"><i class="fab fa-twitter"></i></a>
@@ -29,8 +31,8 @@ class Footer extends React.Component {
                 <div class="border"></div>
                 <p>Enter Your Email to get our news and updates.</p>
                 <form action="" class="newsletter-form">
-                  <input type="text" class="txtb" placeholder="Enter Your Email" />
-                  <input type="submit" class="btn" value="submit" />
+                  <InputWithLogo type="text" placeholder="Enter Your Email" logo="fas fa-user" />
+                  <ButtonRadious type="submit" text="submit" />
                 </form>
               </div>
             </div>

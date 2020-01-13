@@ -3,9 +3,9 @@ import IdSchema from './Schemas/IdSchema';
 import NameSchema from './Schemas/NameSchema';
 import DescriptionSchema from './Schemas/DescriptionSchema';
 import PriceSchema from './Schemas/PriceSchema';
-import ProductCreateCommand from '../../Domain/Commands/ProductCreateCommand';
-import ProductEditCommand from '../../Domain/Commands/ProductCreateCommand';
-import ProductDeleteCommand from '../../Domain/Commands/ProductDeleteCommand';
+import ProductCreateCommand from '../../Domain/Commands/ProductCommands/ProductCreateCommand';
+import ProductEditCommand from '../../Domain/Commands/ProductCommands/ProductEditCommand';
+import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductDeleteCommand';
 
 class ProductAdapter {
 
@@ -45,10 +45,13 @@ class ProductAdapter {
             throw new Error(resultId.error.message);
         }
 
-        return new ProductEditCommand(name, price, description);
+        //To Do: hacer demás validaciones
+
+        return new ProductEditCommand(id, name, price, description);
     }
 
     public DeleteAdapter(req: Request) : ProductDeleteCommand {
+
         const { id }: any = req.params;
 
         const resultId = IdSchema.validate({ id: id });

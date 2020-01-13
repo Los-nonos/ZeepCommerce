@@ -1,4 +1,4 @@
-import ProductCreateCommand from '../../Domain/Commands/ProductCreateCommand';
+import ProductCreateCommand from '../../Domain/Commands/ProductCommands/ProductCreateCommand';
 
 interface ProductCreateHandlerInterface {
 

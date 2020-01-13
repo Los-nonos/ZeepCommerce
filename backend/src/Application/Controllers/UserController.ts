@@ -1,33 +1,99 @@
 
+//Dependencies imports
 import { Request, Response } from "express";
-import User from "../../Domain/Entity/User";
-import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
 import { injectable } from "inversify";
+
+//Error imports
+import {InfraestructureError} from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
+import {ApplicationError} from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
+
+//User imports
+import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
+import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
+import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
+import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
+import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
+import UserAdapter from "../Adapters/UserAdapter";
+
 
 @injectable()
 class UserController implements UserControllerInterface {
 
     public async Create(req: Request, res: Response) {
-        const { name, lastname }: any = req.body;
+        const adapter = new UserAdapter();
+        const handler = new UserCreateHandler();
+        const command = adapter.Create(req);
 
-        if (!name) {
-            res.status(400).json({ message: 'not name found' });
+        try{
+            const response = await handler.Create(command);
+            res.status(201).json({ message: "User created correctly", user: response});
         }
-
-        if (!lastname) {
-            res.status(400).json({ message: 'not lastname found' });
+        catch(error){
+            if(error instanceof InfraestructureError){
+                res.status(error.getStatusCode()).json({message: error.message});
+            }
+            else if(error instanceof ApplicationError){
+                res.status(500).json({message: error.getDescription});
+            }
+            else{
+                res.status(500).json({ message: "Unexpected error"});
+            }
         }
+    }
 
-        const user = new User();
-        user.name = name;
-        user.lastname = lastname;
+    public async Edit(req: Request, res: Response){
+        const adapter = new UserAdapter();
+        const handler = new UserEditHandler();
+        const command = adapter.Edit(req);
+        try{
+            const response = await handler.Edit(command);
+            res.status(200).json({message: "User updated correctly", user: response});
+        }
+        catch(error){
+            if(error instanceof InfraestructureError){
+                res.status(error.getStatusCode()).json({message: error.message});
+            }
+            else if(error instanceof ApplicationError){
+                res.status(500).json({message: error.getDescription});
+            }
+            else{
+                res.status(500).json({ message: "Unexpected error"});
+            }
+        }
+    }
+
+    public async Delete(req: Request, res: Response) {
+        
+        const adapter = new UserAdapter();
+        const handler = new UserDeleteHandler();
+        const command = adapter.Delete(req);
 
         try {
-            await user.save();
-
-            res.status(201).json({ message: 'user created', user });    
+            const response = await handler.Delete(command);
+            res.status(200).json({message: response});    
         } catch (error) {
-            res.sendStatus(500);
+            res.status(500).json({message: error.message});
+        }
+    }
+
+    public async ShowOne(req: Request, res: Response){
+        const adapter = new UserAdapter();  
+        const handler = new UserShowHandler();
+        const command = adapter.Show(req);
+
+        try{
+            const response = await handler.Show(command);
+            res.status(200).json({message: "User found", user: response});
+        }catch(error){
+            if(error instanceof InfraestructureError){
+                res.status(error.getStatusCode()).json({message: error.message});
+            }
+            else if(error instanceof ApplicationError){
+                res.status(500).json({ message: error.getDescription});
+            }
+            else{
+                res.status(500).json({ message: 'Unexpected error'});
+            }
         }
     }
 }

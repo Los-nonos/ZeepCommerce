@@ -1,4 +1,4 @@
-import ProductEditCommand from '../../Domain/Commands/ProductEditCommand';
+import ProductEditCommand from '../../Domain/Commands/ProductCommands/ProductEditCommand';
 
 interface ProductEditHandlerInterface{
 
