@@ -14,7 +14,6 @@ class ProductController implements ProductControllerInterface{
 
        var adapter = new ProductAdapter();
        var command = adapter.CreateAdapter(req);
-
        var handler = new ProductCreateHandler();
 
        try {
@@ -30,7 +29,6 @@ class ProductController implements ProductControllerInterface{
 
         var adapter = new ProductAdapter();
         var command = adapter.EditAdapter(req);
-
         var handler = new ProductEditHandler();
 
         try {
@@ -45,9 +43,8 @@ class ProductController implements ProductControllerInterface{
     public async Delete(req: Request, res: Response) {
         
         var adapter = new ProductAdapter();
-        var command = adapter.DeleteAdapter(req);
-
         var handler = new ProductDeleteHandler();
+        var command = adapter.DeleteAdapter(req);
 
         try {
             var response = await handler.Handle(command);
