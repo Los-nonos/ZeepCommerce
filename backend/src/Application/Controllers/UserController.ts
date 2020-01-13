@@ -1,15 +1,20 @@
 
+//Dependencies imports
 import { Request, Response, response } from "express";
-import User from "../../Domain/Entity/User";
-import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
 import { injectable } from "inversify";
-import UserAdapter from "../Adapters/UserAdapter";
-import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
+
+//Error imports
 import {InfraestructureError} from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
 import {ApplicationError} from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
-import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
-import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
+
+//User imports
+import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
 import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
+import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
+import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
+import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
+import UserAdapter from "../Adapters/UserAdapter";
+
 
 @injectable()
 class UserController implements UserControllerInterface {
