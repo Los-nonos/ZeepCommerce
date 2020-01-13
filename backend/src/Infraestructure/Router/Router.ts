@@ -55,7 +55,7 @@ class Router {
 
         //product routes
         this.express.post('/products', this.productController.Create);
-        this.express.post('/products/:id', this,this.productController.Edit);
+        this.express.post('/products/:id', this.productController.Edit);
         this.express.delete('/products/:id', this.productController.Delete);
     }
 }

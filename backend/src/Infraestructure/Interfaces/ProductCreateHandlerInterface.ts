@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 interface ProductCreateHandlerInterface {
 
-    Handle(req: Request, res: Response): Promise <string>;
+    Handle(req: Request): Promise <string>;
 }
 
 export default ProductCreateHandlerInterface;
