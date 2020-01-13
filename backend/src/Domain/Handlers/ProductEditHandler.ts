@@ -1,10 +1,10 @@
 import Product from '../Entity/Product';
-import ProductEditCommand from '../../Domain/Commands/ProductEditCommand';
+import ProductCreateAndEditCommand from '../../Domain/Commands/ProductCreateAndEditCommand';
 import ProductEditHandlerInterface from '../../Infraestructure/Interfaces/ProductEditHandlerInterface';
 
 class ProductEditHandler implements ProductEditHandlerInterface{
 
-    public async Handle(command : ProductEditCommand): Promise <string> {
+    public async Handle(command : ProductCreateAndEditCommand): Promise <string> {
 
         const id = command.getId();
 
@@ -14,11 +14,9 @@ class ProductEditHandler implements ProductEditHandlerInterface{
             throw new Error('Not found product');
         }
 
-        const {name, price, description}: any = command;
-
-        product.name = name;
-        product.price = price;
-        product.description = description;
+        product.name = command.getName();
+        product.price = command.getPrice();
+        product.description = command.getDescription();
 
         try{
 

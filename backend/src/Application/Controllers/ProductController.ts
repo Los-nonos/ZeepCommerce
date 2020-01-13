@@ -3,43 +3,43 @@ import Product from '../../Domain/Entity/Product';
 import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface'
 import { injectable } from 'inversify';
 import ProductAdapter from '../Adapters/ProductAdapter';
+import ProductCreateHandler from '../../Domain/Handlers/ProductCreateHandler';
+import ProductEditHandler from '../../Domain/Handlers/ProductEditHandler';
 import ProductDeleteHandler from '../../Domain/Handlers/ProductDeleteHandler';
 
 @injectable()
 class ProductController implements ProductControllerInterface{
     
     public async Create(req: Request, res: Response) {
-        const { name, price, description }: any = req.body;
 
-        if (!name) {
-            res.status(400).json({ message: 'Not product name foud' })
-        }
+       var adapter = new ProductAdapter();
+       var command = adapter.CreateAdapter(req);
 
-        if (!price) {
-            res.status(400).json({ message: 'Not product price found' })
-        }
+       var handler = new ProductCreateHandler();
 
-        if (!description) {
-            res.status(400).json({ message: 'Not product description found' })
-        }
+       try {
+           var response = await handler.Handle(command);
+           res.status(200).json({message: response});
 
-        const product = new Product();
-        product.name = name;
-        product.price = price;
-        product.description = description;
-
-        try {
-            await product.save();  
-              
-        } catch (error) {
-            res.status(500).json({message: error.message});
-        }
-        
-        res.status(201).json({ message: 'Product created correctly', product })
+       } catch(error) {
+           res.status(500).json({message: error.message});
+       }
     }
 
     public async Edit(req: Request, res: Response){
 
+        var adapter = new ProductAdapter();
+        var command = adapter.EditAdapter(req);
+
+        var handler = new ProductEditHandler();
+
+        try {
+            var response = await handler.Handle(command);
+            res.status(200).json({message: response});
+
+        } catch(error) {
+            res.status(500).json({message: error.message});
+        }
     }
 
     public async Delete(req: Request, res: Response) {
@@ -52,6 +52,7 @@ class ProductController implements ProductControllerInterface{
         try {
             var response = await handler.Handle(command);
             res.status(200).json({message: response});    
+
         } catch (error) {
             res.status(500).json({message: error.message});
         }
