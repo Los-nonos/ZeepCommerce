@@ -1,4 +1,5 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
+import Role from './Role';
 
 
 @Entity()
@@ -8,9 +9,19 @@ class User extends BaseEntity {
 
     @Column()
     public name: string;
-    
+
     @Column()
     public lastname: string;
+
+    @ManyToMany(roles => Role)
+    @JoinTable()
+    public roles: Role[];
+
+    public HasRole(name: string) {
+        return this.roles.map((role) => {
+            return role.Name === name;
+        });
+    }
 }
 
 export default User;
