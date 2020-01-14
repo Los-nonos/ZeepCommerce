@@ -1,5 +1,5 @@
 import Product from "../../Entity/Product";
-import ProductDeleteCommand from '../../Commands/ProductCommand';
+import ProductDeleteCommand from '../../Commands/ProductCommands/ProductDeleteCommand';
 
 class ProductDeleteHandler{
 
@@ -7,7 +7,7 @@ class ProductDeleteHandler{
 
     }
 
-    public async Delete(command: ProductDeleteCommand): Promise<string> {
+    public async Handle(command: ProductDeleteCommand): Promise<string> {
 
         const id = command.getId();
 

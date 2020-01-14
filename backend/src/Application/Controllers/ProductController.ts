@@ -1,50 +1,67 @@
 import { Request, Response } from 'express';
-import Product from '../../Domain/Entity/Product';
+import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface'
+import { injectable, inject } from 'inversify';
 import ProductAdapter from '../Adapters/ProductAdapter';
+import ProductCreateHandler from '../../Domain/Handlers/Product/ProductCreateHandler';
+import ProductEditHandler from '../../Domain/Handlers/Product/ProductEditHandler';
 import ProductDeleteHandler from '../../Domain/Handlers/Product/ProductDeleteHandler';
+import TYPES from '../../types';
+import ProductCreateHandlerInterface from '../../Infraestructure/Interfaces/ProductCreateHandlerInterface';
 
-class ProductController {
-    
-    public static async Create(req: Request, res: Response) {
-        const { name, price, description }: any = req.body;
 
-        if (name == undefined) {
-            res.status(400).json({ message: 'El nombre del producto no se encontro.' })
-        }
+@injectable()
+class ProductController implements ProductControllerInterface {
 
-        if (price == undefined) {
-            res.status(400).json({ message: 'El precio del producto no se encontro.' })
-        }
+    private productCreateHandle: ProductCreateHandlerInterface;
 
-        if (description == undefined) {
-            res.status(400).json({ message: 'La descripcion del producto no se encontro.' })
-        }
+    public constructor(
+        //@inject(TYPES.IProductCreateHandler) productCreateHandle: ProductCreateHandlerInterface
 
-        const product = new Product();
-        product.name = name;
-        product.price = price;
-        product.description = description;
-
-        try {
-            await product.save();    
-        } catch (error) {
-            res.status(500).json({message: error.message});
-        }
-        
-        res.status(201).json({ message: 'El producto se creo correctamente', product })
+    ) {
+        //this.productCreateHandle = productCreateHandle;
     }
 
-    public static async Delete(req: Request, res: Response) {
-        
-        var adapter = new ProductAdapter();
-        var handler = new ProductDeleteHandler();
-        var command = adapter.Delete(req);
+    public async Create(req: Request, res: Response) {
+        const adapter = new ProductAdapter();
+        const handler = new ProductCreateHandler();
 
         try {
-            var response = await handler.Delete(command);
-            res.status(200).json({message: response});    
+            const command = await adapter.CreateAdapter(req);
+
+            const response = await handler.Handle(command);
+            res.status(200).json({ message: response });
+
         } catch (error) {
-            res.status(500).json({message: error.message});
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    public async Edit(req: Request, res: Response) {
+        const adapter = new ProductAdapter();
+        const command = await adapter.EditAdapter(req);
+        const handler = new ProductEditHandler();
+
+        try {
+            var response = await handler.Handle(command);
+            res.status(200).json({ message: response });
+
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
+    }
+
+    public async Delete(req: Request, res: Response) {
+
+        const adapter = new ProductAdapter();
+        const handler = new ProductDeleteHandler();
+        const command = await adapter.DeleteAdapter(req);
+
+        try {
+            const response = await handler.Handle(command);
+            res.status(200).json({ message: response });
+
+        } catch (error) {
+            res.status(500).json({ message: error.message });
         }
     }
 }

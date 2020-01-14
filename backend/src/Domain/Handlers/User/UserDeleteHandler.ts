@@ -1,13 +1,14 @@
 import User from "../../Entity/User";
-import UserDeleteCommand from '../../Commands/UserCommand';
+import DeleteUserCommand from '../../Commands/UserCommands/DeleteUserCommand';
+import DeleteUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface";
 
-class UserDeleteHandler{
+class UserDeleteHandler implements DeleteUserHandlerInterface{
 
     constructor(){
 
     }
 
-    public async Delete(command: UserDeleteCommand): Promise<string>{
+    public async Delete(command: DeleteUserCommand): Promise<string>{
         const id = command.getId();
 
         const user = await User.findOne({Id:id});
