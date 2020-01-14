@@ -29,7 +29,8 @@ class UserAdapter {
     }
 
     public Edit(req: Request) {
-        const { id, name, lastName, dni }: any = req.body;
+        const { id }: any = req.params;
+        const { name, lastName, dni } : any = req.body;
 
         const resultId = IdSchema.validate({ id: id});
 
@@ -42,7 +43,7 @@ class UserAdapter {
     }
 
     public Show(req: Request){
-        const { id } = req.body;
+        const { id } = req.params;
 
         const resultId = IdSchema.validate({ id });
 
@@ -53,7 +54,7 @@ class UserAdapter {
     }
 
     public Delete(req: Request): DeleteUserCommand{
-        const { id }: any = req.body;
+        const { id }: any = req.params;
         const resultId = IdSchema.validate({ id : id}) ;
 
         if(resultId.error){

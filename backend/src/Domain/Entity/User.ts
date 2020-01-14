@@ -13,6 +13,9 @@ class User extends BaseEntity {
     @Column()
     public lastname: string;
 
+    @Column()
+    public dni : number;
+    
     @ManyToMany(roles => Role)
     @JoinTable()
     public roles: Role[];
