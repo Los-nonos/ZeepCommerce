@@ -10,10 +10,10 @@ import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserComm
 
 class UserAdapter {
 
-    public Create(req: Request) {
+    public async Create(req: Request) {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = req.body;
 
-        const resultName = NameSchema.validate(name, NameSchema);
+        const resultName = NameSchema.validate({name: name});
         if (resultName.error) {
             throw new Error(resultName.error.message);
         }
@@ -21,46 +21,46 @@ class UserAdapter {
         if (resultLastName.error) {
             throw new Error(resultLastName.error.message);
         }
-        const resultDNI = DniSchema.validate({dni: dni});
-        if (resultDNI.error){
+        const resultDNI = DniSchema.validate({ dni: dni });
+        if (resultDNI.error) {
             throw new Error(resultDNI.error.message);
-        }    
-        return new UserCreateCommand(resultName.value, resultLastName.value,resultDNI.value)
+        }
+        return new UserCreateCommand(resultName.value.name, resultLastName.value.name, resultDNI.value.dni);
     }
 
-    public Edit(req: Request) {
+    public async Edit(req: Request) {
         const { id }: any = req.params;
-        const { name, lastName, dni } : any = req.body;
+        const { name, lastName, dni }: any = req.body;
 
-        const resultId = IdSchema.validate({ id: id});
+        const resultId = IdSchema.validate({ id: id });
 
-        if(resultId.error){
+        if (resultId.error) {
             throw new InvalidData('ID not valid or not found');
         }
-        else{
-            return new EditUserCommand(resultId.value,name, lastName, dni);
+        else {
+            return new EditUserCommand(resultId.value.id, name, lastName, dni);
         }
     }
 
-    public Show(req: Request){
-        const { id } = req.params;
+    public async Show(req: Request) {
+        const { id }: any = req.params;
 
-        const resultId = IdSchema.validate({ id });
+        const resultId = IdSchema.validate({ id: id });
 
-        if(resultId.error){
+        if (resultId.error) {
             throw new InvalidData(resultId.error.message);
         }
-        return new UserFindCommand(resultId.value);
+        return new UserFindCommand(resultId.value.id);
     }
 
-    public Delete(req: Request): DeleteUserCommand{
+    public async Delete(req: Request): Promise<DeleteUserCommand> {
         const { id }: any = req.params;
-        const resultId = IdSchema.validate({ id : id}) ;
+        const resultId = IdSchema.validate({ id: id });
 
-        if(resultId.error){
+        if (resultId.error) {
             throw new Error(resultId.error.message);
         }
-        return new DeleteUserCommand(resultId.value);
+        return new DeleteUserCommand(resultId.value.id);
     }
 }
 

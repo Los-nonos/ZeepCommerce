@@ -4,8 +4,8 @@ import { Request, Response } from "express";
 import { injectable } from "inversify";
 
 //Error imports
-import {InfraestructureError} from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
-import {ApplicationError} from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
+import { InfraestructureError } from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
+import { ApplicationError } from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
 
 //User imports
 import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
@@ -22,42 +22,45 @@ class UserController implements UserControllerInterface {
     public async Create(req: Request, res: Response) {
         const adapter = new UserAdapter();
         const handler = new UserCreateHandler();
-        const command = adapter.Create(req);
 
-        try{
+        try {
+
+            const command = await adapter.Create(req);
             const response = await handler.Create(command);
-            res.status(201).json({ message: "User created correctly", user: response});
+            
+            res.status(201).json({ message: response });
         }
-        catch(error){
-            if(error instanceof InfraestructureError){
-                res.status(error.getStatusCode()).json({message: error.message});
+        catch (error) {
+            if (error instanceof InfraestructureError) {
+                res.status(error.getStatusCode()).json({ message: error.message });
             }
-            else if(error instanceof ApplicationError){
-                res.status(500).json({message: error.getDescription});
+            else if (error instanceof ApplicationError) {
+                res.status(500).json({ message: error.getDescription });
             }
-            else{
-                res.status(500).json({ message: "Unexpected error"});
+            else {
+                res.status(500).json({ message: "Unexpected error" });
             }
         }
     }
 
-    public async Edit(req: Request, res: Response){
+    public async Edit(req: Request, res: Response) {
         const adapter = new UserAdapter();
         const handler = new UserEditHandler();
-        const command = adapter.Edit(req);
-        try{
+
+        try {
+            const command = await adapter.Edit(req);
             const response = await handler.Edit(command);
-            res.status(200).json({message: "User updated correctly", user: response});
+            res.status(200).json({ message: "User updated correctly", user: response });
         }
-        catch(error){
-            if(error instanceof InfraestructureError){
-                res.status(error.getStatusCode()).json({message: error.message});
+        catch (error) {
+            if (error instanceof InfraestructureError) {
+                res.status(error.getStatusCode()).json({ message: error.message });
             }
-            else if(error instanceof ApplicationError){
-                res.status(500).json({message: error.getDescription});
+            else if (error instanceof ApplicationError) {
+                res.status(500).json({ message: error.getDescription });
             }
-            else{
-                res.status(500).json({ message: "Unexpected error"});
+            else {
+                res.status(500).json({ message: "Unexpected error" });
             }
         }
     }
@@ -65,33 +68,36 @@ class UserController implements UserControllerInterface {
     public async Delete(req: Request, res: Response) {
         const adapter = new UserAdapter();
         const handler = new UserDeleteHandler();
-        const command = adapter.Delete(req);
+
 
         try {
+            const command = await adapter.Delete(req);
+
             const response = await handler.Delete(command);
-            res.status(200).json({message: response});    
+            res.status(200).json({ message: response });
         } catch (error) {
-            res.status(500).json({message: error.message});
+            res.status(500).json({ message: error.message });
         }
     }
 
-    public async ShowOne(req: Request, res: Response){
-        const adapter = new UserAdapter();  
+    public async ShowOne(req: Request, res: Response) {
+        const adapter = new UserAdapter();
         const handler = new UserShowHandler();
-        const command = adapter.Show(req);
 
-        try{
+        try {
+            const command = await adapter.Show(req);
             const response = await handler.FindUser(command);
-            res.status(200).json({message: "User found", user: response});
-        }catch(error){
-            if(error instanceof InfraestructureError){
-                res.status(error.getStatusCode()).json({message: error.message});
+
+            res.status(200).json({ message: "User found", user: response });
+        } catch (error) {
+            if (error instanceof InfraestructureError) {
+                res.status(error.getStatusCode()).json({ message: error.message });
             }
-            else if(error instanceof ApplicationError){
-                res.status(500).json({ message: error.getDescription});
+            else if (error instanceof ApplicationError) {
+                res.status(500).json({ message: error.getDescription });
             }
-            else{
-                res.status(500).json({ message: 'Unexpected error'});
+            else {
+                res.status(500).json({ message: 'Unexpected error' });
             }
         }
     }

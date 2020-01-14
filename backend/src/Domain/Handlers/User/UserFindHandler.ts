@@ -12,7 +12,9 @@ class UserFindHandler implements FindUserHandlerInterface{
 
     public async FindUser(command: FindUsercommand){
         try{
-            const searchedUser: User = await User.findOne({ where: {id : command.getId(), isBlocked: false}});
+            const id = command.getId();
+            console.log(id);
+            const searchedUser: User | undefined = await User.findOne({Id: id});
             
             if(searchedUser){
                return searchedUser;
@@ -21,7 +23,7 @@ class UserFindHandler implements FindUserHandlerInterface{
             }
         }
         catch(error){
-            throw new DataBaseError(error);
+            throw new DataBaseError(error.message);
         }
     }
 }

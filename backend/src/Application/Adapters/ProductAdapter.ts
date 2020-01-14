@@ -1,4 +1,4 @@
-import {Request} from 'express';
+import { Request } from 'express';
 import IdSchema from './Schemas/IdSchema';
 import NameSchema from './Schemas/NameSchema';
 import DescriptionSchema from './Schemas/DescriptionSchema';
@@ -9,39 +9,34 @@ import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductD
 
 class ProductAdapter {
 
-    public CreateAdapter(req: Request): ProductCreateCommand{
-        const { id, name, price, description }: any = req.params;
+    public async CreateAdapter(req: Request): Promise<ProductCreateCommand> {
+        const { name, price, description }: any = req.body;
 
-        const resultId = IdSchema.validate({ id: id });
         const resultName = NameSchema.validate({ name: name });
-        const resultPrice = PriceSchema.validate( { price: price });
+        const resultPrice = PriceSchema.validate({ price: price });
         const resultDescription = DescriptionSchema.validate({ description: description });
 
-        if(resultId.error) {
-            throw new Error(resultId.error.message);
-        }
-
-        if(resultName.error) {
+        if (resultName.error) {
             throw new Error(resultName.error.message);
         }
 
-        if(resultPrice.error) {
+        if (resultPrice.error) {
             throw new Error(resultPrice.error.message);
         }
 
-        if(resultDescription.error) {
+        if (resultDescription.error) {
             throw new Error(resultDescription.error.message);
         }
 
         return new ProductCreateCommand(resultName.value, resultPrice.value, resultDescription.value);
     }
 
-    public EditAdapter(req: Request): ProductEditCommand {
+    public async EditAdapter(req: Request): Promise<ProductEditCommand> {
         const { id, name, price, description }: any = req.params;
 
         const resultId = IdSchema.validate({ id: id });
 
-        if(resultId.error) {
+        if (resultId.error) {
             throw new Error(resultId.error.message);
         }
 
@@ -50,7 +45,7 @@ class ProductAdapter {
         return new ProductEditCommand(id, name, price, description);
     }
 
-    public DeleteAdapter(req: Request) : ProductDeleteCommand {
+    public async DeleteAdapter(req: Request): Promise<ProductDeleteCommand> {
 
         const { id }: any = req.params;
 

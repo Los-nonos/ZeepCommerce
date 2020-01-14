@@ -10,58 +10,58 @@ import ProductCreateHandlerInterface from '../../Infraestructure/Interfaces/Prod
 
 
 @injectable()
-class ProductController implements ProductControllerInterface{
-    
+class ProductController implements ProductControllerInterface {
+
     private productCreateHandle: ProductCreateHandlerInterface;
 
     public constructor(
         //@inject(TYPES.IProductCreateHandler) productCreateHandle: ProductCreateHandlerInterface
-        
-    )
-    {
+
+    ) {
         //this.productCreateHandle = productCreateHandle;
     }
 
     public async Create(req: Request, res: Response) {
-       const adapter = new ProductAdapter();
-       const command = adapter.CreateAdapter(req);
-       const handler = new ProductCreateHandler();
+        const adapter = new ProductAdapter();
+        const handler = new ProductCreateHandler();
 
-       try {
-           var response = await handler.Handle(command);
-           res.status(200).json({message: response});
+        try {
+            const command = await adapter.CreateAdapter(req);
 
-       } catch(error) {
-           res.status(500).json({message: error.message});
-       }
+            const response = await handler.Handle(command);
+            res.status(200).json({ message: response });
+
+        } catch (error) {
+            res.status(500).json({ message: error.message });
+        }
     }
 
-    public async Edit(req: Request, res: Response){
+    public async Edit(req: Request, res: Response) {
         const adapter = new ProductAdapter();
-        const command = adapter.EditAdapter(req);
+        const command = await adapter.EditAdapter(req);
         const handler = new ProductEditHandler();
 
         try {
             var response = await handler.Handle(command);
-            res.status(200).json({message: response});
+            res.status(200).json({ message: response });
 
-        } catch(error) {
-            res.status(500).json({message: error.message});
+        } catch (error) {
+            res.status(500).json({ message: error.message });
         }
     }
 
     public async Delete(req: Request, res: Response) {
-        
+
         const adapter = new ProductAdapter();
         const handler = new ProductDeleteHandler();
-        const command = adapter.DeleteAdapter(req);
+        const command = await adapter.DeleteAdapter(req);
 
         try {
             const response = await handler.Handle(command);
-            res.status(200).json({message: response});    
+            res.status(200).json({ message: response });
 
         } catch (error) {
-            res.status(500).json({message: error.message});
+            res.status(500).json({ message: error.message });
         }
     }
 }
