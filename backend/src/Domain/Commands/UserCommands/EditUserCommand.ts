@@ -1,23 +1,17 @@
-class EditUserCommand{
-    private userId: number;
-    private userName: string;
-    private userLastName: string;
+import UserCreateCommand from './UserCreateCommand';
+import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/EditUserInterface';
 
-    public constructor(userId: number, userName: string, userLastName: string){
-        this.userId = userId;
-        this.userName = userName;
-        this.userLastName = userLastName;
+class EditUserCommand extends UserCreateCommand{
+
+    private userId: number;
+    
+    constructor(id:number, name: string, lastName: string, dni:number){
+        super(name,lastName,dni);
+        this.userId = id;
     }
+
     public getUserId(){
         return this.userId;
-    }
-
-    public getUserName(){
-        return this.userName;
-    }
-
-    public getUserLastName(){
-        return this.userLastName;
     }
 }
 

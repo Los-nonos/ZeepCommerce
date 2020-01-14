@@ -1,20 +1,18 @@
-import { injectable } from "inversify";
 import User from "../../Entity/User";
-import UnAuthorizedException from "../../../Infraestructure/ErrorsHandlers/Errors/UnAuthorizedException";
-import { useContainer, Entity } from "typeorm";
 import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
 import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
-import ShowUsercommand from "../../Commands/UserCommands/FindUserCommand";
+import FindUsercommand from '../../Commands/UserCommands/FindUserCommand';
+import FindUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
 
 
-class UserShowHandler{
+class UserFindHandler implements FindUserHandlerInterface{
     constructor(){
 
     }
 
-    public async Show(command: ShowUsercommand){
+    public async FindUser(command: FindUsercommand){
         try{
-            const searchedUser: User = await User.findOne({ where: {id : command.GetId(), isBlocked: false}});
+            const searchedUser: User = await User.findOne({ where: {id : command.getId(), isBlocked: false}});
             
             if(searchedUser){
                return searchedUser;
@@ -28,4 +26,4 @@ class UserShowHandler{
     }
 }
 
-export default UserShowHandler;
+export default UserFindHandler;
