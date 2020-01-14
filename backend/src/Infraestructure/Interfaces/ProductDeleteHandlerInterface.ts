@@ -1,4 +1,4 @@
-import ProductDeleteCommand from '../../Domain/Commands/ProductDeleteCommand';
+import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductDeleteCommand';
 
 interface ProductDeleteHandlerInterface{
 

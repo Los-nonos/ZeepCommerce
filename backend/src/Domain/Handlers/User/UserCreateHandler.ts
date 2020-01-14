@@ -1,6 +1,7 @@
 import User from "../../Entity/User";
-import CreateUserCommand from '../../Commands/UserCommands/CreateUserCommand';
-class UserCreateHandler{
+
+import UserCreateInterface from "../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
+class UserCreateHandler implements UserCreateInterface{
 
     constructor(){
 

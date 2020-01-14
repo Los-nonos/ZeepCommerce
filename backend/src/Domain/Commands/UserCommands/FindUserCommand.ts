@@ -1,4 +1,4 @@
-class ShowUsercommand{
+class FindUsercommand{
     
     private Id: number;
 
@@ -6,9 +6,9 @@ class ShowUsercommand{
         this.Id = idSearchedUser;
     }
 
-    GetId(): number{
+    getId(): number{
         return this.Id;
     }
 }
 
-export default ShowUsercommand;
+export default FindUsercommand;

@@ -12,7 +12,7 @@ import UserControllerInterface from "../../Infraestructure/Interfaces/UserContro
 import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
 import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
 import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
-import UserShowHandler from "../../Domain/Handlers/User/UserShowHandler";
+import UserShowHandler from "../../Domain/Handlers/User/UserFindHandler";
 import UserAdapter from "../Adapters/UserAdapter";
 
 
@@ -63,7 +63,6 @@ class UserController implements UserControllerInterface {
     }
 
     public async Delete(req: Request, res: Response) {
-        
         const adapter = new UserAdapter();
         const handler = new UserDeleteHandler();
         const command = adapter.Delete(req);
@@ -82,7 +81,7 @@ class UserController implements UserControllerInterface {
         const command = adapter.Show(req);
 
         try{
-            const response = await handler.Show(command);
+            const response = await handler.FindUser(command);
             res.status(200).json({message: "User found", user: response});
         }catch(error){
             if(error instanceof InfraestructureError){

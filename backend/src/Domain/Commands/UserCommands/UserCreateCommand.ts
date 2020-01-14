@@ -1,17 +1,13 @@
-class CreateUserCommand{
-        private userId: number;
+class UserCreateCommand{
         private userName: string;
         private userLastName: string;
+        private userDni: number
     
-        public constructor(userId: number, userName: string, userLastName: string){
-            this.userId = userId;
+        public constructor(userName: string, userLastName: string, userDni: number){
             this.userName = userName;
             this.userLastName = userLastName;
+            this.userDni = userDni;
         }
-        public getUserId(){
-            return this.userId;
-        }
-    
         public getUserName(){
             return this.userName;
         }
@@ -19,5 +15,8 @@ class CreateUserCommand{
         public getUserLastName(){
             return this.userLastName;
         }
+        public getUserDni(){
+            return this.userDni;
+        }
     }
-export default CreateUserCommand;
+export default UserCreateCommand;
