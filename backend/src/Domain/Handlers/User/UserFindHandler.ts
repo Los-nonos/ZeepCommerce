@@ -7,24 +7,24 @@ import { injectable } from "inversify";
 
 
 @injectable()
-class UserFindHandler implements FindUserHandlerInterface{
-    constructor(){
+class UserFindHandler implements FindUserHandlerInterface {
+    constructor() {
 
     }
 
-    public async FindUser(command: FindUsercommand){
-        try{
+    public async FindUser(command: FindUsercommand) {
+        try {
             const id = command.getId();
             console.log(id);
-            const searchedUser: User | undefined = await User.findOne({Id: id});
-            
-            if(searchedUser){
-               return searchedUser;
-            }else{
+            const searchedUser: User | undefined = await User.findOne({ Id: id });
+
+            if (searchedUser) {
+                return searchedUser;
+            } else {
                 throw new EntityNotFound('User not with id not found');
             }
         }
-        catch(error){
+        catch (error) {
             throw new DataBaseError(error.message);
         }
     }

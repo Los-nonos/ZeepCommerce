@@ -35,11 +35,11 @@ class UserController implements UserControllerInterface {
     private findeUserHandler: UserFindHandler;
 
     constructor(
-        @inject(TYPES.IUserCreateHandler) createUserHandler: CreateUserHandlerInterface, 
+        @inject(TYPES.IUserCreateHandler) createUserHandler: CreateUserHandlerInterface,
         @inject(TYPES.IUserEditHandler) editUserHandler: EditUserHandlerInterface,
         @inject(TYPES.IUserCreateHandler) deleteUserHandler: DeleteUserHandlerInterface,
         @inject(TYPES.IUserFindHandler) findeUserHandler: FindUserHandlerInterface,
-    ){
+    ) {
         this.createUserHandler = createUserHandler;
         this.editUserHandler = editUserHandler;
         this.deleteUserHandler = deleteUserHandler;
@@ -54,7 +54,7 @@ class UserController implements UserControllerInterface {
 
             const command = await adapter.Create(req);
             const response = await handler.Create(command);
-            
+
             res.status(201).json({ message: response });
         }
         catch (error) {

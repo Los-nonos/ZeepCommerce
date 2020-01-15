@@ -4,25 +4,25 @@ import DeleteUserHandlerInterface from "../../../Infraestructure/Interfaces/User
 import { injectable } from "inversify";
 
 @injectable()
-class UserDeleteHandler implements DeleteUserHandlerInterface{
+class UserDeleteHandler implements DeleteUserHandlerInterface {
 
-    constructor(){
+    constructor() {
 
     }
 
-    public async Delete(command: DeleteUserCommand): Promise<string>{
+    public async Delete(command: DeleteUserCommand): Promise<string> {
         const id = command.getId();
 
-        const user = await User.findOne({Id:id});
+        const user = await User.findOne({ Id: id });
 
-        if(!user){
+        if (!user) {
             throw new Error('User not found.');
         }
 
-        try{
+        try {
             await user.remove();
             return "User deleted.";
-        } catch(error){
+        } catch (error) {
             return error.message;
         }
     }

@@ -19,7 +19,7 @@ class Router {
     constructor(
         express: Express,
         @inject(TYPES.IUserController) userController: UserControllerInterface,
-        @inject(TYPES.IProductController) productController : ProductControllerInterface
+        @inject(TYPES.IProductController) productController: ProductControllerInterface
 
     ) {
         this.express = express;
@@ -44,7 +44,7 @@ class Router {
         this.express.get('/', (req: Request, res: Response) => {
             res.sendFile(path.join(__dirname, '../../Presentation/public/index.html'));
         });
-        this.express.get('/static/*', (req:Request, res:Response) => {
+        this.express.get('/static/*', (req: Request, res: Response) => {
             res.sendFile(path.join(__dirname, '../../Presentation/public', req.url));
         });
 
@@ -52,7 +52,7 @@ class Router {
 
         this.express.post('/apiv1/login', (req: Request, res: Response) => {
             res.cookie('token', 'pepeito123');
-            res.status(200).json({message: 'login ok'});
+            res.status(200).json({ message: 'login ok' });
         });
 
         //user routes

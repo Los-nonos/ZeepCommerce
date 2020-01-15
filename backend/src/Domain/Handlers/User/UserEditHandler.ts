@@ -7,23 +7,23 @@ import EditUserHandlerInterface from "../../../Infraestructure/Interfaces/UserIn
 
 
 @injectable()
-class UserEditHandler implements EditUserHandlerInterface{
+class UserEditHandler implements EditUserHandlerInterface {
 
-    public async Edit(command: EditUserCommand){
+    public async Edit(command: EditUserCommand) {
         const user = await User.findOne(command.getUserId());
-        try{
-            if(!user){
+        try {
+            if (!user) {
                 throw new EntityNotFound('User not found');
-            }else{
+            } else {
                 user.name = command.getUserName();
                 user.lastname = command.getUserLastName();
-                
+
                 await user.save();
-    
+
                 return user;
             }
         }
-        catch(error){
+        catch (error) {
             throw new DataBaseError(error);
         }
     }

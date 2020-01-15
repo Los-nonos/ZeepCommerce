@@ -6,9 +6,9 @@ import { injectable } from "inversify";
 
 
 @injectable()
-class UserCreateHandler implements UserCreateInterface{
+class UserCreateHandler implements UserCreateInterface {
 
-    constructor(){
+    constructor() {
 
     }
 
@@ -22,12 +22,12 @@ class UserCreateHandler implements UserCreateInterface{
         user.lastname = lastname;
         user.dni = dni;
 
-        try{
+        try {
             await user.save();
             return 'User created correctly';
-        }catch(error){
+        } catch (error) {
             return error.message;
-        }        
+        }
     }
 
 }
