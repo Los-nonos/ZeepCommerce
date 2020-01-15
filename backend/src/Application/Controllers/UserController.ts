@@ -1,23 +1,50 @@
 
 //Dependencies imports
 import { Request, Response } from "express";
-import { injectable } from "inversify";
-
+import { injectable, inject } from "inversify";
+import TYPES from '../../types';
 //Error imports
 import { InfraestructureError } from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
 import { ApplicationError } from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
 
-//User imports
-import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
+//Handlers
 import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
 import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
 import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
 import UserShowHandler from "../../Domain/Handlers/User/UserFindHandler";
 import UserAdapter from "../Adapters/UserAdapter";
 
+//Interfaces
+import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
+import CreateUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
+import EditUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/EdiUserHandlerInterface";
+import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";
+import DeleteUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface";
+import UserFindHandler from "../../Domain/Handlers/User/UserFindHandler";
+import FindUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
+
+
+
 
 @injectable()
 class UserController implements UserControllerInterface {
+
+    private createUserHandler: UserCreateHandler;
+    private editUserHandler: UserEditHandler;
+    private deleteUserHandler: UserDeleteHandler;
+    private findeUserHandler: UserFindHandler;
+
+    constructor(
+        @inject(TYPES.IUserCreateHandler) createUserHandler: CreateUserHandlerInterface, 
+        @inject(TYPES.IUserEditHandler) editUserHandler: EditUserHandlerInterface,
+        @inject(TYPES.IUserCreateHandler) deleteUserHandler: DeleteUserHandlerInterface,
+        @inject(TYPES.IUserFindHandler) findeUserHandler: FindUserHandlerInterface,
+    ){
+        this.createUserHandler = createUserHandler;
+        this.editUserHandler = editUserHandler;
+        this.deleteUserHandler = deleteUserHandler;
+        this.editUserHandler = editUserHandler;
+    }
 
     public async Create(req: Request, res: Response) {
         const adapter = new UserAdapter();

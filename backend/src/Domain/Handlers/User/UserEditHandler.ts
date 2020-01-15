@@ -17,7 +17,7 @@ class UserEditHandler{
                 
                 await user.save();
     
-                return {message: 'User updated correctly!'};
+                return user;
             }
         }
         catch(error){

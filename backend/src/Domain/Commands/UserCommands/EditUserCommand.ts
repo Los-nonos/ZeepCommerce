@@ -1,5 +1,5 @@
 import UserCreateCommand from './UserCreateCommand';
-import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/EditUserInterface';
+import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/EdiUserHandlerInterface';
 
 class EditUserCommand extends UserCreateCommand{
 
