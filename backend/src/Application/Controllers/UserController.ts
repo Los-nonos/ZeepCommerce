@@ -8,10 +8,6 @@ import { InfraestructureError } from "../../Infraestructure/ErrorsHandlers/Error
 import { ApplicationError } from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
 
 //Handlers
-import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
-import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
-import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
-import UserShowHandler from "../../Domain/Handlers/User/UserFindHandler";
 import UserAdapter from "../Adapters/UserAdapter";
 
 //Interfaces
@@ -22,6 +18,7 @@ import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserComm
 import DeleteUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface";
 import UserFindHandler from "../../Domain/Handlers/User/UserFindHandler";
 import FindUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
+import ProductDeleteHandler from "../../Domain/Handlers/Product/ProductDeleteHandler";
 
 
 
@@ -29,10 +26,10 @@ import FindUserHandlerInterface from "../../Infraestructure/Interfaces/UserInter
 @injectable()
 class UserController implements UserControllerInterface {
 
-    private createUserHandler: UserCreateHandler;
-    private editUserHandler: UserEditHandler;
-    private deleteUserHandler: UserDeleteHandler;
-    private findeUserHandler: UserFindHandler;
+    private createUserHandler: CreateUserHandlerInterface;
+    private editUserHandler: EditUserHandlerInterface;
+    private deleteUserHandler: DeleteUserHandlerInterface;
+    private findeUserHandler: FindUserHandlerInterface;
 
     constructor(
         @inject(TYPES.IUserCreateHandler) createUserHandler: CreateUserHandlerInterface,
@@ -43,17 +40,16 @@ class UserController implements UserControllerInterface {
         this.createUserHandler = createUserHandler;
         this.editUserHandler = editUserHandler;
         this.deleteUserHandler = deleteUserHandler;
-        this.editUserHandler = editUserHandler;
+        this.findeUserHandler = findeUserHandler;
     }
 
     public async Create(req: Request, res: Response) {
         const adapter = new UserAdapter();
-        const handler = new UserCreateHandler();
-
+        
         try {
 
             const command = await adapter.Create(req);
-            const response = await handler.Create(command);
+            const response = await this.createUserHandler.Create(command);
 
             res.status(201).json({ message: response });
         }
@@ -72,11 +68,9 @@ class UserController implements UserControllerInterface {
 
     public async Edit(req: Request, res: Response) {
         const adapter = new UserAdapter();
-        const handler = new UserEditHandler();
-
         try {
             const command = await adapter.Edit(req);
-            const response = await handler.Edit(command);
+            const response = await this.editUserHandler.Edit(command);
             res.status(200).json({ message: "User updated correctly", user: response });
         }
         catch (error) {
@@ -94,13 +88,11 @@ class UserController implements UserControllerInterface {
 
     public async Delete(req: Request, res: Response) {
         const adapter = new UserAdapter();
-        const handler = new UserDeleteHandler();
-
 
         try {
             const command = await adapter.Delete(req);
 
-            const response = await handler.Delete(command);
+            const response = await this.deleteUserHandler.Delete(command);
             res.status(200).json({ message: response });
         } catch (error) {
             res.status(500).json({ message: error.message });
@@ -109,11 +101,10 @@ class UserController implements UserControllerInterface {
 
     public async ShowOne(req: Request, res: Response) {
         const adapter = new UserAdapter();
-        const handler = new UserShowHandler();
 
         try {
             const command = await adapter.Show(req);
-            const response = await handler.FindUser(command);
+            const response = await this.findeUserHandler.FindUser(command);
 
             res.status(200).json({ message: "User found", user: response });
         } catch (error) {
