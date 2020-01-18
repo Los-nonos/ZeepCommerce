@@ -7,9 +7,10 @@ import ProductCreateCommand from '../../Domain/Commands/ProductCommands/ProductC
 import ProductEditCommand from '../../Domain/Commands/ProductCommands/ProductEditCommand';
 import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductDeleteCommand';
 import { injectable } from 'inversify';
+import ProductAdapterInterface from '../../Infraestructure/Interfaces/ProductAdapterInterface';
 
 @injectable()
-class ProductAdapter {
+class ProductAdapter implements ProductAdapterInterface {
 
     public async CreateAdapter(req: Request): Promise<ProductCreateCommand> {
         const { name, price, description }: any = req.body;

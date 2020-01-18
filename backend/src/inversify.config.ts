@@ -13,6 +13,7 @@ import ProductEditHandler from "./Domain/Handlers/Product/ProductEditHandler";
 import ProductDeleteHandlerInterface from "./Infraestructure/Interfaces/ProductDeleteHandlerInterface";
 import ProductDeleteHandler from "./Domain/Handlers/Product/ProductDeleteHandler";
 import ProductAdapter from "./Application/Adapters/ProductAdapter";
+import ProductAdapterInterface from "./Infraestructure/Interfaces/ProductAdapterInterface";
 
 var container = new Container();
 
@@ -23,7 +24,7 @@ container.bind<UserControllerInterface>(TYPES.IUserController).to(UserController
 
 
 //Product services
-//container.bind<ProductAdapter>(TYPES.IProductAdapter).to(ProductAdapter);
+container.bind<ProductAdapterInterface>(TYPES.IProductAdapter).to(ProductAdapter);
 container.bind<ProductControllerInterface>(TYPES.IProductController).to(ProductController);
 container.bind<ProductCreateHandlerInterface>(TYPES.IProductCreateHandler).to(ProductCreateHandler);
 container.bind<ProductEditHandlerInterface>(TYPES.IProductEditHandler).to(ProductEditHandler);
