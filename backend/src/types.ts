@@ -4,11 +4,6 @@ let TYPES = {
 
 
     //User Interfaces
-    IUserController: Symbol("UserControllerInterface"),
-    IUserCreateHandler: Symbol("CreateUserHandlerInterface"),
-    IUserEditHandler: Symbol("UserEditHandlerInterface"),
-    IUserDeleteHandler: Symbol("UserDeleteHandlerInterface"),
-    IUserFindHandler: Symbol("FindUserHandlerInterface"),
 
     //Product Interfaces
     IProductController: Symbol('ProductControllerInterface'),

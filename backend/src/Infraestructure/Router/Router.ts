@@ -8,17 +8,18 @@ import TYPES from '../../types';
 import * as path from 'path';
 import container from '../../inversify.config';
 import ErrorHandler from '../ErrorsHandlers/ErrorHandler';
+import UserController from '../../Application/Controllers/UserController';
 
 @injectable()
 class Router {
 
     private express: Express;
-    private userController: UserControllerInterface;
+    private userController: UserController;
     private productController: ProductControllerInterface;
 
     constructor(
         express: Express,
-        @inject(TYPES.IUserController) userController: UserControllerInterface,
+        @inject(UserController) userController: UserController,
         @inject(TYPES.IProductController) productController: ProductControllerInterface
 
     ) {

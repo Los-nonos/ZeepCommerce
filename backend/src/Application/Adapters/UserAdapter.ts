@@ -3,7 +3,7 @@ import NameSchema from "./Schemas/NameSchema";
 import DniSchema from "./Schemas/DniSchema";
 import IdSchema from "./Schemas/IdSchema";
 import { InvalidData } from "../../Infraestructure/ErrorsHandlers/Errors/InvalidData";
-import UserFindCommand from "../../Domain/Commands/UserCommands/FindUserCommand";
+import UserFindCommand from "../../Domain/Commands/UserCommands/UserFindCommand";
 import EditUserCommand from "../../Domain/Commands/UserCommands/EditUserCommand";
 import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateCommand';
 import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";

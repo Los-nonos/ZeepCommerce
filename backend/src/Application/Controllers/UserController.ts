@@ -11,31 +11,29 @@ import { ApplicationError } from '../../Infraestructure/ErrorsHandlers/Errors/Ap
 import UserAdapter from "../Adapters/UserAdapter";
 
 //Interfaces
-import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
-import CreateUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
-import EditUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/EdiUserHandlerInterface";
 import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";
-import DeleteUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface";
 import UserFindHandler from "../../Domain/Handlers/User/UserFindHandler";
-import FindUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
 import ProductDeleteHandler from "../../Domain/Handlers/Product/ProductDeleteHandler";
+import UserEditHandler from "../../Domain/Handlers/User/UserEditHandler";
+import UserCreateHandler from "../../Domain/Handlers/User/UserCreateHandler";
+import UserDeleteHandler from "../../Domain/Handlers/User/UserDeleteHandler";
 
 
 
 
 @injectable()
-class UserController implements UserControllerInterface {
+class UserController{
 
-    private createUserHandler: CreateUserHandlerInterface;
-    private editUserHandler: EditUserHandlerInterface;
-    private deleteUserHandler: DeleteUserHandlerInterface;
-    private findUserHandler: FindUserHandlerInterface;
+    private createUserHandler: UserCreateHandler;
+    private editUserHandler: UserEditHandler;
+    private deleteUserHandler: UserDeleteHandler;
+    private findUserHandler: UserFindHandler;
 
     constructor(
-        @inject(TYPES.IUserCreateHandler) createUserHandler: CreateUserHandlerInterface,
-        @inject(TYPES.IUserEditHandler) editUserHandler: EditUserHandlerInterface,
-        @inject(TYPES.IUserCreateHandler) deleteUserHandler: DeleteUserHandlerInterface,
-        @inject(TYPES.IUserFindHandler) findUserHandler: FindUserHandlerInterface,
+        @inject(UserCreateHandler) createUserHandler: UserCreateHandler,
+        @inject(UserEditHandler) editUserHandler: UserEditHandler,
+        @inject(UserCreateHandler) deleteUserHandler: UserDeleteHandler,
+        @inject(UserFindHandler) findUserHandler: UserFindHandler,
     ) {
         this.createUserHandler = createUserHandler;
         this.editUserHandler = editUserHandler;
