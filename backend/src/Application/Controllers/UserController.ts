@@ -41,7 +41,7 @@ class UserController{
         this.findUserHandler = findUserHandler;
     }
 
-    public async Create(req: Request, res: Response) {
+    public Create = async (req: Request, res: Response) => {
         const adapter = new UserAdapter();
         
         try {
@@ -64,7 +64,7 @@ class UserController{
         }
     }
 
-    public async Edit(req: Request, res: Response) {
+    public Edit = async (req: Request, res: Response) => {
         const adapter = new UserAdapter();
         try {
             const command = await adapter.Edit(req);
@@ -84,7 +84,7 @@ class UserController{
         }
     }
 
-    public async Delete(req: Request, res: Response) {
+    public Delete = async (req: Request, res: Response) => {
         const adapter = new UserAdapter();
 
         try {
@@ -97,10 +97,11 @@ class UserController{
         }
     }
 
-    public async ShowOne(req: Request, res: Response) {
-        const adapter = new UserAdapter();
+    public ShowOne = async (req: Request, res: Response) => {
 
         try {
+            const adapter = new UserAdapter();
+
             const command = await adapter.Show(req);
             const response = await this.findUserHandler.FindUser(command);
 
