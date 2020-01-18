@@ -1,4 +1,4 @@
-class FindUsercommand{
+class UserFindCommand{
     
     private Id: number;
 
@@ -11,4 +11,4 @@ class FindUsercommand{
     }
 }
 
-export default FindUsercommand;
+export default UserFindCommand;

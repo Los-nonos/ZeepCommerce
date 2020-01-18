@@ -29,18 +29,18 @@ class UserController implements UserControllerInterface {
     private createUserHandler: CreateUserHandlerInterface;
     private editUserHandler: EditUserHandlerInterface;
     private deleteUserHandler: DeleteUserHandlerInterface;
-    private findeUserHandler: FindUserHandlerInterface;
+    private findUserHandler: FindUserHandlerInterface;
 
     constructor(
         @inject(TYPES.IUserCreateHandler) createUserHandler: CreateUserHandlerInterface,
         @inject(TYPES.IUserEditHandler) editUserHandler: EditUserHandlerInterface,
         @inject(TYPES.IUserCreateHandler) deleteUserHandler: DeleteUserHandlerInterface,
-        @inject(TYPES.IUserFindHandler) findeUserHandler: FindUserHandlerInterface,
+        @inject(TYPES.IUserFindHandler) findUserHandler: FindUserHandlerInterface,
     ) {
         this.createUserHandler = createUserHandler;
         this.editUserHandler = editUserHandler;
         this.deleteUserHandler = deleteUserHandler;
-        this.findeUserHandler = findeUserHandler;
+        this.findUserHandler = findUserHandler;
     }
 
     public async Create(req: Request, res: Response) {
@@ -104,7 +104,7 @@ class UserController implements UserControllerInterface {
 
         try {
             const command = await adapter.Show(req);
-            const response = await this.findeUserHandler.FindUser(command);
+            const response = await this.findUserHandler.FindUser(command);
 
             res.status(200).json({ message: "User found", user: response });
         } catch (error) {
