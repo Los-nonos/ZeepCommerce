@@ -1,6 +1,8 @@
 import Product from "../../Entity/Product";
 import ProductDeleteCommand from '../../Commands/ProductCommands/ProductDeleteCommand';
+import { injectable } from "inversify";
 
+@injectable()
 class ProductDeleteHandler{
 
     constructor(){

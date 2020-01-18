@@ -16,15 +16,15 @@ class User extends BaseEntity {
     @Column()
     public dni : number;
     
-    @ManyToMany(roles => Role)
-    @JoinTable()
-    public roles: Role[];
+    //@ManyToMany(roles => Role)
+    //@JoinTable()
+    //public roles: Role[];
 
-    public HasRole(name: string) {
-        return this.roles.map((role) => {
-            return role.Name === name;
-        });
-    }
+    //public HasRole(name: string) {
+      //  return this.roles.map((role) => {
+      //      return role.Name === name;
+        //});
+    //}
 }
 
 export default User;

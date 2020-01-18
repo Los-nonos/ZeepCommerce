@@ -1,4 +1,5 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { injectable } from 'inversify';
 
 @Entity()
 class Product extends BaseEntity {

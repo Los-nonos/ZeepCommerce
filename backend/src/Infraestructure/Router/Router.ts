@@ -56,15 +56,16 @@ class Router {
         });
 
         //user routes
-        this.express.post('/users', this.userController.Create);
-        this.express.get('/users/:id', this.userController.ShowOne);
-        this.express.post('/users/:id', this.userController.Edit);
-        this.express.delete('/users/:id', this.userController.Delete);
+        this.express.post('/apiv1/users', this.userController.Create);
+        this.express.get('/apiv1/users/:id', this.userController.ShowOne);
+        this.express.post('/apiv1/users/:id', this.userController.Edit);
+        this.express.delete('/apiv1/users/:id', this.userController.Delete);
 
         //product routes
-        this.express.post('/products', this.productController.Create);
-        this.express.post('/products/:id', this.productController.Edit);
-        this.express.delete('/products/:id', this.productController.Delete);
+        this.express.post('/apiv1/products', this.productController.Create);
+        this.express.post('/apiv1/products/:id', this.productController.Edit);
+        this.express.delete('/apiv1/products/:id', this.productController.Delete);
+
     }
 }
 

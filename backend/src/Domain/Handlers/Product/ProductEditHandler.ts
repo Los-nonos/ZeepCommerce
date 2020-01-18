@@ -1,7 +1,9 @@
 import Product from '../../Entity/Product';
 import ProductCreateAndEditCommand from '../../Commands/ProductCommands/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../Infraestructure/Interfaces/ProductEditHandlerInterface';
+import { injectable } from 'inversify';
 
+@injectable()
 class ProductEditHandler implements ProductEditHandlerInterface{
 
     public async Handle(command : ProductCreateAndEditCommand): Promise <string> {

@@ -1,10 +1,12 @@
+import { inject, injectable } from 'inversify';
 import Product from '../../Entity/Product';
-import ProductCreateAndEditCommand from '../../Commands/ProductCommands/ProductCreateCommand';
+import ProductCreateCommand from '../../Commands/ProductCommands/ProductCreateCommand';
 import ProductCreateHandlerInterface from '../../../Infraestructure/Interfaces/ProductCreateHandlerInterface'
 
+@injectable()
 class ProductCreateHandler implements  ProductCreateHandlerInterface{
 
-        public async Handle(command: ProductCreateAndEditCommand): Promise <string> {
+        public async Handle(command: ProductCreateCommand): Promise <string> {
 
             const {name, price, description}: any = command;
 

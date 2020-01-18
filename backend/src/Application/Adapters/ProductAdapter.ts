@@ -6,7 +6,9 @@ import PriceSchema from './Schemas/PriceSchema';
 import ProductCreateCommand from '../../Domain/Commands/ProductCommands/ProductCreateCommand';
 import ProductEditCommand from '../../Domain/Commands/ProductCommands/ProductEditCommand';
 import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductDeleteCommand';
+import { injectable } from 'inversify';
 
+@injectable()
 class ProductAdapter {
 
     public async CreateAdapter(req: Request): Promise<ProductCreateCommand> {
@@ -28,11 +30,12 @@ class ProductAdapter {
             throw new Error(resultDescription.error.message);
         }
 
-        return new ProductCreateCommand(resultName.value, resultPrice.value, resultDescription.value);
+        return new ProductCreateCommand(resultName.value.name, resultPrice.value.price, resultDescription.value.description);
     }
 
     public async EditAdapter(req: Request): Promise<ProductEditCommand> {
-        const { id, name, price, description }: any = req.params;
+        const { id }: any= req.params;
+        const { name, price, description }: any = req.body;
 
         const resultId = IdSchema.validate({ id: id });
         const resultName = NameSchema.validate({ name: name });
@@ -55,7 +58,7 @@ class ProductAdapter {
             throw new Error(resultDescription.error.message);
         }
 
-        return new ProductEditCommand(id, name, price, description);
+        return new ProductEditCommand(resultId.value.id, resultName.value.name, resultPrice.value.price, resultDescription.value.description);
     }
 
     public async DeleteAdapter(req: Request): Promise<ProductDeleteCommand> {
@@ -68,7 +71,7 @@ class ProductAdapter {
             throw new Error(resultId.error.message);
         }
 
-        return new ProductDeleteCommand(resultId.value);
+        return new ProductDeleteCommand(resultId.value.id);
     }
 
 }
