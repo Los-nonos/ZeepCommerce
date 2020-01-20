@@ -1,0 +1,23 @@
+{
+  "name": "root",
+  "version": "0.0.1",
+  "private": true,
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-plugin-react": "^7.13.0",
+    "lerna": "^3.13.1"
+  },
+  "scripts": {
+    "delete-build": "sudo rm -rf packages/*/build packages/*/dist packages/website/static/build",
+    "start": "lerna run start --stream",
+    "build": "lerna run build --stream",
+    "serve": "lerna run serve --stream",
+    "test": "lerna run test",
+    "linter:check": "lerna run linter:check",
+    "prettier:check": "lerna run prettier:check",
+    "prettier:run": "lerna run prettier:run"
+  },
+  "workspaces": [
+    "packages/*"
+  ]
+}

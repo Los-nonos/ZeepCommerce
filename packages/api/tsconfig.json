@@ -1,0 +1,32 @@
+{
+    "compilerOptions": {
+      "experimentalDecorators": true,
+      "lib": ["es5", "es6", "es2015", "es2016.array.include", "esnext.asynciterable", "dom"],
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "allowSyntheticDefaultImports": true,
+      "allowJs": true,
+      "importHelpers": true,
+      "jsx": "react",
+      "alwaysStrict": true,
+      "emitDecoratorMetadata": true,
+      "sourceMap": true,
+      "forceConsistentCasingInFileNames": true,
+      "noFallthroughCasesInSwitch": true,
+      "noImplicitReturns": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
+      "noImplicitAny": false,
+      "noImplicitThis": false,
+      "strictNullChecks": false,
+      "rootDir": "src/",
+      "outDir": "dist",
+      "removeComments": true,
+      "types": ["reflect-metadata"]
+    },
+    "include": ["src/index.ts"]
+}
+  
