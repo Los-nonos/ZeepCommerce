@@ -9,6 +9,7 @@ let TYPES = {
     IEditUserHandler : Symbol('EditUserHandlerInterface'),
     IFindUserHandler : Symbol('FindUserHandlerInterface'),
     IUserController : Symbol('UserControllerInterface'),
+    IUserAdapter : Symbol('UserAdapterInterface'),
     //Product Interfaces
     IProductController: Symbol('ProductControllerInterface'),
 

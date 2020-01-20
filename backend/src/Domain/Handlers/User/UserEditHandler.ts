@@ -3,11 +3,16 @@ import User from "../../Entity/User";
 import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
 import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
 import { injectable } from "inversify";
+import EditUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/EditUserHandlerInterface";
 
 @injectable()
-class UserEditHandler{
+class UserEditHandler implements EditUserHandlerInterface{
 
-    public async Edit(command: EditUserCommand) {
+    constructor(){
+        
+    }
+
+    public async Edit(command: EditUserCommand): Promise<User> {
         const user = await User.findOne(command.getUserId());
         try {
             if (!user) {

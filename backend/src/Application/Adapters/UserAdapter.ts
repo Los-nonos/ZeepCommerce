@@ -1,4 +1,5 @@
 import { Request } from "express";
+import { injectable } from "inversify";
 import NameSchema from "./Schemas/NameSchema";
 import DniSchema from "./Schemas/DniSchema";
 import IdSchema from "./Schemas/IdSchema";
@@ -7,10 +8,12 @@ import UserFindCommand from "../../Domain/Commands/UserCommands/UserFindCommand"
 import EditUserCommand from "../../Domain/Commands/UserCommands/EditUserCommand";
 import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateCommand';
 import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";
+import UserAdapterInterface from "../../Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface";
 
-class UserAdapter {
+@injectable()
+class UserAdapter implements UserAdapterInterface{
 
-    public async Create(req: Request) {
+    public async Create(req: Request): Promise<UserCreateCommand> {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = req.body;
 
         const resultName = NameSchema.validate({name: name});
@@ -25,10 +28,11 @@ class UserAdapter {
         if (resultDNI.error) {
             throw new Error(resultDNI.error.message);
         }
+        
         return new UserCreateCommand(resultName.value.name, resultLastName.value.name, resultDNI.value.dni);
     }
 
-    public async Edit(req: Request) {
+    public async Edit(req: Request): Promise<EditUserCommand> {
         const { id }: any = req.params;
         const { name, lastName, dni }: any = req.body;
 
@@ -42,12 +46,23 @@ class UserAdapter {
         }
     }
 
-    public async Show(req: Request) {
+    public async ShowById(req: Request): Promise<UserFindCommand> {
         const { id }: any = req.params;
 
         const resultId = IdSchema.validate({ id: id });
 
         if (resultId.error) {
+            throw new InvalidData(resultId.error.message);
+        }
+        return new UserFindCommand(resultId.value.id);
+    }
+
+    public async ShowAllUsers(req: Request): Promise<UserFindCommand>{
+        const { id }: any = req.params;
+
+        const resultId = IdSchema.validate({ id : id });
+
+        if(resultId.error) {
             throw new InvalidData(resultId.error.message);
         }
         return new UserFindCommand(resultId.value.id);

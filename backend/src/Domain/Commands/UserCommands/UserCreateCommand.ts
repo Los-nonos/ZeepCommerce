@@ -1,7 +1,8 @@
 class UserCreateCommand {
     private userName: string;
     private userLastName: string;
-    private userDni: number
+    private userDni: number;
+    
 
     public constructor(userName: string, userLastName: string, userDni: number) {
         this.userName = userName;

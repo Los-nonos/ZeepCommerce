@@ -1,10 +1,11 @@
 import User from "../../Entity/User";
 import UserCreateCommand from "../../Commands/UserCommands/UserCreateCommand";
 import { injectable } from "inversify";
+import CreateUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
 
 
 @injectable()
-class UserCreateHandler{
+class UserCreateHandler implements CreateUserHandlerInterface{
 
     constructor() {
 

@@ -21,6 +21,8 @@ import  ErrorHandler  from "./Infraestructure/ErrorsHandlers/ErrorHandler";
 import ProductControllerInterface from "./Infraestructure/Interfaces/ProductControllerInterface";
 import ProductController from "./Application/Controllers/ProductController";
 import FindUserHandlerInterface from "./Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
+import CreateUserAdapterInterface from "./Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface";
+import UserAdapter from "./Application/Adapters/UserAdapter";
 
 
 
@@ -32,6 +34,7 @@ container.bind<CreateUserHandlerInterface>(TYPES.ICreateUserHandler).to(UserCrea
 container.bind<DeleteUserHandlerInterface>(TYPES.IDeleteUserHandler).to(UserDeleteHandler);
 container.bind<EditUserHandlerInterface>(TYPES.IEditUserHandler).to(UserEditHandler);
 container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHandler);
+container.bind<CreateUserAdapterInterface>(TYPES.IUserAdapter).to(UserAdapter);
 
 // Product services
 container.bind<ProductControllerInterface>(TYPES.IProductController).to(ProductController);
