@@ -1,18 +1,14 @@
 import { Request, Response } from 'express';
 import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface'
-import { injectable, inject } from 'inversify';
+import { injectable } from 'inversify';
 import ProductAdapter from '../Adapters/ProductAdapter';
 import ProductCreateHandler from '../../Domain/Handlers/Product/ProductCreateHandler';
 import ProductEditHandler from '../../Domain/Handlers/Product/ProductEditHandler';
 import ProductDeleteHandler from '../../Domain/Handlers/Product/ProductDeleteHandler';
-import TYPES from '../../types';
-import ProductCreateHandlerInterface from '../../Infraestructure/Interfaces/ProductCreateHandlerInterface';
 
 
 @injectable()
 class ProductController implements ProductControllerInterface {
-
-    private productCreateHandle: ProductCreateHandlerInterface;
 
     public constructor(
         //@inject(TYPES.IProductCreateHandler) productCreateHandle: ProductCreateHandlerInterface
@@ -21,7 +17,7 @@ class ProductController implements ProductControllerInterface {
         //this.productCreateHandle = productCreateHandle;
     }
 
-    public async Create(req: Request, res: Response) {
+    public async Create(req: Request, res: Response): Promise<void> {
         const adapter = new ProductAdapter();
         const handler = new ProductCreateHandler();
 

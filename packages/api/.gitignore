@@ -4,3 +4,4 @@ build/*
 storage/*
 # exception to the rule
 !storage/.gitkeep
+node_modules/

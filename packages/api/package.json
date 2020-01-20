@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Zeep's API",
   "license": "MIT",
+  "main": "src/index.ts",
   "dependencies": {
     "@hapi/joi": "^15.0.3",
     "@types/multer-s3": "^2.7.7",

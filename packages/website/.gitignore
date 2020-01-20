@@ -2,3 +2,4 @@
 public/js/app.js
 public/css/views
 build/
+node_modules/
