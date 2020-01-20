@@ -1,0 +1,6 @@
+dist/*
+build/*
+# exclude everything
+storage/*
+# exception to the rule
+!storage/.gitkeep
