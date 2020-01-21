@@ -59,8 +59,8 @@ class Router {
         //user routes
         this.express.post('/apiv1/users', this.userController.Create);
         this.express.get('/apiv1/users/:id', this.userController.ShowOne);
-        this.express.get('apiv1/users/all',this.userController.ShowAll);
-        this.express.post('/apiv1/users/:id', this.userController.Edit);
+        this.express.get('/apiv1/users',this.userController.ShowAll);
+        this.express.put('/apiv1/users/:id', this.userController.Edit);
         this.express.delete('/apiv1/users/:id', this.userController.Delete);
 
         //product routes

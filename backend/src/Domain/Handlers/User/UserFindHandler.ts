@@ -16,7 +16,6 @@ class UserFindHandler implements FindUserHandlerInterface{
     public async FindUser(command: UserFindcommand): Promise<User> {
         try {
             const id = command.getId();
-            console.log(id);
             const searchedUser: User | undefined = await User.findOne({ Id: id });
 
             if (searchedUser) {

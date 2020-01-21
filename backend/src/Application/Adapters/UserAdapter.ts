@@ -9,6 +9,7 @@ import EditUserCommand from "../../Domain/Commands/UserCommands/EditUserCommand"
 import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateCommand';
 import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";
 import UserAdapterInterface from "../../Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface";
+import FindAllUsersCommand from "../../Domain/Commands/UserCommands/FindAllUsersCommand";
 
 @injectable()
 class UserAdapter implements UserAdapterInterface {
@@ -57,15 +58,19 @@ class UserAdapter implements UserAdapterInterface {
         return new UserFindCommand(resultId.value.id);
     }
 
-    // public async ShowAllUsers(req: Request): Promise<UserFindCommand> {
-    //     let { id } = req.body;
-    //     const idResult = IdSchema.validate({ id: Number });
+    public async ShowAllUsers(req: Request): Promise<FindAllUsersCommand> {
+        let id = req.query.search;
         
-    //     if (idResult.error) {
-    //         id = -1;
-    //     }
-    //     return new UserFindCommand(id);
-    // }
+        if(!id){
+            id = 0;
+        }else{
+            const idResult = IdSchema.validate({ id });
+            if (idResult.error) {
+                id = 0;
+            }
+        }
+        return new FindAllUsersCommand(id);
+    }
 
     public async Delete(req: Request): Promise<DeleteUserCommand> {
         const { id }: any = req.params;

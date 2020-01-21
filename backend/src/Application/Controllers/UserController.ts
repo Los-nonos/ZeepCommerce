@@ -21,6 +21,7 @@ import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserComm
 import UserFindCommand from "../../Domain/Commands/UserCommands/UserFindCommand";
 import { NotFoundData } from "../../Infraestructure/ErrorsHandlers/Errors/NotFoundData";
 import FindAllUsersHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface";
+import FindAllUsersCommand from "../../Domain/Commands/UserCommands/FindAllUsersCommand";
 
 
 
@@ -54,7 +55,7 @@ class UserController implements UserControllerInterface{
     public Create = async (req: Request, res: Response) => {
         try {
             const command: UserCreateCommand = await this.IUserAdapter.Create(req);
-            const response: string | User = await this.ICreateUserHandler.Create(command);
+            const response: string = await this.ICreateUserHandler.Create(command);
 
             res.status(201).json({ message: response });
         }
@@ -75,7 +76,7 @@ class UserController implements UserControllerInterface{
         
         try {
             const command: EditUserCommand = await this.IUserAdapter.Edit(req);
-            const response: string | User = await this.IEditUserHandler.Edit(command);
+            const response: User = await this.IEditUserHandler.Edit(command);
             res.status(200).json({ message: "User updated correctly", user: response });
         }
         catch (error) {
@@ -95,7 +96,7 @@ class UserController implements UserControllerInterface{
 
         try {
             const command: DeleteUserCommand = await this.IUserAdapter.Delete(req);
-            const response: string | User = await this.IDeleteUserHandler.Delete(command);
+            const response: string = await this.IDeleteUserHandler.Delete(command);
             res.status(200).json({ message: response });
         } catch (error) {
             res.status(500).json({ message: error.message });
@@ -107,7 +108,7 @@ class UserController implements UserControllerInterface{
         try {
             const command: UserFindCommand = await this.IUserAdapter.ShowById(req);
 
-            const response: string | User = await this.IFindUserHandler.FindUser(command);
+            const response: User = await this.IFindUserHandler.FindUser(command);
 
             res.status(200).json({ message: "User found", user: response });
         } catch (error) {
@@ -125,7 +126,8 @@ class UserController implements UserControllerInterface{
     
     public ShowAll = async (req: Request, res: Response) => {
         try{
-            const response: User[]= await this.IFindAllUsersHandler.FindAllUsers();
+            const command: FindAllUsersCommand = await this.IUserAdapter.ShowAllUsers(req);
+            const response: User[] = await this.IFindAllUsersHandler.FindAllUsers(command);
             res.status(200).json({ message: "Users in database", user: response });
         }catch(error){
             if (error instanceof InfraestructureError) {

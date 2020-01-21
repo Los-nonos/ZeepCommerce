@@ -6,7 +6,7 @@ class FindAllUsersCommand{
         this.id = id;
     }
 
-    getUsers(){
+    getId(){
         return this.id;
     }
 }
