@@ -4,7 +4,7 @@
       "lib": ["es5", "es6", "es2015", "es2016.array.include", "esnext.asynciterable", "dom"],
       "resolveJsonModule": true,
       "esModuleInterop": true,
-      "target": "es6",
+      "target": "es5",
       "module": "commonjs",
       "moduleResolution": "node",
       "allowSyntheticDefaultImports": true,
@@ -27,6 +27,11 @@
       "removeComments": true,
       "types": ["reflect-metadata"]
     },
-    "include": ["src/index.ts"]
+    "include": ["src/index.ts"],
+    "exclude": [
+      "node_modules",
+      "bower_components",
+      "wwwroot"
+    ]
 }
   

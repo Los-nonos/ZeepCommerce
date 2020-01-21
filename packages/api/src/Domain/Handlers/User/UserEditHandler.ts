@@ -2,9 +2,10 @@ import EditUserCommand from "../../Commands/UserCommands/EditUserCommand";
 import User from "../../Entity/User";
 import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
 import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
+import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/EditUserInterface';
 
-class UserEditHandler {
-  public async Edit(command: EditUserCommand) {
+class UserEditHandler implements EditUserHandlerInterface {
+  public async Edit(command: EditUserCommand): Promise<string> {
     const user = await User.findOne(command.getUserId());
     try {
       if (!user) {
@@ -15,7 +16,7 @@ class UserEditHandler {
 
         await user.save();
 
-        return { message: "User updated correctly!" };
+        return "User updated correctly!";
       }
     } catch (error) {
       throw new DataBaseError(error);

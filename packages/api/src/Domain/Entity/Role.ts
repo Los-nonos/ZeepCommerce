@@ -18,7 +18,7 @@ class Role extends BaseEntity {
   @Column()
   public Role: string;
 
-  @ManyToMany(users => User)
+  @ManyToMany(_users => User)
   public users: User[];
 }
 

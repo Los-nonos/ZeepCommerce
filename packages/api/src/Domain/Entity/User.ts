@@ -22,7 +22,7 @@ class User extends BaseEntity {
   @Column()
   public dni: number;
 
-  @ManyToMany(roles => Role)
+  @ManyToMany(_roles => Role)
   @JoinTable()
   public roles: Role[];
 

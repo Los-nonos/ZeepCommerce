@@ -10,9 +10,9 @@ services:
       - ./mysql-config:/etc/mysql/conf.d
     command: --default-authentication-plugin=mysql_native_password --port=3307
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: zeep
-      USER: 1000
+      MYSQL_ROOT_PASSWORD: camp123
+      MYSQL_DATABASE: coderscamp_db
+      USER: coders
 
   api:
     image: node:10.15

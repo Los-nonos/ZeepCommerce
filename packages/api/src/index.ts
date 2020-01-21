@@ -1,6 +1,6 @@
 import express, { Express } from "express";
+import 'reflect-metadata';
 import Router from "./Infraestructure/Router/Router";
-import "reflect-metadata";
 import * as dotenv from "dotenv";
 import { createConnectionDB } from "./Infraestructure/Database/Configs";
 import container from "./inversify.config";
@@ -11,7 +11,7 @@ class App {
   private router: Router;
 
   constructor() {
-    dotenv.config();
+    dotenv.config({ path: __dirname + '/../.env' });
     this.express = express();
     createConnectionDB();
     this.router = new Router(
@@ -35,8 +35,8 @@ class App {
   }
 
   private upServer() {
-    this.express.listen(3000, function() {
-      console.log("Server is run in port 3000");
+    this.express.listen(3001, function() {
+      console.log("Server is run in port 3001");
     });
   }
 }
