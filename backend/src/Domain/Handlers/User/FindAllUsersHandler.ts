@@ -1,9 +1,8 @@
 import User from "../../Entity/User";
-import { injectable, id } from "inversify";
+import { injectable } from "inversify";
 
 import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
 import { NotFoundData } from "../../../Infraestructure/ErrorsHandlers/Errors/NotFoundData";
-import UserFindCommand from "../../Commands/UserCommands/UserFindCommand";
 import FindAllUsersHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface";
 
 @injectable()
@@ -13,13 +12,13 @@ class FindAllUsersHandler implements FindAllUsersHandlerInterface {
 
     }
 
-    public async FindAllUsers(command: UserFindCommand): Promise<User[]>{
+    public async FindAllUsers(): Promise<User[]>{
+
         try {
-            const userId = command.getId();
-            if (userId === -1) {
-                return await User.find({ where:{ limit: 20 } })
+            const users: User[] = await User.find({ where:{ limit: 10 } });
+            
+            return users;
             }
-        }
         catch(error){
             if(error instanceof DataBaseError){
                 throw new DataBaseError('DB error');

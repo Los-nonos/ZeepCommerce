@@ -124,10 +124,8 @@ class UserController implements UserControllerInterface{
     }
     
     public ShowAll = async (req: Request, res: Response) => {
-
         try{
-            const command: UserFindCommand = await this.IUserAdapter.ShowAllUsers(req);
-            const response: string[] | User[] = await this.IFindAllUsersHandler.FindAllUsers(command);
+            const response: User[]= await this.IFindAllUsersHandler.FindAllUsers();
             res.status(200).json({ message: "Users in database", user: response });
         }catch(error){
             if (error instanceof InfraestructureError) {

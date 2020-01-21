@@ -11,12 +11,12 @@ import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserComm
 import UserAdapterInterface from "../../Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface";
 
 @injectable()
-class UserAdapter implements UserAdapterInterface{
+class UserAdapter implements UserAdapterInterface {
 
     public async Create(req: Request): Promise<UserCreateCommand> {
         const { name, lastname, dni, age, borndate, phone, address, account }: any = req.body;
 
-        const resultName = NameSchema.validate({name: name});
+        const resultName = NameSchema.validate({ name: name });
         if (resultName.error) {
             throw new Error(resultName.error.message);
         }
@@ -28,7 +28,7 @@ class UserAdapter implements UserAdapterInterface{
         if (resultDNI.error) {
             throw new Error(resultDNI.error.message);
         }
-        
+
         return new UserCreateCommand(resultName.value.name, resultLastName.value.name, resultDNI.value.dni);
     }
 
@@ -57,16 +57,15 @@ class UserAdapter implements UserAdapterInterface{
         return new UserFindCommand(resultId.value.id);
     }
 
-    public async ShowAllUsers(req: Request): Promise<UserFindCommand>{
-        const { id }: any = req.params;
-
-        const resultId = IdSchema.validate({ id : id });
-
-        if(resultId.error) {
-            throw new InvalidData(resultId.error.message);
-        }
-        return new UserFindCommand(resultId.value.id);
-    }
+    // public async ShowAllUsers(req: Request): Promise<UserFindCommand> {
+    //     let { id } = req.body;
+    //     const idResult = IdSchema.validate({ id: Number });
+        
+    //     if (idResult.error) {
+    //         id = -1;
+    //     }
+    //     return new UserFindCommand(id);
+    // }
 
     public async Delete(req: Request): Promise<DeleteUserCommand> {
         const { id }: any = req.params;
