@@ -1,4 +1,4 @@
-import Joi from "@hapi/joi";
+import Joi from '@hapi/joi';
 
 const PriceSchema = Joi.object().keys({
   price: Joi.number()
@@ -6,7 +6,7 @@ const PriceSchema = Joi.object().keys({
     .min(0)
     .max(99999999)
     .precision(0)
-    .required()
+    .required(),
 });
 
 export default PriceSchema;

@@ -1,5 +1,5 @@
-import Product from "../../Entity/Product";
-import ProductDeleteCommand from "../../Commands/ProductCommands/ProductDeleteCommand";
+import Product from '../../Entity/Product';
+import ProductDeleteCommand from '../../Commands/ProductCommands/ProductDeleteCommand';
 
 class ProductDeleteHandler {
   constructor() {}
@@ -10,12 +10,12 @@ class ProductDeleteHandler {
     const product = await Product.findOne({ Id: id });
 
     if (!product) {
-      throw new Error("Product not found.");
+      throw new Error('Product not found.');
     }
 
     try {
       await product.remove();
-      return "Product deleted";
+      return 'Product deleted';
     } catch (error) {
       return error.message;
     }

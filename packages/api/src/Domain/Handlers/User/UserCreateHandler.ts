@@ -1,7 +1,7 @@
-import User from "../../Entity/User";
+import User from '../../Entity/User';
 
-import UserCreateInterface from "../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
-import UserCreateCommand from "../../Commands/UserCommands/UserCreateCommand";
+import UserCreateInterface from '../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface';
+import UserCreateCommand from '../../Commands/UserCommands/UserCreateCommand';
 
 class UserCreateHandler implements UserCreateInterface {
   constructor() {}
@@ -18,7 +18,7 @@ class UserCreateHandler implements UserCreateInterface {
 
     try {
       await user.save();
-      return "User created correctly";
+      return 'User created correctly';
     } catch (error) {
       return error.message;
     }

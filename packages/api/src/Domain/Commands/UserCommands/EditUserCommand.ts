@@ -1,4 +1,4 @@
-import UserCreateCommand from "./UserCreateCommand";
+import UserCreateCommand from './UserCreateCommand';
 
 class EditUserCommand extends UserCreateCommand {
   private userId: number;

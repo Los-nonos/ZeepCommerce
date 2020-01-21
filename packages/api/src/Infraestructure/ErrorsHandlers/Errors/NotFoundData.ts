@@ -1,4 +1,4 @@
-import { InfraestructureError } from "./InfraestructureError";
+import { InfraestructureError } from './InfraestructureError';
 
 export class NotFoundData extends InfraestructureError {
   constructor(message: string) {

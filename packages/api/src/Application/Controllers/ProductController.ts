@@ -1,10 +1,10 @@
-import { Request, Response } from "express";
-import ProductControllerInterface from "../../Infraestructure/Interfaces/ProductControllerInterface";
-import { injectable } from "inversify";
-import ProductAdapter from "../Adapters/ProductAdapter";
-import ProductCreateHandler from "../../Domain/Handlers/Product/ProductCreateHandler";
-import ProductEditHandler from "../../Domain/Handlers/Product/ProductEditHandler";
-import ProductDeleteHandler from "../../Domain/Handlers/Product/ProductDeleteHandler";
+import { Request, Response } from 'express';
+import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface';
+import { injectable } from 'inversify';
+import ProductAdapter from '../Adapters/ProductAdapter';
+import ProductCreateHandler from '../../Domain/Handlers/Product/ProductCreateHandler';
+import ProductEditHandler from '../../Domain/Handlers/Product/ProductEditHandler';
+import ProductDeleteHandler from '../../Domain/Handlers/Product/ProductDeleteHandler';
 
 @injectable()
 class ProductController implements ProductControllerInterface {

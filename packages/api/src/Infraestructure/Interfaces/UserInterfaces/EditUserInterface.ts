@@ -1,4 +1,4 @@
-import EditUserCommand from "../../../Domain/Commands/UserCommands/EditUserCommand";
+import EditUserCommand from '../../../Domain/Commands/UserCommands/EditUserCommand';
 
 interface EditUserHandlerInterface {
   Edit(command: EditUserCommand): Promise<string>;

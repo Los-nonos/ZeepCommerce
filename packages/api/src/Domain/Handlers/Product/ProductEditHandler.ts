@@ -1,6 +1,6 @@
-import Product from "../../Entity/Product";
-import ProductCreateAndEditCommand from "../../Commands/ProductCommands/ProductEditCommand";
-import ProductEditHandlerInterface from "../../../Infraestructure/Interfaces/ProductEditHandlerInterface";
+import Product from '../../Entity/Product';
+import ProductCreateAndEditCommand from '../../Commands/ProductCommands/ProductEditCommand';
+import ProductEditHandlerInterface from '../../../Infraestructure/Interfaces/ProductEditHandlerInterface';
 
 class ProductEditHandler implements ProductEditHandlerInterface {
   public async Handle(command: ProductCreateAndEditCommand): Promise<string> {
@@ -9,7 +9,7 @@ class ProductEditHandler implements ProductEditHandlerInterface {
     const product = await Product.findOne({ Id: id });
 
     if (!product) {
-      throw new Error("Not found product");
+      throw new Error('Not found product');
     }
 
     product.name = command.getName();
@@ -18,7 +18,7 @@ class ProductEditHandler implements ProductEditHandlerInterface {
 
     try {
       await product.save();
-      return "Product edited";
+      return 'Product edited';
     } catch (error) {
       return error.messsage;
     }

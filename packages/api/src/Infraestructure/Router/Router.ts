@@ -1,9 +1,9 @@
-import { Express } from "express";
-import bodyParser = require("body-parser");
-import UserControllerInterface from "../Interfaces/UserControllerInterface";
-import ProductControllerInterface from "../Interfaces/ProductControllerInterface";
-import { inject, injectable } from "inversify";
-import TYPES from "../../types";
+import { Express } from 'express';
+import bodyParser = require('body-parser');
+import UserControllerInterface from '../Interfaces/UserControllerInterface';
+import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
+import { inject, injectable } from 'inversify';
+import TYPES from '../../types';
 
 @injectable()
 class Router {
@@ -15,7 +15,7 @@ class Router {
     express: Express,
     @inject(TYPES.IUserController) userController: UserControllerInterface,
     @inject(TYPES.IProductController)
-    productController: ProductControllerInterface
+    productController: ProductControllerInterface,
   ) {
     this.express = express;
     this.userController = userController;
@@ -38,15 +38,15 @@ class Router {
     // });
 
     //user routes
-    this.express.post("/users", this.userController.Create);
-    this.express.get("/users/:id", this.userController.ShowOne);
-    this.express.post("/users/:id", this.userController.Edit);
-    this.express.delete("/users/:id", this.userController.Delete);
+    this.express.post('/users', this.userController.Create);
+    this.express.get('/users/:id', this.userController.ShowOne);
+    this.express.post('/users/:id', this.userController.Edit);
+    this.express.delete('/users/:id', this.userController.Delete);
 
     //product routes
-    this.express.post("/products", this.productController.Create);
-    this.express.post("/products/:id", this.productController.Edit);
-    this.express.delete("/products/:id", this.productController.Delete);
+    this.express.post('/products', this.productController.Create);
+    this.express.post('/products/:id', this.productController.Edit);
+    this.express.delete('/products/:id', this.productController.Delete);
   }
 }
 

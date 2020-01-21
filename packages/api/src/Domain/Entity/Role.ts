@@ -1,11 +1,5 @@
-import {
-  BaseEntity,
-  Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  ManyToMany
-} from "typeorm";
-import User from "./User";
+import { BaseEntity, Entity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import User from './User';
 
 @Entity()
 class Role extends BaseEntity {

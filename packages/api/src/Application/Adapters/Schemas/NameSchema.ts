@@ -1,10 +1,10 @@
-import Joi from "@hapi/joi";
+import Joi from '@hapi/joi';
 
 const NameSchema = Joi.object().keys({
   name: Joi.string()
     .min(3)
     .max(30)
-    .required()
+    .required(),
 });
 
 export default NameSchema;

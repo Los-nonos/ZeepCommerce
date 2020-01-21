@@ -1,4 +1,4 @@
-import { InfraestructureError } from "./InfraestructureError";
+import { InfraestructureError } from './InfraestructureError';
 
 export class EntityNotFound extends InfraestructureError {
   public constructor(message: string) {

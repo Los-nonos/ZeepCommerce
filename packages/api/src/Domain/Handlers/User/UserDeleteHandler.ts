@@ -1,6 +1,6 @@
-import User from "../../Entity/User";
-import DeleteUserCommand from "../../Commands/UserCommands/DeleteUserCommand";
-import DeleteUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface";
+import User from '../../Entity/User';
+import DeleteUserCommand from '../../Commands/UserCommands/DeleteUserCommand';
+import DeleteUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface';
 
 class UserDeleteHandler implements DeleteUserHandlerInterface {
   constructor() {}
@@ -11,12 +11,12 @@ class UserDeleteHandler implements DeleteUserHandlerInterface {
     const user = await User.findOne({ Id: id });
 
     if (!user) {
-      throw new Error("User not found.");
+      throw new Error('User not found.');
     }
 
     try {
       await user.remove();
-      return "User deleted.";
+      return 'User deleted.';
     } catch (error) {
       return error.message;
     }

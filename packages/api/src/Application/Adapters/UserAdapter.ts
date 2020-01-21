@@ -1,12 +1,12 @@
-import { Request } from "express";
-import NameSchema from "./Schemas/NameSchema";
-import DniSchema from "./Schemas/DniSchema";
-import IdSchema from "./Schemas/IdSchema";
-import { InvalidData } from "../../Infraestructure/ErrorsHandlers/Errors/InvalidData";
-import UserFindCommand from "../../Domain/Commands/UserCommands/FindUserCommand";
-import EditUserCommand from "../../Domain/Commands/UserCommands/EditUserCommand";
-import UserCreateCommand from "../../Domain/Commands/UserCommands/UserCreateCommand";
-import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";
+import { Request } from 'express';
+import NameSchema from './Schemas/NameSchema';
+import DniSchema from './Schemas/DniSchema';
+import IdSchema from './Schemas/IdSchema';
+import { InvalidData } from '../../Infraestructure/ErrorsHandlers/Errors/InvalidData';
+import UserFindCommand from '../../Domain/Commands/UserCommands/FindUserCommand';
+import EditUserCommand from '../../Domain/Commands/UserCommands/EditUserCommand';
+import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateCommand';
+import DeleteUserCommand from '../../Domain/Commands/UserCommands/DeleteUserCommand';
 
 class UserAdapter {
   public async Create(req: Request) {
@@ -24,11 +24,7 @@ class UserAdapter {
     if (resultDNI.error) {
       throw new Error(resultDNI.error.message);
     }
-    return new UserCreateCommand(
-      resultName.value.name,
-      resultLastName.value.name,
-      resultDNI.value.dni
-    );
+    return new UserCreateCommand(resultName.value.name, resultLastName.value.name, resultDNI.value.dni);
   }
 
   public async Edit(req: Request) {
@@ -38,7 +34,7 @@ class UserAdapter {
     const resultId = IdSchema.validate({ id: id });
 
     if (resultId.error) {
-      throw new InvalidData("ID not valid or not found");
+      throw new InvalidData('ID not valid or not found');
     } else {
       return new EditUserCommand(resultId.value.id, name, lastName, dni);
     }

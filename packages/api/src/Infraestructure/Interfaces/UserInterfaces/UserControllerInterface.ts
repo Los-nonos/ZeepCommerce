@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+import { Request, Response } from 'express';
 
 interface UserControllerInterface {
   Create(req: Request, res: Response): Promise<void>;

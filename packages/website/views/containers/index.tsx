@@ -1,4 +1,7 @@
 import React from "react";
+import Head from 'next/head';
+import Parallax from '../sections/home/Parallax';
+
 
 class Home extends React.Component {
   constructor(props: any) {
@@ -6,9 +9,15 @@ class Home extends React.Component {
     }
 
     render(){
-        return(<div>
+        return (
+        <div>
+            <Head>
+                <link rel="stylesheet" href="../static/css/home.css" />
+            </Head>
             <h1>Hola, esto es un titulo</h1>
-        </div>)
+            <Parallax />
+        </div>
+        )
     }
 }
 

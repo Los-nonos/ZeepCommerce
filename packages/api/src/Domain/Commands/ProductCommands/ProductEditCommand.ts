@@ -1,4 +1,4 @@
-import ProductCreateCommand from "./ProductCreateCommand";
+import ProductCreateCommand from './ProductCreateCommand';
 
 class ProductEditCommand extends ProductCreateCommand {
   private id: number;

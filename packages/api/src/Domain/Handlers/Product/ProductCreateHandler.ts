@@ -1,6 +1,6 @@
-import Product from "../../Entity/Product";
-import ProductCreateAndEditCommand from "../../Commands/ProductCommands/ProductCreateCommand";
-import ProductCreateHandlerInterface from "../../../Infraestructure/Interfaces/ProductCreateHandlerInterface";
+import Product from '../../Entity/Product';
+import ProductCreateAndEditCommand from '../../Commands/ProductCommands/ProductCreateCommand';
+import ProductCreateHandlerInterface from '../../../Infraestructure/Interfaces/ProductCreateHandlerInterface';
 
 class ProductCreateHandler implements ProductCreateHandlerInterface {
   public async Handle(command: ProductCreateAndEditCommand): Promise<string> {
@@ -13,7 +13,7 @@ class ProductCreateHandler implements ProductCreateHandlerInterface {
 
     try {
       await product.save();
-      return "Product created";
+      return 'Product created';
     } catch (error) {
       return error.message;
     }

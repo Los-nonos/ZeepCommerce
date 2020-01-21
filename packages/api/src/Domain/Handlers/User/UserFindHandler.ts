@@ -1,8 +1,8 @@
-import User from "../../Entity/User";
-import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
-import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
-import FindUsercommand from "../../Commands/UserCommands/FindUserCommand";
-import FindUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
+import User from '../../Entity/User';
+import { EntityNotFound } from '../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
+import { DataBaseError } from '../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError';
+import FindUsercommand from '../../Commands/UserCommands/FindUserCommand';
+import FindUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface';
 
 class UserFindHandler implements FindUserHandlerInterface {
   constructor() {}
@@ -16,7 +16,7 @@ class UserFindHandler implements FindUserHandlerInterface {
       if (searchedUser) {
         return searchedUser;
       } else {
-        throw new EntityNotFound("User not with id not found");
+        throw new EntityNotFound('User not with id not found');
       }
     } catch (error) {
       throw new DataBaseError(error.message);
