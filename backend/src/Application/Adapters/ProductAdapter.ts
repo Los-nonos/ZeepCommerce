@@ -79,18 +79,18 @@ class ProductAdapter implements ProductAdapterInterface {
 
     public async ShowAllAdapter(req: Request): Promise <ProductFindCommand> {
         
-        const { id }: any = req.params;
+        const { id }: any = req.body;
         
         const resultId = IdSchema.validate({ id: id });
 
         if(resultId.error){
-            id === -1;
+            id == -1;
         }
 
         return new ProductFindCommand(resultId.value.id);
     }
 
-    public async ShowOneAdapter(req: Request): Promise <ProductFindCommand> {
+    public async ShowByIdAdapter(req: Request): Promise <ProductFindCommand> {
 
         const { id }: any = req.params;
 

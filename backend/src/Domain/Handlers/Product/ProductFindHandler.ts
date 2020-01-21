@@ -31,6 +31,9 @@ class ProductFindHandler implements ProductFindHandlerInterface{
 
         try{
             const id = command.getId();
+            if (id === -1) {
+                return Product.find({ where: { limit: 10 } });
+            }
 
             const product: Product = await Product.findOne({where: {Id: id}});
             
@@ -44,28 +47,7 @@ class ProductFindHandler implements ProductFindHandlerInterface{
         } catch(error){
 
             return error.message;
-        }
-        /*
-        try{
-            const id = command.getId();
-            if (id === -1) {
-                return Product.find({ where: { limit: 20 } });
-            }
-
-            const product: Product = await Product.findOne({where: {Id: id}});
-            
-            if(!product) {
-                throw new Error('Not product found');
-            }
-            
-            return Product.find({ where: { limit: 20 } });
-
-        } catch(error){
-
-            return error.message;
-        }
-        */
-       
+        }       
     }
     
     

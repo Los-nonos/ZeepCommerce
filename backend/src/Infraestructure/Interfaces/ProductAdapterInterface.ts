@@ -11,7 +11,7 @@ interface ProductAdapterInterface {
     EditAdapter(req: Request): Promise <ProductEditCommand>;
     DeleteAdapter(req: Request): Promise <ProductDeleteCommand>;
     ShowAllAdapter(req: Request): Promise <ProductFindCommand>;
-    ShowOneAdapter(req: Request): Promise <ProductFindCommand>
+    ShowByIdAdapter(req: Request): Promise <ProductFindCommand>;
 }
 
 export default ProductAdapterInterface;

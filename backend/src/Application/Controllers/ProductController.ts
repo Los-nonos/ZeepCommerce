@@ -99,7 +99,7 @@ class ProductController implements ProductControllerInterface {
     public ShowById = async (req: Request, res: Response) => {
 
         try {
-            const command: ProductFindCommand = await this.productAdapter.ShowOneAdapter(req);
+            const command: ProductFindCommand = await this.productAdapter.ShowByIdAdapter(req);
             const response: string | Product = await this.productFindHandler.FindOne(command); 
 
             res.status(200).json({ message: response});
