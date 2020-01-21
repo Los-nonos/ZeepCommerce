@@ -63,9 +63,11 @@ class Router {
 
         //product routes
         this.express.post('/apiv1/products', this.productController.Create);
-        this.express.post('/apiv1/products/:id', this.productController.Edit);
+        this.express.put('/apiv1/products/:id', this.productController.Edit);
         this.express.delete('/apiv1/products/:id', this.productController.Delete);
-
+        this.express.get('/apiv1/products/:id', this.productController.ShowById);
+        //this.express.get('/apiv1/products/:id', this.productController.ShowAll);
+        this.express.get('/apiv1/products', this.productController.ShowAll);
     }
 }
 

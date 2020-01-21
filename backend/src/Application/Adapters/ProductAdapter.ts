@@ -6,13 +6,15 @@ import PriceSchema from './Schemas/PriceSchema';
 import ProductCreateCommand from '../../Domain/Commands/ProductCommands/ProductCreateCommand';
 import ProductEditCommand from '../../Domain/Commands/ProductCommands/ProductEditCommand';
 import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductDeleteCommand';
+import ProductFindCommand from '../../Domain/Commands/ProductCommands/ProductFindCommand';
 import { injectable } from 'inversify';
 import ProductAdapterInterface from '../../Infraestructure/Interfaces/ProductAdapterInterface';
+
 
 @injectable()
 class ProductAdapter implements ProductAdapterInterface {
 
-    public async CreateAdapter(req: Request): Promise<ProductCreateCommand> {
+    public async CreateAdapter(req: Request): Promise <ProductCreateCommand> {
         const { name, price, description }: any = req.body;
 
         const resultName = NameSchema.validate({ name: name });
@@ -34,7 +36,7 @@ class ProductAdapter implements ProductAdapterInterface {
         return new ProductCreateCommand(resultName.value.name, resultPrice.value.price, resultDescription.value.description);
     }
 
-    public async EditAdapter(req: Request): Promise<ProductEditCommand> {
+    public async EditAdapter(req: Request): Promise <ProductEditCommand> {
         const { id }: any= req.params;
         const { name, price, description }: any = req.body;
 
@@ -62,7 +64,7 @@ class ProductAdapter implements ProductAdapterInterface {
         return new ProductEditCommand(resultId.value.id, resultName.value.name, resultPrice.value.price, resultDescription.value.description);
     }
 
-    public async DeleteAdapter(req: Request): Promise<ProductDeleteCommand> {
+    public async DeleteAdapter(req: Request): Promise <ProductDeleteCommand> {
 
         const { id }: any = req.params;
 
@@ -73,6 +75,32 @@ class ProductAdapter implements ProductAdapterInterface {
         }
 
         return new ProductDeleteCommand(resultId.value.id);
+    }
+
+    public async ShowAllAdapter(req: Request): Promise <ProductFindCommand> {
+        
+        const { id }: any = req.params;
+        
+        const resultId = IdSchema.validate({ id: id });
+
+        if(resultId.error){
+            id === -1;
+        }
+
+        return new ProductFindCommand(resultId.value.id);
+    }
+
+    public async ShowOneAdapter(req: Request): Promise <ProductFindCommand> {
+
+        const { id }: any = req.params;
+
+        const resultId = IdSchema.validate({ id: id });
+
+        if (resultId.error) {
+            throw new Error(resultId.error.message);
+        }
+
+        return new ProductFindCommand(resultId.value.id);
     }
 
 }

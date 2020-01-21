@@ -7,7 +7,8 @@ let TYPES = {
     IProductAdapter: Symbol('ProductAdapterInterface'),
     IProductCreateHandler: Symbol('ProductCreateHandlerInterface'),
     IProductEditHandler: Symbol('ProductEditHandlerInterface'),
-    IProductDeleteHandler: Symbol('ProductDeleteHandlerInterface')
+    IProductDeleteHandler: Symbol('ProductDeleteHandlerInterface'),
+    IProductFindHandler: Symbol('ProductFindHandlerInterface'),
 };
 
 export default TYPES;

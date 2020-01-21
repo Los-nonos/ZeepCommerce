@@ -14,6 +14,9 @@ import ProductDeleteHandlerInterface from "./Infraestructure/Interfaces/ProductD
 import ProductDeleteHandler from "./Domain/Handlers/Product/ProductDeleteHandler";
 import ProductAdapter from "./Application/Adapters/ProductAdapter";
 import ProductAdapterInterface from "./Infraestructure/Interfaces/ProductAdapterInterface";
+import ProductFindHandlerInterface from "./Infraestructure/Interfaces/ProductFindHandlerInterface";
+import ProductFindHandler from "./Domain/Handlers/Product/ProductFindHandler";
+
 
 var container = new Container();
 
@@ -29,6 +32,7 @@ container.bind<ProductControllerInterface>(TYPES.IProductController).to(ProductC
 container.bind<ProductCreateHandlerInterface>(TYPES.IProductCreateHandler).to(ProductCreateHandler);
 container.bind<ProductEditHandlerInterface>(TYPES.IProductEditHandler).to(ProductEditHandler);
 container.bind<ProductDeleteHandlerInterface>(TYPES.IProductDeleteHandler).to(ProductDeleteHandler);
+container.bind<ProductFindHandlerInterface>(TYPES.IProductFindHandler).to(ProductFindHandler);
 
 //Error services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
