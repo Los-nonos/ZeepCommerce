@@ -1,0 +1,15 @@
+node_modules/
+.idea/
+*.min.*
+packages/*/build/
+packages/*/dist/
+packages/*/*.log
+packages/*/static/
+scripts/
+*.log
+.env
+.env.*
+logs/
+*.lock
+.prettierignore
+.gitignore
