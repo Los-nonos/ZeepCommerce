@@ -9,6 +9,7 @@ interface UserAdapterInterface{
     Edit(req: Request): Promise<EditUserCommand>;
     Delete(req: Request) : Promise<DeleteUserCommand>;
     ShowById(req: Request) : Promise<UserFindCommand>;
+    ShowAllUsers(req: Request): Promise<UserFindCommand>;
 }
 
 export default UserAdapterInterface;

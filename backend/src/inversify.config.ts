@@ -13,6 +13,7 @@ import UserCreateHandler from "./Domain/Handlers/User/UserCreateHandler";
 import UserEditHandler from "./Domain/Handlers/User/UserEditHandler";
 import UserDeleteHandler from "./Domain/Handlers/User/UserDeleteHandler";
 import UserFindHandler from "./Domain/Handlers/User/UserFindHandler";
+import FindAllUsersHandler from "./Domain/Handlers/User/FindAllUsersHandler";
 
 //Erros imports
 import  ErrorHandler  from "./Infraestructure/ErrorsHandlers/ErrorHandler";
@@ -23,6 +24,7 @@ import ProductController from "./Application/Controllers/ProductController";
 import FindUserHandlerInterface from "./Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface";
 import CreateUserAdapterInterface from "./Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface";
 import UserAdapter from "./Application/Adapters/UserAdapter";
+import FindAllUsersHandlerInterface from "./Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface";
 
 
 
@@ -34,6 +36,7 @@ container.bind<CreateUserHandlerInterface>(TYPES.ICreateUserHandler).to(UserCrea
 container.bind<DeleteUserHandlerInterface>(TYPES.IDeleteUserHandler).to(UserDeleteHandler);
 container.bind<EditUserHandlerInterface>(TYPES.IEditUserHandler).to(UserEditHandler);
 container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHandler);
+container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(FindAllUsersHandler);
 container.bind<CreateUserAdapterInterface>(TYPES.IUserAdapter).to(UserAdapter);
 
 // Product services

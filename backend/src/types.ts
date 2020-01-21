@@ -8,6 +8,7 @@ let TYPES = {
     IDeleteUserHandler : Symbol('DeleteUserHandlerInterface'),
     IEditUserHandler : Symbol('EditUserHandlerInterface'),
     IFindUserHandler : Symbol('FindUserHandlerInterface'),
+    IFindAllUsersHandler : Symbol('FindAllUsersHandlerInterface'),
     IUserController : Symbol('UserControllerInterface'),
     IUserAdapter : Symbol('UserAdapterInterface'),
     //Product Interfaces

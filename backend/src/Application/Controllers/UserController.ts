@@ -7,9 +7,6 @@ import TYPES from '../../types';
 import { InfraestructureError } from "../../Infraestructure/ErrorsHandlers/Errors/InfraestructureError";
 import { ApplicationError } from '../../Infraestructure/ErrorsHandlers/Errors/AppError';
 
-//Handlers
-import UserAdapter from "../Adapters/UserAdapter";
-
 //Interfaces
 import UserControllerInterface from "../../Infraestructure/Interfaces/UserControllerInterface";
 import CreateUserHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
@@ -22,6 +19,8 @@ import User from "../../Domain/Entity/User";
 import EditUserCommand from "../../Domain/Commands/UserCommands/EditUserCommand";
 import DeleteUserCommand from "../../Domain/Commands/UserCommands/DeleteUserCommand";
 import UserFindCommand from "../../Domain/Commands/UserCommands/UserFindCommand";
+import { NotFoundData } from "../../Infraestructure/ErrorsHandlers/Errors/NotFoundData";
+import FindAllUsersHandlerInterface from "../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface";
 
 
 
@@ -33,6 +32,7 @@ class UserController implements UserControllerInterface{
     private IEditUserHandler: EditUserHandlerInterface;
     private IDeleteUserHandler: DeleteUserHandlerInterface;
     private IFindUserHandler: FindUserHandlerInterface;
+    private IFindAllUsersHandler: FindAllUsersHandlerInterface;
     private IUserAdapter: UserAdapterInterface;
 
     constructor(
@@ -40,12 +40,14 @@ class UserController implements UserControllerInterface{
         @inject(TYPES.IEditUserHandler) editUserHandler: EditUserHandlerInterface,
         @inject(TYPES.IDeleteUserHandler) deleteUserHandler: DeleteUserHandlerInterface,
         @inject(TYPES.IFindUserHandler) findUserHandler: FindUserHandlerInterface,
+        @inject(TYPES.IFindAllUsersHandler) findAllUsersHandler : FindAllUsersHandlerInterface,
         @inject(TYPES.IUserAdapter) userAdapter: UserAdapterInterface,
     ) {
         this.ICreateUserHandler = createUserHandler;
         this.IEditUserHandler = editUserHandler;
         this.IDeleteUserHandler = deleteUserHandler;
         this.IFindUserHandler = findUserHandler;
+        this.IFindAllUsersHandler = findAllUsersHandler;
         this.IUserAdapter = userAdapter;
     }
 
@@ -114,6 +116,28 @@ class UserController implements UserControllerInterface{
             }
             else if (error instanceof ApplicationError) {
                 res.status(500).json({ message: error.getDescription });
+            }
+            else {
+                res.status(500).json({ message: 'Unexpected error' });
+            }
+        }
+    }
+    
+    public ShowAll = async (req: Request, res: Response) => {
+
+        try{
+            const command: UserFindCommand = await this.IUserAdapter.ShowAllUsers(req);
+            const response: string[] | User[] = await this.IFindAllUsersHandler.FindAllUsers(command);
+            res.status(200).json({ message: "Users in database", user: response });
+        }catch(error){
+            if (error instanceof InfraestructureError) {
+                res.status(error.getStatusCode()).json({ message: error.message });
+            }
+            else if (error instanceof ApplicationError) {
+                res.status(500).json({ message: error.getDescription });
+            }
+            else if(error instanceof NotFoundData){
+                res.status(404).json({ message: error.getStatusCode })
             }
             else {
                 res.status(500).json({ message: 'Unexpected error' });

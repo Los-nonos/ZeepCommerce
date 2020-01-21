@@ -13,7 +13,7 @@ class UserFindHandler implements FindUserHandlerInterface{
 
     }
 
-    public async FindUser(command: UserFindcommand) {
+    public async FindUser(command: UserFindcommand): Promise<User> {
         try {
             const id = command.getId();
             console.log(id);
