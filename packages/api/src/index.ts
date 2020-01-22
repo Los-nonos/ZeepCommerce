@@ -30,13 +30,15 @@ class App {
         console.error(err, 'Uncaught Exception thrown');
         process.exit(1);
       });
-    this.upServer();
+
+    const port = parseInt(process.env.API_PORT, 10) || 3001;
+    this.upServer(port);
     this.router.up();
   }
 
-  private upServer() {
-    this.express.listen(3000, function() {
-      console.log('Server is run in port 3000');
+  private upServer(port: number) {
+    this.express.listen(port, function() {
+      console.log(`Server is run in port ${port}`);
     });
   }
 }
