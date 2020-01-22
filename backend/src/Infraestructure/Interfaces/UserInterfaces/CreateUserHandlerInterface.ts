@@ -1,7 +1,7 @@
 import UserCreateCommand from '../../../Domain/Commands/UserCommands/UserCreateCommand';
 
-interface UserCreateInterface{
+interface CreateUserHandlerInterface{
     Create(command: UserCreateCommand): Promise<string>;
 }
 
-export default UserCreateInterface;
+export default CreateUserHandlerInterface;
