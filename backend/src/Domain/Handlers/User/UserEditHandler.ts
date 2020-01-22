@@ -2,25 +2,31 @@ import EditUserCommand from "../../Commands/UserCommands/EditUserCommand";
 import User from "../../Entity/User";
 import { EntityNotFound } from "../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound";
 import { DataBaseError } from "../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError";
+import { injectable } from "inversify";
+import EditUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/EditUserHandlerInterface";
 
+@injectable()
+class UserEditHandler implements EditUserHandlerInterface{
 
-class UserEditHandler{
+    constructor(){
+        
+    }
 
-    public async Edit(command: EditUserCommand){
+    public async Edit(command: EditUserCommand): Promise<User> {
         const user = await User.findOne(command.getUserId());
-        try{
-            if(!user){
+        try {
+            if (!user) {
                 throw new EntityNotFound('User not found');
-            }else{
+            } else {
                 user.name = command.getUserName();
                 user.lastname = command.getUserLastName();
-                
+
                 await user.save();
-    
-                return {message: 'User updated correctly!'};
+
+                return user;
             }
         }
-        catch(error){
+        catch (error) {
             throw new DataBaseError(error);
         }
     }

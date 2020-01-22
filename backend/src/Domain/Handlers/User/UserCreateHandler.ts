@@ -1,11 +1,13 @@
 import User from "../../Entity/User";
-
-import UserCreateInterface from "../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
 import UserCreateCommand from "../../Commands/UserCommands/UserCreateCommand";
+import { injectable } from "inversify";
+import CreateUserHandlerInterface from "../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface";
 
-class UserCreateHandler implements UserCreateInterface{
 
-    constructor(){
+@injectable()
+class UserCreateHandler implements CreateUserHandlerInterface{
+
+    constructor() {
 
     }
 
@@ -19,12 +21,12 @@ class UserCreateHandler implements UserCreateInterface{
         user.lastname = lastname;
         user.dni = dni;
 
-        try{
+        try {
             await user.save();
             return 'User created correctly';
-        }catch(error){
+        } catch (error) {
             return error.message;
-        }        
+        }
     }
 
 }
