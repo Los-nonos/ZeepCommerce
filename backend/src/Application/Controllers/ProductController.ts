@@ -46,7 +46,7 @@ class ProductController implements ProductControllerInterface {
 
         try {
             const command: ProductCreateCommand = await this.productAdapter.CreateAdapter(req);
-            const response: string | Product = await this.productCreateHandler.Handle(command);
+            const response: string = await this.productCreateHandler.Handle(command);
             
             res.status(200).json({ message: response });
 
@@ -59,9 +59,9 @@ class ProductController implements ProductControllerInterface {
 
         try {
             const command: ProductEditCommand = await this.productAdapter.EditAdapter(req);
-            const response: string | Product = await this.productEditHandler.Handle(command);
+            const response: string = await this.productEditHandler.Handle(command);
 
-            res.status(200).json({ message: response });
+            res.status(200).json({ message: "Product updated correctly", product: response });
 
         } catch (error) {
             res.status(500).json({ message: error.message });
@@ -72,7 +72,7 @@ class ProductController implements ProductControllerInterface {
 
         try {
             const command: ProductDeleteCommand = await this.productAdapter.DeleteAdapter(req);
-            const response: string | Product = await this.productDeleteHandler.Handle(command);
+            const response: string = await this.productDeleteHandler.Handle(command);
 
             res.status(200).json({ message: response });
 
@@ -88,7 +88,7 @@ class ProductController implements ProductControllerInterface {
             const command: ProductFindCommand = await this.productAdapter.ShowAllAdapter(req);
             const response: string | Product[] = await this.productFindHandler.FindAll(command); 
 
-            res.status(200).json({ message: response});
+            res.status(200).json({ message: "Products in database" , product: response});
 
         } catch (error) {
             res.status(500).json({ message: error.message});
@@ -102,7 +102,7 @@ class ProductController implements ProductControllerInterface {
             const command: ProductFindCommand = await this.productAdapter.ShowByIdAdapter(req);
             const response: string | Product = await this.productFindHandler.FindOne(command); 
 
-            res.status(200).json({ message: response});
+            res.status(200).json({ message: "Product found", product: response});
 
         } catch (error) {
             res.status(500).json({ message: error.message});
