@@ -1,14 +1,15 @@
-import { BaseError } from './BaseError';
+import { BaseError } from "./BaseError";
 
-export class InfraestructureError extends BaseError {
-  protected statusCode: number;
+export class InfraestructureError extends BaseError{
 
-  constructor(message: string | object, statusCode: number) {
-    super(message);
-    this.statusCode = statusCode;
-  }
+    protected statusCode: number;
 
-  getStatusCode(): number {
-    return this.statusCode;
-  }
+    constructor(message: string | object, statusCode: number){
+        super(message);
+        this.statusCode = statusCode;
+    }
+
+    getStatusCode(): number{
+        return this.statusCode;
+    }
 }

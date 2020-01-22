@@ -1,7 +1,9 @@
-import FindUserCommand from '../../../Domain/Commands/UserCommands/FindUserCommand';
 
-interface FindUserHandlerInterface {
-  FindUser(command: FindUserCommand): Promise<Object>;
+import User from '../../../Domain/Entity/User';
+import UserFindCommand from '../../../Domain/Commands/UserCommands/UserFindCommand';
+
+interface FindUserHandlerInterface{
+    FindUser(command: UserFindCommand): Promise<User>;
 }
 
 export default FindUserHandlerInterface;

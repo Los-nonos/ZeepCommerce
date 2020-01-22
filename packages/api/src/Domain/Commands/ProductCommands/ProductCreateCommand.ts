@@ -1,25 +1,30 @@
-class ProductCreateCommand {
-  private name: string;
-  private price: number;
-  private description: string;
+import { injectable } from "inversify";
 
-  constructor(name: string, price: number, description: string) {
-    this.name = name;
-    this.price = price;
-    this.description = description;
-  }
+@injectable()
+class ProductCreateCommand{
 
-  public getName(): string {
-    return this.name;
-  }
+    private name: string;
+    private price: number;
+    private description: string;
 
-  public getPrice(): number {
-    return this.price;
-  }
+    constructor(name: string, price: number, description: string){
+        this.name = name;
+        this.price = price;
+        this.description = description
+    }
 
-  public getDescription(): string {
-    return this.description;
-  }
+    public getName(): string {
+        return this.name;
+    }
+
+    public getPrice(): number {
+        return this.price;
+    }
+
+    public getDescription(): string {
+        return this.description;
+    }
+
 }
 
 export default ProductCreateCommand;

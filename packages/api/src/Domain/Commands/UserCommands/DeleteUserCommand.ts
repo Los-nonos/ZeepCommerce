@@ -1,13 +1,13 @@
-class DeleteUserCommand {
-  private id: number;
+class DeleteUserCommand{
+    private id : number;
 
-  constructor(id: number) {
-    this.id = id;
-  }
+    constructor(id: number){
+        this.id = id;
+    }
 
-  public getId(): number {
-    return this.id;
-  }
+    public getId(): number{
+        return this.id;
+    }
 }
 
 export default DeleteUserCommand;

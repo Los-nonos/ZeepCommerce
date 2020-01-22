@@ -1,7 +1,10 @@
-import { Response, NextFunction } from 'express';
+import { Response, NextFunction } from "express";
 
-class AuthenticationMiddleware {
-  public Comprobate(req: Request, res: Response, next: NextFunction) {}
+class AuthenticationMiddleware{
+    public Comprobate(req: Request, res: Response, next: NextFunction){
+        
+        
+    }
 }
 
 export default AuthenticationMiddleware;

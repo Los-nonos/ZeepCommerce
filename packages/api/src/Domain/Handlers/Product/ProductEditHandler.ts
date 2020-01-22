@@ -1,28 +1,35 @@
 import Product from '../../Entity/Product';
 import ProductCreateAndEditCommand from '../../Commands/ProductCommands/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../Infraestructure/Interfaces/ProductEditHandlerInterface';
+import { injectable } from 'inversify';
 
-class ProductEditHandler implements ProductEditHandlerInterface {
-  public async Handle(command: ProductCreateAndEditCommand): Promise<string> {
-    const id = command.getId();
+@injectable()
+class ProductEditHandler implements ProductEditHandlerInterface{
 
-    const product = await Product.findOne({ Id: id });
+    public async Handle(command : ProductCreateAndEditCommand): Promise <string> {
 
-    if (!product) {
-      throw new Error('Not found product');
+        const id = command.getId();
+
+        const product = await Product.findOne({Id: id});
+
+        if(!product){
+            throw new Error('Not found product');
+        }
+
+        product.name = command.getName();
+        product.price = command.getPrice();
+        product.description = command.getDescription();
+
+        try{
+
+            await product.save();
+            return 'Product edited';
+
+        } catch(error){
+
+            return error.messsage;
+        }
     }
-
-    product.name = command.getName();
-    product.price = command.getPrice();
-    product.description = command.getDescription();
-
-    try {
-      await product.save();
-      return 'Product edited';
-    } catch (error) {
-      return error.messsage;
-    }
-  }
 }
 
 export default ProductEditHandler;

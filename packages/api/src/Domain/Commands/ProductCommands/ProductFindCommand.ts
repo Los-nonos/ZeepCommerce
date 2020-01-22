@@ -1,4 +1,4 @@
-class ProductDeleteCommand {
+class ProductFindCommand {
 
     private id: number;
 
@@ -9,6 +9,7 @@ class ProductDeleteCommand {
     public getId(): number {
         return this.id;
     }
+
 }
 
-export default ProductDeleteCommand;
+export default ProductFindCommand;
