@@ -68,7 +68,7 @@ class ProductAdapter implements ProductAdapterInterface {
 
         const { id }: any = req.params;
 
-        const resultId = IdSchema.validate({ id: id });
+        const resultId = IdSchema.validate({ id });
 
         if (resultId.error) {
             throw new Error(resultId.error.message);
@@ -79,22 +79,26 @@ class ProductAdapter implements ProductAdapterInterface {
 
     public async ShowAllAdapter(req: Request): Promise <ProductFindCommand> {
         
-        const { id }: any = req.body;
+        let id : any = req.query.search;
         
-        const resultId = IdSchema.validate({ id: id });
+        if(!id) {   
+            id = 1;
 
-        if(resultId.error){
-            id == -1;
+        } else {
+            const resultId = IdSchema.validate({ id });
+            if(resultId.error) {
+                id = 1;
+            }
         }
 
-        return new ProductFindCommand(resultId.value.id);
+        return new ProductFindCommand(id);
     }
 
     public async ShowByIdAdapter(req: Request): Promise <ProductFindCommand> {
 
         const { id }: any = req.params;
 
-        const resultId = IdSchema.validate({ id: id });
+        const resultId = IdSchema.validate({ id });
 
         if (resultId.error) {
             throw new Error(resultId.error.message);
