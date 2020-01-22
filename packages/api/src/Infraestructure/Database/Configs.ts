@@ -1,12 +1,11 @@
-import {createConnection} from 'typeorm';
+import { createConnection } from 'typeorm';
 import User from '../../Domain/Entity/User';
-import Product from '../../Domain/Entity/Product'
+import Product from '../../Domain/Entity/Product';
 import Role from '../../Domain/Entity/Role';
 
-
-export async function createConnectionDB(){
-    await createConnection({
-    type: "mysql",
+export async function createConnectionDB() {
+  await createConnection({
+    type: 'mysql',
     host: process.env.HOST_DB,
     port: 3306,
     username: process.env.DATABASE_USER,
@@ -14,6 +13,6 @@ export async function createConnectionDB(){
     database: process.env.DATABASE_DB,
     synchronize: true,
     logging: true,
-    entities: [User, Product, Role]
-    });
-};
+    entities: [User, Product, Role],
+  });
+}

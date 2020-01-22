@@ -1,13 +1,12 @@
-class FindAllUsersCommand{
+class FindAllUsersCommand {
+  private id: number;
 
-    private id: number;
-     
-    constructor(id : number){
-        this.id = id;
-    }
+  constructor(id: number) {
+    this.id = id;
+  }
 
-    getId(){
-        return this.id;
-    }
+  getId() {
+    return this.id;
+  }
 }
 export default FindAllUsersCommand;

@@ -1,14 +1,13 @@
-class UserFindCommand{
-    
-    private Id: number;
+class UserFindCommand {
+  private Id: number;
 
-    public constructor(idSearchedUser : number){
-        this.Id = idSearchedUser;
-    }
+  public constructor(idSearchedUser: number) {
+    this.Id = idSearchedUser;
+  }
 
-    getId(): number{
-        return this.Id;
-    }
+  getId(): number {
+    return this.Id;
+  }
 }
 
 export default UserFindCommand;

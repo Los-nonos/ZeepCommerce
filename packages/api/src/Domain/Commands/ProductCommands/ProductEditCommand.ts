@@ -1,17 +1,16 @@
-import ProductCreateCommand from "./ProductCreateCommand";
+import ProductCreateCommand from './ProductCreateCommand';
 
-class ProductEditCommand extends ProductCreateCommand{
+class ProductEditCommand extends ProductCreateCommand {
+  private id: number;
 
-    private id: number;
+  constructor(id: number, name: string, price: number, description: string) {
+    super(name, price, description);
+    this.id = id;
+  }
 
-    constructor(id: number, name: string, price: number, description: string){
-        super(name,price, description);
-        this.id = id;
-    }
-
-    public getId(): number {
-        return this.id;
-    }
+  public getId(): number {
+    return this.id;
+  }
 }
 
 export default ProductEditCommand;
