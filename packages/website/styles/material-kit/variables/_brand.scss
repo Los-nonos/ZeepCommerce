@@ -1,0 +1,35 @@
+// Bootstrap brand color customization
+
+$rooftop-yellow-color-0: #FFB907;
+$rooftop-yellow-color-1: #FFEDC1;
+$rooftop-yellow-color-2: #FFDC83;
+$rooftop-yellow-color-3: #FFCB45;
+$rooftop-yellow-color-4: #402E02;
+$rooftop-yellow-color-5: #7F5C03;
+$rooftop-yellow-color-6: #BF8B05;
+
+$rooftop-orange-color-0: #FF642A;
+$rooftop-orange-color-1: #FFD9CB;
+$rooftop-orange-color-2: #FFB498;
+$rooftop-orange-color-3: #FF8E64;
+$rooftop-orange-color-4: #401A0C;
+$rooftop-orange-color-5: #7F3418;
+$rooftop-orange-color-6: #BF4E24;
+
+$rooftop-blue-color-0: #28323C;
+$rooftop-blue-color-1: #C9CCCE;
+$rooftop-blue-color-2: #94999E;
+$rooftop-blue-color-3: #5E656D;
+$rooftop-blue-color-4: #0A0D0F;
+$rooftop-blue-color-5: #14191E;
+$rooftop-blue-color-6: #1E252D;
+
+/*     brand Colors              */
+
+$brand-primary:              $rooftop-orange-color-0 !default;
+$brand-info:                 $cyan-500 !default;
+$brand-success:              $green-500 !default;
+$brand-warning:              $rooftop-yellow-color-0 !default;
+$brand-danger:               $red-500 !default;
+$brand-rose:                 $pink-500 !default;
+$brand-inverse:              $black-color !default;
