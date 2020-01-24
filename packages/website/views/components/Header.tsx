@@ -5,64 +5,47 @@ class Header extends React.Component<any, any> {
     super(props);
   }
 
-  links = () => {
-    return (
-      <>
-        <a href={'/'} className="custom-button-button custom-button-transparent">
-          {/* <img width="38px" src="../../static/img/rooftopIsotypes/favicon.png" /> */}
-          ZEEP
-        </a>
-        <ul id="navlinks-custom" className="navbar-nav ml-auto navlinks-custom">
-          <li id="links-navbar" className="nav-item fade-in ">
-            <a href={'/contact'} className="custom-headerLink-navLink custom-header-left-links">
-              {'CONTACT'}
-            </a>
-          </li>
-          <li id="links-navbar" className="nav-item fade-in ">
-            <a href={'/about'} className="custom-headerLink-navLink custom-header-left-links">
-              {'ABOUT'}
-            </a>
-          </li>
-          <li id="links-navbar" className="nav-item fade-in ">
-            <a href={'/products'} className="custom-headerLink-navLink custom-header-left-links">
-              {'PRODUCTS'}
-            </a>
-          </li>
-        </ul>
-      </>
-    );
-  };
-
   render() {
     return (
-      <nav
-        className="navbar navbar-color-on-scroll fixed-top navbar-expand-lg navbar-transparent"
-        color-on-scroll="100"
-        id="sectionsNav"
-      >
-        <div className="custom-navbar">
-        <div className="container custom-header-container fade-in">{this.links()}</div>
+      <div className="header-3">
+        <nav className="navbar navbar-transparent navbar-absolute navbar-expand-lg">
           <div className="container">
             <div className="navbar-translate">
-              <a className="navbar-brand" href="/">
-                Zeep{' '}
-              </a>
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
+              <a className="navbar-brand" href="/">Zeep</a>
+              <button type="button" className="ml-auto navbar-toggler" data-toggle="collapse" data-target="#navigation-example3">
                 <span className="sr-only">Toggle navigation</span>
                 <span className="navbar-toggler-icon"></span>
                 <span className="navbar-toggler-icon"></span>
                 <span className="navbar-toggler-icon"></span>
               </button>
             </div>
+            <div className="collapse navbar-collapse" id="navigation-example3">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <a href="/faq" className="nav-link">
+                    Faq
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="/about" className="nav-link">
+                    About Us
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="/products" className="nav-link">
+                    Products
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="/contact" className="nav-link">
+                    Contact Us
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }
