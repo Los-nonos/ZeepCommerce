@@ -40,9 +40,6 @@ var container = new Container();
 
 // Services
 
-// User services
-container.bind<UserControllerInterface>(TYPES.IUserController).to(UserController);
-
 //Product services
 container.bind<ProductAdapterInterface>(TYPES.IProductAdapter).to(ProductAdapter);
 container.bind<ProductControllerInterface>(TYPES.IProductController).to(ProductController);
@@ -62,8 +59,6 @@ container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHand
 container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(FindAllUsersHandler);
 container.bind<CreateUserAdapterInterface>(TYPES.IUserAdapter).to(UserAdapter);
 
-// Product services
-container.bind<ProductControllerInterface>(TYPES.IProductController).to(ProductController);
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
