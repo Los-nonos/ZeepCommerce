@@ -59,7 +59,6 @@ container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHand
 container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(FindAllUsersHandler);
 container.bind<CreateUserAdapterInterface>(TYPES.IUserAdapter).to(UserAdapter);
 
-
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
 
