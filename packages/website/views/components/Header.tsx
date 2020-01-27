@@ -11,8 +11,15 @@ class Header extends React.Component<any, any> {
         <nav className="navbar navbar-transparent navbar-absolute navbar-expand-lg">
           <div className="container">
             <div className="navbar-translate">
-              <a className="navbar-brand" href="/">Zeep</a>
-              <button type="button" className="ml-auto navbar-toggler" data-toggle="collapse" data-target="#navigation-example3">
+              <a className="navbar-brand" href="/">
+                Zeep
+              </a>
+              <button
+                type="button"
+                className="ml-auto navbar-toggler"
+                data-toggle="collapse"
+                data-target="#navigation-example3"
+              >
                 <span className="sr-only">Toggle navigation</span>
                 <span className="navbar-toggler-icon"></span>
                 <span className="navbar-toggler-icon"></span>

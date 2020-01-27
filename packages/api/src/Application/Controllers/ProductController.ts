@@ -15,7 +15,6 @@ import ProductEditCommand from '../../Domain/Commands/ProductCommands/ProductEdi
 import ProductDeleteCommand from '../../Domain/Commands/ProductCommands/ProductDeleteCommand';
 import ProductFindCommand from '../../Domain/Commands/ProductCommands/ProductFindCommand';
 import ProductFindHandlerInterface from '../../Infraestructure/Interfaces/ProductFindHandlerInterface';
-import ProductAdapter from '../Adapters/ProductAdapter';
 
 @injectable()
 class ProductController implements ProductControllerInterface {

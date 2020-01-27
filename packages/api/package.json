@@ -31,7 +31,7 @@
     "start": "nodemon -e ts  --exec \"yarn run dev:transpile\"",
     "build": "rm -Rf dist/ && tsc && rm -Rf build/ && tsc && webpack --mode production",
     "serve": "node build/index.js",
-    "test": "../../node_modules/mocha/bin/mocha  --require ts-node/register ./test/**/*.ts --exit",
+    "test": "../../node_modules/mocha/bin/mocha  --require ts-node/register ./test/**/*.ts --exit && yarn run prettier:check",
     "linter:check": "eslint 'src/**/*.ts'",
     "prettier:check": "prettier -c 'src/**/*.ts'",
     "prettier:run": "prettier --write 'src/**/*.ts'"

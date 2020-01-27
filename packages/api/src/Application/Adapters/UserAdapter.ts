@@ -14,7 +14,7 @@ import FindAllUsersCommand from '../../Domain/Commands/UserCommands/FindAllUsers
 @injectable()
 class UserAdapter implements UserAdapterInterface {
   public async Create(req: Request): Promise<UserCreateCommand> {
-    const { name, lastname, dni, age, borndate, phone, address, account }: any = req.body;
+    const { name, lastname, dni }: any = req.body;
 
     const resultName = NameSchema.validate({ name: name });
     if (resultName.error) {

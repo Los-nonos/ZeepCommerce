@@ -1,4 +1,4 @@
-import { inject, injectable } from 'inversify';
+import { injectable } from 'inversify';
 import Product from '../../Entity/Product';
 import ProductCreateCommand from '../../Commands/ProductCommands/ProductCreateCommand';
 import ProductCreateHandlerInterface from '../../../Infraestructure/Interfaces/ProductCreateHandlerInterface';

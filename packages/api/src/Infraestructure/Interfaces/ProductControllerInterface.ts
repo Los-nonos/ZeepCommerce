@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import Product from '../../Domain/Entity/Product';
 
 interface ProductControllerInterface {
   Create(req: Request, res: Response): Promise<void>;
