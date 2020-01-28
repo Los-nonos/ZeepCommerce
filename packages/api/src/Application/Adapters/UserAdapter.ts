@@ -16,6 +16,7 @@ import { NotFoundData } from '../../Infraestructure/ErrorsHandlers/Errors/NotFou
 class UserAdapter implements UserAdapterInterface {
   public async Create(req: Request): Promise<UserCreateCommand> {
     const createUserResult = UserCreateSchema.validate(req.body);
+
     if (createUserResult.error) {
       throw new Error(createUserResult.error.message);
     }
@@ -48,8 +49,8 @@ class UserAdapter implements UserAdapterInterface {
   public async Edit(req: Request): Promise<EditUserCommand> {
     const editUserResult = UserEditSchema.validate(req.params.body);
 
-    if (editUserResult.id.error) {
-      throw new InvalidData('ID not valid or not found');
+    if (editUserResult.error instanceof NotFoundData) {
+      throw new NotFoundData('ID not valid or not found');
     }
     if (editUserResult.error) {
       throw new Error(editUserResult.error.message);
@@ -84,6 +85,9 @@ class UserAdapter implements UserAdapterInterface {
   public async ShowById(req: Request): Promise<UserFindCommand> {
     const findUserResult = FindUserSchema.validate(req.query.search);
 
+    if (findUserResult.error) {
+      throw new Error(findUserResult.error.message);
+    }
     if (findUserResult.error instanceof InvalidData) {
       throw new InvalidData(findUserResult.error.message);
     }
@@ -107,15 +111,38 @@ class UserAdapter implements UserAdapterInterface {
         id = 0;
       }
     }
+
+    if (idUserResult.error instanceof NotFoundData) {
+      throw new NotFoundData('ID not found in database');
+    }
+    if (idUserResult.error instanceof EntityNotFound) {
+      throw new EntityNotFound(idUserResult.error.message);
+    }
+    if (idUserResult.error) {
+      throw new Error(idUserResult.error.message);
+    }
+    if (idUserResult.error instanceof InvalidData) {
+      throw new InvalidData(idUserResult.error.message);
+    }
     return new FindAllUsersCommand(idUserResult.value.id);
   }
 
   public async Delete(req: Request): Promise<DeleteUserCommand> {
     const deleteUserResult = UserDeleteSchema.validate(req.params);
 
+    if (deleteUserResult.error instanceof NotFoundData) {
+      throw new NotFoundData('ID not found in database');
+    }
+    if (deleteUserResult.error instanceof EntityNotFound) {
+      throw new EntityNotFound(deleteUserResult.error.message);
+    }
+    if (deleteUserResult.error) {
+      throw new Error(deleteUserResult.error.message);
+    }
     if (deleteUserResult.error instanceof InvalidData) {
       throw new InvalidData(deleteUserResult.error.message);
     }
+
     return new DeleteUserCommand(deleteUserResult.value.id);
   }
 }
