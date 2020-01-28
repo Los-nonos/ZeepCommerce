@@ -1,0 +1,100 @@
+import Joi from '@hapi/joi';
+
+export const UserCreateSchema = Joi.object({
+  name: Joi.string()
+    .min(2)
+    .max(30)
+    .required(),
+  lastname: Joi.string()
+    .min(2)
+    .max(30)
+    .required(),
+  age: Joi.number()
+    .min(1)
+    .max(110),
+  dni: Joi.number()
+    .min(1000000)
+    .max(70000000),
+  email: Joi.string()
+    .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+    .required(),
+  birthyear: Joi.number()
+    .min(1900)
+    .max(2150),
+  password: Joi.string()
+    .min(8)
+    .max(30)
+    .required(),
+  phonenumber: Joi.number()
+    .min(6)
+    .max(12),
+  cellphonenumber: Joi.number()
+    .min(8)
+    .max(15),
+  phoneareacode: Joi.number()
+    .min(2)
+    .max(8),
+  city: Joi.string()
+    .min(4)
+    .max(20),
+  state: Joi.string()
+    .min(4)
+    .max(30),
+  country: Joi.string()
+    .min(3)
+    .max(20),
+});
+
+export const UserEditSchema = Joi.object({
+  name: Joi.string()
+    .min(2)
+    .max(30)
+    .required(),
+  lastname: Joi.string()
+    .min(2)
+    .max(30)
+    .required(),
+  age: Joi.number()
+    .min(1)
+    .max(110)
+    .required(),
+  dni: Joi.number()
+    .min(1000000)
+    .max(70000000)
+    .required(),
+  email: Joi.string()
+    .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+    .required(),
+  birthyear: Joi.number()
+    .min(1900)
+    .max(2150)
+    .required(),
+  password: Joi.string()
+    .min(8)
+    .max(30)
+    .required(),
+  phonenumber: Joi.number()
+    .min(6)
+    .max(12)
+    .required(),
+  cellphonenumber: Joi.number()
+    .min(8)
+    .max(15)
+    .required(),
+  phoneareacode: Joi.number()
+    .min(2)
+    .max(8)
+    .required(),
+  city: Joi.string()
+    .min(4)
+    .max(20)
+    .required(),
+  state: Joi.string()
+    .min(4)
+    .max(30)
+    .required(),
+  country: Joi.string()
+    .min(3)
+    .max(20)
+    .required(),
+});
