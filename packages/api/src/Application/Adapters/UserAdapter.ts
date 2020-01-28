@@ -13,53 +13,64 @@ import FindAllUsersCommand from '../../Domain/Commands/UserCommands/FindAllUsers
 @injectable()
 class UserAdapter implements UserAdapterInterface {
   public async Create(req: Request): Promise<UserCreateCommand> {
-    const createUserResult = UserCreateSchema.validate(req.body);
-    if (createUserResult.error) {
-      throw new Error(createUserResult.error.message);
-    } else {
-      return new UserCreateCommand(
-        createUserResult.value.userName,
-        createUserResult.value.userLastName,
-        createUserResult.value.userDni,
-        createUserResult.value.userAge,
-        createUserResult.value.userBirthYear,
-        createUserResult.value.userPassword,
-        createUserResult.value.userPhoneNumber,
-        createUserResult.value.userCellphoneNumber,
-        createUserResult.value.userPhoneAreaCode,
-        createUserResult.value.userCity,
-        createUserResult.value.userState,
-        createUserResult.value.userCountry,
-        createUserResult.value.userEmail,
-      );
+    try {
+      const createUserResult = UserCreateSchema.validate(req.body);
+      if (createUserResult.error) {
+        throw new Error(createUserResult.error.message);
+      } else {
+        return new UserCreateCommand(
+          createUserResult.value.userName,
+          createUserResult.value.userLastName,
+          createUserResult.value.userDni,
+          createUserResult.value.userAge,
+          createUserResult.value.userBirthYear,
+          createUserResult.value.userPassword,
+          createUserResult.value.userPhoneNumber,
+          createUserResult.value.userCellphoneNumber,
+          createUserResult.value.userPhoneAreaCode,
+          createUserResult.value.userCity,
+          createUserResult.value.userState,
+          createUserResult.value.userCountry,
+          createUserResult.value.userEmail,
+        );
+      }
+    } catch (error) {
+      throw new Error(error.message);
     }
   }
 
   public async Edit(req: Request): Promise<EditUserCommand> {
-    const { id }: any = req.params;
-    const editUserResult = UserEditSchema.validate(req.params.body);
+    try {
+      const { id }: any = req.params;
+      const editUserResult = UserEditSchema.validate(req.params.body);
 
-    const resultId = IdSchema.validate({ userId: id });
+      const resultId = IdSchema.validate({ userId: id });
 
-    if (resultId.error) {
-      throw new InvalidData('ID not valid or not found');
-    } else {
-      return new EditUserCommand(
-        editUserResult.value.userId,
-        editUserResult.value.userName,
-        editUserResult.value.userLastName,
-        editUserResult.value.userDni,
-        editUserResult.value.userAge,
-        editUserResult.value.userBirthYear,
-        editUserResult.value.userPassword,
-        editUserResult.value.userPhoneNumber,
-        editUserResult.value.userCellphoneNumber,
-        editUserResult.value.userPhoneAreaCode,
-        editUserResult.value.userCity,
-        editUserResult.value.userState,
-        editUserResult.value.userCountry,
-        editUserResult.value.userEmail,
-      );
+      if (resultId.error) {
+        throw new InvalidData('ID not valid or not found');
+      }
+      if (editUserResult.error) {
+        throw new Error(editUserResult.error.message);
+      } else {
+        return new EditUserCommand(
+          editUserResult.value.userId,
+          editUserResult.value.userName,
+          editUserResult.value.userLastName,
+          editUserResult.value.userDni,
+          editUserResult.value.userAge,
+          editUserResult.value.userBirthYear,
+          editUserResult.value.userPassword,
+          editUserResult.value.userPhoneNumber,
+          editUserResult.value.userCellphoneNumber,
+          editUserResult.value.userPhoneAreaCode,
+          editUserResult.value.userCity,
+          editUserResult.value.userState,
+          editUserResult.value.userCountry,
+          editUserResult.value.userEmail,
+        );
+      }
+    } catch (error) {
+      throw new Error(error.message);
     }
   }
 
