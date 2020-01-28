@@ -15,6 +15,36 @@ class User extends BaseEntity {
   @Column()
   public dni: number;
 
+  @Column()
+  userAge: number;
+
+  @Column()
+  userBirthYear: number;
+
+  @Column()
+  userPassword: string;
+
+  @Column()
+  userPhoneNumber: number;
+
+  @Column()
+  userCellphoneNumber: number;
+
+  @Column()
+  userPhoneAreaCode: number;
+
+  @Column()
+  userCity: string;
+
+  @Column()
+  userState: string;
+
+  @Column()
+  userCountry: string;
+
+  @Column()
+  userEmail: string;
+
   //@ManyToMany(roles => Role)
   //@JoinTable()
   //public roles: Role[];
