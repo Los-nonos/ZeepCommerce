@@ -25,7 +25,7 @@ export const UserCreateSchema = Joi.object()
     password: Joi.string()
       .pattern(new RegExp('^[a-zA-Z0-9]{8,30}$'))
       .required(),
-    confirmation: Joi.ref('password', 'confirmation'),
+    confirmation: Joi.ref('password'),
     phonenumber: Joi.number()
       .min(6)
       .max(12),
@@ -49,6 +49,9 @@ export const UserCreateSchema = Joi.object()
 
 export const UserEditSchema = Joi.object()
   .keys({
+    id: Joi.number()
+      .min(0)
+      .required(),
     name: Joi.string()
       .min(2)
       .max(30)
@@ -102,3 +105,15 @@ export const UserEditSchema = Joi.object()
       .required(),
   })
   .with('password', 'confirmation');
+
+export const UserDeleteSchema = Joi.object().keys({
+  id: Joi.number()
+    .min(0)
+    .required(),
+});
+
+export const FindUserSchema = Joi.object().keys({
+  id: Joi.number()
+    .min(0)
+    .required(),
+});
