@@ -22,8 +22,7 @@ export const UserCreateSchema = Joi.object({
     .min(1900)
     .max(2150),
   password: Joi.string()
-    .min(8)
-    .max(30)
+    .pattern(new RegExp('^[a-zA-Z0-9]{8,30}$'))
     .required(),
   phonenumber: Joi.number()
     .min(6)
@@ -70,8 +69,7 @@ export const UserEditSchema = Joi.object({
     .max(2150)
     .required(),
   password: Joi.string()
-    .min(8)
-    .max(30)
+    .pattern(new RegExp('^[a-zA-Z0-9]{8,30}$'))
     .required(),
   phonenumber: Joi.number()
     .min(6)
