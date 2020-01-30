@@ -8,26 +8,14 @@ import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateComm
 import DeleteUserCommand from '../../Domain/Commands/UserCommands/DeleteUserCommand';
 import UserAdapterInterface from '../../Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface';
 import FindAllUsersCommand from '../../Domain/Commands/UserCommands/FindAllUsersCommand';
-import { EntityNotFound } from '../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
-import { DataBaseError } from '../../Infraestructure/ErrorsHandlers/Errors/DataBaseError';
-import { NotFoundData } from '../../Infraestructure/ErrorsHandlers/Errors/NotFoundData';
 
 @injectable()
 class UserAdapter implements UserAdapterInterface {
   public async Create(req: Request): Promise<UserCreateCommand> {
     const createUserResult = UserCreateSchema.validate(req.body);
 
-    if (createUserResult.error) {
-      throw new Error(createUserResult.error.message);
-    }
-    if (createUserResult.error instanceof InvalidData) {
-      throw new InvalidData(createUserResult.error.message);
-    }
-    if (createUserResult.error instanceof EntityNotFound) {
-      throw new EntityNotFound(createUserResult.error.message);
-    }
-    if (createUserResult.error instanceof DataBaseError) {
-      throw new DataBaseError(createUserResult.error.message);
+    if (createUserResult.error || createUserResult.errors) {
+      throw new InvalidData(createUserResult.error.message || createUserResult.errors.message);
     }
     return new UserCreateCommand(
       createUserResult.value.userName,
@@ -49,20 +37,8 @@ class UserAdapter implements UserAdapterInterface {
   public async Edit(req: Request): Promise<EditUserCommand> {
     const editUserResult = UserEditSchema.validate(req.params.body);
 
-    if (editUserResult.error instanceof NotFoundData) {
-      throw new NotFoundData('ID not valid or not found');
-    }
-    if (editUserResult.error) {
-      throw new Error(editUserResult.error.message);
-    }
-    if (editUserResult.error instanceof InvalidData) {
-      throw new InvalidData(editUserResult.error.message);
-    }
-    if (editUserResult.error instanceof EntityNotFound) {
-      throw new EntityNotFound(editUserResult.error.message);
-    }
-    if (editUserResult.error instanceof DataBaseError) {
-      throw new DataBaseError(editUserResult.error.message);
+    if (editUserResult.error || editUserResult.errors) {
+      throw new InvalidData(editUserResult.error.message || editUserResult.errors.message);
     }
     return new EditUserCommand(
       editUserResult.value.userId,
@@ -85,17 +61,8 @@ class UserAdapter implements UserAdapterInterface {
   public async ShowById(req: Request): Promise<UserFindCommand> {
     const findUserResult = FindUserSchema.validate(req.query.search);
 
-    if (findUserResult.error) {
-      throw new Error(findUserResult.error.message);
-    }
-    if (findUserResult.error instanceof InvalidData) {
-      throw new InvalidData(findUserResult.error.message);
-    }
-    if (findUserResult.error instanceof NotFoundData) {
-      throw new NotFoundData('ID not found in database');
-    }
-    if (findUserResult.error instanceof EntityNotFound) {
-      throw new EntityNotFound(findUserResult.error.message);
+    if (findUserResult.error || findUserResult.errors) {
+      throw new InvalidData(findUserResult.error.message || findUserResult.errors.message);
     }
     return new UserFindCommand(findUserResult.value.id);
   }
@@ -112,17 +79,8 @@ class UserAdapter implements UserAdapterInterface {
       }
     }
 
-    if (idUserResult.error instanceof NotFoundData) {
-      throw new NotFoundData('ID not found in database');
-    }
-    if (idUserResult.error instanceof EntityNotFound) {
-      throw new EntityNotFound(idUserResult.error.message);
-    }
-    if (idUserResult.error) {
-      throw new Error(idUserResult.error.message);
-    }
-    if (idUserResult.error instanceof InvalidData) {
-      throw new InvalidData(idUserResult.error.message);
+    if (idUserResult.error || idUserResult.errors) {
+      throw new InvalidData(idUserResult.error.message || idUserResult.errors.message);
     }
     return new FindAllUsersCommand(idUserResult.value.id);
   }
@@ -130,17 +88,8 @@ class UserAdapter implements UserAdapterInterface {
   public async Delete(req: Request): Promise<DeleteUserCommand> {
     const deleteUserResult = UserDeleteSchema.validate(req.params);
 
-    if (deleteUserResult.error instanceof NotFoundData) {
-      throw new NotFoundData('ID not found in database');
-    }
-    if (deleteUserResult.error instanceof EntityNotFound) {
-      throw new EntityNotFound(deleteUserResult.error.message);
-    }
-    if (deleteUserResult.error) {
-      throw new Error(deleteUserResult.error.message);
-    }
-    if (deleteUserResult.error instanceof InvalidData) {
-      throw new InvalidData(deleteUserResult.error.message);
+    if (deleteUserResult.error || deleteUserResult.errors) {
+      throw new InvalidData(deleteUserResult.error.message || deleteUserResult.errors.message);
     }
 
     return new DeleteUserCommand(deleteUserResult.value.id);
