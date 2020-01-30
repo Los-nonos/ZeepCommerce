@@ -8,9 +8,9 @@ class ProductApi {
 
   public getAllProducts(id: number | undefined) {
     if (id) {
-      return this.api.get(`/products?search=${id}`);
+      return this.api.get(`/apiv1/products?search=${id}`);
     } else {
-      return this.api.get('/products');
+      return this.api.get('/apiv1/products');
     }
   }
 
@@ -19,7 +19,7 @@ class ProductApi {
       throw new Error('id is required');
     }
 
-    return this.api.get(`/products/${id}`);
+    return this.api.get(`/apiv1/products/${id}`);
   }
 
   public saveProduct(data: any) {
@@ -27,7 +27,7 @@ class ProductApi {
       throw new Error('data is required');
     }
 
-    return this.api.post('/products', data);
+    return this.api.post('/apiv1/products', data);
   }
 
   public editProduct(id: number, data: any) {
@@ -38,7 +38,7 @@ class ProductApi {
       throw new Error('data id required');
     }
 
-    return this.api.put(`/products/${id}`, data);
+    return this.api.put(`/apiv1/products/${id}`, data);
   }
 
   public deleteProduct(id: number) {
@@ -46,7 +46,7 @@ class ProductApi {
       throw new Error('id is required');
     }
 
-    return this.api.delete(`/product/${id}`);
+    return this.api.delete(`/apiv1/product/${id}`);
   }
 }
 
