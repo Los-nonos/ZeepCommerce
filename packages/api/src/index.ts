@@ -3,8 +3,8 @@ import Router from './Infraestructure/Router/Router';
 import 'reflect-metadata';
 import * as dotenv from 'dotenv';
 import { createConnectionDB } from './Infraestructure/Database/Configs';
-import container from './inversify.config';
-import TYPES from './types';
+import container from './Infraestructure/inversify.config';
+import TYPES from './Infraestructure/types';
 
 class App {
   private express: Express;

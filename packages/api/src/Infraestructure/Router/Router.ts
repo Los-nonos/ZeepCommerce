@@ -2,10 +2,12 @@ import { Express, Request, Response, NextFunction } from 'express';
 import bodyParser = require('body-parser');
 import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
 import { inject, injectable } from 'inversify';
-import TYPES from '../../types';
+import TYPES from '../types';
+import cors from 'cors';
+import routes from '../../routes/index';
 
-import container from '../../inversify.config';
-import ErrorHandler from '../ErrorsHandlers/ErrorHandler';
+import container from '../inversify.config';
+import ErrorHandler from '../../API/Http/ErrorsHandlers/ErrorHandler';
 import UserController from '../../Application/Controllers/UserController';
 
 @injectable()
@@ -25,12 +27,12 @@ class Router {
   }
 
   public up() {
+    this.middlewares();
     this.userRoutes();
+    this.catchErrors();
   }
 
-  private userRoutes() {
-    this.express.use(bodyParser.urlencoded({ extended: false }));
-    this.express.use(bodyParser.json());
+  catchErrors() {
     this.express.use((error: Error, _req: Request, res: Response, next: NextFunction) => {
       if (!error) {
         next();
@@ -40,7 +42,16 @@ class Router {
 
       errorHandler.handle(error, res);
     });
-    //routes api
+  }
+
+  middlewares() {    
+    this.express.use(cors());
+    this.express.use(bodyParser.urlencoded({ extended: false }));
+    this.express.use(bodyParser.json());
+  }
+
+  private userRoutes() {
+    this.express.use('/apiv1/', routes);
 
     //user routes
     this.express.post('/apiv1/users', this.userController.Create);
