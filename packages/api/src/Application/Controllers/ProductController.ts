@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import ProductControllerInterface from '../../Infraestructure/Interfaces/ProductControllerInterface';
 import { injectable, inject } from 'inversify';
 
-import Product from '../../Domain/Entity/Product';
+import Product from '../../Domain/Entities/Product';
 
 import TYPES from '../../types';
 import ProductAdapterInterface from '../../Infraestructure/Interfaces/ProductAdapterInterface';

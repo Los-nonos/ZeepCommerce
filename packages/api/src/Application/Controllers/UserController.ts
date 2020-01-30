@@ -14,7 +14,7 @@ import DeleteUserHandlerInterface from '../../Infraestructure/Interfaces/UserInt
 import FindUserHandlerInterface from '../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface';
 import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateCommand';
 import UserAdapterInterface from '../../Infraestructure/Interfaces/UserInterfaces/UserAdapterInterface';
-import User from '../../Domain/Entity/User';
+import User from '../../Domain/Entities/User';
 import EditUserCommand from '../../Domain/Commands/UserCommands/EditUserCommand';
 import DeleteUserCommand from '../../Domain/Commands/UserCommands/DeleteUserCommand';
 import UserFindCommand from '../../Domain/Commands/UserCommands/UserFindCommand';
