@@ -12,7 +12,7 @@ class LoginPage extends React.Component {
       <>
         <Head>
           <title>Zeep - Login</title>
-          <link href="../../static/build/scss/login.css" rel="stylesheet" />
+          <link href="../../static/build/scss/containers/login.css" rel="stylesheet" />
         </Head>
         <Header />
         <div className="page-header header-filter custom-header-login">

@@ -1,27 +1,29 @@
-import React from "react";
+import React from 'react';
 import Head from 'next/head';
 import Parallax from '../sections/home/Parallax';
-import Header from "../components/Header";
+import Header from '../components/Header';
 import Carrousel from '../components/Carrousel';
+import Footer from '../components/Footer';
 
 class Home extends React.Component {
   constructor(props: any) {
-      super(props);
-    }
+    super(props);
+  }
 
-    render(){
-        return (
-        <div>
-            <Head>
-                <link rel="stylesheet" href="../../static/build/scss/home.css" />
-            </Head>
-            <Header />
-            <Carrousel />
-            <h1>Hola, esto es un titulo</h1>
-            <Parallax />
-        </div>
-        )
-    }
+  render() {
+    return (
+      <>
+        <Head>
+            <title>Landing page - Zeep</title>
+          <link rel="stylesheet" href="../../static/build/scss/containers/home.css" />
+        </Head>
+        <Header />
+        <Carrousel />
+        <Parallax />
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default Home;
