@@ -1,8 +1,9 @@
 import { Request } from 'express';
-import NameSchema from '../../../../Application/Adapters/Schemas/NameSchema';
-import PriceSchema from '../../../../Application/Adapters/Schemas/PriceSchema';
-import DescriptionSchema from '../../../../Application/Adapters/Schemas/DescriptionSchema';
+import NameSchema from '../../Validator/Schemas/NameSchema';
+import PriceSchema from '../../Validator/Schemas/PriceSchema';
+import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
 import ProductCreateCommand from '../../../../Domain/Commands/ProductCommands/ProductCreateCommand';
+import { InvalidData } from '../../ErrorsHandlers/Errors/InvalidData';
 
 class StoreProductAdapter {
   public async from(req: Request) {
@@ -13,15 +14,15 @@ class StoreProductAdapter {
     const resultDescription = DescriptionSchema.validate({ description: description });
 
     if (resultName.error) {
-      throw new Error(resultName.error.message);
+      throw new InvalidData(resultName.error.message);
     }
 
     if (resultPrice.error) {
-      throw new Error(resultPrice.error.message);
+      throw new InvalidData(resultPrice.error.message);
     }
 
     if (resultDescription.error) {
-      throw new Error(resultDescription.error.message);
+      throw new InvalidData(resultDescription.error.message);
     }
 
     return new ProductCreateCommand(

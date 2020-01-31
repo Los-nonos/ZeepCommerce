@@ -3,8 +3,8 @@ import { Request, Response } from 'express';
 import { injectable, inject } from 'inversify';
 import TYPES from '../../Infraestructure/types';
 //Error imports
-import { InfraestructureError } from '../../API/Http/ErrorsHandlers/Errors/InfraestructureError';
-import { ApplicationError } from '../../API/Http/ErrorsHandlers/Errors/AppError';
+import { InfraestructureError } from '../../API/Http/Errors/InfraestructureError';
+import { ApplicationError } from '../../API/Http/Errors/AppError';
 
 //Interfaces
 import UserControllerInterface from '../../Infraestructure/Interfaces/UserControllerInterface';
@@ -18,7 +18,7 @@ import User from '../../Domain/Entities/User';
 import EditUserCommand from '../../Domain/Commands/UserCommands/EditUserCommand';
 import DeleteUserCommand from '../../Domain/Commands/UserCommands/DeleteUserCommand';
 import UserFindCommand from '../../Domain/Commands/UserCommands/UserFindCommand';
-import { NotFoundData } from '../../API/Http/ErrorsHandlers/Errors/NotFoundData';
+import { NotFoundData } from '../../API/Http/Errors/NotFoundData';
 import FindAllUsersHandlerInterface from '../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface';
 import FindAllUsersCommand from '../../Domain/Commands/UserCommands/FindAllUsersCommand';
 

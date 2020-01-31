@@ -1,7 +1,7 @@
 import { injectable } from 'inversify';
 import { Response } from 'express';
-import { InfraestructureError } from './Errors/InfraestructureError';
-import { ApplicationError } from './Errors/AppError';
+import { InfraestructureError } from '../../API/Http/Errors/Errors/InfraestructureError';
+import { ApplicationError } from '../../API/Http/Errors/Errors/AppError';
 
 @injectable()
 class ErrorHandler {

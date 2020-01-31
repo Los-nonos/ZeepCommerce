@@ -1,8 +1,8 @@
 import { Request } from 'express';
 import { injectable } from 'inversify';
-import NameSchema from './Schemas/NameSchema';
-import DniSchema from './Schemas/DniSchema';
-import IdSchema from './Schemas/IdSchema';
+import NameSchema from '../../API/Http/Validator/Schemas/NameSchema';
+import DniSchema from '../../API/Http/Validator/Schemas/DniSchema';
+import IdSchema from '../../API/Http/Validator/Schemas/IdSchema';
 import { InvalidData } from '../../Infraestructure/ErrorsHandlers/Errors/InvalidData';
 import UserFindCommand from '../../Domain/Commands/UserCommands/UserFindCommand';
 import EditUserCommand from '../../Domain/Commands/UserCommands/EditUserCommand';

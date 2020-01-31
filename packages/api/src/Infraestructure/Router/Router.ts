@@ -1,10 +1,8 @@
 import { Express, Request, Response, NextFunction } from 'express';
 import bodyParser = require('body-parser');
-import ProductControllerInterface from '../Interfaces/ProductControllerInterface';
 import { inject, injectable } from 'inversify';
-import TYPES from '../types';
 import cors from 'cors';
-import routes from '../../routes/index';
+import routes from '../../routes/index.routes';
 
 import container from '../inversify.config';
 import ErrorHandler from '../../API/Http/ErrorsHandlers/ErrorHandler';
@@ -14,16 +12,13 @@ import UserController from '../../Application/Controllers/UserController';
 class Router {
   private express: Express;
   private userController: UserController;
-  private productController: ProductControllerInterface;
 
   constructor(
     express: Express,
-    @inject(UserController) userController: UserController,
-    @inject(TYPES.IProductController) productController: ProductControllerInterface,
+    @inject(UserController) userController: UserController
   ) {
     this.express = express;
     this.userController = userController;
-    this.productController = productController;
   }
 
   public up() {
@@ -59,13 +54,6 @@ class Router {
     this.express.get('/apiv1/users', this.userController.ShowAll);
     this.express.put('/apiv1/users/:id', this.userController.Edit);
     this.express.delete('/apiv1/users/:id', this.userController.Delete);
-
-    //product routes
-    this.express.post('/apiv1/products', this.productController.Create);
-    this.express.put('/apiv1/products/:id', this.productController.Edit);
-    this.express.delete('/apiv1/products/:id', this.productController.Delete);
-    this.express.get('/apiv1/products/:id', this.productController.ShowById);
-    this.express.get('/apiv1/products', this.productController.ShowAll);
   }
 }
 
