@@ -5,7 +5,7 @@ import DescriptionSchema from '../../../../Application/Adapters/Schemas/Descript
 import ProductCreateCommand from '../../../../Domain/Commands/ProductCommands/ProductCreateCommand';
 
 class StoreProductAdapter {
-  public from(req: Request) {
+  public async from(req: Request) {
     const { name, price, description }: any = req.body;
 
     const resultName = NameSchema.validate({ name: name });
