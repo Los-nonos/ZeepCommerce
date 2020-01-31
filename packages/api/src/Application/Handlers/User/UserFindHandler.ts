@@ -3,7 +3,7 @@ import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
 import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 import UserFindcommand from '../../../Domain/Commands/User/UserFindCommand';
 import { injectable } from 'inversify';
-import FindUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface';
+import FindUserHandlerInterface from '../../../Infraestructure/Interfaces/User/FindUserHandlerInterface';
 
 @injectable()
 class UserFindHandler implements FindUserHandlerInterface {

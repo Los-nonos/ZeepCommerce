@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import TYPES from '../../../../Infraestructure/types';
 import DeleteUserAdapter from '../../Adapter/User/DeleteUserAdapter';
-import DeleteUserHandlerInterface from '../../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface';
+import DeleteUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/DeleteUserHandlerInterface';
 import DeleteUserCommand from '../../../../Domain/Commands/User/DeleteUserCommand';
 
 @injectable()

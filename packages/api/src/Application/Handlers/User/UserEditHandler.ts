@@ -3,7 +3,7 @@ import User from '../../../Domain/Entities/User';
 import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
 import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 import { injectable } from 'inversify';
-import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/EditUserHandlerInterface';
+import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/User/EditUserHandlerInterface';
 
 @injectable()
 class UserEditHandler implements EditUserHandlerInterface {

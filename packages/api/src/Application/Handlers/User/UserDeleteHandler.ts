@@ -1,7 +1,7 @@
 import User from '../../../Domain/Entities/User';
 import DeleteUserCommand from '../../../Domain/Commands/User/DeleteUserCommand';
 import { injectable } from 'inversify';
-import DeleteUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface';
+import DeleteUserHandlerInterface from '../../../Infraestructure/Interfaces/User/DeleteUserHandlerInterface';
 
 @injectable()
 class UserDeleteHandler implements DeleteUserHandlerInterface {

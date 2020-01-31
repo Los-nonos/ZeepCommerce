@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import EditUserAdapter from '../../Adapter/User/EditUserAdapter';
-import EditUserHandlerInterface from '../../../../Infraestructure/Interfaces/UserInterfaces/EditUserHandlerInterface';
+import EditUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/EditUserHandlerInterface';
 import EditUserCommand from '../../../../Domain/Commands/User/EditUserCommand';
 import TYPES from '../../../../Infraestructure/types';
 

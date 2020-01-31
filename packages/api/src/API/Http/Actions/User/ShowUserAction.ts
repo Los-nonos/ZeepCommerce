@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import ShowUserAdapter from '../../Adapter/User/ShowUserAdapter';
 import UserFindCommand from '../../../../Domain/Commands/User/UserFindCommand';
-import FindUserHandlerInterface from '../../../../Infraestructure/Interfaces/UserInterfaces/FindUserHandlerInterface';
+import FindUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/FindUserHandlerInterface';
 import User from '../../../../Domain/Entities/User';
 import TYPES from '../../../../Infraestructure/types';
 

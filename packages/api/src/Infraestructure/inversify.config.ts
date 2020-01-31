@@ -2,13 +2,11 @@ import { Container } from 'inversify';
 import 'reflect-metadata';
 import TYPES from './types';
 
-//User imports
-import UserControllerInterface from './Interfaces/UserControllerInterface';
-import CreateUserHandlerInterface from './Interfaces/UserInterfaces/CreateUserHandlerInterface';
-import DeleteUserHandlerInterface from './Interfaces/UserInterfaces/DeleteUserHandlerInterface';
-import EditUserHandlerInterface from './Interfaces/UserInterfaces/EditUserHandlerInterface';
+import CreateUserHandlerInterface from './Interfaces/User/CreateUserHandlerInterface';
+import DeleteUserHandlerInterface from './Interfaces/User/DeleteUserHandlerInterface';
+import EditUserHandlerInterface from './Interfaces/User/EditUserHandlerInterface';
+import FindAllUsersHandlerInterface from './Interfaces/User/FindAllUsersHandlerInterface';
 
-import UserController from '../Application/Controllers/UserController';
 import UserCreateHandler from '../Application/Handlers/User/UserCreateHandler';
 import UserEditHandler from '../Application/Handlers/User/UserEditHandler';
 import UserDeleteHandler from '../Application/Handlers/User/UserDeleteHandler';
@@ -16,48 +14,88 @@ import UserFindHandler from '../Application/Handlers/User/UserFindHandler';
 import FindAllUsersHandler from '../Application/Handlers/User/FindAllUsersHandler';
 
 //Erros imports
-import ErrorHandler from '../API/Http/ErrorsHandlers/ErrorHandler';
+import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
 
 //Product imports
-import ProductControllerInterface from './Interfaces/ProductControllerInterface';
-import ProductController from '../Application/Controllers/ProductController';
-import ProductCreateHandlerInterface from './Interfaces/ProductCreateHandlerInterface';
+import ProductCreateHandlerInterface from './Interfaces/Product/ProductCreateHandlerInterface';
 import ProductCreateHandler from '../Application/Handlers/Product/ProductCreateHandler';
-import ProductEditHandlerInterface from './Interfaces/ProductEditHandlerInterface';
+import ProductEditHandlerInterface from './Interfaces/Product/ProductEditHandlerInterface';
 import ProductEditHandler from '../Application/Handlers/Product/ProductEditHandler';
-import ProductDeleteHandlerInterface from './Interfaces/ProductDeleteHandlerInterface';
+import ProductDeleteHandlerInterface from './Interfaces/Product/ProductDeleteHandlerInterface';
 import ProductDeleteHandler from '../Application/Handlers/Product/ProductDeleteHandler';
-import ProductAdapter from '../Application/Adapters/ProductAdapter';
-import ProductAdapterInterface from './Interfaces/ProductAdapterInterface';
-import ProductFindHandlerInterface from './Interfaces/ProductFindHandlerInterface';
+import ProductFindHandlerInterface from './Interfaces/Product/ProductFindHandlerInterface';
 import ProductFindHandler from '../Application/Handlers/Product/ProductFindHandler';
-import FindUserHandlerInterface from './Interfaces/UserInterfaces/FindUserHandlerInterface';
-import CreateUserAdapterInterface from './Interfaces/UserInterfaces/UserAdapterInterface';
-import UserAdapter from '../Application/Adapters/UserAdapter';
-import FindAllUsersHandlerInterface from './Interfaces/UserInterfaces/FindAllUsersHandlerInterface';
+import FindUserHandlerInterface from './Interfaces/User/FindUserHandlerInterface';
+
+import StoreProductAction from '../API/Http/Actions/Product/StoreProductAction';
+import EditProductAction from '../API/Http/Actions/Product/EditProductAction';
+import DeleteProductAction from '../API/Http/Actions/Product/DeleteProductAction';
+import ShowAllProductAction from '../API/Http/Actions/Product/ShowAllProductAction';
+import ShowProductAction from '../API/Http/Actions/Product/ShowProductAction';
+
+import StoreUserAction from '../API/Http/Actions/User/StoreUserAction';
+import EditUserAction from '../API/Http/Actions/User/EditUserAction';
+import DeleteUserAction from '../API/Http/Actions/User/DeleteUserAction';
+import ShowAllUserAction from '../API/Http/Actions/User/ShowAllUserAction';
+import ShowUserAction from '../API/Http/Actions/User/ShowUserAction';
+
+import StoreProductAdapter from '../API/Http/Adapter/Product/StoreProductAdapter';
+import EditProductAdapter from '../API/Http/Adapter/Product/EditProductAdapter';
+import DeleteProductAdapter from '../API/Http/Adapter/Product/DeleteProductAdapter';
+import ShowAllProductAdapter from '../API/Http/Adapter/Product/ShowAllProductAdapter';
+import ShowProductAdapter from '../API/Http/Adapter/Product/ShowProductAdapter';
+
+import StoreUserAdapter from '../API/Http/Adapter/User/StoreUserAdapter';
+import EditUserAdapter from '../API/Http/Adapter/User/EditUserAdapter';
+import DeleteUserAdapter from '../API/Http/Adapter/User/DeleteUserAdapter';
+import ShowAllUserAdapter from '../API/Http/Adapter/User/ShowAllUserAdapter';
+import ShowUserAdapter from '../API/Http/Adapter/User/ShowUserAdapter';
 
 var container = new Container();
 
-// Services
+//actions
+//product
+container.bind<StoreProductAction>(StoreProductAction).toSelf();
+container.bind<EditProductAction>(EditProductAction).toSelf();
+container.bind<DeleteProductAction>(DeleteProductAction).toSelf();
+container.bind<ShowAllProductAction>(ShowAllProductAction).toSelf();
+container.bind<ShowProductAction>(ShowProductAction).toSelf();
 
-//Product services
-container.bind<ProductAdapterInterface>(TYPES.IProductAdapter).to(ProductAdapter);
-container.bind<ProductControllerInterface>(TYPES.IProductController).to(ProductController);
+//user
+container.bind<StoreUserAction>(StoreUserAction).toSelf();
+container.bind<EditUserAction>(EditUserAction).toSelf();
+container.bind<DeleteUserAction>(DeleteUserAction).toSelf();
+container.bind<ShowAllUserAction>(ShowAllUserAction).toSelf();
+container.bind<ShowUserAction>(ShowUserAction).toSelf();
+
+//adapters
+//product
+container.bind<StoreProductAdapter>(StoreProductAdapter).toSelf();
+container.bind<EditProductAdapter>(EditProductAdapter).toSelf();
+container.bind<DeleteProductAdapter>(DeleteProductAdapter).toSelf();
+container.bind<ShowAllProductAdapter>(ShowAllProductAdapter).toSelf();
+container.bind<ShowProductAdapter>(ShowProductAdapter).toSelf();
+
+//user
+container.bind<StoreUserAdapter>(StoreUserAdapter).toSelf();
+container.bind<EditUserAdapter>(EditUserAdapter).toSelf();
+container.bind<DeleteUserAdapter>(DeleteUserAdapter).toSelf();
+container.bind<ShowAllUserAdapter>(ShowAllUserAdapter).toSelf();
+container.bind<ShowUserAdapter>(ShowUserAdapter).toSelf();
+
+//handlers
+//product
 container.bind<ProductCreateHandlerInterface>(TYPES.IProductCreateHandler).to(ProductCreateHandler);
 container.bind<ProductEditHandlerInterface>(TYPES.IProductEditHandler).to(ProductEditHandler);
 container.bind<ProductDeleteHandlerInterface>(TYPES.IProductDeleteHandler).to(ProductDeleteHandler);
 container.bind<ProductFindHandlerInterface>(TYPES.IProductFindHandler).to(ProductFindHandler);
 
-//Error services
-
-// User services
-container.bind<UserControllerInterface>(TYPES.IUserController).to(UserController);
+//user
 container.bind<CreateUserHandlerInterface>(TYPES.ICreateUserHandler).to(UserCreateHandler);
 container.bind<DeleteUserHandlerInterface>(TYPES.IDeleteUserHandler).to(UserDeleteHandler);
 container.bind<EditUserHandlerInterface>(TYPES.IEditUserHandler).to(UserEditHandler);
 container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHandler);
 container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(FindAllUsersHandler);
-container.bind<CreateUserAdapterInterface>(TYPES.IUserAdapter).to(UserAdapter);
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
