@@ -3,8 +3,6 @@ import Router from './Infraestructure/Router/Router';
 import 'reflect-metadata';
 import * as dotenv from 'dotenv';
 import { createConnectionDB } from './Infraestructure/Database/Configs';
-import container from './Infraestructure/inversify.config';
-import TYPES from './Infraestructure/types';
 
 class App {
   private express: Express;
@@ -14,10 +12,7 @@ class App {
     dotenv.config();
     this.express = express();
     createConnectionDB();
-    this.router = new Router(
-      this.express,
-      container.get(TYPES.IUserController),
-    );
+    this.router = new Router(this.express);
   }
 
   public run() {

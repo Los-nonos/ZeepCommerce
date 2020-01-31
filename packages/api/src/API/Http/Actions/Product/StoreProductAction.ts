@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import TYPES from '../../../../Infraestructure/types';
-import ProductCreateHandlerInterface from '../../../../Infraestructure/Interfaces/ProductCreateHandlerInterface';
+import ProductCreateHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductCreateHandlerInterface';
 import { inject, injectable } from 'inversify';
 import StoreProductAdapter from '../../Adapter/Product/StoreProductAdapter';
 import ProductCreateCommand from '../../../../Domain/Commands/Product/ProductCreateCommand';

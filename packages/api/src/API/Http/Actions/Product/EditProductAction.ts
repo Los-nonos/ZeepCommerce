@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import ProductCreateCommand from '../../../../Domain/Commands/Product/ProductEditCommand';
-import ProductEditHandlerInterface from '../../../../Infraestructure/Interfaces/ProductEditHandlerInterface';
+import ProductEditHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductEditHandlerInterface';
 import EditProductAdapter from '../../Adapter/Product/EditProductAdapter';
 import TYPES from '../../../../Infraestructure/types';
 
