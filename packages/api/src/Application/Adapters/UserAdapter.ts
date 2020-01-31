@@ -1,7 +1,8 @@
 import { Request } from 'express';
 import { injectable } from 'inversify';
 import { UserCreateSchema, UserEditSchema, UserDeleteSchema, FindUserSchema } from './Schemas/UserSchema';
-import { InvalidData } from '../../Infraestructure/ErrorsHandlers/Errors/InvalidData';
+
+import { InvalidData } from '../../API/Http/Errors/InvalidData';
 import UserFindCommand from '../../Domain/Commands/UserCommands/UserFindCommand';
 import EditUserCommand from '../../Domain/Commands/UserCommands/EditUserCommand';
 import UserCreateCommand from '../../Domain/Commands/UserCommands/UserCreateCommand';

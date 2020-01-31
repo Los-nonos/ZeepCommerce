@@ -1,4 +1,4 @@
-import User from '../../../Domain/Entity/User';
+import User from '../../../Domain/Entities/User';
 import FindAllUsersCommand from '../../../Domain/Commands/UserCommands/FindAllUsersCommand';
 
 interface FindAllUsersHandlerInterface {

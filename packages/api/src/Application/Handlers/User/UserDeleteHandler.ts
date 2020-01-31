@@ -1,5 +1,5 @@
-import User from '../../Entity/User';
-import DeleteUserCommand from '../../Commands/UserCommands/DeleteUserCommand';
+import User from '../../../Domain/Entities/User';
+import DeleteUserCommand from '../../../Domain/Commands/UserCommands/DeleteUserCommand';
 import { injectable } from 'inversify';
 import DeleteUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface';
 

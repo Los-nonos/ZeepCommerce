@@ -1,9 +1,9 @@
-import User from '../../Entity/User';
+import User from '../../../Domain/Entities/User';
 import { injectable } from 'inversify';
 
-import { DataBaseError } from '../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError';
+import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 import FindAllUsersHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface';
-import FindAllUsersCommand from '../../Commands/UserCommands/FindAllUsersCommand';
+import FindAllUsersCommand from '../../../Domain/Commands/UserCommands/FindAllUsersCommand';
 import { MoreThanOrEqual } from 'typeorm';
 
 @injectable()
