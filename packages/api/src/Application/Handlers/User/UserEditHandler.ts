@@ -1,7 +1,7 @@
-import EditUserCommand from '../../Commands/UserCommands/EditUserCommand';
-import User from '../../Entity/User';
-import { EntityNotFound } from '../../../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
-import { DataBaseError } from '../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError';
+import EditUserCommand from '../../../Domain/Commands/UserCommands/EditUserCommand';
+import User from '../../../Domain/Entities/User';
+import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
+import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 import { injectable } from 'inversify';
 import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/EditUserHandlerInterface';
 

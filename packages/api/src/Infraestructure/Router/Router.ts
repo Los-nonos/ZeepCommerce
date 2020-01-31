@@ -5,7 +5,7 @@ import cors from 'cors';
 import routes from '../../routes/index.routes';
 
 import container from '../inversify.config';
-import ErrorHandler from '../../API/Http/ErrorsHandlers/ErrorHandler';
+import ErrorHandler from '../../Infraestructure/utils/ErrorHandler';
 import UserController from '../../Application/Controllers/UserController';
 
 @injectable()

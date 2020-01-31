@@ -17,7 +17,6 @@ class App {
     this.router = new Router(
       this.express,
       container.get(TYPES.IUserController),
-      container.get(TYPES.IProductController),
     );
   }
 
