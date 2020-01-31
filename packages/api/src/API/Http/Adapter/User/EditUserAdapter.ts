@@ -1,10 +1,10 @@
 import { Request } from 'express';
 import {UserEditSchema} from '../../Validator/Schemas/UserSchema';
 import {InvalidData} from '../../Errors/InvalidData';
-import EditUserCommand from '../../../../Domain/Commands/UserCommands/EditUserCommand';
+import EditUserCommand from '../../../../Domain/Commands/User/EditUserCommand';
 
 class EditUserAdapter {
-  public from(req: Request) {
+  public async from(req: Request) {
     const editUserResult = UserEditSchema.validate(req.params.body);
 
     if (editUserResult.error || editUserResult.errors) {

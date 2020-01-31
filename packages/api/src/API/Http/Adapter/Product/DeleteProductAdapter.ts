@@ -1,8 +1,8 @@
 import { injectable } from 'inversify';
 import { Request } from 'express';
-import ProductDeleteCommand from '../../../../Domain/Commands/ProductCommands/ProductDeleteCommand';
+import ProductDeleteCommand from '../../../../Domain/Commands/Product/ProductDeleteCommand';
 import IdSchema from '../../Validator/Schemas/IdSchema';
-import { InvalidData } from '../../ErrorsHandlers/Errors/InvalidData';
+import { InvalidData } from '../../Errors/InvalidData';
 
 @injectable()
 class DeleteProductAdapter {

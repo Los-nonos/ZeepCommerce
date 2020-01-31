@@ -1,9 +1,10 @@
 import { inject, injectable } from 'inversify';
 import { Request, Response } from 'express';
 import Product from '../../../../Domain/Entities/Product';
-import ProductFindCommand from '../../../../Domain/Commands/ProductCommands/ProductFindCommand';
+import ProductFindCommand from '../../../../Domain/Commands/Product/ProductFindCommand';
 import TYPES from '../../../../Infraestructure/types';
 import ProductFindHandlerInterface from '../../../../Infraestructure/Interfaces/ProductFindHandlerInterface';
+import ShowProductAdapter from '../../Adapter/Product/ShowProductAdapter';
 
 @injectable()
 class ShowProductAction {

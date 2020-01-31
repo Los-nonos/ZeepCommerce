@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import ProductCreateCommand from '../../../../Domain/Commands/ProductCommands/ProductEditCommand';
+import ProductCreateCommand from '../../../../Domain/Commands/Product/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../../Infraestructure/Interfaces/ProductEditHandlerInterface';
 import EditProductAdapter from '../../Adapter/Product/EditProductAdapter';
+import TYPES from '../../../../Infraestructure/types';
 
 @injectable()
 class EditProductAction {
@@ -17,7 +18,7 @@ class EditProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductCreateCommand = await this.adapter.CreateAdapter(req);
+    const command: ProductCreateCommand = await this.adapter.from(req);
     const response: string = await this.handler.Handle(command);
 
     res.status(200).json({ message: response });

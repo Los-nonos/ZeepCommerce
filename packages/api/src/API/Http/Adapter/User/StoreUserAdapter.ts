@@ -1,10 +1,10 @@
 import { Request } from 'express';
 import { UserCreateSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/InvalidData';
-import UserCreateCommand from '../../../../Domain/Commands/UserCommands/UserCreateCommand';
+import UserCreateCommand from '../../../../Domain/Commands/User/UserCreateCommand';
 
 class StoreUserAdapter {
-  public from(req: Request) {
+  public async from(req: Request) {
     const createUserResult = UserCreateSchema.validate(req.body);
 
     if (createUserResult.error || createUserResult.errors) {

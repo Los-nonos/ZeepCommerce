@@ -2,8 +2,8 @@ import { Request } from 'express';
 import NameSchema from '../../Validator/Schemas/NameSchema';
 import PriceSchema from '../../Validator/Schemas/PriceSchema';
 import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
-import ProductCreateCommand from '../../../../Domain/Commands/ProductCommands/ProductCreateCommand';
-import { InvalidData } from '../../ErrorsHandlers/Errors/InvalidData';
+import ProductCreateCommand from '../../../../Domain/Commands/Product/ProductCreateCommand';
+import { InvalidData } from '../../Errors/InvalidData';
 
 class StoreProductAdapter {
   public async from(req: Request) {

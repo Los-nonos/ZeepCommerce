@@ -1,9 +1,9 @@
-import Product from '../../Entity/Product';
-import ProductFindCommand from '../../Commands/ProductCommands/ProductFindCommand';
+import Product from '../../../Domain/Entities/Product';
+import ProductFindCommand from '../../../Domain/Commands/Product/ProductFindCommand';
 import ProductFindHandlerInterface from '../../../Infraestructure/Interfaces/ProductFindHandlerInterface';
 import { injectable } from 'inversify';
 import { MoreThanOrEqual, Equal } from 'typeorm';
-import { DataBaseError } from '../../../Infraestructure/ErrorsHandlers/Errors/DataBaseError';
+import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 
 @injectable()
 class ProductFindHandler implements ProductFindHandlerInterface {

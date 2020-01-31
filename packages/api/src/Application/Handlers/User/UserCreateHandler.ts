@@ -1,5 +1,5 @@
 import User from '../../../Domain/Entities/User';
-import UserCreateCommand from '../../../Domain/Commands/UserCommands/UserCreateCommand';
+import UserCreateCommand from '../../../Domain/Commands/User/UserCreateCommand';
 import { injectable } from 'inversify';
 import CreateUserHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/CreateUserHandlerInterface';
 

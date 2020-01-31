@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 import ProductDeleteHandlerInterface from '../../../../Infraestructure/Interfaces/ProductDeleteHandlerInterface';
 import DeleteProductAdapter from '../../Adapter/Product/DeleteProductAdapter';
 import { inject, injectable } from 'inversify';
-import ProductDeleteCommand from '../../../../Domain/Commands/ProductCommands/ProductDeleteCommand';
-
+import ProductDeleteCommand from '../../../../Domain/Commands/Product/ProductDeleteCommand';
+import TYPES from '../../../../Infraestructure/types';
 
 @injectable()
 class DeleteProductAction {

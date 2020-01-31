@@ -3,7 +3,7 @@ import { injectable } from 'inversify';
 
 import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 import FindAllUsersHandlerInterface from '../../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface';
-import FindAllUsersCommand from '../../../Domain/Commands/UserCommands/FindAllUsersCommand';
+import FindAllUsersCommand from '../../../Domain/Commands/User/FindAllUsersCommand';
 import { MoreThanOrEqual } from 'typeorm';
 
 @injectable()

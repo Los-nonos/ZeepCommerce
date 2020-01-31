@@ -1,15 +1,15 @@
 import { Request } from 'express';
-import { InvalidData } from '../../ErrorsHandlers/Errors/InvalidData';
+import { InvalidData } from '../../Errors/InvalidData';
 import IdSchema from '../../Validator/Schemas/IdSchema';
 import NameSchema from '../../Validator/Schemas/NameSchema';
 import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
 import PriceSchema from '../../Validator/Schemas/PriceSchema';
-import ProductEditCommand from '../../../../Domain/Commands/ProductCommands/ProductEditCommand';
+import ProductEditCommand from '../../../../Domain/Commands/Product/ProductEditCommand';
 import { injectable } from 'inversify';
 
 @injectable()
 class EditProductAdapter {
-  public from(req: Request) {
+  public async from(req: Request) {
     const { id }: any = req.params;
     const { name, price, description }: any = req.body;
 

@@ -1,4 +1,4 @@
-import EditUserCommand from '../../../Domain/Commands/UserCommands/EditUserCommand';
+import EditUserCommand from '../../../Domain/Commands/User/EditUserCommand';
 import User from '../../../Domain/Entities/User';
 import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
 import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';

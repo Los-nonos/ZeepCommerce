@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import ShowAllUserAdapter from '../../Adapter/User/ShowAllUserAdapter';
-import UserFindAllCommand from '../../../../Domain/Commands/UserCommands/FindAllUsersCommand';
+import UserFindAllCommand from '../../../../Domain/Commands/User/FindAllUsersCommand';
 import FindAllUserHandlerInterface from '../../../../Infraestructure/Interfaces/UserInterfaces/FindAllUsersHandlerInterface';
 import User from '../../../../Domain/Entities/User';
 import TYPES from '../../../../Infraestructure/types';

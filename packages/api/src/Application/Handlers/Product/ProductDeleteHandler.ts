@@ -1,5 +1,5 @@
-import Product from '../../Entity/Product';
-import ProductDeleteCommand from '../../Commands/ProductCommands/ProductDeleteCommand';
+import Product from '../../../Domain/Entities/Product';
+import ProductDeleteCommand from '../../../Domain/Commands/Product/ProductDeleteCommand';
 import { injectable } from 'inversify';
 
 @injectable()

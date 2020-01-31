@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 import TYPES from '../../../../Infraestructure/types';
 import DeleteUserAdapter from '../../Adapter/User/DeleteUserAdapter';
 import DeleteUserHandlerInterface from '../../../../Infraestructure/Interfaces/UserInterfaces/DeleteUserHandlerInterface';
-import DeleteUserCommand from '../../../../Domain/Commands/UserCommands/DeleteUserCommand';
+import DeleteUserCommand from '../../../../Domain/Commands/User/DeleteUserCommand';
 
 @injectable()
 class DeleteUserAction {
@@ -20,7 +20,9 @@ class DeleteUserAction {
 
   public async execute(req: Request, res: Response) {
     const command: DeleteUserCommand = await this.adapter.from(req);
-    await this.handler.Delete(command);
+    const response = await this.handler.Delete(command);
+
+    res.status(202).json({message: response});
   }
 }
 

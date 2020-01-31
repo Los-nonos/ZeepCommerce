@@ -1,5 +1,5 @@
-import Product from '../../Entity/Product';
-import ProductCreateAndEditCommand from '../../Commands/ProductCommands/ProductEditCommand';
+import Product from '../../../Domain/Entities/Product';
+import ProductCreateAndEditCommand from '../../../Domain/Commands/Product/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../Infraestructure/Interfaces/ProductEditHandlerInterface';
 import { injectable } from 'inversify';
 
@@ -22,7 +22,7 @@ class ProductEditHandler implements ProductEditHandlerInterface {
       await product.save();
       return 'Product edited';
     } catch (error) {
-      return error.messsage;
+      return error.message;
     }
   }
 }

@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import ProductFindCommand from '../../../../Domain/Commands/ProductCommands/ProductFindCommand';
+import ProductFindCommand from '../../../../Domain/Commands/Product/ProductFindCommand';
 import Product from '../../../../Domain/Entities/Product';
 import ShowAllProductAdapter from '../../Adapter/Product/ShowAllProductAdapter';
 import ShowAllProductHandler from '../../../../Application/Handlers/Product/ProductFindHandler';
 import TYPES from '../../../../Infraestructure/types';
 
+@injectable()
 class ShowAllProductAction {
   private adapter: ShowAllProductAdapter;
   private handler: ShowAllProductHandler;
@@ -19,7 +20,7 @@ class ShowAllProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductFindCommand = await this.adapter.ShowAllAdapter(req);
+    const command: ProductFindCommand = await this.adapter.from(req);
     const response: string | Product[] = await this.handler.FindAll(command);
 
     res.status(200).json({ message: 'Products in database', product: response });

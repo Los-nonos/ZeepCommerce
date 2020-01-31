@@ -1,5 +1,5 @@
-import ProductFindCommand from '../../Domain/Commands/ProductCommands/ProductFindCommand';
-import Product from '../../Domain/Entities/Product';
+import ProductFindCommand from '../../../Domain/Commands/Product/ProductFindCommand';
+import Product from '../../../Domain/Entities/Product';
 
 interface ProductFindHandlerInterface {
   FindOne(command: ProductFindCommand): Promise<Product>;
