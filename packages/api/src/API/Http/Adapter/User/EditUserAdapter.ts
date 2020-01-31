@@ -1,6 +1,6 @@
 import { Request } from 'express';
-import {UserEditSchema} from '../../Validator/Schemas/UserSchema';
-import {InvalidData} from '../../Errors/InvalidData';
+import { UserEditSchema } from '../../Validator/Schemas/UserSchema';
+import { InvalidData } from '../../Errors/InvalidData';
 import EditUserCommand from '../../../../Domain/Commands/User/EditUserCommand';
 
 class EditUserAdapter {

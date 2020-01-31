@@ -50,6 +50,7 @@ import EditUserAdapter from '../API/Http/Adapter/User/EditUserAdapter';
 import DeleteUserAdapter from '../API/Http/Adapter/User/DeleteUserAdapter';
 import ShowAllUserAdapter from '../API/Http/Adapter/User/ShowAllUserAdapter';
 import ShowUserAdapter from '../API/Http/Adapter/User/ShowUserAdapter';
+import Validator from '../API/Http/Validator/Validator';
 
 var container = new Container();
 
@@ -99,5 +100,7 @@ container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(Find
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
+
+container.bind<Validator>(Validator).toSelf();
 
 export default container;

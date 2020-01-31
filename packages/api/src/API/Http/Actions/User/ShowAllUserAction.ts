@@ -22,7 +22,7 @@ class ShowAllUserAction {
   public async execute(req: Request, res: Response) {
     const command: UserFindAllCommand = await this.adapter.from(req);
     const response: User[] = await this.handler.FindAllUsers(command);
-    
+
     res.status(200).json({ message: 'User found', user: response });
   }
 }

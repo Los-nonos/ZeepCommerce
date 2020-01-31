@@ -22,7 +22,7 @@ class DeleteUserAction {
     const command: DeleteUserCommand = await this.adapter.from(req);
     const response = await this.handler.Delete(command);
 
-    res.status(202).json({message: response});
+    res.status(202).json({ message: response });
   }
 }
 

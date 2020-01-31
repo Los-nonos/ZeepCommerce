@@ -2,18 +2,25 @@ import { Request } from 'express';
 import { UserDeleteSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/InvalidData';
 import DeleteUserCommand from '../../../../Domain/Commands/User/DeleteUserCommand';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
+import Validator from '../../Validator/Validator';
 
 @injectable()
 class DeleteUserAdapter {
-  public async from(req: Request) {
-    const deleteUserResult = UserDeleteSchema.validate(req.params);
+  private validator: Validator;
 
-    if (deleteUserResult.error || deleteUserResult.errors) {
-      throw new InvalidData(deleteUserResult.error.message || deleteUserResult.errors.message);
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
+
+  public async from(req: Request) {
+    const error = this.validator.validator(req.query, UserDeleteSchema);
+
+    if (error) {
+      throw new InvalidData(JSON.stringify(error.details[0].message));
     }
 
-    return new DeleteUserCommand(deleteUserResult.value.id);
+    return new DeleteUserCommand(req.query.id);
   }
 }
 

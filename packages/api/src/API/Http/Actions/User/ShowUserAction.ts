@@ -22,7 +22,7 @@ class ShowUserAction {
   public async execute(req: Request, res: Response) {
     const command: UserFindCommand = await this.adapter.from(req);
     const response: User = await this.handler.FindUser(command);
-    
+
     res.status(200).json({ message: 'User found', user: response });
   }
 }

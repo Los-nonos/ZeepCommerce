@@ -17,7 +17,7 @@ class ShowProductAction {
     this.adapter = adapter;
     this.handler = handler;
   }
-  
+
   public async execute(req: Request, res: Response) {
     const command: ProductFindCommand = await this.adapter.ShowByIdAdapter(req);
     const response: string | Product = await this.handler.FindOne(command);
