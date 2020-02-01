@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import Parallax from '../sections/home/Parallax';
 import Header from '../components/Header';
-import Carrousel from '../components/Carrousel';
+import Body from '../components/Body';
 import Footer from '../components/Footer';
 
 class Home extends React.Component {
@@ -18,7 +18,7 @@ class Home extends React.Component {
           <link rel="stylesheet" href="../../static/build/scss/containers/home.css" />
         </Head>
         <Header />
-        <Carrousel />
+        <Body />
         <Parallax />
         <Footer />
       </>

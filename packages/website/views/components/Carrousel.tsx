@@ -1,5 +1,7 @@
 import React from 'react';
-
+//      *-*-*-*-*-*-*-*-*-*-*-*                                           *-*-*-*-*-*-*-*-*-*-*-*
+//Cris, este archivo nose si hay que borrarlo despues de haber puesto el carrousel en el body.
+//      *-*-*-*-*-*-*-*-*-*-*-*                                           *-*-*-*-*-*-*-*-*-*-*-*
 class Carrousel extends React.Component {
   render() {
     return (
