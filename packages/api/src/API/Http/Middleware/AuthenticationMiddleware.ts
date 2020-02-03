@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import jwtConfig from './jwtConfig';
+import jwtConfig from '../../../Infraestructure/utils/jwtConfig';
 import * as jwt from 'jsonwebtoken';
 import {SessionInvalid} from '../Errors/SessionInvalid';
 import AuthorizationFailed from '../Errors/UnAuthorizedException';
