@@ -31,9 +31,8 @@ class LoginHandler {
         },
       );
       return { user, token };
-    }
-    else{
-        throw new UnAuthorizedError(`Password not valid`);
+    } else {
+      throw new UnAuthorizedError(`Password not valid`);
     }
   }
 }

@@ -17,12 +17,11 @@ class UserRepository implements BaseRepository<User> {
     return await this.repository.find();
   }
 
-  public async findOneByName(name: string): Promise<User>{
-    return await this.repository.findOne({where: {name: name}, relations: ['role']});
+  public async findOneByName(name: string): Promise<User> {
+    return await this.repository.findOne({ where: { name: name }, relations: ['role'] });
   }
 
   public async Save(t: User): Promise<User> {
-
     return await this.repository.save(t);
   }
 

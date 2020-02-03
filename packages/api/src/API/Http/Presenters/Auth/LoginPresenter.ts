@@ -1,7 +1,7 @@
-import User from "../../../../Domain/Entities/User";
-import IPresenter from "../Base/IPresenter";
+import User from '../../../../Domain/Entities/User';
+import IPresenter from '../Base/IPresenter';
 
-class LoginPresenter implements IPresenter{
+class LoginPresenter implements IPresenter {
   private result: any;
   private token: string;
 

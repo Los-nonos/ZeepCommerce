@@ -1,4 +1,1 @@
-export default interface IUserRepository{
-
-    
-}
+export default interface IUserRepository {}

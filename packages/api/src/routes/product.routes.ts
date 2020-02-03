@@ -29,7 +29,7 @@ router.get(
 router.post(
   '/products',
   (req: Request, res: Response, next: NextFunction) => {
-    authMiddleware(req, res, next, ['zeeper'])
+    authMiddleware(req, res, next, ['zeeper']);
   },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<StoreProductAction>(StoreProductAction);
@@ -40,7 +40,7 @@ router.post(
 router.put(
   '/products/:id',
   (req: Request, res: Response, next: NextFunction) => {
-    authMiddleware(req, res, next, ['zeeper'])
+    authMiddleware(req, res, next, ['zeeper']);
   },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<EditProductAction>(EditProductAction);
@@ -51,7 +51,7 @@ router.put(
 router.delete(
   '/products/:id',
   (req: Request, res: Response, next: NextFunction) => {
-    authMiddleware(req, res, next, ['zeeper'])
+    authMiddleware(req, res, next, ['zeeper']);
   },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<DeleteProductAction>(DeleteProductAction);

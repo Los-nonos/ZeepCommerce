@@ -13,40 +13,40 @@ class User extends BaseEntity {
   @Column()
   public lastname: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   public dni: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userAge: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userBirthYear: number;
 
   @Column()
   password: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userPhoneNumber: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userCellphoneNumber: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userPhoneAreaCode: number;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userCity: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userState: string;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userCountry: string;
 
   @Column()
   blocked: boolean;
 
-  @Column({nullable: true})
+  @Column({ nullable: true })
   userEmail: string;
 
   @ManyToMany(_roles => Role)
@@ -57,7 +57,7 @@ class User extends BaseEntity {
     return bcrypt.compareSync(unencryptedPassword, this.password);
   }
 
-  public getRolesFromUserRole(){
+  public getRolesFromUserRole() {
     const roles = [];
     for (const userRole of this.roles) {
       roles.push(userRole.Name);
