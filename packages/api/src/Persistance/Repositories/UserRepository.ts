@@ -1,7 +1,6 @@
-import BaseRepository from './BaseRepository';
-import User from '../Domain/Entity/User';
+import BaseRepository from '../../Domain/Interfaces/BaseRepository';
+import User from '../../Domain/Entities/User';
 import { getRepository, Repository } from 'typeorm';
-import { EntityNotFound } from '../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
 
 class UserRepository implements BaseRepository<User> {
   private repository: Repository<User>;
@@ -11,36 +10,27 @@ class UserRepository implements BaseRepository<User> {
   }
 
   public async findOne(id: number): Promise<User> {
-    const user = await this.repository.findOne({ Id: id });
-
-    if (!user) {
-      throw new EntityNotFound('not user found');
-    }
-
-    return user;
+    return await this.repository.findOne({ Id: id });
   }
 
   public async findAll(): Promise<User[]> {
     return await this.repository.find();
   }
 
-  public async Save(t: User): Promise<void> {
-    if (t == undefined) {
-      throw new Error('argument user is undefined');
-    }
+  public async findOneByName(name: string): Promise<User>{
+    return await this.repository.findOne({where: {name: name}, relations: ['role']});
+  }
 
-    await this.repository.save(t);
+  public async Save(t: User): Promise<User> {
+
+    return await this.repository.save(t);
   }
 
   public async Update(t: User): Promise<void> {
-    if (t == undefined) {
-      throw new Error('argument user is undefined');
-    }
-
     const result = await this.repository.update({ Id: t.Id }, t);
 
     if (!result.affected) {
-      throw new EntityNotFound('user not save in database, before save entity');
+      throw new Error('user not save in database, before save entity');
     }
   }
 
@@ -52,7 +42,7 @@ class UserRepository implements BaseRepository<User> {
     const result = await this.repository.remove(t);
 
     if (!result) {
-      throw new EntityNotFound('user not found in database');
+      throw new Error('user not found in database');
     }
   }
 }
