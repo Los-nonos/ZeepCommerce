@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwtConfig from '../../../Infraestructure/utils/jwtConfig';
 import * as jwt from 'jsonwebtoken';
-import {SessionInvalid} from '../Errors/SessionInvalid';
-import AuthorizationFailed from '../Errors/UnAuthorizedException';
+import { SessionInvalid } from '../Errors/SessionInvalid';
+import { UnAuthorizedError } from '../Errors/UnAuthorizedException';
 
 const checkRolesMiddleware = (roles: string[], decoded): void => {
   if (typeof decoded == 'object' && decoded.roles) {
@@ -16,7 +16,7 @@ const checkRolesMiddleware = (roles: string[], decoded): void => {
       throw new SessionInvalid('Unauthorized - invalid role');
     }
   } else {
-    throw new AuthorizationFailed('Unauthorized or corrupted token');
+    throw new UnAuthorizedError('Unauthorized or corrupted token');
   }
 };
 
@@ -25,7 +25,7 @@ export const authMiddleware = (request: Request, _response: Response, next: Next
   if (token) {
     jwt.verify(token, jwtConfig.jwtConfiguration().jwtSecret, (err, decoded): void => {
       if (err) {
-        throw new AuthorizationFailed('Unauthorized or corrupted token');
+        throw new UnAuthorizedError('Unauthorized or corrupted token');
       }
       if (roles) {
         checkRolesMiddleware(roles, decoded);
@@ -33,6 +33,6 @@ export const authMiddleware = (request: Request, _response: Response, next: Next
       return next();
     });
   } else {
-    throw new AuthorizationFailed('No token retrieved');
+    throw new UnAuthorizedError('No token retrieved');
   }
 };
