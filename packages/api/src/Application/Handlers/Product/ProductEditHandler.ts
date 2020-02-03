@@ -1,5 +1,5 @@
 import Product from '../../../Domain/Entities/Product';
-import ProductCreateAndEditCommand from '../../../Domain/Commands/Product/ProductEditCommand';
+import ProductCreateAndEditCommand from '../../../Application/Commands/Product/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductEditHandlerInterface';
 import { injectable } from 'inversify';
 

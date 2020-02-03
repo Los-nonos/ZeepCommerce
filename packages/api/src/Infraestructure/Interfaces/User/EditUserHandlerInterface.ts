@@ -1,4 +1,4 @@
-import EditUserCommand from '../../../Domain/Commands/User/EditUserCommand';
+import EditUserCommand from '../../../Application/Commands/User/EditUserCommand';
 import User from '../../../Domain/Entities/User';
 
 interface EditUserHandlerInterface {

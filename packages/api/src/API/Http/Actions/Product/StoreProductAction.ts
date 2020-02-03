@@ -3,7 +3,7 @@ import TYPES from '../../../../Infraestructure/types';
 import ProductCreateHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductCreateHandlerInterface';
 import { inject, injectable } from 'inversify';
 import StoreProductAdapter from '../../Adapter/Product/StoreProductAdapter';
-import ProductCreateCommand from '../../../../Domain/Commands/Product/ProductCreateCommand';
+import ProductCreateCommand from '../../../../Application/Commands/Product/ProductCreateCommand';
 
 @injectable()
 class StoreProductAction {

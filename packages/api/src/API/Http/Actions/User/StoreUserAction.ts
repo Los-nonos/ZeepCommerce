@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 import TYPES from '../../../../Infraestructure/types';
 import CreateUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/CreateUserHandlerInterface';
 import StoreUserAdapter from '../../Adapter/User/StoreUserAdapter';
-import UserCreateCommand from '../../../../Domain/Commands/User/UserCreateCommand';
+import UserCreateCommand from '../../../../Application/Commands/User/UserCreateCommand';
 
 @injectable()
 class StoreUserAction {

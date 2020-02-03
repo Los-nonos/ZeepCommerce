@@ -1,5 +1,5 @@
 import User from '../../../Domain/Entities/User';
-import DeleteUserCommand from '../../../Domain/Commands/User/DeleteUserCommand';
+import DeleteUserCommand from '../../../Application/Commands/User/DeleteUserCommand';
 import { injectable } from 'inversify';
 import DeleteUserHandlerInterface from '../../../Infraestructure/Interfaces/User/DeleteUserHandlerInterface';
 
@@ -10,7 +10,7 @@ class UserDeleteHandler implements DeleteUserHandlerInterface {
   public async Delete(command: DeleteUserCommand): Promise<string> {
     const id = command.getId();
 
-    const user = await User.findOne({ Id: id });
+    const user = await User.findOne({ id: id });
 
     if (!user) {
       throw new Error('User not found.');

@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import Product from '../../../Domain/Entities/Product';
-import ProductCreateCommand from '../../../Domain/Commands/Product/ProductCreateCommand';
+import ProductCreateCommand from '../../../Application/Commands/Product/ProductCreateCommand';
 import ProductCreateHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductCreateHandlerInterface';
 
 @injectable()

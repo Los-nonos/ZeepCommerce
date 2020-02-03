@@ -1,4 +1,4 @@
-import ProductEditCommand from '../../../Domain/Commands/Product/ProductEditCommand';
+import ProductEditCommand from '../../../Application/Commands/Product/ProductEditCommand';
 
 interface ProductEditHandlerInterface {
   Handle(command: ProductEditCommand): Promise<string>;

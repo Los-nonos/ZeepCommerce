@@ -10,7 +10,7 @@ class UserRepository implements BaseRepository<User> {
   }
 
   public async findOne(id: number): Promise<User> {
-    return await this.repository.findOne({ Id: id });
+    return await this.repository.findOne({ id: id });
   }
 
   public async findAll(): Promise<User[]> {
@@ -26,7 +26,7 @@ class UserRepository implements BaseRepository<User> {
   }
 
   public async Update(t: User): Promise<void> {
-    const result = await this.repository.update({ Id: t.Id }, t);
+    const result = await this.repository.update({ id: t.id }, t);
 
     if (!result.affected) {
       throw new Error('user not save in database, before save entity');

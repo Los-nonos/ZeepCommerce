@@ -1,4 +1,4 @@
-import ProductFindCommand from '../../../Domain/Commands/Product/ProductFindCommand';
+import ProductFindCommand from '../../../Application/Commands/Product/ProductFindCommand';
 import Product from '../../../Domain/Entities/Product';
 
 interface ProductFindHandlerInterface {

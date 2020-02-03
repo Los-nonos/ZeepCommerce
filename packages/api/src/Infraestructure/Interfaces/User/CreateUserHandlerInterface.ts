@@ -1,4 +1,4 @@
-import UserCreateCommand from '../../../Domain/Commands/User/UserCreateCommand';
+import UserCreateCommand from '../../../Application/Commands/User/UserCreateCommand';
 
 interface CreateUserHandlerInterface {
   Create(command: UserCreateCommand): Promise<string>;
