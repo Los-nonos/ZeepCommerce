@@ -1,16 +1,20 @@
-import {Entity, BaseEntity, PrimaryGeneratedColumn, Column} from 'typeorm';
+import {Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany} from 'typeorm';
+import Product from './Product';
 
 @Entity()
 class Category extends BaseEntity{
 
     @PrimaryGeneratedColumn()
-    public Id: number;
+    public id: number;
 
-    @Column()
+    @Column({type: 'varchar', length: 30, unique: true})
     public name: string;
 
-    @Column()
+    @Column({type: 'text', nullable: true})
     public description: string;
+
+    @ManyToMany(product => product.categories)
+    products: Product[];
 }
 
 export default Category;

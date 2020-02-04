@@ -1,16 +1,14 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import Category from '../Entities/Category';
 
 @Entity()
 class Product extends BaseEntity {
+
   @PrimaryGeneratedColumn()
   public Id: number;
 
   @Column()
   public name: string;
-
-  @Column()
-  public category: Category;
 
   @Column()
   public description: string;
@@ -29,6 +27,10 @@ class Product extends BaseEntity {
 
   @Column()
   public salePrice: number;
+
+  @ManyToMany(category => category.products)
+  @JoinTable()
+  categories: Category[];
 }
 
 export default Product;
