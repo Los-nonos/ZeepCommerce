@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { UserEditSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/InvalidData';
-import EditUserCommand from '../../../../Domain/Commands/User/EditUserCommand';
+import EditUserCommand from '../../../../Application/Commands/User/EditUserCommand';
 
 class EditUserAdapter {
   public async from(req: Request) {

@@ -1,5 +1,5 @@
 import User from '../../../Domain/Entities/User';
-import FindAllUsersCommand from '../../../Domain/Commands/User/FindAllUsersCommand';
+import FindAllUsersCommand from '../../../Application/Commands/User/FindAllUsersCommand';
 
 interface FindAllUsersHandlerInterface {
   FindAllUsers(req: FindAllUsersCommand): Promise<User[]>;

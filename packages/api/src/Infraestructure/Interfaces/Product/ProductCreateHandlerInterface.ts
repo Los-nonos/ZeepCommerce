@@ -1,4 +1,4 @@
-import ProductCreateCommand from '../../../Domain/Commands/Product/ProductCreateCommand';
+import ProductCreateCommand from '../../../Application/Commands/Product/ProductCreateCommand';
 
 interface ProductCreateHandlerInterface {
   Handle(command: ProductCreateCommand): Promise<string>;

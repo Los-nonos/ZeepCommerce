@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import ProductFindCommand from '../../../../Domain/Commands/Product/ProductFindCommand';
+import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import Product from '../../../../Domain/Entities/Product';
 import ShowAllProductAdapter from '../../Adapter/Product/ShowAllProductAdapter';
 import ShowAllProductHandler from '../../../../Application/Handlers/Product/ProductFindHandler';

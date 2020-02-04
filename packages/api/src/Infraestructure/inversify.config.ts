@@ -12,6 +12,7 @@ import UserEditHandler from '../Application/Handlers/User/UserEditHandler';
 import UserDeleteHandler from '../Application/Handlers/User/UserDeleteHandler';
 import UserFindHandler from '../Application/Handlers/User/UserFindHandler';
 import FindAllUsersHandler from '../Application/Handlers/User/FindAllUsersHandler';
+import LoginHandler from '../Application/Handlers/Auth/LoginHandler';
 
 //Erros imports
 import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
@@ -39,6 +40,8 @@ import DeleteUserAction from '../API/Http/Actions/User/DeleteUserAction';
 import ShowAllUserAction from '../API/Http/Actions/User/ShowAllUserAction';
 import ShowUserAction from '../API/Http/Actions/User/ShowUserAction';
 
+import LoginAction from '../API/Http/Actions/Auth/LoginAction';
+
 import StoreProductAdapter from '../API/Http/Adapter/Product/StoreProductAdapter';
 import EditProductAdapter from '../API/Http/Adapter/Product/EditProductAdapter';
 import DeleteProductAdapter from '../API/Http/Adapter/Product/DeleteProductAdapter';
@@ -50,6 +53,9 @@ import EditUserAdapter from '../API/Http/Adapter/User/EditUserAdapter';
 import DeleteUserAdapter from '../API/Http/Adapter/User/DeleteUserAdapter';
 import ShowAllUserAdapter from '../API/Http/Adapter/User/ShowAllUserAdapter';
 import ShowUserAdapter from '../API/Http/Adapter/User/ShowUserAdapter';
+
+import LoginAdapter from '../API/Http/Adapter/Auth/LoginAdapter';
+
 import Validator from '../API/Http/Validator/Validator';
 
 var container = new Container();
@@ -69,6 +75,9 @@ container.bind<DeleteUserAction>(DeleteUserAction).toSelf();
 container.bind<ShowAllUserAction>(ShowAllUserAction).toSelf();
 container.bind<ShowUserAction>(ShowUserAction).toSelf();
 
+//login
+container.bind<LoginAction>(LoginAction).toSelf();
+
 //adapters
 //product
 container.bind<StoreProductAdapter>(StoreProductAdapter).toSelf();
@@ -84,6 +93,9 @@ container.bind<DeleteUserAdapter>(DeleteUserAdapter).toSelf();
 container.bind<ShowAllUserAdapter>(ShowAllUserAdapter).toSelf();
 container.bind<ShowUserAdapter>(ShowUserAdapter).toSelf();
 
+//login
+container.bind<LoginAdapter>(LoginAdapter).toSelf();
+
 //handlers
 //product
 container.bind<ProductCreateHandlerInterface>(TYPES.IProductCreateHandler).to(ProductCreateHandler);
@@ -97,6 +109,9 @@ container.bind<DeleteUserHandlerInterface>(TYPES.IDeleteUserHandler).to(UserDele
 container.bind<EditUserHandlerInterface>(TYPES.IEditUserHandler).to(UserEditHandler);
 container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHandler);
 container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(FindAllUsersHandler);
+
+//login
+container.bind<LoginHandler>(LoginHandler).toSelf();
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();

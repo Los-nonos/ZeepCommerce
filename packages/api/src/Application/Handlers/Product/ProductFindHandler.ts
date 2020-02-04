@@ -1,5 +1,5 @@
 import Product from '../../../Domain/Entities/Product';
-import ProductFindCommand from '../../../Domain/Commands/Product/ProductFindCommand';
+import ProductFindCommand from '../../../Application/Commands/Product/ProductFindCommand';
 import ProductFindHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
 import { injectable } from 'inversify';
 import { MoreThanOrEqual, Equal } from 'typeorm';

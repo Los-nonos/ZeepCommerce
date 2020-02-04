@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { UserDeleteSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/InvalidData';
-import DeleteUserCommand from '../../../../Domain/Commands/User/DeleteUserCommand';
+import DeleteUserCommand from '../../../../Application/Commands/User/DeleteUserCommand';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
 

@@ -1,10 +1,11 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column } from 'typeorm';
-// import Role from './Role';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany } from 'typeorm';
+import Role from './Role';
+import * as bcrypt from 'bcryptjs';
 
 @Entity()
 class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  public Id: number;
+  public id: number;
 
   @Column()
   public name: string;
@@ -12,48 +13,57 @@ class User extends BaseEntity {
   @Column()
   public lastname: string;
 
-  @Column()
+  @Column({ nullable: true })
   public dni: number;
 
-  @Column()
+  @Column({ nullable: true })
   userAge: number;
 
-  @Column()
+  @Column({ nullable: true })
   userBirthYear: number;
 
   @Column()
-  userPassword: string;
+  password: string;
 
-  @Column()
+  @Column({ nullable: true })
   userPhoneNumber: number;
 
-  @Column()
+  @Column({ nullable: true })
   userCellphoneNumber: number;
 
-  @Column()
+  @Column({ nullable: true })
   userPhoneAreaCode: number;
 
-  @Column()
+  @Column({ nullable: true })
   userCity: string;
 
-  @Column()
+  @Column({ nullable: true })
   userState: string;
 
-  @Column()
+  @Column({ nullable: true })
   userCountry: string;
 
   @Column()
+  blocked: boolean;
+
+  @Column({ nullable: true })
   userEmail: string;
 
-  //@ManyToMany(roles => Role)
-  //@JoinTable()
-  //public roles: Role[];
+  @ManyToMany(_roles => Role)
+  @JoinTable()
+  public roles: Role[];
 
-  //public HasRole(name: string) {
-  //  return this.roles.map((role) => {
-  //      return role.Name === name;
-  //});
-  //}
+  public checkIfUnencryptedPasswordIsValid(unencryptedPassword: string): boolean {
+    return bcrypt.compareSync(unencryptedPassword, this.password);
+  }
+
+  public getRolesFromUserRole() {
+    const roles = [];
+    for (const userRole of this.roles) {
+      roles.push(userRole.Name);
+    }
+    return roles;
+  }
 }
 
 export default User;

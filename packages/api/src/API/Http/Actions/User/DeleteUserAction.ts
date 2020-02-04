@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 import TYPES from '../../../../Infraestructure/types';
 import DeleteUserAdapter from '../../Adapter/User/DeleteUserAdapter';
 import DeleteUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/DeleteUserHandlerInterface';
-import DeleteUserCommand from '../../../../Domain/Commands/User/DeleteUserCommand';
+import DeleteUserCommand from '../../../../Application/Commands/User/DeleteUserCommand';
 
 @injectable()
 class DeleteUserAction {

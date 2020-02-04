@@ -6,6 +6,7 @@ import ShowProductAction from '../API/Http/Actions/Product/ShowProductAction';
 import StoreProductAction from '../API/Http/Actions/Product/StoreProductAction';
 import EditProductAction from '../API/Http/Actions/Product/EditProductAction';
 import DeleteProductAction from '../API/Http/Actions/Product/DeleteProductAction';
+import { authMiddleware } from '../API/Http/Middleware/AuthenticationMiddleware';
 
 const router = Router();
 
@@ -27,6 +28,9 @@ router.get(
 
 router.post(
   '/products',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<StoreProductAction>(StoreProductAction);
     await action.execute(req, res);
@@ -35,6 +39,9 @@ router.post(
 
 router.put(
   '/products/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<EditProductAction>(EditProductAction);
     await action.execute(req, res);
@@ -43,6 +50,9 @@ router.put(
 
 router.delete(
   '/products/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<DeleteProductAction>(DeleteProductAction);
     await action.execute(req, res);

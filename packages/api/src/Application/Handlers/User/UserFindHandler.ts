@@ -1,7 +1,7 @@
 import User from '../../../Domain/Entities/User';
 import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
 import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
-import UserFindcommand from '../../../Domain/Commands/User/UserFindCommand';
+import UserFindcommand from '../../../Application/Commands/User/UserFindCommand';
 import { injectable } from 'inversify';
 import FindUserHandlerInterface from '../../../Infraestructure/Interfaces/User/FindUserHandlerInterface';
 
@@ -12,7 +12,7 @@ class UserFindHandler implements FindUserHandlerInterface {
   public async FindUser(command: UserFindcommand): Promise<User> {
     try {
       const id = command.getId();
-      const searchedUser: User | undefined = await User.findOne({ Id: id });
+      const searchedUser: User | undefined = await User.findOne({ id: id });
 
       if (searchedUser) {
         return searchedUser;
