@@ -1,21 +1,41 @@
-import "reflect-metadata";
-import {createConnection} from "typeorm";
-import {User} from "./entity/User";
+import express, { Express } from 'express';
+import Router from './Infraestructure/Router/Router';
+import 'reflect-metadata';
+import * as dotenv from 'dotenv';
+import { createConnectionDB } from './Infraestructure/Database/Configs';
 
-createConnection().then(async connection => {
+class App {
+  private express: Express;
+  private router: Router;
 
-    console.log("Inserting a new user into the database...");
-    const user = new User();
-    user.firstName = "Timber";
-    user.lastName = "Saw";
-    user.age = 25;
-    await connection.manager.save(user);
-    console.log("Saved a new user with id: " + user.id);
+  constructor() {
+    dotenv.config();
+    this.express = express();
+    createConnectionDB();
+    this.router = new Router(this.express);
+  }
 
-    console.log("Loading users from the database...");
-    const users = await connection.manager.find(User);
-    console.log("Loaded users: ", users);
+  public run() {
+    process
+      .on('unhandledRejection', (reason, p) => {
+        console.error(reason, 'Unhandled Rejection at Promise', p);
+      })
+      .on('uncaughtException', err => {
+        console.error(err, 'Uncaught Exception thrown');
+        process.exit(1);
+      });
 
-    console.log("Here you can setup and run express/koa/any other framework.");
+    const port = parseInt(process.env.API_PORT, 10) || 3001;
+    this.upServer(port);
+    this.router.up();
+  }
 
-}).catch(error => console.log(error));
+  private upServer(port: number) {
+    this.express.listen(port, function() {
+      console.log(`Server is run in port ${port}`);
+    });
+  }
+}
+
+const app = new App();
+app.run();
