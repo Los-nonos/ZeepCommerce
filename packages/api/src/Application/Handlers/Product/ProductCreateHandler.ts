@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import Product from '../../../Domain/Entities/Product';
-import ProductCreateCommand from '../../../Domain/Commands/Product/ProductCreateCommand';
+import ProductCreateCommand from '../../Commands/Product/ProductCreateCommand';
 import ProductCreateHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductCreateHandlerInterface';
 
 @injectable()
@@ -10,7 +10,7 @@ class ProductCreateHandler implements ProductCreateHandlerInterface {
 
     const product = new Product();
     product.name = name;
-    product.price = price;
+    product.basePrice = price;
     product.description = description;
 
     try {
