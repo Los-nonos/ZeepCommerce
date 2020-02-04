@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import Joi = require('@hapi/joi');
 
 export const UserCreateSchema = Joi.object().keys({
   name: Joi.string()
