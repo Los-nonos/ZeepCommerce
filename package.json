@@ -15,7 +15,8 @@
     "test": "lerna run test",
     "linter:check": "lerna run linter:check",
     "prettier:check": "lerna run prettier:check",
-    "prettier:run": "lerna run prettier:run"
+    "prettier:run": "lerna run prettier:run",
+    "commander:api": "docker exec -ti /zeepdocker_api_1 /bin/bash"
   },
   "workspaces": [
     "packages/*"

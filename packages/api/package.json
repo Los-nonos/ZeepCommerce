@@ -41,7 +41,11 @@
     "test": "../../node_modules/mocha/bin/mocha  --require ts-node/register ./test/**/*.ts --exit && yarn run prettier:check",
     "linter:check": "eslint 'src/**/*.ts'",
     "prettier:check": "prettier -c 'src/**/*.ts'",
-    "prettier:run": "prettier --write 'src/**/*.ts'"
+    "prettier:run": "prettier --write 'src/**/*.ts'",
+    "typeorm": "ts-node ../../node_modules/.bin/typeorm",
+    "migration:make": "ts-node ../../node_modules/.bin/typeorm migration:create -n",
+    "migration:migrate": "ts-node ../../node_modules/.bin/typeorm migration:run",
+    "migration:rollback": "ts-node ../../node_modules/.bin/typeorm migration:revert"
   },
   "devDependencies": {
     "@types/assert": "^1.4.2",
