@@ -11,8 +11,13 @@ class ProductCreateCommand {
   private margin: number;
 
 
-  constructor(name: string, description: string, basePrice: number, tax: number, 
-              costPrice: number, margin: number) {
+  constructor(
+    name: string,
+    description: string, 
+    basePrice: number, 
+    tax: number, 
+    costPrice: number, 
+    margin: number) {
 
     this.name = name;
     this.description = description;
