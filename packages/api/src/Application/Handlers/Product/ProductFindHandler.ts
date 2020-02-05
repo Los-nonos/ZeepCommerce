@@ -1,5 +1,5 @@
 import Product from '../../../Domain/Entities/Product';
-import ProductFindCommand from '../../../Domain/Commands/Product/ProductFindCommand';
+import ProductFindCommand from '../../Commands/Product/ProductFindCommand';
 import ProductFindHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
 import { injectable } from 'inversify';
 import { MoreThanOrEqual, Equal } from 'typeorm';
@@ -7,21 +7,17 @@ import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 
 @injectable()
 class ProductFindHandler implements ProductFindHandlerInterface {
+  
   public FindOne = async (command: ProductFindCommand): Promise<Product> => {
     try {
       const id = command.getId();
-
       const product: Product = await Product.findOne({ where: { Id: Equal(id) } });
 
-      if (!product) {
-        throw new Error('Not product found');
-      } else {
-        return product;
-      }
+      return product;
     } catch (error) {
       throw new DataBaseError(error.message);
     }
-  };
+  }
 
   public FindAll = async (command: ProductFindCommand): Promise<Product[]> => {
     try {
@@ -32,7 +28,7 @@ class ProductFindHandler implements ProductFindHandlerInterface {
     } catch (error) {
       throw new DataBaseError(error.message);
     }
-  };
+  }
 }
 
 export default ProductFindHandler;

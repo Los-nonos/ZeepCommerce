@@ -1,5 +1,5 @@
 import Product from '../../../Domain/Entities/Product';
-import ProductCreateAndEditCommand from '../../../Domain/Commands/Product/ProductEditCommand';
+import ProductCreateAndEditCommand from '../../Commands/Product/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductEditHandlerInterface';
 import { injectable } from 'inversify';
 
@@ -15,7 +15,7 @@ class ProductEditHandler implements ProductEditHandlerInterface {
     }
 
     product.name = command.getName();
-    product.price = command.getPrice();
+    product.basePrice = command.getBasePrice();
     product.description = command.getDescription();
 
     try {
