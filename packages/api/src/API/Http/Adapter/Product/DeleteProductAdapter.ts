@@ -1,6 +1,6 @@
 import { injectable } from 'inversify';
 import { Request } from 'express';
-import ProductDeleteCommand from '../../../../Domain/Commands/Product/ProductDeleteCommand';
+import ProductDeleteCommand from '../../../../Application/Commands/Product/ProductDeleteCommand';
 import IdSchema from '../../Validator/Schemas/IdSchema';
 import { InvalidData } from '../../Errors/InvalidData';
 

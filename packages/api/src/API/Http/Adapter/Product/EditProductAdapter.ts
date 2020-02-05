@@ -4,7 +4,7 @@ import IdSchema from '../../Validator/Schemas/IdSchema';
 import NameSchema from '../../Validator/Schemas/NameSchema';
 import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
 import PriceSchema from '../../Validator/Schemas/PriceSchema';
-import ProductEditCommand from '../../../../Domain/Commands/Product/ProductEditCommand';
+import ProductEditCommand from '../../../../Application/Commands/Product/ProductEditCommand';
 import { injectable } from 'inversify';
 
 @injectable()

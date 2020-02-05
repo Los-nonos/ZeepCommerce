@@ -1,6 +1,6 @@
 import Joi from '@hapi/joi';
 
-export const CreateCategorySchema = Joi.object().keys({
+export const CategoryCreateSchema = Joi.object().keys({
 
     name: Joi.string()
     .min(2)
@@ -13,7 +13,7 @@ export const CreateCategorySchema = Joi.object().keys({
     .required()
 });
 
-export const EditCategorySchema = Joi.object().keys({
+export const CategoryEditSchema = Joi.object().keys({
 
     id: Joi.number()
     .min(0)
@@ -30,14 +30,14 @@ export const EditCategorySchema = Joi.object().keys({
     .required()
 });
 
-export const DeleteCategorySchema = Joi.object().keys({
+export const CategoryDeleteSchema = Joi.object().keys({
 
     id: Joi.number()
     .min(0)
     .required()
 });
 
-export const ShowCategorySchema = Joi.object().keys({
+export const CategoryShowSchema = Joi.object().keys({
 
     id: Joi.number()
     .min(0),

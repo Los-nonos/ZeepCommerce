@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { UserCreateSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/InvalidData';
-import UserCreateCommand from '../../../../Domain/Commands/User/UserCreateCommand';
+import UserCreateCommand from '../../../../Application/Commands/User/UserCreateCommand';
 
 class StoreUserAdapter {
   public async from(req: Request) {

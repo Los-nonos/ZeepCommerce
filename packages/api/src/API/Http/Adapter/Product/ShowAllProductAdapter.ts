@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { InvalidData } from '../../Errors/InvalidData';
 import IdSchema from '../../Validator/Schemas/IdSchema';
-import ProductFindCommand from '../../../../Domain/Commands/Product/ProductFindCommand';
+import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import { injectable } from 'inversify';
 
 @injectable()
