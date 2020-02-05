@@ -1,7 +1,5 @@
-backend/.env
-backend/node_modules/*
-frontend/node_modules/*
-*/node_modules/*
+node_modules/*
 .idea/*
-backend/dist/*
-frontend/build/*
+.env
+./**/dist/*
+*.log
