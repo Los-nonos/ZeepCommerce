@@ -28,7 +28,8 @@ class Product extends BaseEntity {
   @Column()
   public salePrice: number;
 
-  @ManyToMany(category => category.products)
+  //@ManyToMany(category => category.products)
+  @ManyToMany(_type => Category)
   @JoinTable()
   categories: Category[];
 }

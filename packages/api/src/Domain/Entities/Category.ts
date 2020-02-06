@@ -13,7 +13,8 @@ class Category extends BaseEntity{
     @Column({type: 'text', nullable: true})
     public description: string;
 
-    @ManyToMany(product => product.categories)
+    //@ManyToMany(product => product.categories)
+    @ManyToMany(_type => Product)
     products: Product[];
 }
 
