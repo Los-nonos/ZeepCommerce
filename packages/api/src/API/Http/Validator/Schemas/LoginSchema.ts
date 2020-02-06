@@ -10,3 +10,10 @@ export const LoginSchema = Joi.object().keys({
     .max(20)
     .required(),
 });
+
+export const RenewTokenSchema = {
+  token: Joi.string()
+    .min(3)
+    .max(500)
+    .required(),
+};
