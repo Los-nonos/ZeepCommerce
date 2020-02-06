@@ -2,6 +2,8 @@ import CategoryEditHandlerInterface from '../../../Infraestructure/Interfaces/Ca
 import CategoryEditCommand from '../../Commands/Category/CategoryEditCommand';
 import Category from '../../../Domain/Entities/Category'
 import { injectable } from 'inversify';
+import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
+import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 
 @injectable()
 class CategoryEditHandler implements CategoryEditHandlerInterface{
@@ -13,7 +15,7 @@ class CategoryEditHandler implements CategoryEditHandlerInterface{
         const category = await Category.findOne({ id: id });
 
         if (!category) {
-            throw new Error('Category not foud');
+            throw new EntityNotFound('Category not foud');
         }
 
         category.name = command.getName();
@@ -23,7 +25,7 @@ class CategoryEditHandler implements CategoryEditHandlerInterface{
             await category.save();
             return 'Category edited';
         } catch (error) {
-            return error.message;
+            throw new DataBaseError(error);
         }
     }
 }
