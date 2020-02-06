@@ -1,18 +1,18 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import ProductFindCommand from '../../../../Domain/Commands/Product/ProductFindCommand';
+import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import Product from '../../../../Domain/Entities/Product';
 import ShowAllProductAdapter from '../../Adapter/Product/ShowAllProductAdapter';
-import ShowAllProductHandler from '../../../../Application/Handlers/Product/ProductFindHandler';
+import ProductFindHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
 import TYPES from '../../../../Infraestructure/types';
 
 @injectable()
 class ShowAllProductAction {
   private adapter: ShowAllProductAdapter;
-  private handler: ShowAllProductHandler;
+  private handler: ProductFindHandlerInterface;
 
   constructor(
-    @inject(TYPES.IProductFindHandler) handler: ShowAllProductHandler,
+    @inject(TYPES.IProductFindHandler) handler: ProductFindHandlerInterface,
     @inject(ShowAllProductAdapter) adapter: ShowAllProductAdapter,
   ) {
     this.adapter = adapter;

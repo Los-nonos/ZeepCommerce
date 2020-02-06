@@ -1,4 +1,4 @@
-import CategoryFindHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryFindHandler'
+import CategoryFindHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryFindHandlerInterface'
 import Category from '../../../Domain/Entities/Category';
 import { Equal, MoreThanOrEqual } from 'typeorm';
 import CategoryFindCommand from '../../Commands/Category/CategoryFindCommand';
