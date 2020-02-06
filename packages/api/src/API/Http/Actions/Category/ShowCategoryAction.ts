@@ -23,7 +23,7 @@ class ShowCategoryAction{
 
     public async execute(req: Request, res: Response) {
         const command: CategoryFindCommand = await this.adapter.from(req);
-        const response: string | Category = await this.handler.FindOne(command);
+        const response: Category = await this.handler.FindOne(command);
 
         return res.status(200).json({ message: response });
   }

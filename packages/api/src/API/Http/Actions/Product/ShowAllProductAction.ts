@@ -21,7 +21,7 @@ class ShowAllProductAction {
 
   public async execute(req: Request, res: Response) {
     const command: ProductFindCommand = await this.adapter.from(req);
-    const response: string | Product[] = await this.handler.FindAll(command);
+    const response: Product[] = await this.handler.FindAll(command);
 
     res.status(200).json({ message: 'Products in database', product: response });
   }
