@@ -18,7 +18,15 @@ class Home extends React.Component {
           <link rel="stylesheet" href="../../static/build/scss/containers/home.css" />
         </Head>
         <Header />
+        
         <Body />
+        <div className="main main-raised custom-card-body">
+          <div className="container">
+            <div className="section text-center">
+              <h2 className="title">Your main section here</h2>
+            </div>
+          </div>
+        </div>
         <Parallax />
         <Footer />
       </>
