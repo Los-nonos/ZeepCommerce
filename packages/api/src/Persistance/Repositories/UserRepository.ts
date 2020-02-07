@@ -1,8 +1,8 @@
-import BaseRepository from '../../Domain/Interfaces/BaseRepository';
 import User from '../../Domain/Entities/User';
 import { getRepository, Repository } from 'typeorm';
+import IUserRepository from '../../Domain/Interfaces/IUserRepository';
 
-class UserRepository implements BaseRepository<User> {
+class UserRepository implements IUserRepository {
   private repository: Repository<User>;
 
   constructor() {
@@ -33,7 +33,7 @@ class UserRepository implements BaseRepository<User> {
     }
   }
 
-  public async Remove(t: User): Promise<void> {
+  public async Delete(t: User): Promise<void> {
     if (t == undefined) {
       throw new Error('argument user is undefined');
     }
