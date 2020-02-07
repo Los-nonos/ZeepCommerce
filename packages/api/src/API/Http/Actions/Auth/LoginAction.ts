@@ -1,11 +1,12 @@
 import { Request, Response } from 'express';
 import LoginAdapter from '../../Adapter/Auth/LoginAdapter';
 import LoginHandler from '../../../../Application/Handlers/Auth/LoginHandler';
-import { inject } from 'inversify';
+import { inject, injectable } from 'inversify';
 import LoginPresenter from '../../Presenters/Auth/LoginPresenter';
 import { success } from '../../Presenters/Base/success';
 import { HTTP_CODES } from '../../Enums/HttpCodes';
 
+@injectable()
 class LoginAction {
   private handler: LoginHandler;
   private adapter: LoginAdapter;
