@@ -1,7 +1,7 @@
 import EditUserCommand from '../../../Application/Commands/User/EditUserCommand';
 import User from '../../../Domain/Entities/User';
-import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
-import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
+import { EntityNotFound } from '../../../Infraestructure/Errors/EntityNotFound';
+import { DataBaseError } from '../../../Infraestructure/Errors/DataBaseError';
 import { injectable } from 'inversify';
 import EditUserHandlerInterface from '../../../Infraestructure/Interfaces/User/EditUserHandlerInterface';
 

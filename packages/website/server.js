@@ -22,3 +22,5 @@ app.prepare().then(() => {
     console.log(`> Ready on http://localhost:${port}`);
   });
 });
+
+//TS_NODE_PROJECT=test/tsconfig.json ../../node_modules/mocha/bin/mocha  --require ts-node/register ./test/**/*.tsx tests que dejo acá hasta que se implementen

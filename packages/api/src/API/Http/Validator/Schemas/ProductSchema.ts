@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import Joi = require('@hapi/joi');
 
 export const StoreProductSchema = Joi.object().keys({
   name: Joi.string()
