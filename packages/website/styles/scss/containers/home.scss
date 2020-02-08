@@ -1,7 +1,4 @@
 @import '../../material-kit';
+@import '../components/Header.scss';
+@import '../components/CardBody.scss';
 @import '../components/Footer.scss';
-@import '../components/Body.scss';
-
-.custom-card-body {
-    z-index: 40;
-}

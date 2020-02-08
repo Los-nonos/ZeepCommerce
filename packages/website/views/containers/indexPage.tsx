@@ -4,6 +4,7 @@ import Parallax from '../sections/home/Parallax';
 import Header from '../components/Header';
 import Body from '../components/Body';
 import Footer from '../components/Footer';
+import { getQueryHash } from '../../helpers';
 
 class Home extends React.Component {
   constructor(props: any) {
@@ -15,10 +16,9 @@ class Home extends React.Component {
       <>
         <Head>
             <title>Landing page - Zeep</title>
-          <link rel="stylesheet" href="../../static/build/scss/containers/home.css" />
+          <link rel="stylesheet" href={`../../static/build/scss/containers/home.css?query=${getQueryHash()}`} />
         </Head>
         <Header />
-        
         <Body />
         <div className="main main-raised custom-card-body">
           <div className="container">

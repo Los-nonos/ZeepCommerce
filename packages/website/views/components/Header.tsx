@@ -8,9 +8,9 @@ class Header extends React.Component<any, any> {
   render() {
     return (
       <div className="header-3">
-        <nav className="navbar navbar-transparent navbar-absolute navbar-expand-lg">
-          <div className="container">
-            <div className="navbar-translate">
+        <nav className="navbar navbar-transparent navbar-absolute navbar-expand-lg custom-navbar">
+          <div className="container custom-nav-complit">
+            <div className="navbar-translate custom-zeep-color">
               <a className="navbar-brand" href="/">
                 Zeep
               </a>
@@ -26,7 +26,7 @@ class Header extends React.Component<any, any> {
                 <span className="navbar-toggler-icon"></span>
               </button>
             </div>
-            <div className="collapse navbar-collapse" id="navigation-example3">
+            <div className="collapse navbar-collapse custom-li-a-color" id="navigation-example3">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <a href="/faq" className="nav-link">
