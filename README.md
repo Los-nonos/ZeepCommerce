@@ -1,5 +1,8 @@
 # ZeepCommerce
 Commerce service
+
+## Para saber como levantar el proyecto, leer la documentacion "How to up proyect" que se encuentra en la wiki del repositorio.
+
 # Arquitectura del Sistema
 
 Respecto a la organización de capas lógicas se encuentra basado en Arquitectura Hexagonal / Ports and Adapter / Onion Architecture:
