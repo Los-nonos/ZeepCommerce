@@ -1,7 +1,7 @@
 import LoginCommand from '../../Commands/Auth/LoginCommand';
 import { inject } from 'inversify';
 import UserRepository from '../../../Persistance/Repositories/UserRepository';
-import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
+import { EntityNotFound } from '../../../Infraestructure/Errors/EntityNotFound';
 import { UnAuthorizedError } from '../../../API/Http/Errors/UnAuthorizedException';
 import * as jwt from 'jsonwebtoken';
 import jwtConfig from '../../../Infraestructure/utils/jwtConfig';

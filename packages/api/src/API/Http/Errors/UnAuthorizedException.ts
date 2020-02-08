@@ -1,4 +1,4 @@
-import { InfraestructureError } from './InfraestructureError';
+import { InfraestructureError } from '../../../Infraestructure/Errors/InfraestructureError';
 
 export class UnAuthorizedError extends InfraestructureError {
   constructor(message: string) {
