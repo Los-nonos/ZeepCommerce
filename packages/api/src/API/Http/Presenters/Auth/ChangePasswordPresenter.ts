@@ -1,18 +1,22 @@
 import IPresenter from '../Base/IPresenter';
+import User from '../../../../Domain/Entities/User';
 
 class ChangePasswordPresenter implements IPresenter {
-  private response: any;
-  
-  constructor(response: any) {
-    this.response = response;
+  private user: User;
+
+  constructor(user: User) {
+    this.user = user;
   }
 
   toJson(): string {
-    throw new Error('Method not implemented.');
+    return JSON.stringify(this.getData());
   }
 
   getData(): object {
-    throw new Error('Method not implemented.');
+    return {
+      name: this.user.name,
+      lastname: this.user.lastname,
+    };
   }
 }
 

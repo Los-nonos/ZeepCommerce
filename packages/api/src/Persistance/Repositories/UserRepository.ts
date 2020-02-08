@@ -18,7 +18,7 @@ class UserRepository implements IUserRepository {
   }
 
   public async findOneByName(name: string): Promise<User> {
-    return await this.repository.findOne({ where: { name: name }, relations: ['role'] });
+    return await this.repository.findOne({ where: { username: name }, relations: ['role'] });
   }
 
   public async Save(t: User): Promise<User> {
