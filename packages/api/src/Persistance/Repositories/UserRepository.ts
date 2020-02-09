@@ -9,19 +9,19 @@ class UserRepository implements IUserRepository {
     this.repository = getRepository(User);
   }
 
-  public async findOne(id: number): Promise<User> {
+  public async FindById(id: number): Promise<User> {
     return await this.repository.findOne({ id: id });
   }
 
-  public async findAll(): Promise<User[]> {
+  public async Find(): Promise<User[]> {
     return await this.repository.find();
   }
 
-  public async findOneByName(name: string): Promise<User> {
+  public async FindByName(name: string): Promise<User> {
     return await this.repository.findOne({ where: { username: name }, relations: ['role'] });
   }
 
-  public async Save(t: User): Promise<User> {
+  public async Persist(t: User): Promise<User> {
     return await this.repository.save(t);
   }
 
