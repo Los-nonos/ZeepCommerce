@@ -1,7 +1,5 @@
 import React from 'react';
-//      *-*-*-*-*-*-*-*-*-*-*-*                                           *-*-*-*-*-*-*-*-*-*-*-*
-//Cris, este archivo nose si hay que borrarlo despues de haber puesto el carrousel en el body.
-//      *-*-*-*-*-*-*-*-*-*-*-*                                           *-*-*-*-*-*-*-*-*-*-*-*
+
 class Carrousel extends React.Component {
   render() {
     return (
@@ -19,14 +17,12 @@ class Carrousel extends React.Component {
                   <div className="col-md-6 text-left">
                     <h1 className="title">Material Kit PRO</h1>
                     <h4>
-                      Dolce &amp; Gabbana is a luxury Italian fashion house founded in 1985 in Legnano by Italian
-                      designers Domenico Dolce and Stefano Gabbana. The two met in Milan in 1980 and designed for the
-                      same fashion house.
+                      Zeep commerce un grupo de amigos en un departamento, que se miraron a la cara y se propusieron desarrollar una plataforma.
                     </h4>
                     <br />
                     <div className="buttons">
-                      <a href="#pablo" className="btn btn-danger btn-lg">
-                        Read More
+                      <a href="/products" className="btn btn-danger btn-lg custom-button">
+                        productos
                       </a>
                       <a href="#pablo" className="btn btn-just-icon btn-white btn-link">
                         <i className="fa fa-twitter"></i>

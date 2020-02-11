@@ -23,7 +23,18 @@ class Home extends React.Component {
         <div className="main main-raised custom-card-body">
           <div className="container">
             <div className="section text-center">
-              <h2 className="title">Your main section here</h2>
+              <h2 className="title">Imagenes de productos</h2>
+              <section className="section-img">
+                <div className="img-one">
+                  <img src="./public/src/img/one.jpg" alt=""/>
+                </div>
+                <div className="img-two">
+                <img src="" alt=""/>
+                </div>
+                <div className="img-three">
+                <img src="" alt=""/>
+                </div>
+              </section>
             </div>
           </div>
         </div>

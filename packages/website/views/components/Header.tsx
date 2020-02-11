@@ -8,7 +8,7 @@ class Header extends React.Component<any, any> {
   render() {
     return (
       <div className="header-3">
-        <nav className="navbar navbar-transparent navbar-absolute navbar-expand-lg custom-navbar">
+        <nav className="navbar navbar-absolute navbar-expand-lg custom-navbar">
           <div className="container custom-nav-complit">
             <div className="navbar-translate custom-zeep-color">
               <a className="navbar-brand" href="/">
