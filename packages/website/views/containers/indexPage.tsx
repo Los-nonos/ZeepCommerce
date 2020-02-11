@@ -20,7 +20,7 @@ class Home extends React.Component {
         </Head>
         <Header />
         <Body />
-        <div className="main main-raised custom-card-body">
+        {/* <div className="main main-raised custom-card-body">
           <div className="container">
             <div className="section text-center">
               <h2 className="title">Imagenes de productos</h2>
@@ -37,7 +37,7 @@ class Home extends React.Component {
               </section>
             </div>
           </div>
-        </div>
+        </div> */}
         <Parallax />
         <Footer />
       </>
