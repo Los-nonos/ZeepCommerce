@@ -1,6 +1,3 @@
-import { injectable } from 'inversify';
-
-@injectable()
 class ProductCreateCommand {
 
   private name: string;

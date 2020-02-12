@@ -1,4 +1,4 @@
-import {Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany} from 'typeorm';
+import {Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable} from 'typeorm';
 import Product from './Product';
 
 @Entity()
@@ -15,6 +15,7 @@ class Category extends BaseEntity{
 
     //@ManyToMany(product => product.categories)
     @ManyToMany(_type => Product)
+    @JoinTable()
     products: Product[];
 }
 

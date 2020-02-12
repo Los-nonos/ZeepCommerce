@@ -1,6 +1,3 @@
-import { injectable } from "inversify";
-
-@injectable()
 class CategoryCreateCommand{
 
     private name: string;
