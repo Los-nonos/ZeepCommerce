@@ -39,12 +39,17 @@ export const CategoryDeleteSchema = Joi.object().keys({
 
 export const CategoryShowSchema = Joi.object().keys({
 
-    id: Joi.number()
-    .min(0),
-
     name: Joi.string()
-    .allow(''),
+    .allow('')
+    .required(),
 
     description: Joi.string()
     .allow('')
+});
+
+export const CategoryShowByIdSchema = Joi.object().keys({
+
+    id: Joi.number()
+    .min(0)
+    .required()
 });

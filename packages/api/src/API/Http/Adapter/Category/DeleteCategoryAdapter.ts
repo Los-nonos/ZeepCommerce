@@ -2,19 +2,27 @@ import { Request } from 'express';
 import { CategoryDeleteSchema } from '../../Validator/Schemas/CategorySchema';
 import { InvalidData } from '../../Errors/InvalidData';
 import CategoryDeleteCommand from '../../../../Application/Commands/Category/CategoryDeleteCommand';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
+import Validator from '../../Validator/Validator';
 
 @injectable()
 class DeleteCategoryAdapter{
 
-    public async from (req: Request){
-        const categoryDeleteResult = CategoryDeleteSchema.validate(req.params);
+    private validator: Validator;
 
-        if (categoryDeleteResult.error || categoryDeleteResult.errors) {
-            throw new InvalidData(categoryDeleteResult.error.message || categoryDeleteResult.errors.message);
+    constructor(@inject(Validator) validator: Validator){
+        this.validator = validator;
+    }
+
+    public async from (req: Request): Promise <CategoryDeleteCommand>{
+
+        const categoryDeleteResult = this.validator.validator(req.params, CategoryDeleteSchema);
+
+        if (categoryDeleteResult) {
+            throw new InvalidData(JSON.stringify(this.validator.validationResult(categoryDeleteResult)));
           }
   
-          return new CategoryDeleteCommand(categoryDeleteResult.value.id);
+          return new CategoryDeleteCommand(Number(req.params.id));
     }
 }
 
