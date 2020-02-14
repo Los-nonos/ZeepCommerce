@@ -79,7 +79,6 @@ import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
 //Validator import
 import Validator from '../API/Http/Validator/Validator';
 import CategoryRepositoryInterface from '../Domain/Interfaces/CategoryRepositoryInterface';
-import CategoryRepositoryInterface from '../Domain/Interfaces/CategoryRepositoryInterface';
 import CategoryRepository from '../Persistance/Repositories/CategoryRepository';
 
 var container = new Container();
