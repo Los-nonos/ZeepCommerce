@@ -1,3 +1,3 @@
-import Home from '../views/containers/indexPage';
+import LandingPage from '../views/containers/LandingPage';
 
-export default Home;
+export default LandingPage;

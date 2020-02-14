@@ -3,14 +3,14 @@ import React from 'react';
 class Carrousel extends React.Component {
   render() {
     return (
-      <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+      <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel" data-interval="3000">
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <div className="page-header header-filter">
+            <div className="page-header header-filter background-carrousel-1">
               <div className="container">
                 <div className="row">
                   <div className="col-md-6 text-left">
-                    <h1 className="title">Material Kit PRO</h1>
+                    <h1 className="title">Zeep</h1>
                     <h4>
                       Zeep commerce un grupo de amigos en un departamento, que se miraron a la cara y se propusieron desarrollar una plataforma.
                     </h4>
@@ -35,7 +35,7 @@ class Carrousel extends React.Component {
             </div>
           </div>
           <div className="carousel-item">
-            <div className="page-header header-filter">
+            <div className="page-header header-filter background-carrousel-2">
               <div className="container">
                 <div className="row">
                   <div className="col-md-8 ml-auto mr-auto text-center">
@@ -67,7 +67,7 @@ class Carrousel extends React.Component {
             </div>
           </div>
           <div className="carousel-item">
-            <div className="page-header header-filter">
+            <div className="page-header header-filter background-carrousel">
               <div className="container">
                 <div className="row">
                   <div className="col-md-7 ml-auto text-right">
