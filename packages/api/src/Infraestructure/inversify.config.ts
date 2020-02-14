@@ -78,6 +78,9 @@ import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
 
 //Validator import
 import Validator from '../API/Http/Validator/Validator';
+import CategoryRepositoryInterface from '../Domain/Interfaces/CategoryRepositoryInterface';
+import CategoryRepositoryInterface from '../Domain/Interfaces/CategoryRepositoryInterface';
+import CategoryRepository from '../Persistance/Repositories/CategoryRepository';
 
 var container = new Container();
 
@@ -145,6 +148,15 @@ container.bind<DeleteUserHandlerInterface>(TYPES.IDeleteUserHandler).to(UserDele
 container.bind<EditUserHandlerInterface>(TYPES.IEditUserHandler).to(UserEditHandler);
 container.bind<FindUserHandlerInterface>(TYPES.IFindUserHandler).to(UserFindHandler);
 container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(FindAllUsersHandler);
+
+
+//repositories
+//product
+
+//category
+container.bind<CategoryRepositoryInterface>(TYPES.ICategoryRepository).to(CategoryRepository);
+
+//user
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
