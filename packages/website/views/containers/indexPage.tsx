@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import Parallax from '../sections/home/Parallax';
 import Header from '../components/Header';
-import Body from '../components/Body';
+//import Body from '../components/Body';
 import Footer from '../components/Footer';
 import { getQueryHash } from '../../helpers';
+import Faq from '../sections/home/Faq';
 
 class Home extends React.Component {
   constructor(props: any) {
@@ -19,26 +19,26 @@ class Home extends React.Component {
           <link rel="stylesheet" href={`../../static/build/scss/containers/home.css?query=${getQueryHash()}`} />
         </Head>
         <Header />
-        <Body />
+        <img className="background" src="/background.jpg" alt=""/>
         <div className="main main-raised custom-card-body">
           <div className="container">
             <div className="section text-center">
               <h2 className="title">Imagenes de productos</h2>
-              <section className="section-img">
-                <div className="img-one">
-                  <img src="./public/src/img/one.jpg" alt=""/>
+              <section className="container-img">
+                <div className="img img-one">
+                  <img className="img-img" src="one.jpg" width="150px" height="150px" alt=""/>
                 </div>
-                <div className="img-two">
-                <img src="" alt=""/>
+                <div className="img img-two">
+                  <img className="img-img" src="two.jpg" width="150px" height="150px" alt=""/>
                 </div>
-                <div className="img-three">
-                <img src="" alt=""/>
+                <div className="img img-three">
+                  <img className="img-img" src="three.jpg" width="150px" height="150px" alt=""/>
                 </div>
               </section>
             </div>
           </div>
+          <Faq />
         </div>
-        <Parallax />
         <Footer />
       </>
     );

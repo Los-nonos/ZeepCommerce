@@ -4,3 +4,16 @@
     position: fixed !important;
     top: 0px;
 }
+
+// -- botones --
+
+.nav-item {
+    background: rgba($color: #c5c3c3, $alpha: .2);
+    margin: 2px;
+    padding: 0px;
+    border-radius: 2px;
+}
+
+.nav-item:hover {
+    background: rgba($color: #c5c3c3, $alpha: .5);
+}
