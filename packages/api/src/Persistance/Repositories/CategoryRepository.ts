@@ -1,10 +1,11 @@
-import ICategoryRepository from "../../Domain/Interfaces/ICategoryRepository";
+import CategoryRepositoryInterface from "../../Domain/Interfaces/CategoryRepositoryInterface";
 import { Repository, getRepository } from "typeorm";
 import Category from "../../Domain/Entities/Category";
 import { id } from "inversify";
 import { EntityNotFound } from "../../API/Http/Errors/EntityNotFound";
 
-class CategoryRepository implements ICategoryRepository{
+
+class CategoryRepository implements CategoryRepositoryInterface{
 
     private repository: Repository<Category>;
 

@@ -1,6 +1,6 @@
 import Category from "../Entities/Category";
 
-interface ICategoryRepository{
+interface CategoryRepositoryInterface{
 
     FindAll(params: any): Promise <Category[]>;
     FindById(id: number): Promise <Category>;
@@ -11,4 +11,4 @@ interface ICategoryRepository{
 
 }
 
-export default ICategoryRepository;
+export default CategoryRepositoryInterface;
