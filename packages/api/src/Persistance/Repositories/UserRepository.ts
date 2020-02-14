@@ -1,4 +1,4 @@
-import BaseRepository from './BaseRepository';
+import BaseRepository from '../../Domain/Interfaces/BaseRepository';
 import User from '../Domain/Entity/User';
 import { getRepository, Repository } from 'typeorm';
 import { EntityNotFound } from '../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
