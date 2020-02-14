@@ -4,16 +4,19 @@ import CategoryEditHandlerInterface from '../../../../Infraestructure/Interfaces
 import { inject, injectable } from 'inversify';
 import EditProductAdapter from '../../Adapter/Category/EditCategoryAdapter';
 import CategoryEditCommand from '../../../../Application/Commands/Category/CategoryEditCommand';
+import Category from '../../../../Domain/Entities/Category';
+import EditCategoryAdapter from '../../Adapter/Category/EditCategoryAdapter';
+import CategoryEditPresenter from '../../Presenter/Category/CategoryEditPresenter';
 
 @injectable()
 class EditCategoryAction{
     
     private handler: CategoryEditHandlerInterface;
-    private adapter: EditProductAdapter;
+    private adapter: EditCategoryAdapter;
 
     constructor(
         @inject(TYPES.ICategoryEditHandler) handler: CategoryEditHandlerInterface,
-        @inject(EditProductAdapter) adapter: EditProductAdapter,
+        @inject(EditCategoryAdapter) adapter: EditCategoryAdapter,
     ){
         this.handler = handler;
         this.adapter = adapter;
@@ -22,9 +25,10 @@ class EditCategoryAction{
 
     public async execute(req: Request, res: Response) {
         const command: CategoryEditCommand = await this.adapter.from(req);
-        const response: string = await this.handler.Handle(command);
+        const response: Category = await this.handler.Handle(command);
+        const presenter = new CategoryEditPresenter(response);
 
-        return res.status(200).json({ message: response });
+        return res.status(200).json(presenter.getData());
   }
 }
 

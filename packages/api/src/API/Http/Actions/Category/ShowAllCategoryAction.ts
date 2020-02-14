@@ -3,8 +3,9 @@ import TYPES from '../../../../Infraestructure/types';
 import CategoryFindHandlerInterface from '../../../../Infraestructure/Interfaces/Category/CategoryFindHandlerInterface';
 import { inject, injectable } from 'inversify';
 import ShowAllCategoryAdapter from '../../Adapter/Category/ShowAllCategoryAdapter';
-import CategoryFindCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
 import Category from '../../../../Domain/Entities/Category';
+import CategoryFindCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
+import CategoryFindAllPresenter from '../../Presenter/Category/CategoryFindAllPresenter';
 
 @injectable()
 class ShowAllCategoryAction{
@@ -23,9 +24,10 @@ class ShowAllCategoryAction{
 
     public async execute(req: Request, res: Response) {
         const command: CategoryFindCommand = await this.adapter.from(req);
-        const response: Category[] = await this.handler.FindAll(command);
+        const response: Category[] = await this.handler.HandleFindAll(command);
+        const presenter = new CategoryFindAllPresenter(response);
 
-        return res.status(200).json({ message: response });
+        return res.status(200).json(presenter.getData());
   }
 }
 
