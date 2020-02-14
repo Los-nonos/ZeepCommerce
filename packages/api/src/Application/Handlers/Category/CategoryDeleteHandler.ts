@@ -1,27 +1,33 @@
 import Category from '../../../Domain/Entities/Category'
 import CategoryDeleteHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryDeleteHandlerInterface'
 import CategoryDeleteCommand from '../../Commands/Category/CategoryDeleteCommand';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
+import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
+import TYPES from '../../../Infraestructure/types';
+import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
+import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 
 @injectable()
 class CategoryDeleteHandler implements CategoryDeleteHandlerInterface{
 
-    public async Handle(command: CategoryDeleteCommand): Promise <string> {
+    private repository: CategoryRepositoryInterface;
 
-        const id = command.getId();
+    constructor(@inject(TYPES.ICategoryRepository) repository: CategoryRepositoryInterface){
+      this.repository = repository;
+    }
 
-        const category = await Category.findOne({id: id});
+    public async Handle(command: CategoryDeleteCommand): Promise <void> {
+      let categoryResult = await this.repository.FindById(command.getId());
 
-
-    if (!category) {
-        throw new Error('Category not found.');
+      if (!categoryResult) {
+        throw new EntityNotFound('Category not found.');
       }
   
       try {
-        await category.remove();
-        return 'Category deleted';
+        await this.repository.Delete(categoryResult);
+        
       } catch (error) {
-        return error.message;
+        throw new DataBaseError('');
       }
     }
 }
