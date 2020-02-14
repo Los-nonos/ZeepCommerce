@@ -17,7 +17,7 @@ class CategoryDeleteHandler implements CategoryDeleteHandlerInterface{
     }
 
     public async Handle(command: CategoryDeleteCommand): Promise <void> {
-      let categoryResult = await this.repository.FindById(command.getId());
+      const categoryResult = await this.repository.FindById(command.getId());
 
       if (!categoryResult) {
         throw new EntityNotFound('Category not found.');
