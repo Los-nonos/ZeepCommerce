@@ -27,7 +27,7 @@ class CategoryDeleteHandler implements CategoryDeleteHandlerInterface{
         await this.repository.Delete(categoryResult);
         
       } catch (error) {
-        throw new DataBaseError('');
+        throw new DataBaseError(error);
       }
     }
 }

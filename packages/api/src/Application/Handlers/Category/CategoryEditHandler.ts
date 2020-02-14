@@ -1,29 +1,35 @@
 import CategoryEditHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryEditHandlerInterface'
 import CategoryEditCommand from '../../Commands/Category/CategoryEditCommand';
 import Category from '../../../Domain/Entities/Category'
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
 import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
 import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
+import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
+import TYPES from '../../../Infraestructure/types';
 
 @injectable()
 class CategoryEditHandler implements CategoryEditHandlerInterface{
 
-    public async Handle(command: CategoryEditCommand): Promise <string> {
+    private repository: CategoryRepositoryInterface;
 
-        const id = command.getId();
+    constructor(@inject(TYPES.ICategoryRepository) repository: CategoryRepositoryInterface) {
+        this.repository = repository;
+    }
 
-        const category = await Category.findOne({ id: id });
+    public async Handle(command: CategoryEditCommand): Promise <Category> {
 
-        if (!category) {
-            throw new EntityNotFound('Category not foud');
+        const category = await this.repository.FindById(command.getId())
+
+        if(!category) {
+            throw new EntityNotFound('Category not found.');
         }
 
         category.name = command.getName();
         category.description = command.getDescription();
 
         try {
-            await category.save();
-            return 'Category edited';
+            return await this.repository.Update(category);
+
         } catch (error) {
             throw new DataBaseError(error);
         }

@@ -31,7 +31,7 @@ class CategoryCreateHandler implements CategoryCreateHandlerInterface{
         return await this.repository.Create(category);
 
       }catch(error){
-        throw new DataBaseError('');
+        throw new DataBaseError(error);
       }
     }
 }

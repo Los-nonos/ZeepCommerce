@@ -2,8 +2,8 @@ import CategoryFindCommand from '../../../Application/Commands/Category/Category
 import Category from '../../../Domain/Entities/Category';
 
 interface CategoryFindHandlerInterface {
-  FindOne(command: CategoryFindCommand): Promise<Category>;
-  FindAll(command: CategoryFindCommand): Promise<Category[]>;
+  HandleFindById(command: CategoryFindCommand): Promise<Category>;
+  HandleFindAll(command: CategoryFindCommand): Promise<Category[]>;
 }
 
 export default CategoryFindHandlerInterface;
