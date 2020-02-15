@@ -12,7 +12,10 @@ import UserEditHandler from '../Application/Handlers/User/UserEditHandler';
 import UserDeleteHandler from '../Application/Handlers/User/UserDeleteHandler';
 import UserFindHandler from '../Application/Handlers/User/UserFindHandler';
 import FindAllUsersHandler from '../Application/Handlers/User/FindAllUsersHandler';
+
 import LoginHandler from '../Application/Handlers/Auth/LoginHandler';
+import RenewTokenHandler from '../Application/Handlers/Auth/RenewTokenHandler';
+import ChangePasswordHandler from '../Application/Handlers/Auth/ChangePasswordHandler';
 
 //Erros imports
 import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
@@ -41,6 +44,8 @@ import ShowAllUserAction from '../API/Http/Actions/User/ShowAllUserAction';
 import ShowUserAction from '../API/Http/Actions/User/ShowUserAction';
 
 import LoginAction from '../API/Http/Actions/Auth/LoginAction';
+import RenewTokenAction from '../API/Http/Actions/Auth/RenewTokenAction';
+import ChangePasswordAction from '../API/Http/Actions/Auth/ChangePasswordAction';
 
 import StoreProductAdapter from '../API/Http/Adapter/Product/StoreProductAdapter';
 import EditProductAdapter from '../API/Http/Adapter/Product/EditProductAdapter';
@@ -55,6 +60,8 @@ import ShowAllUserAdapter from '../API/Http/Adapter/User/ShowAllUserAdapter';
 import ShowUserAdapter from '../API/Http/Adapter/User/ShowUserAdapter';
 
 import LoginAdapter from '../API/Http/Adapter/Auth/LoginAdapter';
+import RenewTokenAdapter from '../API/Http/Adapter/Auth/RenewTokenAdapter';
+import ChangePasswordAdapter from '../API/Http/Adapter/Auth/ChangePasswordAdapter';
 
 import Validator from '../API/Http/Validator/Validator';
 
@@ -77,6 +84,8 @@ container.bind<ShowUserAction>(ShowUserAction).toSelf();
 
 //login
 container.bind<LoginAction>(LoginAction).toSelf();
+container.bind<RenewTokenAction>(RenewTokenAction).toSelf();
+container.bind<ChangePasswordAction>(ChangePasswordAction).toSelf();
 
 //adapters
 //product
@@ -95,6 +104,8 @@ container.bind<ShowUserAdapter>(ShowUserAdapter).toSelf();
 
 //login
 container.bind<LoginAdapter>(LoginAdapter).toSelf();
+container.bind<RenewTokenAdapter>(RenewTokenAdapter).toSelf();
+container.bind<ChangePasswordAdapter>(ChangePasswordAdapter).toSelf();
 
 //handlers
 //product
@@ -112,6 +123,8 @@ container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(Find
 
 //login
 container.bind<LoginHandler>(LoginHandler).toSelf();
+container.bind<RenewTokenHandler>(RenewTokenHandler).toSelf();
+container.bind<ChangePasswordHandler>(ChangePasswordHandler).toSelf();
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();

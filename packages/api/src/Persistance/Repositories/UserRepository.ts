@@ -1,27 +1,27 @@
-import BaseRepository from '../../Domain/Interfaces/BaseRepository';
 import User from '../../Domain/Entities/User';
 import { getRepository, Repository } from 'typeorm';
+import IUserRepository from '../../Domain/Interfaces/IUserRepository';
 
-class UserRepository implements BaseRepository<User> {
+class UserRepository implements IUserRepository {
   private repository: Repository<User>;
 
   constructor() {
     this.repository = getRepository(User);
   }
 
-  public async findOne(id: number): Promise<User> {
+  public async FindById(id: number): Promise<User> {
     return await this.repository.findOne({ id: id });
   }
 
-  public async findAll(): Promise<User[]> {
+  public async Find(): Promise<User[]> {
     return await this.repository.find();
   }
 
-  public async findOneByName(name: string): Promise<User> {
-    return await this.repository.findOne({ where: { name: name }, relations: ['role'] });
+  public async FindByName(name: string): Promise<User> {
+    return await this.repository.findOne({ where: { username: name }, relations: ['role'] });
   }
 
-  public async Save(t: User): Promise<User> {
+  public async Persist(t: User): Promise<User> {
     return await this.repository.save(t);
   }
 
@@ -33,7 +33,7 @@ class UserRepository implements BaseRepository<User> {
     }
   }
 
-  public async Remove(t: User): Promise<void> {
+  public async Delete(t: User): Promise<void> {
     if (t == undefined) {
       throw new Error('argument user is undefined');
     }

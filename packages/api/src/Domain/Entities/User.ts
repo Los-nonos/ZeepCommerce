@@ -64,6 +64,10 @@ class User extends BaseEntity {
     }
     return roles;
   }
+
+  public hashPassword(newPassword: string): void {
+    this.password = bcrypt.hashSync(newPassword, 8);
+  }
 }
 
 export default User;
