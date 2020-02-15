@@ -6,11 +6,7 @@ class paraCopiar extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        
-      </div>
-    );
+    return <div></div>;
   }
 }
 

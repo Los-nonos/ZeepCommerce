@@ -7,10 +7,9 @@ class Faq extends React.Component {
 
   render() {
     return (
-      
       <div>
         <head>
-          <link rel="stylesheet" href="../../styles/scss/sections/body/Faq"/>
+          <link rel="stylesheet" href="../../styles/scss/sections/body/Faq" />
         </head>
         <div className="section questions-section">
           <h2 className="title text-center">Frequently asked Questions</h2>

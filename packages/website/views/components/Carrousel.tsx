@@ -12,7 +12,8 @@ class Carrousel extends React.Component {
                   <div className="col-md-6 text-left">
                     <h1 className="title">Zeep</h1>
                     <h4>
-                      Zeep commerce un grupo de amigos en un departamento, que se miraron a la cara y se propusieron desarrollar una plataforma.
+                      Zeep commerce un grupo de amigos en un departamento, que se miraron a la cara y se propusieron
+                      desarrollar una plataforma.
                     </h4>
                     <br />
                     <div className="buttons">

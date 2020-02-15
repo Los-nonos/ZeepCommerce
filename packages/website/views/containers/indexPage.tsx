@@ -15,17 +15,15 @@ class Home extends React.Component {
     return (
       <>
         <Head>
-            <title>Landing page - Zeep</title>
+          <title>Landing page - Zeep</title>
           <link rel="stylesheet" href={`../../static/build/scss/containers/home.css?query=${getQueryHash()}`} />
         </Head>
         <Header />
-<<<<<<< HEAD
-        <img className="background" src="/background.jpg" alt=""/>
+        <img className="background" src="/background.jpg" alt="" />
         <div className="main main-raised custom-card-body">
-=======
-        <Body />
-        {/* <div className="main main-raised custom-card-body">
->>>>>>> dfb25fdf06fe0c927f23159f8e1d4be24734f510
+          {/* <Body /> */}
+          {/* <div className="main main-raised custom-card-body">
+
           <div className="container">
             <div className="section text-center">
               <h2 className="title">Imagenes de productos</h2>
@@ -42,13 +40,12 @@ class Home extends React.Component {
               </section>
             </div>
           </div>
-<<<<<<< HEAD
           <Faq />
         </div>
-=======
         </div> */}
-        <Parallax />
->>>>>>> dfb25fdf06fe0c927f23159f8e1d4be24734f510
+          <Faq />
+          {/* <Parallax /> */}
+        </div>
         <Footer />
       </>
     );
