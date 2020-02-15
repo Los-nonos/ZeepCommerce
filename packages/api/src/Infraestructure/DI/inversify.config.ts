@@ -13,9 +13,32 @@ import UserDeleteHandler from '../../Application/Handlers/User/UserDeleteHandler
 import UserFindHandler from '../../Application/Handlers/User/UserFindHandler';
 import FindAllUsersHandler from '../../Application/Handlers/User/FindAllUsersHandler';
 
+import CreateUserRoleAction from '../../API/Http/Actions/UserRole/CreateUserRoleAction';
+import EditUserRoleAction from '../../API/Http/Actions/UserRole/EditUserRoleAction';
+import DeleteUserRoleAction from '../../API/Http/Actions/UserRole/DeleteUserRoleAction';
+import FindByIdUserRoleAction from '../../API/Http/Actions/UserRole/FindByIdUserRoleAction';
+import FindUserRoleAction from '../../API/Http/Actions/UserRole/FindUserRoleAction';
+
+import CreateUserRoleAdapter from '../../API/Http/Adapter/UserRole/CreateUserRoleAdapter';
+import EditUserRoleAdapter from '../../API/Http/Adapter/UserRole/EditUserRoleAdapter';
+import DeleteUserRoleAdapter from '../../API/Http/Adapter/UserRole/DeleteUserRoleAdapter';
+import FindByIdUserRoleAdapter from '../../API/Http/Adapter/UserRole/FindByIdUserRoleAdapter';
+import FindUserRoleAdapter from '../../API/Http/Adapter/UserRole/FindUserRoleAdapter';
+
+import CreateUserRoleHandler from '../../Application/Handlers/UserRole/CreateUserRoleHandler';
+import EditUserRoleHandler from '../../Application/Handlers/UserRole/EditUserRoleHandler';
+import DeleteUserRoleHandler from '../../Application/Handlers/UserRole/DeleteUserRoleHandler';
+import FindByIdUserRoleHandler from '../../Application/Handlers/UserRole/FindByIdUserRoleHandler';
+import FindUserRoleHandler from '../../Application/Handlers/UserRole/FindUserRoleHandler';
+
 import LoginHandler from '../../Application/Handlers/Auth/LoginHandler';
 import RenewTokenHandler from '../../Application/Handlers/Auth/RenewTokenHandler';
 import ChangePasswordHandler from '../../Application/Handlers/Auth/ChangePasswordHandler';
+
+import UserRepository from '../../Persistance/Repositories/UserRepository';
+import IUserRepository from '../../Domain/Interfaces/IUserRepository';
+import UserRoleRepository from '../../Persistance/Repositories/UserRoleRepository';
+import IUserRoleRepository from '../../Domain/Interfaces/IUserRoleRepository';
 
 //Erros imports
 import ErrorHandler from '../utils/ErrorHandler';
@@ -87,6 +110,13 @@ container.bind<LoginAction>(LoginAction).toSelf();
 container.bind<RenewTokenAction>(RenewTokenAction).toSelf();
 container.bind<ChangePasswordAction>(ChangePasswordAction).toSelf();
 
+//userroles
+container.bind<CreateUserRoleAction>(CreateUserRoleAction).toSelf();
+container.bind<EditUserRoleAction>(EditUserRoleAction).toSelf();
+container.bind<DeleteUserRoleAction>(DeleteUserRoleAction).toSelf();
+container.bind<FindByIdUserRoleAction>(FindByIdUserRoleAction).toSelf();
+container.bind<FindUserRoleAction>(FindUserRoleAction).toSelf();
+
 //adapters
 //product
 container.bind<StoreProductAdapter>(StoreProductAdapter).toSelf();
@@ -107,6 +137,13 @@ container.bind<LoginAdapter>(LoginAdapter).toSelf();
 container.bind<RenewTokenAdapter>(RenewTokenAdapter).toSelf();
 container.bind<ChangePasswordAdapter>(ChangePasswordAdapter).toSelf();
 
+//userroles
+container.bind<CreateUserRoleAdapter>(CreateUserRoleAdapter).toSelf();
+container.bind<EditUserRoleAdapter>(EditUserRoleAdapter).toSelf();
+container.bind<DeleteUserRoleAdapter>(DeleteUserRoleAdapter).toSelf();
+container.bind<FindByIdUserRoleAdapter>(FindByIdUserRoleAdapter).toSelf();
+container.bind<FindUserRoleAdapter>(FindUserRoleAdapter).toSelf();
+
 //handlers
 //product
 container.bind<ProductCreateHandlerInterface>(TYPES.IProductCreateHandler).to(ProductCreateHandler);
@@ -126,8 +163,19 @@ container.bind<LoginHandler>(LoginHandler).toSelf();
 container.bind<RenewTokenHandler>(RenewTokenHandler).toSelf();
 container.bind<ChangePasswordHandler>(ChangePasswordHandler).toSelf();
 
+//user roles
+container.bind<CreateUserRoleHandler>(CreateUserRoleHandler).toSelf();
+container.bind<EditUserRoleHandler>(EditUserRoleHandler).toSelf();
+container.bind<DeleteUserRoleHandler>(DeleteUserRoleHandler).toSelf();
+container.bind<FindByIdUserRoleHandler>(FindByIdUserRoleHandler).toSelf();
+container.bind<FindUserRoleHandler>(FindUserRoleHandler).toSelf();
+
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
+
+//repositories
+container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
+container.bind<IUserRoleRepository>(TYPES.IUserRolesRepository).to(UserRoleRepository);
 
 container.bind<Validator>(Validator).toSelf();
 
