@@ -6,7 +6,6 @@ import { injectable } from 'inversify';
 
 @injectable()
 class ShowCategoryAdapter {
-
   public async from(req: Request) {
     const findCategoryResult = CategoryShowSchema.validate(req.query.search);
 

@@ -5,17 +5,16 @@ import CategoryDeleteCommand from '../../../../Application/Commands/Category/Cat
 import { injectable } from 'inversify';
 
 @injectable()
-class DeleteCategoryAdapter{
+class DeleteCategoryAdapter {
+  public async from(req: Request) {
+    const categoryDeleteResult = CategoryDeleteSchema.validate(req.params);
 
-    public async from (req: Request){
-        const categoryDeleteResult = CategoryDeleteSchema.validate(req.params);
-
-        if (categoryDeleteResult.error || categoryDeleteResult.errors) {
-            throw new InvalidData(categoryDeleteResult.error.message || categoryDeleteResult.errors.message);
-          }
-  
-          return new CategoryDeleteCommand(categoryDeleteResult.value.id);
+    if (categoryDeleteResult.error || categoryDeleteResult.errors) {
+      throw new InvalidData(categoryDeleteResult.error.message || categoryDeleteResult.errors.message);
     }
+
+    return new CategoryDeleteCommand(categoryDeleteResult.value.id);
+  }
 }
 
-export default DeleteCategoryAdapter
+export default DeleteCategoryAdapter;

@@ -5,21 +5,16 @@ import CategoryCreateCommand from '../../../../Application/Commands/Category/Cat
 import { injectable } from 'inversify';
 
 @injectable()
-class StoreCategoryAdapter{
+class StoreCategoryAdapter {
+  public async from(req: Request) {
+    const createCategoryResult = CategoryCreateSchema.validate(req.body);
 
-    public async from(req: Request){
-        
-        const createCategoryResult = CategoryCreateSchema.validate(req.body);
-
-        if (createCategoryResult.error || createCategoryResult.errors) {
-            throw new InvalidData(createCategoryResult.error.message || createCategoryResult.errors.message);
-          }
-
-        return new CategoryCreateCommand(
-            createCategoryResult.value.name,
-            createCategoryResult.value.description
-        )
+    if (createCategoryResult.error || createCategoryResult.errors) {
+      throw new InvalidData(createCategoryResult.error.message || createCategoryResult.errors.message);
     }
+
+    return new CategoryCreateCommand(createCategoryResult.value.name, createCategoryResult.value.description);
+  }
 }
 
 export default StoreCategoryAdapter;

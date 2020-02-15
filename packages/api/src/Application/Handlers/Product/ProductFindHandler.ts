@@ -7,7 +7,6 @@ import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
 
 @injectable()
 class ProductFindHandler implements ProductFindHandlerInterface {
-  
   public FindOne = async (command: ProductFindCommand): Promise<Product> => {
     try {
       const id = command.getId();
@@ -17,7 +16,7 @@ class ProductFindHandler implements ProductFindHandlerInterface {
     } catch (error) {
       throw new DataBaseError(error.message);
     }
-  }
+  };
 
   public FindAll = async (command: ProductFindCommand): Promise<Product[]> => {
     try {
@@ -28,7 +27,7 @@ class ProductFindHandler implements ProductFindHandlerInterface {
     } catch (error) {
       throw new DataBaseError(error.message);
     }
-  }
+  };
 }
 
 export default ProductFindHandler;

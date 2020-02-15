@@ -5,21 +5,20 @@ import CategoryEditCommand from '../../../../Application/Commands/Category/Categ
 import { injectable } from 'inversify';
 
 @injectable()
-class EditCategoryAdapter{
+class EditCategoryAdapter {
+  public async from(req: Request) {
+    const categoryEditResult = CategoryEditSchema.validate(req.params.body);
 
-    public async from(req: Request) {
-        const categoryEditResult = CategoryEditSchema.validate(req.params.body);
-    
-        if (categoryEditResult.error || categoryEditResult.errors) {
-          throw new InvalidData(categoryEditResult.error.message || categoryEditResult.errors.message);
-        }
-
-        return new CategoryEditCommand(
-            categoryEditResult.value.id,
-            categoryEditResult.value.name,
-            categoryEditResult.value.description
-        );
+    if (categoryEditResult.error || categoryEditResult.errors) {
+      throw new InvalidData(categoryEditResult.error.message || categoryEditResult.errors.message);
     }
+
+    return new CategoryEditCommand(
+      categoryEditResult.value.id,
+      categoryEditResult.value.name,
+      categoryEditResult.value.description,
+    );
+  }
 }
 
-export default EditCategoryAdapter
+export default EditCategoryAdapter;

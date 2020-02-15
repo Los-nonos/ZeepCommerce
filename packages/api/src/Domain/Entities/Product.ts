@@ -3,7 +3,6 @@ import Category from '../Entities/Category';
 
 @Entity()
 class Product extends BaseEntity {
-
   @PrimaryGeneratedColumn()
   public Id: number;
 

@@ -138,7 +138,6 @@ container.bind<CategoryEditHandlerInterface>(TYPES.ICategoryEditHandler).to(Cate
 container.bind<CategoryDeleteHandlerInterface>(TYPES.ICategoryDeleteHandler).to(CategoryDeleteHandler);
 container.bind<CategoryFindHandlerInterface>(TYPES.ICategoryFindHandler).to(CategoryFindHandler);
 
-
 //user
 container.bind<CreateUserHandlerInterface>(TYPES.ICreateUserHandler).to(UserCreateHandler);
 container.bind<DeleteUserHandlerInterface>(TYPES.IDeleteUserHandler).to(UserDeleteHandler);
