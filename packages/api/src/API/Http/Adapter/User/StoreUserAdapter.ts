@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { UserCreateSchema } from '../../Validator/Schemas/UserSchema';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 import UserCreateCommand from '../../../../Application/Commands/User/UserCreateCommand';
 
 class StoreUserAdapter {

@@ -9,7 +9,7 @@ class FindByIdUserRolePresenter implements IPresenter {
     return JSON.stringify(this.getData());
   }
   public getData(): object {
-    return { result: this.result };
+    return { result: { name: this.result.Name } };
   }
 }
 

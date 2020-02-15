@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 import Presenter from '../../Presenters/UserRole/EditUserRolePresenter';
 import { success } from '../../Presenters/Base/success';
 import { HTTP_CODES } from '../../Enums/HttpCodes';
-import EditUserRoleAdapter from '../../Adapters/UserRole/EditUserRoleAdapter';
+import EditUserRoleAdapter from '../../Adapter/UserRole/EditUserRoleAdapter';
 import EditUserRoleHandler from '../../../../Application/Handlers/UserRole/EditUserRoleHandler';
 
 @injectable()

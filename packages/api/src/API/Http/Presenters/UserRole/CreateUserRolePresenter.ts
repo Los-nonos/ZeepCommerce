@@ -9,7 +9,7 @@ class CreateUserRolePresenter implements IPresenter {
     return JSON.stringify(this.getData());
   }
   public getData(): object {
-    return { result: this.result };
+    return { result: { name: this.result.Name, id: this.result.Id } };
   }
 }
 

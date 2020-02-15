@@ -16,7 +16,7 @@ class FindByIdUserRoleAdapter {
     if (error) {
       throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
     }
-    return new FindByIdUserRoleCommand(req.body);
+    return new FindByIdUserRoleCommand(Number(req.params.id));
   }
 }
 

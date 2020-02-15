@@ -4,7 +4,7 @@ import ShowAllUserAdapter from '../../Adapter/User/ShowAllUserAdapter';
 import UserFindAllCommand from '../../../../Application/Commands/User/FindAllUsersCommand';
 import FindAllUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/FindAllUsersHandlerInterface';
 import User from '../../../../Domain/Entities/User';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 
 @injectable()
 class ShowAllUserAction {

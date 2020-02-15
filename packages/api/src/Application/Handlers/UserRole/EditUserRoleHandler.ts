@@ -1,10 +1,12 @@
-import { inject, injectable } from 'inversify';
+import { injectable } from 'inversify';
 import EditUserRoleCommand from '../../Commands/UserRole/EditUserRoleCommand';
+import { UnAuthorizedError } from '../../../API/Http/Errors/UnAuthorizedException';
 
 @injectable()
 class EditUserRoleHandler {
-  constructor() {}
-  public async execute(command: EditUserRoleCommand): Promise<any> {}
+  public async execute(command: EditUserRoleCommand): Promise<any> {
+    throw new UnAuthorizedError(`not edit user roles`);
+  }
 }
 
 export default EditUserRoleHandler;

@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import { HTTP_CODES } from '../../Enums/HttpCodes';
-import DeleteUserRoleAdapter from '../../Adapters/UserRole/DeleteUserRoleAdapter';
+import DeleteUserRoleAdapter from '../../Adapter/UserRole/DeleteUserRoleAdapter';
 import DeleteUserRoleHandler from '../../../../Application/Handlers/UserRole/DeleteUserRoleHandler';
 
 @injectable()

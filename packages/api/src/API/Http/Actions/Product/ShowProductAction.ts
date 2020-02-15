@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify';
 import { Request, Response } from 'express';
 import Product from '../../../../Domain/Entities/Product';
 import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 import ProductFindHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
 import ShowProductAdapter from '../../Adapter/Product/ShowProductAdapter';
 

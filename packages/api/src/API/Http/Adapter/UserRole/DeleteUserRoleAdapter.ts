@@ -2,22 +2,22 @@ import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
 import { BadRequest } from '../../Errors/BadRequest';
-import FindUserRoleCommand from '../../../../Application/Commands/UserRole/FindUserRoleCommand';
-import FindUserRoleSchema from '../../Validator/Schemas/UserRoleSchema';
+import DeleteUserRoleCommand from '../../../../Application/Commands/UserRole/DeleteUserRoleCommand';
+import { IdSchema } from '../../Validator/Schemas/Common';
 
 @injectable()
-class FindUserRoleAdapter {
+class DeleteUserRoleAdapter {
   private validator: Validator;
   constructor(@inject(Validator) validator: Validator) {
     this.validator = validator;
   }
-  public async from(req: Request): Promise<FindUserRoleCommand> {
-    const error = this.validator.validate(req.params, FindUserRoleSchema);
+  public async from(req: Request): Promise<DeleteUserRoleCommand> {
+    const error = this.validator.validate(req.params, IdSchema);
     if (error) {
       throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
     }
-    return new FindUserRoleCommand(req.body);
+    return new DeleteUserRoleCommand(Number(req.params.id));
   }
 }
 
-export default FindUserRoleAdapter;
+export default DeleteUserRoleAdapter;
