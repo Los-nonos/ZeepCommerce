@@ -1,5 +1,5 @@
 import { Express } from 'express';
-import express = require('express')
+import express = require('express');
 import Router from './Infraestructure/Router/Router';
 import 'reflect-metadata';
 import * as dotenv from 'dotenv';

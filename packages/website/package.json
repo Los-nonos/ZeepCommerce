@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js --hmr-port 1235 & sass styles:static/build --watch",
-    "test": "TS_NODE_PROJECT=test/tsconfig.json ../../node_modules/mocha/bin/mocha  --require ts-node/register ./test/**/*.tsx",
+    "test": "",
     "build": "next build && sass styles:static/build",
     "linter:check": "eslint './**/*.tsx'",
     "prettier:check": "prettier -c './**/*.tsx'",
