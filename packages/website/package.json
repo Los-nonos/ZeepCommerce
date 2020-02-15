@@ -14,7 +14,7 @@
     "export": "next export"
   },
   "dependencies": {
-    "react-router-dom": "^5.1.2",
+    "@material-ui/core": "^4.9.2",
     "app-root-path": "^2.2.1",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -27,6 +27,7 @@
     "qs": "^6.7.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-router-dom": "^5.1.2",
     "react-toastify": "^5.0.0",
     "sass": "^1.19.0",
     "staticify": "^3.3.2",
