@@ -19,7 +19,7 @@ let TYPES = {
   IUserAdapter: Symbol('UserAdapterInterface'),
   IUserRepository: Symbol('IUserRepository'),
 
-  IUserRolesRepository: Symbol('IUserRoleRepository')
+  IUserRolesRepository: Symbol('IUserRoleRepository'),
   //Product Interfaces
 };
 
