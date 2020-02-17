@@ -20,7 +20,7 @@ class Home extends React.Component {
         <Parallax />
         <Link href="/login">
           <a title="Registro de Usuario">Ir al Login</a>
-          </Link>
+        </Link>
       </Main>
     );
   }
