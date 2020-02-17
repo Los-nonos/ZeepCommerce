@@ -19,7 +19,9 @@ class LoginPage extends React.Component {
           <link href="../../static/build/scss/login.css" rel="stylesheet" />
         </Head>
         <Description />
-        <Link href="/">Ir al Inicio</Link>
+        <Link href="/">
+          <a>Ir al Inicio</a>
+          </Link>
       </Main>
     );
   }
