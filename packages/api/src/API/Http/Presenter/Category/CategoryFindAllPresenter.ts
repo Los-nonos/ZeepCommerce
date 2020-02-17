@@ -2,14 +2,20 @@ import PresenterInterface from '../Base/PresenterInterface';
 import Category from '../../../../Domain/Entities/Category';
 
 class CategoryFindAllPresenter implements PresenterInterface {
-  private resultCategory: Category[];
+  private result: Category[];
 
-  constructor(resultCategory: Category[]) {
-    this.resultCategory = resultCategory;
+  constructor(result: Category[]) {
+    this.result = result;
   }
 
   public getData(): object {
-    return { resultCategory: this.resultCategory };
+    const array = this.result.map(category => {
+      return {
+        id: category.id,
+        name: category.name
+      }
+    });
+    return { result: array };
   }
 
   public toJson(): string {
