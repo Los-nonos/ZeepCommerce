@@ -12,7 +12,8 @@ class CategoryFindAllPresenter implements PresenterInterface {
     const array = this.result.map(category => {
       return {
         id: category.id,
-        name: category.name
+        name: category.name,
+        description: category.description
       }
     });
     return { result: array };

@@ -1,14 +1,14 @@
 import PresenterInterface from '../Base/PresenterInterface';
 
 class CategoryDeletePresenter implements PresenterInterface {
-  private resultMessage: string;
+  private result: string;
 
-  constructor(resultMessage: string) {
-    this.resultMessage = resultMessage;
+  constructor(result: string) {
+    this.result = result;
   }
 
   public getData(): object {
-    return { resultMessage: this.resultMessage };
+    return { result: this.result };
   }
 
   public toJson(): string {

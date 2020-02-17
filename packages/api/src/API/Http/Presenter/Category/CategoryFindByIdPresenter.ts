@@ -2,18 +2,17 @@ import PresenterInterface from '../../Presenter/Base/PresenterInterface';
 import Category from '../../../../Domain/Entities/Category';
 
 class CategoryFindByIdPresenter implements PresenterInterface {
-  private resultCategory: Category;
+  private result: Category;
 
-  constructor(resultCategory: Category) {
-    this.resultCategory = resultCategory;
+  constructor(result: Category) {
+    this.result = result;
   }
 
   public getData(): object {
     return {
-      resultCategory: {
-        id: this.resultCategory.id,
-        name: this.resultCategory.name,
-        description: this.resultCategory.description,
+      result: {
+        name: this.result.name,
+        description: this.result.description,
       },
     };
   }
