@@ -28,7 +28,7 @@ class ShowAllCategoryAdapter {
       }
     }
 
-    return new CategoryFindByIdCommand(id);
+    return new CategoryFindByIdCommand(id, req.params.name);
   }
 }
 
