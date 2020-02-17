@@ -1,4 +1,4 @@
-import Joi from '@hapi/joi';
+import * as Joi from '@hapi/joi';
 
 export const CategoryCreateSchema = Joi.object().keys({
   name: Joi.string()
@@ -13,10 +13,6 @@ export const CategoryCreateSchema = Joi.object().keys({
 });
 
 export const CategoryEditSchema = Joi.object().keys({
-  id: Joi.number()
-    .min(0)
-    .required(),
-
   name: Joi.string()
     .min(2)
     .max(50)
