@@ -4,7 +4,7 @@ import { InvalidData } from '../../Errors/InvalidData';
 import CategoryFindCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
-import CategoryFindByIdCommand from '../../../../Application/Commands/Category/CategoryFindByIdCommand';
+import CategoryFindByIdCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
 import IdSchema from '../../Validator/Schemas/IdSchema';
 
 @injectable()
