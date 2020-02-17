@@ -23,7 +23,7 @@ class DeleteCategoryAction {
     const command: CategoryDeleteCommand = await this.adapter.from(req);
     await this.handler.Handle(command);
 
-    return res.status(200).end();
+    return res.status(204).end();
   }
 }
 
