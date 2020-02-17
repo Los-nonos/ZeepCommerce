@@ -3,7 +3,7 @@ import ProductFindCommand from '../../Commands/Product/ProductFindCommand';
 import ProductFindHandlerInterface from '../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
 import { injectable } from 'inversify';
 import { MoreThanOrEqual, Equal } from 'typeorm';
-import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
+import { DataBaseError } from '../../../Infraestructure/Errors/DataBaseError';
 
 @injectable()
 class ProductFindHandler implements ProductFindHandlerInterface {

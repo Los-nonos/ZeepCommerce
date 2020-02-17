@@ -26,6 +26,11 @@ let TYPES = {
   ICategoryFindHandler: Symbol('CategoryFindHandlerInterface'),
   ICategoryFindAllHandler: Symbol('CategoryFindAllHandlerInterface'),
   ICategoryRepository: Symbol('CategoryRepositoryInterface'),
+
+  IUserController: Symbol('UserControllerInterface'),
+  IUserAdapter: Symbol('UserAdapterInterface'),
+  IUserRepository: Symbol('UserRepository'),
+  //Product Interfaces
 };
 
 export default TYPES;

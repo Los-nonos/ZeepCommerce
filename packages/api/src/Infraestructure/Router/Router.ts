@@ -1,7 +1,7 @@
 import { Express, Request, Response, NextFunction } from 'express';
 import bodyParser = require('body-parser');
 import { injectable } from 'inversify';
-import cors from 'cors';
+import cors = require('cors');
 import routes from '../../routes/index.routes';
 
 import container from '../inversify.config';

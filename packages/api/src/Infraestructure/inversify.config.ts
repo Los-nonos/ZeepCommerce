@@ -27,6 +27,13 @@ import DeleteUserAdapter from '../API/Http/Adapter/User/DeleteUserAdapter';
 import ShowAllUserAdapter from '../API/Http/Adapter/User/ShowAllUserAdapter';
 import ShowUserAdapter from '../API/Http/Adapter/User/ShowUserAdapter';
 
+import LoginHandler from '../Application/Handlers/Auth/LoginHandler';
+import RenewTokenHandler from '../Application/Handlers/Auth/RenewTokenHandler';
+import ChangePasswordHandler from '../Application/Handlers/Auth/ChangePasswordHandler';
+
+//Erros imports
+import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
+
 //Product imports
 import ProductCreateHandlerInterface from './Interfaces/Product/ProductCreateHandlerInterface';
 import ProductEditHandlerInterface from './Interfaces/Product/ProductEditHandlerInterface';
@@ -44,11 +51,23 @@ import DeleteProductAction from '../API/Http/Actions/Product/DeleteProductAction
 import ShowAllProductAction from '../API/Http/Actions/Product/ShowAllProductAction';
 import ShowProductAction from '../API/Http/Actions/Product/ShowProductAction';
 
+
+import StoreUserAction from '../API/Http/Actions/User/StoreUserAction';
+import EditUserAction from '../API/Http/Actions/User/EditUserAction';
+import DeleteUserAction from '../API/Http/Actions/User/DeleteUserAction';
+import ShowAllUserAction from '../API/Http/Actions/User/ShowAllUserAction';
+import ShowUserAction from '../API/Http/Actions/User/ShowUserAction';
+
+import LoginAction from '../API/Http/Actions/Auth/LoginAction';
+import RenewTokenAction from '../API/Http/Actions/Auth/RenewTokenAction';
+import ChangePasswordAction from '../API/Http/Actions/Auth/ChangePasswordAction';
+
 import StoreProductAdapter from '../API/Http/Adapter/Product/StoreProductAdapter';
 import EditProductAdapter from '../API/Http/Adapter/Product/EditProductAdapter';
 import DeleteProductAdapter from '../API/Http/Adapter/Product/DeleteProductAdapter';
 import ShowAllProductAdapter from '../API/Http/Adapter/Product/ShowAllProductAdapter';
 import ShowProductAdapter from '../API/Http/Adapter/Product/ShowProductAdapter';
+
 
 //Category imports
 import CategoryCreateHandlerInterface from './Interfaces/Category/CategoryCreateHandlerInterface';
@@ -77,6 +96,16 @@ import ShowCategoryAdapter from '../API/Http/Adapter/Category/ShowCategoryAdapte
 import ErrorHandler from '../Infraestructure/utils/ErrorHandler';
 
 //Validator import
+import StoreUserAdapter from '../API/Http/Adapter/User/StoreUserAdapter';
+import EditUserAdapter from '../API/Http/Adapter/User/EditUserAdapter';
+import DeleteUserAdapter from '../API/Http/Adapter/User/DeleteUserAdapter';
+import ShowAllUserAdapter from '../API/Http/Adapter/User/ShowAllUserAdapter';
+import ShowUserAdapter from '../API/Http/Adapter/User/ShowUserAdapter';
+
+import LoginAdapter from '../API/Http/Adapter/Auth/LoginAdapter';
+import RenewTokenAdapter from '../API/Http/Adapter/Auth/RenewTokenAdapter';
+import ChangePasswordAdapter from '../API/Http/Adapter/Auth/ChangePasswordAdapter';
+
 import Validator from '../API/Http/Validator/Validator';
 import CategoryRepositoryInterface from '../Domain/Interfaces/CategoryRepositoryInterface';
 import CategoryRepository from '../Persistance/Repositories/CategoryRepository';
@@ -105,6 +134,11 @@ container.bind<DeleteUserAction>(DeleteUserAction).toSelf();
 container.bind<ShowAllUserAction>(ShowAllUserAction).toSelf();
 container.bind<ShowUserAction>(ShowUserAction).toSelf();
 
+//login
+container.bind<LoginAction>(LoginAction).toSelf();
+container.bind<RenewTokenAction>(RenewTokenAction).toSelf();
+container.bind<ChangePasswordAction>(ChangePasswordAction).toSelf();
+
 //adapters
 //product
 container.bind<StoreProductAdapter>(StoreProductAdapter).toSelf();
@@ -126,6 +160,11 @@ container.bind<EditUserAdapter>(EditUserAdapter).toSelf();
 container.bind<DeleteUserAdapter>(DeleteUserAdapter).toSelf();
 container.bind<ShowAllUserAdapter>(ShowAllUserAdapter).toSelf();
 container.bind<ShowUserAdapter>(ShowUserAdapter).toSelf();
+
+//login
+container.bind<LoginAdapter>(LoginAdapter).toSelf();
+container.bind<RenewTokenAdapter>(RenewTokenAdapter).toSelf();
+container.bind<ChangePasswordAdapter>(ChangePasswordAdapter).toSelf();
 
 //handlers
 //product
@@ -154,6 +193,12 @@ container.bind<FindAllUsersHandlerInterface>(TYPES.IFindAllUsersHandler).to(Find
 container.bind<CategoryRepositoryInterface>(TYPES.ICategoryRepository).to(CategoryRepository);
 
 //user
+
+//login
+container.bind<LoginHandler>(LoginHandler).toSelf();
+container.bind<RenewTokenHandler>(RenewTokenHandler).toSelf();
+container.bind<ChangePasswordHandler>(ChangePasswordHandler).toSelf();
+
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();

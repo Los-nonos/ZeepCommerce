@@ -6,6 +6,7 @@ import ShowUserAction from '../API/Http/Actions/User/ShowUserAction';
 import StoreUserAction from '../API/Http/Actions/User/StoreUserAction';
 import EditUserAction from '../API/Http/Actions/User/EditUserAction';
 import DeleteUserAction from '../API/Http/Actions/User/DeleteUserAction';
+import { authMiddleware } from '../API/Http/Middleware/AuthenticationMiddleware';
 
 const router = Router();
 
@@ -35,6 +36,9 @@ router.post(
 
 router.put(
   '/users/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper', 'client']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<EditUserAction>(EditUserAction);
     await action.execute(req, res);
@@ -43,6 +47,9 @@ router.put(
 
 router.delete(
   '/users/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['admin']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<DeleteUserAction>(DeleteUserAction);
     await action.execute(req, res);
