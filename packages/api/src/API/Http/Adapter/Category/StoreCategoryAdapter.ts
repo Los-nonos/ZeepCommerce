@@ -20,7 +20,7 @@ class StoreCategoryAdapter {
       throw new InvalidData(JSON.stringify(this.validator.validationResult(storeCategoryResult)));
     }
 
-    return new CategoryCreateCommand(req.body.id, req.body.name);
+    return new CategoryCreateCommand(req.body.name, req.body.description);
   }
 }
 
