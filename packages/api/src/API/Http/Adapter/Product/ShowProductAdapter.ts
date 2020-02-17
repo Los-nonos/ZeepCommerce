@@ -1,6 +1,5 @@
 import { Request } from 'express';
 import { InvalidData } from '../../Errors/InvalidData';
-import IdSchema from '../../Validator/Schemas/IdSchema';
 import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
@@ -15,15 +14,14 @@ class ShowProductAdapter {
   }
 
   public from(req: Request) {
-    //const { id }: any = req.params;
 
-    const resultId = this.validator.validator(IdSchema, ShowProductSchema);
+    const resultId = this.validator.validator(req.body, ShowProductSchema);
 
-    if (resultId.error) {
-      throw new InvalidData(resultId.error.message);
+    if (resultId) {
+      throw new InvalidData(JSON.stringify(this.validator.validationResult(resultId)));
     }
 
-    return new ProductFindCommand(resultId.value.id);
+    return new ProductFindCommand(req.body.id);
   }
 }
 
