@@ -7,26 +7,24 @@ import CategoryDeleteCommand from '../../../../Application/Commands/Category/Cat
 import DeleteCategoryAdapter from '../../Adapter/Category/DeleteCategoryAdapter';
 
 @injectable()
-class DeleteCategoryAction{
-    
-    private handler: CategoryDeleteHandlerInterface;
-    private adapter: DeleteCategoryAdapter;
+class DeleteCategoryAction {
+  private handler: CategoryDeleteHandlerInterface;
+  private adapter: DeleteCategoryAdapter;
 
-    constructor(
-        @inject(TYPES.ICategoryDeleteHandler) handler: CategoryDeleteHandlerInterface,
-        @inject(DeleteCategoryAdapter) adapter: DeleteCategoryAdapter,
-    ){
-        this.handler = handler;
-        this.adapter = adapter;
-    }
+  constructor(
+    @inject(TYPES.ICategoryDeleteHandler) handler: CategoryDeleteHandlerInterface,
+    @inject(DeleteCategoryAdapter) adapter: DeleteCategoryAdapter,
+  ) {
+    this.handler = handler;
+    this.adapter = adapter;
+  }
 
+  public async execute(req: Request, res: Response) {
+    const command: CategoryDeleteCommand = await this.adapter.from(req);
+    await this.handler.Handle(command);
 
-    public async execute(req: Request, res: Response) {
-        const command: CategoryDeleteCommand = await this.adapter.from(req);
-        await this.handler.Handle(command);
-
-        return res.status(200).end();
+    return res.status(200).end();
   }
 }
 
-export default DeleteCategoryAction
+export default DeleteCategoryAction;

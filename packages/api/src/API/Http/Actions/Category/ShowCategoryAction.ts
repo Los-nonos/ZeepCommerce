@@ -8,27 +8,25 @@ import Category from '../../../../Domain/Entities/Category';
 import CategoryFindByIdPresenter from '../../Presenter/Category/CategoryFindByIdPresenter';
 
 @injectable()
-class ShowCategoryAction{
-    
-    private handler: CategoryFindHandlerInterface;
-    private adapter: ShowCategoryAdapter;
+class ShowCategoryAction {
+  private handler: CategoryFindHandlerInterface;
+  private adapter: ShowCategoryAdapter;
 
-    constructor(
-        @inject(TYPES.ICategoryFindHandler) handler: CategoryFindHandlerInterface,
-        @inject(ShowCategoryAdapter) adapter: ShowCategoryAdapter,
-    ){
-        this.handler = handler;
-        this.adapter = adapter;
-    }
+  constructor(
+    @inject(TYPES.ICategoryFindHandler) handler: CategoryFindHandlerInterface,
+    @inject(ShowCategoryAdapter) adapter: ShowCategoryAdapter,
+  ) {
+    this.handler = handler;
+    this.adapter = adapter;
+  }
 
+  public async execute(req: Request, res: Response) {
+    const command: CategoryFindCommand = await this.adapter.from(req);
+    const response: Category = await this.handler.HandleFindById(command);
+    const presenter = new CategoryFindByIdPresenter(response);
 
-    public async execute(req: Request, res: Response) {
-        const command: CategoryFindCommand = await this.adapter.from(req);
-        const response: Category = await this.handler.HandleFindById(command);
-        const presenter = new CategoryFindByIdPresenter(response);
-
-        return res.status(200).json(presenter.getData());
+    return res.status(200).json(presenter.getData());
   }
 }
 
-export default ShowCategoryAction
+export default ShowCategoryAction;

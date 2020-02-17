@@ -1,5 +1,4 @@
 class ProductCreateCommand {
-
   private name: string;
   private description: string;
   private basePrice: number;
@@ -7,21 +6,13 @@ class ProductCreateCommand {
   private costPrice: number;
   private margin: number;
 
-
-  constructor(
-    name: string,
-    description: string, 
-    basePrice: number, 
-    tax: number, 
-    costPrice: number, 
-    margin: number) {
-
+  constructor(name: string, description: string, basePrice: number, tax: number, costPrice: number, margin: number) {
     this.name = name;
     this.description = description;
     this.basePrice = basePrice;
     this.tax = tax;
     this.costPrice = costPrice;
-    this.margin = margin
+    this.margin = margin;
   }
 
   public getName(): string {
@@ -47,7 +38,6 @@ class ProductCreateCommand {
   public getMargin(): number {
     return this.margin;
   }
-  
 }
 
 export default ProductCreateCommand;

@@ -25,7 +25,7 @@ let TYPES = {
   ICategoryEditHandler: Symbol('CategoryEditHandlerInterface'),
   ICategoryFindHandler: Symbol('CategoryFindHandlerInterface'),
   ICategoryFindAllHandler: Symbol('CategoryFindAllHandlerInterface'),
-  ICategoryRepository: Symbol('CategoryRepositoryInterface')
+  ICategoryRepository: Symbol('CategoryRepositoryInterface'),
 };
 
 export default TYPES;

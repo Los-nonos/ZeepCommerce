@@ -6,27 +6,22 @@ import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
 
 @injectable()
-class StoreCategoryAdapter{
+class StoreCategoryAdapter {
+  private validator: Validator;
 
-    private validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    constructor(@inject(Validator) validator: Validator){
-        this.validator = validator;
+  public async from(req: Request): Promise<CategoryCreateCommand> {
+    const storeCategoryResult = this.validator.validator(req.body, CategoryCreateSchema);
+
+    if (storeCategoryResult) {
+      throw new InvalidData(JSON.stringify(this.validator.validationResult(storeCategoryResult)));
     }
 
-    public async from(req: Request): Promise <CategoryCreateCommand>{
-        
-        const storeCategoryResult = this.validator.validator(req.body, CategoryCreateSchema)
-
-        if (storeCategoryResult) {
-            throw new InvalidData(JSON.stringify(this.validator.validationResult(storeCategoryResult)))
-          }
-
-        return new CategoryCreateCommand(
-            req.body.id,
-            req.body.name
-        )
-    }
+    return new CategoryCreateCommand(req.body.id, req.body.name);
+  }
 }
 
 export default StoreCategoryAdapter;

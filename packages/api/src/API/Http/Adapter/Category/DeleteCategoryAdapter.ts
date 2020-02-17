@@ -6,24 +6,22 @@ import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
 
 @injectable()
-class DeleteCategoryAdapter{
+class DeleteCategoryAdapter {
+  private validator: Validator;
 
-    private validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    constructor(@inject(Validator) validator: Validator){
-        this.validator = validator;
+  public async from(req: Request): Promise<CategoryDeleteCommand> {
+    const categoryDeleteResult = this.validator.validator(req.params, CategoryDeleteSchema);
+
+    if (categoryDeleteResult) {
+      throw new InvalidData(JSON.stringify(this.validator.validationResult(categoryDeleteResult)));
     }
 
-    public async from (req: Request): Promise <CategoryDeleteCommand>{
-
-        const categoryDeleteResult = this.validator.validator(req.params, CategoryDeleteSchema);
-
-        if (categoryDeleteResult) {
-            throw new InvalidData(JSON.stringify(this.validator.validationResult(categoryDeleteResult)));
-          }
-  
-          return new CategoryDeleteCommand(Number(req.params.id));
-    }
+    return new CategoryDeleteCommand(Number(req.params.id));
+  }
 }
 
-export default DeleteCategoryAdapter
+export default DeleteCategoryAdapter;

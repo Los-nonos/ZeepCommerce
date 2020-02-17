@@ -8,27 +8,25 @@ import CategoryCreatePresenter from '../../Presenter/Category/CategoryCreatePres
 import StoreCategoryAdapter from '../../Adapter/Category/StoreCategoryAdapter';
 
 @injectable()
-class CreateCategoryAction{
-    
-    private handler: CategoryCreateHandlerInterface;
-    private adapter: StoreCategoryAdapter;
+class CreateCategoryAction {
+  private handler: CategoryCreateHandlerInterface;
+  private adapter: StoreCategoryAdapter;
 
-    constructor(
-        @inject(TYPES.ICategoryCreateHandler) handler: CategoryCreateHandlerInterface,
-        @inject(StoreCategoryAdapter) adapter: StoreCategoryAdapter,
-    ){
-        this.handler = handler;
-        this.adapter = adapter;
-    }
+  constructor(
+    @inject(TYPES.ICategoryCreateHandler) handler: CategoryCreateHandlerInterface,
+    @inject(StoreCategoryAdapter) adapter: StoreCategoryAdapter,
+  ) {
+    this.handler = handler;
+    this.adapter = adapter;
+  }
 
+  public async execute(req: Request, res: Response) {
+    const command: CategoryCreateCommand = await this.adapter.from(req);
+    const response: Category = await this.handler.Handle(command);
+    const presenter = new CategoryCreatePresenter(response);
 
-    public async execute(req: Request, res: Response) {
-        const command: CategoryCreateCommand = await this.adapter.from(req);
-        const response: Category = await this.handler.Handle(command);
-        const presenter = new CategoryCreatePresenter(response);
-
-        return res.status(200).json(presenter.getData());
+    return res.status(200).json(presenter.getData());
   }
 }
 
-export default CreateCategoryAction
+export default CreateCategoryAction;

@@ -9,30 +9,27 @@ import IdSchema from '../../Validator/Schemas/IdSchema';
 
 @injectable()
 class ShowAllCategoryAdapter {
-
   private validator: Validator;
 
-  constructor(@inject(Validator) validator: Validator){
+  constructor(@inject(Validator) validator: Validator) {
     this.validator = validator;
   }
 
-  public async from(req: Request): Promise <CategoryFindByIdCommand> {
-
+  public async from(req: Request): Promise<CategoryFindByIdCommand> {
     let id: any = req.query.search;
 
     if (!id) {
       id = 0;
     } else {
+      const findIdCategoryResult = this.validator.validator(req.params, IdSchema);
 
-        const findIdCategoryResult = this.validator.validator(req.params, IdSchema);
-
-        if (findIdCategoryResult) {
-            throw new InvalidData(JSON.stringify(this.validator.validationResult(findIdCategoryResult)));
-        }
+      if (findIdCategoryResult) {
+        throw new InvalidData(JSON.stringify(this.validator.validationResult(findIdCategoryResult)));
+      }
     }
 
     return new CategoryFindByIdCommand(id);
-    }
+  }
 }
 
 export default ShowAllCategoryAdapter;
