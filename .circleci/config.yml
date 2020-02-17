@@ -1,0 +1,31 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+    working_directory: ~/stage
+    steps:
+      - checkout
+
+      - run:
+          name: Install Lerna and project's dependencies
+          command: |
+            sudo npm install --global lerna
+            lerna bootstrap
+            cp .env.example .env
+      - run:
+          name: Tests Suites
+          command: lerna run test
+      - run:
+          name: Prettier rules
+          command: lerna run prettier:check
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
+          filters:
+            branches:
+              ignore:
+                - master
