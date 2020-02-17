@@ -51,7 +51,6 @@ import DeleteProductAction from '../API/Http/Actions/Product/DeleteProductAction
 import ShowAllProductAction from '../API/Http/Actions/Product/ShowAllProductAction';
 import ShowProductAction from '../API/Http/Actions/Product/ShowProductAction';
 
-
 import StoreUserAction from '../API/Http/Actions/User/StoreUserAction';
 import EditUserAction from '../API/Http/Actions/User/EditUserAction';
 import DeleteUserAction from '../API/Http/Actions/User/DeleteUserAction';
@@ -67,7 +66,6 @@ import EditProductAdapter from '../API/Http/Adapter/Product/EditProductAdapter';
 import DeleteProductAdapter from '../API/Http/Adapter/Product/DeleteProductAdapter';
 import ShowAllProductAdapter from '../API/Http/Adapter/Product/ShowAllProductAdapter';
 import ShowProductAdapter from '../API/Http/Adapter/Product/ShowProductAdapter';
-
 
 //Category imports
 import CategoryCreateHandlerInterface from './Interfaces/Category/CategoryCreateHandlerInterface';
@@ -198,7 +196,6 @@ container.bind<CategoryRepositoryInterface>(TYPES.ICategoryRepository).to(Catego
 container.bind<LoginHandler>(LoginHandler).toSelf();
 container.bind<RenewTokenHandler>(RenewTokenHandler).toSelf();
 container.bind<ChangePasswordHandler>(ChangePasswordHandler).toSelf();
-
 
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();

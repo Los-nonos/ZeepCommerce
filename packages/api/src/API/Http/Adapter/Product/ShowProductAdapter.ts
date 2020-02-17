@@ -14,7 +14,6 @@ class ShowProductAdapter {
   }
 
   public from(req: Request) {
-
     const resultId = this.validator.validator(req.body, ShowProductSchema);
 
     if (resultId) {

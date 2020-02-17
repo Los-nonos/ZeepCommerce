@@ -3,7 +3,6 @@ import { FindUserSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/InvalidData';
 import UserFindCommand from '../../../../Application/Commands/User/UserFindCommand';
 
-
 import { injectable } from 'inversify';
 
 @injectable()
