@@ -6,7 +6,7 @@ interface CategoryRepositoryInterface {
   FindByName(name: string): Promise<Category>;
   Create(entity: Category): Promise<Category>;
   Update(entity: Category): Promise<Category>;
-  Delete(entity: Category): Promise<void>;
+  Delete(entity: Category): Promise<Category>;
 }
 
 export default CategoryRepositoryInterface;
