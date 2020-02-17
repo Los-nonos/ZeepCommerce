@@ -14,7 +14,7 @@ class LoginHandler {
     this.repository = repository;
   }
   public async execute(command: LoginCommand): Promise<{ user: User; token: string }> {
-    const user = await this.repository.findOneByName(command.getUsername());
+    const user = await this.repository.FindByName(command.getUsername());
 
     if (!user) {
       throw new EntityNotFound(`not user found with name: ${command.getUsername()}`);

@@ -1,6 +1,6 @@
 import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, JoinTable, ManyToMany } from 'typeorm';
-import Role from './Role';
 import * as bcrypt from 'bcryptjs';
+import UserRole from './UserRole';
 
 @Entity()
 class User extends BaseEntity {
@@ -49,9 +49,9 @@ class User extends BaseEntity {
   @Column({ nullable: true })
   userEmail: string;
 
-  @ManyToMany(_roles => Role)
+  @ManyToMany(_roles => UserRole)
   @JoinTable()
-  public roles: Role[];
+  public roles: UserRole[];
 
   public checkIfUnencryptedPasswordIsValid(unencryptedPassword: string): boolean {
     return bcrypt.compareSync(unencryptedPassword, this.password);

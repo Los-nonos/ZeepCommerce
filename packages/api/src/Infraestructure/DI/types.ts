@@ -17,7 +17,9 @@ let TYPES = {
   IFindAllUsersHandler: Symbol('FindAllUsersHandlerInterface'),
   IUserController: Symbol('UserControllerInterface'),
   IUserAdapter: Symbol('UserAdapterInterface'),
-  IUserRepository: Symbol('UserRepository'),
+  IUserRepository: Symbol('IUserRepository'),
+
+  IUserRolesRepository: Symbol('IUserRoleRepository'),
   //Product Interfaces
 };
 

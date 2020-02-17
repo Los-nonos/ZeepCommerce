@@ -3,7 +3,7 @@ import NameSchema from '../../Validator/Schemas/NameSchema';
 import PriceSchema from '../../Validator/Schemas/PriceSchema';
 import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
 import ProductCreateCommand from '../../../../Application/Commands/Product/ProductCreateCommand';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 
 class StoreProductAdapter {
   public async from(req: Request) {

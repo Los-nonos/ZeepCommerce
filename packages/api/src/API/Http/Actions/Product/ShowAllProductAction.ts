@@ -4,7 +4,7 @@ import ProductFindCommand from '../../../../Application/Commands/Product/Product
 import Product from '../../../../Domain/Entities/Product';
 import ShowAllProductAdapter from '../../Adapter/Product/ShowAllProductAdapter';
 import ShowAllProductHandler from '../../../../Application/Handlers/Product/ProductFindHandler';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 
 @injectable()
 class ShowAllProductAction {

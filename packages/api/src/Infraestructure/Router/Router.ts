@@ -4,7 +4,7 @@ import { injectable } from 'inversify';
 import cors = require('cors');
 import routes from '../../routes/index.routes';
 
-import container from '../inversify.config';
+import container from '../DI/inversify.config';
 import ErrorHandler from '../../Infraestructure/utils/ErrorHandler';
 
 @injectable()

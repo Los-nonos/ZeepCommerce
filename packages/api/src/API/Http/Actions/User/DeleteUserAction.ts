@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 import DeleteUserAdapter from '../../Adapter/User/DeleteUserAdapter';
 import DeleteUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/DeleteUserHandlerInterface';
 import DeleteUserCommand from '../../../../Application/Commands/User/DeleteUserCommand';

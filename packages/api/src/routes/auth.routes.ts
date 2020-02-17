@@ -1,6 +1,6 @@
 import { Router, Request, Response, NextFunction } from 'express';
 import asyncMiddleware from '../API/Http/Middleware/AsyncMiddleware';
-import container from '../Infraestructure/inversify.config';
+import container from '../Infraestructure/DI/inversify.config';
 import LoginAction from '../API/Http/Actions/Auth/LoginAction';
 import RenewTokenAction from '../API/Http/Actions/Auth/RenewTokenAction';
 import ChangePasswordAction from '../API/Http/Actions/Auth/ChangePasswordAction';

@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import { FindUserSchema } from '../../Validator/Schemas/UserSchema';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 import UserFindCommand from '../../../../Application/Commands/User/FindAllUsersCommand';
 import { injectable } from 'inversify';
 
