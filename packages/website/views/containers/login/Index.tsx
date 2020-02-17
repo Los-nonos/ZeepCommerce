@@ -21,7 +21,7 @@ class LoginPage extends React.Component {
         <Description />
         <Link href="/">
           <a>Ir al Inicio</a>
-          </Link>
+        </Link>
       </Main>
     );
   }
