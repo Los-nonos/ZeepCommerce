@@ -3,7 +3,7 @@ import ProductDeleteHandlerInterface from '../../../../Infraestructure/Interface
 import DeleteProductAdapter from '../../Adapter/Product/DeleteProductAdapter';
 import { inject, injectable } from 'inversify';
 import ProductDeleteCommand from '../../../../Application/Commands/Product/ProductDeleteCommand';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 
 @injectable()
 class DeleteProductAction {

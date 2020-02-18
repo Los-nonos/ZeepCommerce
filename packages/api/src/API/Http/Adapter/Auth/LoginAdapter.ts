@@ -1,6 +1,6 @@
 import { Request } from 'express';
 import Validator from '../../Validator/Validator';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 import { inject } from 'inversify';
 import LoginCommand from '../../../../Application/Commands/Auth/LoginCommand';
 import { LoginSchema } from '../../Validator/Schemas/LoginSchema';

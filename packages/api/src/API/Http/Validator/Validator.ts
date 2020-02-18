@@ -3,7 +3,7 @@ import { injectable } from 'inversify';
 
 @injectable()
 export default class Validator {
-  public validator(data: any, schema: any) {
+  public validate(data: any, schema: any) {
     const validationsOptions = { abortEarly: false, allowUnknown: true };
 
     const { error } = Joi.validate(data, schema, validationsOptions);

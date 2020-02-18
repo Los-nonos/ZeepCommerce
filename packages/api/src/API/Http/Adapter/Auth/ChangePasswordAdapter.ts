@@ -1,7 +1,7 @@
 import { Request } from 'express';
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 import ChangePasswordCommand from '../../../../Application/Commands/Auth/ChangePasswordCommand';
 import { ChangePasswordSchema } from '../../Validator/Schemas/LoginSchema';
 

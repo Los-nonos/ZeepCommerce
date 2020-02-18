@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
 import { Request } from 'express';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 import RenewTokenCommand from '../../../../Application/Commands/Auth/RenewTokenCommand';
 import { RenewTokenSchema } from '../../Validator/Schemas/LoginSchema';
 

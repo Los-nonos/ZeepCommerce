@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
 import IdSchema from '../../Validator/Schemas/IdSchema';
 import NameSchema from '../../Validator/Schemas/NameSchema';
 import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';

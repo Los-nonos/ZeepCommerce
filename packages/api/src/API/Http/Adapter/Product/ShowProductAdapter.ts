@@ -1,5 +1,6 @@
 import { Request } from 'express';
-import { InvalidData } from '../../Errors/InvalidData';
+import { InvalidData } from '../../Errors/BadRequest';
+import IdSchema from '../../Validator/Schemas/IdSchema';
 import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';

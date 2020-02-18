@@ -3,7 +3,7 @@ import { inject, injectable } from 'inversify';
 import ProductEditCommand from '../../../../Application/Commands/Product/ProductEditCommand';
 import ProductEditHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductEditHandlerInterface';
 import EditProductAdapter from '../../Adapter/Product/EditProductAdapter';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 
 @injectable()
 class EditProductAction {

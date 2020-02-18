@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from 'express';
-import DI from '../Infraestructure/inversify.config';
+import DI from '../Infraestructure/DI/inversify.config';
 import asyncMiddleware from '../API/Http/Middleware/AsyncMiddleware';
 import ShowAllUserAction from '../API/Http/Actions/User/ShowAllUserAction';
 import ShowUserAction from '../API/Http/Actions/User/ShowUserAction';

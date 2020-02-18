@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 import CreateUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/CreateUserHandlerInterface';
 import StoreUserAdapter from '../../Adapter/User/StoreUserAdapter';
 import UserCreateCommand from '../../../../Application/Commands/User/UserCreateCommand';

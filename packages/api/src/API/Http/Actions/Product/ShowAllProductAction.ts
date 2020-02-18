@@ -3,8 +3,8 @@ import { inject, injectable } from 'inversify';
 import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import Product from '../../../../Domain/Entities/Product';
 import ShowAllProductAdapter from '../../Adapter/Product/ShowAllProductAdapter';
-import ProductFindHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
-import TYPES from '../../../../Infraestructure/types';
+import ShowAllProductHandler from '../../../../Application/Handlers/Product/ProductFindHandler';
+import TYPES from '../../../../Infraestructure/DI/types';
 
 @injectable()
 class ShowAllProductAction {
