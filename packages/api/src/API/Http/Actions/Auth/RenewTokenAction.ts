@@ -18,7 +18,7 @@ class RenewTokenAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command = this.adapter.from(req);
+    const command = this.adapter.from(req.body);
     const response = this.handler.execute(command);
 
     res.status(HTTP_CODES.OK).json({ response });

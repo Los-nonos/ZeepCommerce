@@ -1,6 +1,5 @@
-import { Request } from 'express';
 import Validator from '../../Validator/Validator';
-import { InvalidData } from '../../Errors/BadRequest';
+import { BadRequest } from '../../Errors/BadRequest';
 import { inject } from 'inversify';
 import LoginCommand from '../../../../Application/Commands/Auth/LoginCommand';
 import { LoginSchema } from '../../Validator/Schemas/LoginSchema';
@@ -11,14 +10,14 @@ class LoginAdapter {
     this.validator = validator;
   }
 
-  public from(req: Request): LoginCommand {
-    const error = this.validator.validator(req.body, LoginSchema);
+  public async from(req: any): Promise<LoginCommand> {
+    const error = this.validator.validate(req, LoginSchema);
 
     if (error) {
-      throw new InvalidData(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
     }
 
-    return new LoginCommand(req.body.username, req.body.password);
+    return new LoginCommand(req.username, req.password);
   }
 }
 

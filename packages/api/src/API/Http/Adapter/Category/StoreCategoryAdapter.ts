@@ -1,4 +1,3 @@
-import { Request } from 'express';
 import { BadRequest } from '../../Errors/BadRequest';
 import { CategoryCreateSchema } from '../../Validator/Schemas/CategorySchema';
 import CategoryCreateCommand from '../../../../Application/Commands/Category/CategoryCreateCommand';
@@ -13,14 +12,14 @@ class StoreCategoryAdapter {
     this.validator = validator;
   }
 
-  public async from(req: Request): Promise<CategoryCreateCommand> {
-    const storeCategoryResult = this.validator.validate(req.body, CategoryCreateSchema);
+  public async from(req: any): Promise<CategoryCreateCommand> {
+    const storeCategoryResult = this.validator.validate(req, CategoryCreateSchema);
 
     if (storeCategoryResult) {
       throw new BadRequest(JSON.stringify(this.validator.validationResult(storeCategoryResult)));
     }
 
-    return new CategoryCreateCommand(req.body.name, req.body.description);
+    return new CategoryCreateCommand(req.name, req.description);
   }
 }
 

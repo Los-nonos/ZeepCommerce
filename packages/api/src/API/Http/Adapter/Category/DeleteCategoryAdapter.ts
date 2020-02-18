@@ -13,14 +13,14 @@ class DeleteCategoryAdapter {
     this.validator = validator;
   }
 
-  public async from(req: Request): Promise<CategoryDeleteCommand> {
-    const categoryDeleteResult = this.validator.validate(req.params, CategoryDeleteSchema);
+  public async from(req: any): Promise<CategoryDeleteCommand> {
+    const error = this.validator.validate(req, CategoryDeleteSchema);
 
-    if (categoryDeleteResult) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(categoryDeleteResult)));
+    if (error) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
     }
 
-    return new CategoryDeleteCommand(Number(req.params.id));
+    return new CategoryDeleteCommand(Number(req.id));
   }
 }
 

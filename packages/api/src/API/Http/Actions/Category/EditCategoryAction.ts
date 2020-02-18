@@ -24,7 +24,7 @@ class EditCategoryAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: CategoryEditCommand = await this.adapter.from(req);
+    const command: CategoryEditCommand = await this.adapter.from(req.body, req.params);
     const response: Category = await this.handler.Handle(command);
     const presenter = new CategoryEditPresenter(response);
 
