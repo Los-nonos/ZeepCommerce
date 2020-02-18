@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 import CategoryDeleteHandlerInterface from '../../../../Infraestructure/Interfaces/Category/CategoryDeleteHandlerInterface';
 import { inject, injectable } from 'inversify';
 import DeleteProductAdapter from '../../Adapter/Category/DeleteCategoryAdapter';

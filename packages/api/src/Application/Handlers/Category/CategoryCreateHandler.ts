@@ -3,8 +3,7 @@ import CategoryCreateHandlerInterface from '../../../Infraestructure/Interfaces/
 import CategoryCreateCommand from '../../Commands/Category/CategoryCreateCommand';
 import { injectable, inject } from 'inversify';
 import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
-import TYPES from '../../../Infraestructure/types';
-import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
+import TYPES from '../../../Infraestructure/DI/types';
 
 @injectable()
 class CategoryCreateHandler implements CategoryCreateHandlerInterface {
@@ -25,11 +24,7 @@ class CategoryCreateHandler implements CategoryCreateHandlerInterface {
     category.name = command.getName();
     category.description = command.getDescription();
 
-    try {
-      return await this.repository.Create(category);
-    } catch (error) {
-      throw new DataBaseError(error);
-    }
+    return await this.repository.Create(category);
   }
 }
 

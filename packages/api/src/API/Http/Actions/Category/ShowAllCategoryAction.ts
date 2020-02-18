@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import TYPES from '../../../../Infraestructure/types';
+import TYPES from '../../../../Infraestructure/DI/types';
 import CategoryFindHandlerInterface from '../../../../Infraestructure/Interfaces/Category/CategoryFindHandlerInterface';
 import { inject, injectable } from 'inversify';
 import ShowAllCategoryAdapter from '../../Adapter/Category/ShowAllCategoryAdapter';

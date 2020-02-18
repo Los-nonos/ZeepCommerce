@@ -1,11 +1,9 @@
 import { Request } from 'express';
-import { CategoryShowSchema } from '../../Validator/Schemas/CategorySchema';
-import { InvalidData } from '../../Errors/InvalidData';
-import CategoryFindCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
+import { BadRequest } from '../../Errors/BadRequest';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
 import CategoryFindByIdCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
-import IdSchema from '../../Validator/Schemas/IdSchema';
+import { IdSchema } from '../../Validator/Schemas/Common';
 
 @injectable()
 class ShowAllCategoryAdapter {
@@ -21,10 +19,10 @@ class ShowAllCategoryAdapter {
     if (!id) {
       id = 0;
     } else {
-      const findIdCategoryResult = this.validator.validator(req.params, IdSchema);
+      const findIdCategoryResult = this.validator.validate(req.params, IdSchema);
 
       if (findIdCategoryResult) {
-        throw new InvalidData(JSON.stringify(this.validator.validationResult(findIdCategoryResult)));
+        throw new BadRequest(JSON.stringify(this.validator.validationResult(findIdCategoryResult)));
       }
     }
 
