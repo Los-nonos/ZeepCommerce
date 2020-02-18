@@ -1,7 +1,6 @@
-import TYPES from './types';
+import TYPES from './DI/types';
 import { Container } from 'inversify';
 import 'reflect-metadata';
-
 
 //Users imports
 import CreateUserHandlerInterface from './Interfaces/User/CreateUserHandlerInterface';

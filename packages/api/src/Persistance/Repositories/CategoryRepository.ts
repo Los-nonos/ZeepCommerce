@@ -15,7 +15,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
     let category: any;
     try {
       category = await this.repository.find();
-
     } catch (error) {
       throw new DataBaseError('');
     }
@@ -31,7 +30,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
     let category;
     try {
       category = this.repository.findOne({ id: id });
-
     } catch (error) {
       throw new DataBaseError('');
     }
@@ -47,7 +45,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
     let category: any;
     try {
       category = await this.repository.findOne({ name: name });
-
     } catch (error) {
       throw new DataBaseError('');
     }
@@ -68,7 +65,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
   public async Create(entity: Category): Promise<Category> {
     try {
       await this.repository.save(entity);
-
     } catch (error) {
       throw new DataBaseError('');
     }
@@ -80,7 +76,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
     let category: any;
     try {
       category = await this.repository.update({ id: entity.id }, entity);
-
     } catch (error) {
       throw new DataBaseError('');
     }
@@ -97,7 +92,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
 
     try {
       category = await this.repository.delete(entity);
-
     } catch (error) {
       throw new DataBaseError('');
     }

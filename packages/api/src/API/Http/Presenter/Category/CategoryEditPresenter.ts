@@ -10,7 +10,7 @@ class CategoryEditPresenter implements PresenterInterface {
 
   public getData(): object {
     return {
-      result: this.result
+      result: this.result,
     };
   }
 

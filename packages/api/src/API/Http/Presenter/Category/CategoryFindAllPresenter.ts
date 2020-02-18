@@ -13,8 +13,8 @@ class CategoryFindAllPresenter implements PresenterInterface {
       return {
         id: category.id,
         name: category.name,
-        description: category.description
-      }
+        description: category.description,
+      };
     });
     return { result: array };
   }
