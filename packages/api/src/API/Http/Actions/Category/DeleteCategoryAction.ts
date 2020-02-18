@@ -2,9 +2,9 @@ import { Request, Response } from 'express';
 import TYPES from '../../../../Infraestructure/DI/types';
 import CategoryDeleteHandlerInterface from '../../../../Infraestructure/Interfaces/Category/CategoryDeleteHandlerInterface';
 import { inject, injectable } from 'inversify';
-import DeleteProductAdapter from '../../Adapter/Category/DeleteCategoryAdapter';
 import CategoryDeleteCommand from '../../../../Application/Commands/Category/CategoryDeleteCommand';
 import DeleteCategoryAdapter from '../../Adapter/Category/DeleteCategoryAdapter';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class DeleteCategoryAction {
@@ -23,7 +23,7 @@ class DeleteCategoryAction {
     const command: CategoryDeleteCommand = await this.adapter.from(req);
     await this.handler.Handle(command);
 
-    return res.status(204).end();
+    return res.status(HTTP_CODES.NO_CONTENT).end();
   }
 }
 

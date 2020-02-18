@@ -7,7 +7,7 @@ import CreateUserHandlerInterface from '../../../Infraestructure/Interfaces/User
 class UserCreateHandler implements CreateUserHandlerInterface {
   constructor() {}
 
-  public async Create(command: UserCreateCommand): Promise<string> {
+  public async Create(command: UserCreateCommand): Promise<User> {
     const name = command.getUserName();
     const lastname = command.getUserLastName();
     const dni = command.getUserDni();
@@ -18,8 +18,7 @@ class UserCreateHandler implements CreateUserHandlerInterface {
     user.dni = dni;
 
     try {
-      await user.save();
-      return 'User created correctly';
+      return await user.save();
     } catch (error) {
       return error.message;
     }

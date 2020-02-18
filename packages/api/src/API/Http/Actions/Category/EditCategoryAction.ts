@@ -6,7 +6,9 @@ import EditProductAdapter from '../../Adapter/Category/EditCategoryAdapter';
 import CategoryEditCommand from '../../../../Application/Commands/Category/CategoryEditCommand';
 import Category from '../../../../Domain/Entities/Category';
 import EditCategoryAdapter from '../../Adapter/Category/EditCategoryAdapter';
-import CategoryEditPresenter from '../../Presenter/Category/CategoryEditPresenter';
+import CategoryEditPresenter from '../../Presenters/Category/CategoryEditPresenter';
+import { success } from '../../Presenters/Base/success';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class EditCategoryAction {
@@ -26,7 +28,9 @@ class EditCategoryAction {
     const response: Category = await this.handler.Handle(command);
     const presenter = new CategoryEditPresenter(response);
 
-    return res.status(200).json(presenter.getData());
+    return res
+      .status(HTTP_CODES.OK)
+      .json(success(presenter.getData(), 'EditCategoryAction: Category updated successfully'));
   }
 }
 

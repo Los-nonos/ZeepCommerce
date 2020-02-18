@@ -1,7 +1,7 @@
-import PresenterInterface from '../../Presenter/Base/PresenterInterface';
+import IPresenter from '../Base/IPresenter';
 import Category from '../../../../Domain/Entities/Category';
 
-class CategoryCreatePresenter implements PresenterInterface {
+class CategoryCreatePresenter implements IPresenter {
   private result: Category;
 
   constructor(result: Category) {

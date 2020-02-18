@@ -5,6 +5,9 @@ import ProductFindCommand from '../../../../Application/Commands/Product/Product
 import TYPES from '../../../../Infraestructure/DI/types';
 import ProductFindHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
 import ShowProductAdapter from '../../Adapter/Product/ShowProductAdapter';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
+import { success } from '../../Presenters/Base/success';
+import FindByIdProductPresenter from '../../Presenters/Product/FindByIdProductsPresenter';
 
 @injectable()
 class ShowProductAction {
@@ -22,7 +25,9 @@ class ShowProductAction {
     const command: ProductFindCommand = await this.adapter.ShowByIdAdapter(req);
     const response: Product = await this.handler.FindOne(command);
 
-    res.status(200).json({ message: 'Product found', product: response });
+    const presenter = new FindByIdProductPresenter(response);
+
+    res.status(HTTP_CODES.OK).json(success(presenter.getData(), 'FindProductAction: product found successfully'));
   }
 }
 

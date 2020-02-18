@@ -5,7 +5,7 @@ import { injectable } from 'inversify';
 
 @injectable()
 class ProductEditHandler implements ProductEditHandlerInterface {
-  public async Handle(command: ProductCreateAndEditCommand): Promise<string> {
+  public async Handle(command: ProductCreateAndEditCommand): Promise<Product> {
     const id = command.getId();
 
     const product = await Product.findOne({ Id: id });
@@ -19,8 +19,7 @@ class ProductEditHandler implements ProductEditHandlerInterface {
     product.description = command.getDescription();
 
     try {
-      await product.save();
-      return 'Product edited';
+      return await product.save();
     } catch (error) {
       return error.message;
     }

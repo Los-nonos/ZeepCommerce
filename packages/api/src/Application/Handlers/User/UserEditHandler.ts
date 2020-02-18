@@ -18,9 +18,7 @@ class UserEditHandler implements EditUserHandlerInterface {
         user.name = command.getUserName();
         user.lastname = command.getUserLastName();
 
-        await user.save();
-
-        return user;
+        return await user.save();
       }
     } catch (error) {
       throw new DataBaseError(error);

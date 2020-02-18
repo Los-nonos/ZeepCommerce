@@ -5,6 +5,9 @@ import Product from '../../../../Domain/Entities/Product';
 import ShowAllProductAdapter from '../../Adapter/Product/ShowAllProductAdapter';
 import TYPES from '../../../../Infraestructure/DI/types';
 import ProductFindHandlerInterface from '../../../../Infraestructure/Interfaces/Product/ProductFindHandlerInterface';
+import FindProductPresenter from '../../Presenters/Product/FindProductPresenter';
+import { success } from '../../Presenters/Base/success';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class ShowAllProductAction {
@@ -23,7 +26,9 @@ class ShowAllProductAction {
     const command: ProductFindCommand = await this.adapter.from(req);
     const response: Product[] = await this.handler.FindAll(command);
 
-    res.status(200).json({ message: 'Products in database', product: response });
+    const presenter = new FindProductPresenter(response);
+
+    res.status(HTTP_CODES.OK).json(success(presenter.getData(), 'FindProductAction: products founds successfully'));
   }
 }
 

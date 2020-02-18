@@ -5,6 +5,9 @@ import UserFindCommand from '../../../../Application/Commands/User/UserFindComma
 import FindUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/FindUserHandlerInterface';
 import User from '../../../../Domain/Entities/User';
 import TYPES from '../../../../Infraestructure/DI/types';
+import FindByIdUserPresenter from '../../Presenters/User/FindByIdUserPresenter';
+import { success } from '../../Presenters/Base/success';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class ShowUserAction {
@@ -23,7 +26,9 @@ class ShowUserAction {
     const command: UserFindCommand = await this.adapter.from(req);
     const response: User = await this.handler.FindUser(command);
 
-    res.status(200).json({ message: 'User found', user: response });
+    const presenter = new FindByIdUserPresenter(response);
+
+    res.status(HTTP_CODES.OK).json(success(presenter.getData(), 'FindByIdUserAction: User found successfully'));
   }
 }
 

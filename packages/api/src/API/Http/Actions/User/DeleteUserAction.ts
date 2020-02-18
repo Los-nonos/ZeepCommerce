@@ -4,6 +4,7 @@ import TYPES from '../../../../Infraestructure/DI/types';
 import DeleteUserAdapter from '../../Adapter/User/DeleteUserAdapter';
 import DeleteUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/DeleteUserHandlerInterface';
 import DeleteUserCommand from '../../../../Application/Commands/User/DeleteUserCommand';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class DeleteUserAction {
@@ -22,7 +23,7 @@ class DeleteUserAction {
     const command: DeleteUserCommand = await this.adapter.from(req);
     const response = await this.handler.Delete(command);
 
-    res.status(202).json({ message: response });
+    res.status(HTTP_CODES.NO_CONTENT).end();
   }
 }
 

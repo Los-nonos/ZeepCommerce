@@ -4,6 +4,9 @@ import ProductCreateHandlerInterface from '../../../../Infraestructure/Interface
 import { inject, injectable } from 'inversify';
 import StoreProductAdapter from '../../Adapter/Product/StoreProductAdapter';
 import ProductCreateCommand from '../../../../Application/Commands/Product/ProductCreateCommand';
+import Product from '../../../../Domain/Entities/Product';
+import CreateProductPresenter from '../../Presenters/Product/CreateProductPresenter';
+import { success } from '../../Presenters/Base/success';
 
 @injectable()
 class StoreProductAction {
@@ -20,9 +23,11 @@ class StoreProductAction {
 
   public async execute(req: Request, res: Response) {
     const command: ProductCreateCommand = await this.adapter.from(req);
-    const response: string = await this.handler.Handle(command);
+    const response: Product = await this.handler.Handle(command);
 
-    return res.status(200).json({ message: response });
+    const presenter = new CreateProductPresenter(response);
+
+    return res.status(200).json(success(presenter.getData(), 'CreateProductAction: product created successfully'));
   }
 }
 

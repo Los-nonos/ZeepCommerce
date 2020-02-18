@@ -4,6 +4,10 @@ import TYPES from '../../../../Infraestructure/DI/types';
 import CreateUserHandlerInterface from '../../../../Infraestructure/Interfaces/User/CreateUserHandlerInterface';
 import StoreUserAdapter from '../../Adapter/User/StoreUserAdapter';
 import UserCreateCommand from '../../../../Application/Commands/User/UserCreateCommand';
+import User from '../../../../Domain/Entities/User';
+import CreateUserPresenter from '../../Presenters/User/CreateUserPresenter';
+import { success } from '../../Presenters/Base/success';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class StoreUserAction {
@@ -20,9 +24,11 @@ class StoreUserAction {
 
   public async execute(req: Request, res: Response) {
     const command: UserCreateCommand = await this.adapter.from(req);
-    const response: string = await this.handler.Create(command);
+    const response: User = await this.handler.Create(command);
 
-    res.status(201).json({ message: response });
+    const presenter = new CreateUserPresenter(response);
+
+    res.status(HTTP_CODES.CREATED).json(success(presenter.getData(), 'CreateUserAction: User Created successfully'));
   }
 }
 
