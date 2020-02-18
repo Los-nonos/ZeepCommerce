@@ -2,7 +2,8 @@ import CategoryRepositoryInterface from '../../Domain/Interfaces/CategoryReposit
 import { Repository, getRepository } from 'typeorm';
 import Category from '../../Domain/Entities/Category';
 import { id } from 'inversify';
-import { EntityNotFound } from '../../API/Http/Errors/EntityNotFound';
+import { EntityNotFound } from '../../Infraestructure/Errors/EntityNotFound';
+import { DataBaseError } from '../../Infraestructure/Errors/DataBaseError';
 
 class CategoryRepository implements CategoryRepositoryInterface {
   private repository: Repository<Category>;
@@ -12,35 +13,94 @@ class CategoryRepository implements CategoryRepositoryInterface {
   }
 
   public async FindAll(): Promise<Category[]> {
+    let category;
+
+    try {
+      category = await this.repository.find();
+    } catch (error) {
+      throw new DataBaseError('');
+    }
+
+    if (!category.affected) {
+      throw new EntityNotFound('');
+    }
+
     return await this.repository.find();
   }
 
   public async FindById(id: number): Promise<Category> {
-    return await this.repository.findOne({ id: id });
+    let category;
+    try {
+      category = this.repository.findOne({ id: id });
+
+    } catch (error) {
+      throw new DataBaseError('');
+    }
+
+    if (!category.affected) {
+      throw new EntityNotFound('');
+    }
+
+    return category;
   }
 
   public async FindByName(name: string): Promise<Category> {
-    return await this.repository.findOne({ name: name });
+    let category;
+    try {
+      category = this.repository.findOne({ name: name });
+
+    } catch (error) {
+      throw new DataBaseError('');
+    }
+
+    if (!category.affected) {
+      throw new EntityNotFound('');
+    }
+
+    return category;
   }
 
   public async Create(entity: Category): Promise<Category> {
-    return await this.repository.save(entity);
-  }
+    try {
+      return await this.repository.save(entity);
 
-  public async Update(entity: Category): Promise<void> {
-    const categoryResult = await this.repository.update({ id: entity.id }, entity);
-
-    if (!categoryResult.affected) {
-      throw new EntityNotFound('');
+    } catch (error) {
+      throw new DataBaseError('');
     }
   }
 
-  public async Delete(entity: Category): Promise<void> {
-    const categoryResult = await this.repository.delete(entity);
+  public async Update(entity: Category): Promise<Category> {
+    let category;
 
-    if (!categoryResult) {
+    try {
+      category = await this.repository.update({ id: entity.id }, entity);
+
+    } catch (error) {
+      throw new DataBaseError('');
+    }
+
+    if (!category.affected) {
       throw new EntityNotFound('');
     }
+
+    return entity;
+  }
+
+  public async Delete(entity: Category): Promise<Category> {
+    let category;
+
+    try {
+      category = await this.repository.delete(entity);
+
+    } catch (error) {
+      throw new DataBaseError('');
+    }
+
+    if (!category.affected) {
+      throw new EntityNotFound('');
+    }
+
+    return entity;
   }
 }
 
