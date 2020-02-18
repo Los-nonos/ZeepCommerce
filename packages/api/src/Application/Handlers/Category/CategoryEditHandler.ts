@@ -2,10 +2,9 @@ import CategoryEditHandlerInterface from '../../../Infraestructure/Interfaces/Ca
 import CategoryEditCommand from '../../Commands/Category/CategoryEditCommand';
 import Category from '../../../Domain/Entities/Category';
 import { injectable, inject } from 'inversify';
-import { EntityNotFound } from '../../../API/Http/Errors/EntityNotFound';
-import { DataBaseError } from '../../../API/Http/Errors/DataBaseError';
+import { EntityNotFound } from '../../../Infraestructure/Errors/EntityNotFound';
 import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
-import TYPES from '../../../Infraestructure/types';
+import TYPES from '../../../Infraestructure/DI/types';
 
 @injectable()
 class CategoryEditHandler implements CategoryEditHandlerInterface {
@@ -25,11 +24,7 @@ class CategoryEditHandler implements CategoryEditHandlerInterface {
     category.name = command.getName();
     category.description = command.getDescription();
 
-    try {
-      return await this.repository.Update(category);
-    } catch (error) {
-      throw new DataBaseError(error);
-    }
+    return await this.repository.Update(category);
   }
 }
 

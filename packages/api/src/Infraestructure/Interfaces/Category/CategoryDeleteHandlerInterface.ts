@@ -1,8 +1,7 @@
 import CategoryDeleteCommand from '../../../Application/Commands/Category/CategoryDeleteCommand';
-import Category from '../../../Domain/Entities/Category';
 
 interface CategoryDeleteHandlerInterface {
-  Handle(command: CategoryDeleteCommand): Promise<Category>;
+  Handle(command: CategoryDeleteCommand): Promise<void>;
 }
 
 export default CategoryDeleteHandlerInterface;

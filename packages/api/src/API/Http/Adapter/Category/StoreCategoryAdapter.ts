@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { InvalidData } from '../../Errors/InvalidData';
+import { BadRequest } from '../../Errors/BadRequest';
 import { CategoryCreateSchema } from '../../Validator/Schemas/CategorySchema';
 import CategoryCreateCommand from '../../../../Application/Commands/Category/CategoryCreateCommand';
 import { injectable, inject } from 'inversify';
@@ -14,10 +14,10 @@ class StoreCategoryAdapter {
   }
 
   public async from(req: Request): Promise<CategoryCreateCommand> {
-    const storeCategoryResult = this.validator.validator(req.body, CategoryCreateSchema);
+    const storeCategoryResult = this.validator.validate(req.body, CategoryCreateSchema);
 
     if (storeCategoryResult) {
-      throw new InvalidData(JSON.stringify(this.validator.validationResult(storeCategoryResult)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(storeCategoryResult)));
     }
 
     return new CategoryCreateCommand(req.body.name, req.body.description);

@@ -1,10 +1,9 @@
 import CategoryFindHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryFindHandlerInterface';
 import Category from '../../../Domain/Entities/Category';
-import { Equal, MoreThanOrEqual } from 'typeorm';
 import CategoryFindCommand from '../../Commands/Category/CategoryFindCommand';
 import { injectable, inject } from 'inversify';
 import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
-import TYPES from '../../../Infraestructure/types';
+import TYPES from '../../../Infraestructure/DI/types';
 
 @injectable()
 class CategoryFindHandler implements CategoryFindHandlerInterface {
