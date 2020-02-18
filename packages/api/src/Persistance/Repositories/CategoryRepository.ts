@@ -1,7 +1,6 @@
 import CategoryRepositoryInterface from '../../Domain/Interfaces/CategoryRepositoryInterface';
 import { Repository, getRepository } from 'typeorm';
 import Category from '../../Domain/Entities/Category';
-import { id } from 'inversify';
 import { EntityNotFound } from '../../Infraestructure/Errors/EntityNotFound';
 import { DataBaseError } from '../../Infraestructure/Errors/DataBaseError';
 
