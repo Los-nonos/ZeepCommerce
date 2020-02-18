@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "devDependencies": {
-    "eslint": "^5.16.0",
-    "eslint-plugin-react": "^7.13.0",
-    "lerna": "^3.13.1"
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3",
+    "lerna": "^3.20.2"
   },
   "scripts": {
     "delete-build": "sudo rm -rf packages/*/build packages/*/dist packages/website/static/build",

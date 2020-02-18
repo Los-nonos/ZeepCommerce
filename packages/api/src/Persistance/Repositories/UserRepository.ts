@@ -1,3 +1,4 @@
+import { EntityNotFound } from '../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
 import User from '../../Domain/Entities/User';
 import { getRepository, Repository } from 'typeorm';
 import IUserRepository from '../../Domain/Interfaces/IUserRepository';
@@ -9,31 +10,41 @@ class UserRepository implements IUserRepository {
     this.repository = getRepository(User);
   }
 
-  public async FindById(id: number): Promise<User> {
-    return await this.repository.findOne({ id: id });
+  public async findOne(id: number): Promise<User> {
+    const user = await this.repository.findOne({ Id: id });
+
+    if (!user) {
+      throw new EntityNotFound('not user found');
+    }
+
+    return user;
   }
 
-  public async Find(): Promise<User[]> {
+  public async findAll(): Promise<User[]> {
     return await this.repository.find();
   }
 
-  public async FindByName(name: string): Promise<User> {
-    return await this.repository.findOne({ where: { username: name }, relations: ['role'] });
-  }
+  public async Save(t: User): Promise<void> {
+    if (t == undefined) {
+      throw new Error('argument user is undefined');
+    }
 
-  public async Persist(t: User): Promise<User> {
-    return await this.repository.save(t);
+    await this.repository.save(t);
   }
 
   public async Update(t: User): Promise<void> {
-    const result = await this.repository.update({ id: t.id }, t);
+    if (t == undefined) {
+      throw new Error('argument user is undefined');
+    }
+
+    const result = await this.repository.update({ Id: t.Id }, t);
 
     if (!result.affected) {
-      throw new Error('user not save in database, before save entity');
+      throw new EntityNotFound('user not save in database, before save entity');
     }
   }
 
-  public async Delete(t: User): Promise<void> {
+  public async Remove(t: User): Promise<void> {
     if (t == undefined) {
       throw new Error('argument user is undefined');
     }
@@ -41,7 +52,7 @@ class UserRepository implements IUserRepository {
     const result = await this.repository.remove(t);
 
     if (!result) {
-      throw new Error('user not found in database');
+      throw new EntityNotFound('user not found in database');
     }
   }
 }

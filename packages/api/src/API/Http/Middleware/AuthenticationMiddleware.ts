@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwtConfig from '../../../Infraestructure/utils/jwtConfig';
 import * as jwt from 'jsonwebtoken';
 import { SessionInvalid } from '../Errors/SessionInvalid';
-import { UnAuthorizedError } from '../Errors/UnAuthorizedException';
+import AuthorizationFailed from '../Errors/UnAuthorizedException';
 
 const checkRolesMiddleware = (roles: string[], decoded): void => {
   if (typeof decoded == 'object' && decoded.roles) {

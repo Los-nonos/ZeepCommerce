@@ -1,4 +1,4 @@
-import Joi = require('joi');
+import * as Joi from 'joi';
 import { injectable } from 'inversify';
 
 @injectable()

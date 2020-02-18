@@ -2,7 +2,9 @@ import { Request } from 'express';
 import { UserEditSchema } from '../../Validator/Schemas/UserSchema';
 import { InvalidData } from '../../Errors/BadRequest';
 import EditUserCommand from '../../../../Application/Commands/User/EditUserCommand';
+import { injectable } from 'inversify';
 
+@injectable()
 class EditUserAdapter {
   public async from(req: Request) {
     const editUserResult = UserEditSchema.validate(req.params.body);
