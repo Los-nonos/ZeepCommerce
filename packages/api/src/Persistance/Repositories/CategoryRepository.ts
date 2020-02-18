@@ -1,5 +1,5 @@
 import CategoryRepositoryInterface from '../../Domain/Interfaces/CategoryRepositoryInterface';
-import { Repository, getRepository } from 'typeorm';
+import { Repository, getRepository, MoreThanOrEqual } from 'typeorm';
 import Category from '../../Domain/Entities/Category';
 import { EntityNotFound } from '../../Infraestructure/Errors/EntityNotFound';
 import { DataBaseError } from '../../Infraestructure/Errors/DataBaseError';
@@ -11,11 +11,11 @@ class CategoryRepository implements CategoryRepositoryInterface {
     this.repository = getRepository(Category);
   }
 
-  public async FindAll(): Promise<Category[]> {
-    let category;
-
+  public async FindAll(where: any): Promise<Category[]> {
+    let category: any;
     try {
       category = await this.repository.find();
+
     } catch (error) {
       throw new DataBaseError('');
     }
@@ -44,9 +44,9 @@ class CategoryRepository implements CategoryRepositoryInterface {
   }
 
   public async FindByName(name: string): Promise<Category> {
-    let category;
+    let category: any;
     try {
-      category = this.repository.findOne({ name: name });
+      category = await this.repository.findOne({ name: name });
 
     } catch (error) {
       throw new DataBaseError('');
@@ -59,18 +59,25 @@ class CategoryRepository implements CategoryRepositoryInterface {
     return category;
   }
 
+  public async FindPaginated(page: number, limit: number): Promise<Category[]> {
+    const categories = this.FindAll({ where: { Id: MoreThanOrEqual(page), limit: limit } });
+
+    return categories;
+  }
+
   public async Create(entity: Category): Promise<Category> {
     try {
-      return await this.repository.save(entity);
+      await this.repository.save(entity);
 
     } catch (error) {
       throw new DataBaseError('');
     }
+
+    return entity;
   }
 
   public async Update(entity: Category): Promise<Category> {
-    let category;
-
+    let category: any;
     try {
       category = await this.repository.update({ id: entity.id }, entity);
 
@@ -85,8 +92,8 @@ class CategoryRepository implements CategoryRepositoryInterface {
     return entity;
   }
 
-  public async Delete(entity: Category): Promise<Category> {
-    let category;
+  public async Delete(entity: Category): Promise<void> {
+    let category: any;
 
     try {
       category = await this.repository.delete(entity);
@@ -98,8 +105,6 @@ class CategoryRepository implements CategoryRepositoryInterface {
     if (!category.affected) {
       throw new EntityNotFound('');
     }
-
-    return entity;
   }
 }
 
