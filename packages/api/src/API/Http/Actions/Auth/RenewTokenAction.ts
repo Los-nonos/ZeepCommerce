@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { injectable, inject } from 'inversify';
 import RenewTokenAdapter from '../../Adapter/Auth/RenewTokenAdapter';
 import RenewTokenHandler from '../../../../Application/Handlers/Auth/RenewTokenHandler';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class RenewTokenAction {
@@ -17,11 +18,10 @@ class RenewTokenAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const comment = this.adapter.from(req);
+    const command = this.adapter.from(req);
+    const response = this.handler.execute(command);
 
-    const response = this.handler.execute(comment);
-
-    res.status(200).json({ response });
+    res.status(HTTP_CODES.OK).json({ response });
   }
 }
 

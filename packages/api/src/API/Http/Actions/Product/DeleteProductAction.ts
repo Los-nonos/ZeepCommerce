@@ -4,6 +4,7 @@ import DeleteProductAdapter from '../../Adapter/Product/DeleteProductAdapter';
 import { inject, injectable } from 'inversify';
 import ProductDeleteCommand from '../../../../Application/Commands/Product/ProductDeleteCommand';
 import TYPES from '../../../../Infraestructure/DI/types';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class DeleteProductAction {
@@ -21,7 +22,7 @@ class DeleteProductAction {
     const command: ProductDeleteCommand = await this.adapter.from(req);
     const response: string = await this.handler.Handle(command);
 
-    return res.status(200).json({ message: response });
+    return res.status(HTTP_CODES.NO_CONTENT).end();
   }
 }
 

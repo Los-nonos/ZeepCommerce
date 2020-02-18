@@ -1,12 +1,12 @@
 import { Request } from 'express';
-import { InvalidData } from '../../Errors/BadRequest';
-import IdSchema from '../../Validator/Schemas/IdSchema';
+import { BadRequest } from '../../Errors/BadRequest';
+import { IdSchema } from '../../Validator/Schemas/Common';
 import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import { injectable } from 'inversify';
 
 @injectable()
 class ShowAllProductAdapter {
-  public from(req: Request) {
+  public async from(req: Request) {
     let id: any = req.query.search;
 
     if (!id) {
@@ -14,7 +14,7 @@ class ShowAllProductAdapter {
     } else {
       const resultId = IdSchema.validate({ id });
       if (resultId.error) {
-        throw new InvalidData(resultId.error.message);
+        throw new BadRequest(resultId.error.message);
       }
     }
 

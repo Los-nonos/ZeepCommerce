@@ -46,7 +46,7 @@ class User extends BaseEntity {
   @Column()
   blocked: boolean;
 
-  @Column({ nullable: true })
+  @Column()
   userEmail: string;
 
   @ManyToMany(_roles => UserRole)

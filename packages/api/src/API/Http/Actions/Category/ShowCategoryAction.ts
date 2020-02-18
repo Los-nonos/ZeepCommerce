@@ -5,7 +5,9 @@ import { inject, injectable } from 'inversify';
 import ShowCategoryAdapter from '../../Adapter/Category/ShowCategoryAdapter';
 import CategoryFindCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
 import Category from '../../../../Domain/Entities/Category';
-import CategoryFindByIdPresenter from '../../Presenter/Category/CategoryFindByIdPresenter';
+import CategoryFindByIdPresenter from '../../Presenters/Category/CategoryFindByIdPresenter';
+import { success } from '../../Presenters/Base/success';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
 
 @injectable()
 class ShowCategoryAction {
@@ -23,9 +25,12 @@ class ShowCategoryAction {
   public async execute(req: Request, res: Response) {
     const command: CategoryFindCommand = await this.adapter.from(req);
     const response: Category = await this.handler.HandleFindById(command);
+
     const presenter = new CategoryFindByIdPresenter(response);
 
-    return res.status(200).json(presenter.getData());
+    return res
+      .status(HTTP_CODES.OK)
+      .json(success(presenter.getData(), 'FindByIdCategoryAction: Category found successfully'));
   }
 }
 

@@ -5,7 +5,7 @@ import ProductCreateHandlerInterface from '../../../Infraestructure/Interfaces/P
 
 @injectable()
 class ProductCreateHandler implements ProductCreateHandlerInterface {
-  public async Handle(command: ProductCreateCommand): Promise<string> {
+  public async Handle(command: ProductCreateCommand): Promise<Product> {
     const { name, price, description }: any = command;
 
     const product = new Product();
@@ -14,8 +14,7 @@ class ProductCreateHandler implements ProductCreateHandlerInterface {
     product.description = description;
 
     try {
-      await product.save();
-      return 'Product created';
+      return await product.save();
     } catch (error) {
       return error.message;
     }

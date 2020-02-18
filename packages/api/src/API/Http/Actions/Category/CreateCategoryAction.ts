@@ -4,8 +4,10 @@ import CategoryCreateHandlerInterface from '../../../../Infraestructure/Interfac
 import { inject, injectable } from 'inversify';
 import CategoryCreateCommand from '../../../../Application/Commands/Category/CategoryCreateCommand';
 import Category from '../../../../Domain/Entities/Category';
-import CategoryCreatePresenter from '../../Presenter/Category/CategoryCreatePresenter';
+import CategoryCreatePresenter from '../../Presenters/Category/CategoryCreatePresenter';
 import StoreCategoryAdapter from '../../Adapter/Category/StoreCategoryAdapter';
+import { HTTP_CODES } from '../../Enums/HttpCodes';
+import { success } from '../../Presenters/Base/success';
 
 @injectable()
 class CreateCategoryAction {
@@ -25,7 +27,9 @@ class CreateCategoryAction {
     const response: Category = await this.handler.Handle(command);
     const presenter = new CategoryCreatePresenter(response);
 
-    return res.status(200).json(presenter.getData());
+    return res
+      .status(HTTP_CODES.CREATED)
+      .json(success(presenter.getData(), 'CreateCategoryAction: Category created successfully'));
   }
 }
 

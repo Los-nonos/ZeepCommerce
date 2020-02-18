@@ -1,7 +1,7 @@
-import PresenterInterface from '../../Presenter/Base/PresenterInterface';
+import IPresenter from '../Base/IPresenter';
 import Category from '../../../../Domain/Entities/Category';
 
-class CategoryEditPresenter implements PresenterInterface {
+class CategoryEditPresenter implements IPresenter {
   private result: Category;
 
   constructor(result: Category) {

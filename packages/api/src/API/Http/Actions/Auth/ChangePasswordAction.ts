@@ -22,6 +22,7 @@ class ChangePasswordAction {
   public async execute(req: Request, res: Response) {
     const command: any = this.adapter.from(req);
     const { user, message } = await this.handler.execute(command);
+
     const presenter = new Presenter(user);
 
     res.status(HTTP_CODES.OK).json(success(presenter.getData(), message));
