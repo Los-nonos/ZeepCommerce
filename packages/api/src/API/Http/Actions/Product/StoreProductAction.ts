@@ -22,7 +22,7 @@ class StoreProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductCreateCommand = await this.adapter.from(req);
+    const command: ProductCreateCommand = await this.adapter.from(req.body);
     const response: Product = await this.handler.Handle(command);
 
     const presenter = new CreateProductPresenter(response);

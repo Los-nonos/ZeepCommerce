@@ -23,7 +23,7 @@ class ShowAllProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductFindCommand = await this.adapter.from(req);
+    const command: ProductFindCommand = await this.adapter.from(req.params);
     const response: Product[] = await this.handler.FindAll(command);
 
     const presenter = new FindProductPresenter(response);

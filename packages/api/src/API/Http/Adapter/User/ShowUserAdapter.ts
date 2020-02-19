@@ -1,20 +1,23 @@
-import { Request } from 'express';
 import { FindUserSchema } from '../../Validator/Schemas/UserSchema';
 import { BadRequest } from '../../Errors/BadRequest';
 import UserFindCommand from '../../../../Application/Commands/User/UserFindCommand';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
 
 @injectable()
 class ShowUserAdapter {
   private readonly validator: Validator;
-  public async from(req: Request) {
-    const findUserResult = FindUserSchema.validate(req.query.search);
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    if (findUserResult.error || findUserResult.errors) {
-      throw new InvalidData(findUserResult.error.message || findUserResult.errors.message);
+  public async from(params: any) {
+    const error = this.validator.validate(params, FindUserSchema);
+
+    if (error) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
-    return new UserFindCommand(findUserResult.value.id);
+    return new UserFindCommand(params.id);
   }
 }
 

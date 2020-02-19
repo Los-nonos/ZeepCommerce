@@ -22,7 +22,7 @@ class EditProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductEditCommand = await this.adapter.from(req);
+    const command: ProductEditCommand = await this.adapter.from(req.body, req.params);
     const response: Product = await this.handler.Handle(command);
 
     const presenter = new EditProductPresenter(response);

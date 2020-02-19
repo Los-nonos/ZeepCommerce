@@ -19,8 +19,8 @@ class DeleteProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductDeleteCommand = await this.adapter.from(req);
-    const response: string = await this.handler.Handle(command);
+    const command: ProductDeleteCommand = await this.adapter.from(req.params);
+    await this.handler.Handle(command);
 
     return res.status(HTTP_CODES.NO_CONTENT).end();
   }
