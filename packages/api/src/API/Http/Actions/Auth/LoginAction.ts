@@ -5,6 +5,7 @@ import { inject, injectable } from 'inversify';
 import LoginPresenter from '../../Presenters/Auth/LoginPresenter';
 import { success } from '../../Presenters/Base/success';
 import { HTTP_CODES } from '../../Enums/HttpCodes';
+import LoginCommand from '../../../../Application/Commands/Auth/LoginCommand';
 
 @injectable()
 class LoginAction {
@@ -16,7 +17,7 @@ class LoginAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command = this.adapter.from(req);
+    const command: LoginCommand = await this.adapter.from(req.body);
 
     const { user, token } = await this.handler.execute(command);
 

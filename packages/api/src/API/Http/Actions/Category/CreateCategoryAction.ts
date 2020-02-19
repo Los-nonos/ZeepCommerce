@@ -23,7 +23,7 @@ class CreateCategoryAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: CategoryCreateCommand = await this.adapter.from(req);
+    const command: CategoryCreateCommand = await this.adapter.from(req.body);
     const response: Category = await this.handler.Handle(command);
     const presenter = new CategoryCreatePresenter(response);
 

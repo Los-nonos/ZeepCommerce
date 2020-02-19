@@ -1,10 +1,8 @@
-import { Request } from 'express';
-import { InvalidData } from '../../Errors/BadRequest';
-import IdSchema from '../../Validator/Schemas/IdSchema';
+import { BadRequest } from '../../Errors/BadRequest';
+import { IdSchema } from '../../Validator/Schemas/Common';
 import ProductFindCommand from '../../../../Application/Commands/Product/ProductFindCommand';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
-import { ShowProductSchema } from '../../Validator/Schemas/ProductSchema';
 
 @injectable()
 class ShowProductAdapter {
@@ -14,14 +12,14 @@ class ShowProductAdapter {
     this.validator = validator;
   }
 
-  public from(req: Request) {
-    const resultId = this.validator.validator(req.body, ShowProductSchema);
+  public from(params: any) {
+    const resultId = this.validator.validate(params, IdSchema);
 
     if (resultId) {
-      throw new InvalidData(JSON.stringify(this.validator.validationResult(resultId)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(resultId)));
     }
 
-    return new ProductFindCommand(req.body.id);
+    return new ProductFindCommand(params.id);
   }
 }
 

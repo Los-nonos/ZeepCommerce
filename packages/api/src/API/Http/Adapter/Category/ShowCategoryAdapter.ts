@@ -1,4 +1,3 @@
-import { Request } from 'express';
 import { CategoryShowSchema } from '../../Validator/Schemas/CategorySchema';
 import { BadRequest } from '../../Errors/BadRequest';
 import CategoryFindCommand from '../../../../Application/Commands/Category/CategoryFindCommand';
@@ -13,14 +12,14 @@ class ShowCategoryAdapter {
     this.validator = validator;
   }
 
-  public async from(req: Request): Promise<CategoryFindCommand> {
-    const findCategoryResult = this.validator.validate(req.body, CategoryShowSchema);
+  public async from(params: any): Promise<CategoryFindCommand> {
+    const findCategoryResult = this.validator.validate(params, CategoryShowSchema);
 
     if (findCategoryResult) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(findCategoryResult)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(findCategoryResult.details)));
     }
 
-    return new CategoryFindCommand(req.body.id, req.body.name);
+    return new CategoryFindCommand(params.id ? params.id : null, params.name ? params.name : null);
   }
 }
 

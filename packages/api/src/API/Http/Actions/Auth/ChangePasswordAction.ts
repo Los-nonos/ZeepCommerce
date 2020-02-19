@@ -5,6 +5,7 @@ import { success } from '../../Presenters/Base/success';
 import { HTTP_CODES } from '../../Enums/HttpCodes';
 import ChangePasswordAdapter from '../../Adapter/Auth/ChangePasswordAdapter';
 import ChangePasswordHandler from '../../../../Application/Handlers/Auth/ChangePasswordHandler';
+import ChangePasswordCommand from '../../../../Application/Commands/Auth/ChangePasswordCommand';
 
 @injectable()
 class ChangePasswordAction {
@@ -20,7 +21,7 @@ class ChangePasswordAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: any = this.adapter.from(req);
+    const command: ChangePasswordCommand = await this.adapter.from(req.body);
     const { user, message } = await this.handler.execute(command);
 
     const presenter = new Presenter(user);

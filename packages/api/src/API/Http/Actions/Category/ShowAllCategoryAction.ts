@@ -23,7 +23,7 @@ class ShowAllCategoryAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: CategoryFindCommand = await this.adapter.from(req);
+    const command: CategoryFindCommand = await this.adapter.from(req.params);
     const response: Category[] = await this.handler.HandleFindAll(command);
 
     const presenter = new CategoryFindAllPresenter(response);

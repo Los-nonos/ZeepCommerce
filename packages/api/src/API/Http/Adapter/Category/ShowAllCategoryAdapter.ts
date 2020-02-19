@@ -1,4 +1,3 @@
-import { Request } from 'express';
 import { BadRequest } from '../../Errors/BadRequest';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
@@ -13,20 +12,20 @@ class ShowAllCategoryAdapter {
     this.validator = validator;
   }
 
-  public async from(req: Request): Promise<CategoryFindByIdCommand> {
-    let id: any = req.query.search;
+  public async from(req: any): Promise<CategoryFindByIdCommand> {
+    let id: any = req.search;
 
     if (!id) {
       id = 0;
     } else {
-      const findIdCategoryResult = this.validator.validate(req.params, IdSchema);
+      const findIdCategoryResult = this.validator.validate(req, IdSchema);
 
       if (findIdCategoryResult) {
-        throw new BadRequest(JSON.stringify(this.validator.validationResult(findIdCategoryResult)));
+        throw new BadRequest(JSON.stringify(this.validator.validationResult(findIdCategoryResult.details)));
       }
     }
 
-    return new CategoryFindByIdCommand(id, req.params.name);
+    return new CategoryFindByIdCommand(id, req.name);
   }
 }
 

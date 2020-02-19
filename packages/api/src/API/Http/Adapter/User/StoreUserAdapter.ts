@@ -1,29 +1,35 @@
-import { Request } from 'express';
 import { UserCreateSchema } from '../../Validator/Schemas/UserSchema';
-import { InvalidData } from '../../Errors/BadRequest';
+import { BadRequest } from '../../Errors/BadRequest';
 import UserCreateCommand from '../../../../Application/Commands/User/UserCreateCommand';
+import Validator from '../../Validator/Validator';
+import { inject } from 'inversify';
 
 class StoreUserAdapter {
-  public async from(req: Request) {
-    const createUserResult = UserCreateSchema.validate(req.body);
+  private readonly validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    if (createUserResult.error || createUserResult.errors) {
-      throw new InvalidData(createUserResult.error.message || createUserResult.errors.message);
+  public async from(body: any) {
+    const error = this.validator.validate(body, UserCreateSchema);
+
+    if (error) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
     return new UserCreateCommand(
-      createUserResult.value.userName,
-      createUserResult.value.userLastName,
-      createUserResult.value.userDni,
-      createUserResult.value.userAge,
-      createUserResult.value.userBirthYear,
-      createUserResult.value.userPassword,
-      createUserResult.value.userPhoneNumber,
-      createUserResult.value.userCellphoneNumber,
-      createUserResult.value.userPhoneAreaCode,
-      createUserResult.value.userCity,
-      createUserResult.value.userState,
-      createUserResult.value.userCountry,
-      createUserResult.value.userEmail,
+      body.name,
+      body.lastname,
+      body.dni,
+      body.age,
+      body.birthyear,
+      body.password,
+      body.phoneNumber,
+      body.cellPhoneNumber,
+      body.areaCode,
+      body.city,
+      body.state,
+      body.country,
+      body.email,
     );
   }
 }
