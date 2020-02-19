@@ -1,6 +1,6 @@
 import Category from '../Entities/Category';
 
-interface CategoryRepositoryInterface {
+interface ICategoryRepository {
   FindAll(params: any): Promise<Category[]>;
   FindById(id: number): Promise<Category>;
   FindByName(name: string): Promise<Category>;
@@ -10,4 +10,4 @@ interface CategoryRepositoryInterface {
   Delete(entity: Category): Promise<void>;
 }
 
-export default CategoryRepositoryInterface;
+export default ICategoryRepository;

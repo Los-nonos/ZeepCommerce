@@ -1,9 +1,11 @@
-import CategoryRepositoryInterface from '../../Domain/Interfaces/CategoryRepositoryInterface';
+import CategoryRepositoryInterface from '../../Domain/Interfaces/ICategoryRepository';
 import { Repository, getRepository, MoreThanOrEqual } from 'typeorm';
 import Category from '../../Domain/Entities/Category';
 import { EntityNotFound } from '../../Infraestructure/Errors/EntityNotFound';
 import { DataBaseError } from '../../Infraestructure/Errors/DataBaseError';
+import { injectable } from 'inversify';
 
+@injectable()
 class CategoryRepository implements CategoryRepositoryInterface {
   private repository: Repository<Category>;
 

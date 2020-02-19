@@ -5,68 +5,68 @@ import UserRole from './UserRole';
 @Entity()
 class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-  public id: number;
+  public Id: number;
 
   @Column()
-  public name: string;
+  public Name: string;
 
   @Column()
-  public lastname: string;
+  public Lastname: string;
 
   @Column({ nullable: true })
-  public dni: number;
+  public Dni: number;
 
   @Column({ nullable: true })
-  userAge: number;
+  Age: number;
 
   @Column({ nullable: true })
-  userBirthYear: number;
+  BirthYear: number;
 
   @Column()
-  password: string;
+  Password: string;
 
   @Column({ nullable: true })
-  userPhoneNumber: number;
+  PhoneNumber: number;
 
   @Column({ nullable: true })
-  userCellphoneNumber: number;
+  CellphoneNumber: number;
 
   @Column({ nullable: true })
-  userPhoneAreaCode: number;
+  PhoneAreaCode: number;
 
   @Column({ nullable: true })
-  userCity: string;
+  City: string;
 
   @Column({ nullable: true })
-  userState: string;
+  State: string;
 
   @Column({ nullable: true })
-  userCountry: string;
+  Country: string;
 
   @Column()
-  blocked: boolean;
+  Blocked: boolean;
 
   @Column()
-  userEmail: string;
+  Email: string;
 
   @ManyToMany(_roles => UserRole)
   @JoinTable()
-  public roles: UserRole[];
+  public Roles: UserRole[];
 
   public checkIfUnencryptedPasswordIsValid(unencryptedPassword: string): boolean {
-    return bcrypt.compareSync(unencryptedPassword, this.password);
+    return bcrypt.compareSync(unencryptedPassword, this.Password);
   }
 
   public getRolesFromUserRole() {
     const roles = [];
-    for (const userRole of this.roles) {
+    for (const userRole of this.Roles) {
       roles.push(userRole.Name);
     }
     return roles;
   }
 
   public hashPassword(newPassword: string): void {
-    this.password = bcrypt.hashSync(newPassword, 8);
+    this.Password = bcrypt.hashSync(newPassword, 8);
   }
 }
 

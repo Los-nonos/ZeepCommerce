@@ -3,7 +3,7 @@ import CategoryEditCommand from '../../Commands/Category/CategoryEditCommand';
 import Category from '../../../Domain/Entities/Category';
 import { injectable, inject } from 'inversify';
 import { EntityNotFound } from '../../../Infraestructure/Errors/EntityNotFound';
-import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
+import CategoryRepositoryInterface from '../../../Domain/Interfaces/ICategoryRepository';
 import TYPES from '../../../Infraestructure/DI/types';
 
 @injectable()

@@ -1,8 +1,11 @@
-import { EntityNotFound } from '../Infraestructure/ErrorsHandlers/Errors/EntityNotFound';
+import { EntityNotFound } from '../../Infraestructure/Errors/EntityNotFound';
 import User from '../../Domain/Entities/User';
 import { getRepository, Repository } from 'typeorm';
 import IUserRepository from '../../Domain/Interfaces/IUserRepository';
+import { DataBaseError } from '../../Infraestructure/Errors/DataBaseError';
+import { injectable } from 'inversify';
 
+@injectable()
 class UserRepository implements IUserRepository {
   private repository: Repository<User>;
 
@@ -10,8 +13,8 @@ class UserRepository implements IUserRepository {
     this.repository = getRepository(User);
   }
 
-  public async findOne(id: number): Promise<User> {
-    const user = await this.repository.findOne({ Id: id });
+  public async FindById(id: number): Promise<User> {
+    const user: User | undefined = await this.repository.findOne({ relations: ['roles'], where: { Id: id } });
 
     if (!user) {
       throw new EntityNotFound('not user found');
@@ -20,39 +23,49 @@ class UserRepository implements IUserRepository {
     return user;
   }
 
-  public async findAll(): Promise<User[]> {
-    return await this.repository.find();
+  public async Find(params: any): Promise<User[]> {
+    return await this.repository.find({ relations: ['roles'], where: params });
   }
 
-  public async Save(t: User): Promise<void> {
-    if (t == undefined) {
-      throw new Error('argument user is undefined');
+  public async FindByName(name: string): Promise<User> {
+    const user = await this.repository.findOne({ where: { Name: name }, relations: ['roles'] });
+
+    if (!user) {
+      throw new EntityNotFound(`User with name ${name} not found`);
     }
 
-    await this.repository.save(t);
+    return user;
   }
 
-  public async Update(t: User): Promise<void> {
-    if (t == undefined) {
-      throw new Error('argument user is undefined');
-    }
-
-    const result = await this.repository.update({ Id: t.Id }, t);
-
-    if (!result.affected) {
-      throw new EntityNotFound('user not save in database, before save entity');
+  public async Persist(user: User): Promise<User> {
+    try {
+      return await this.repository.save(user);
+    } catch {
+      throw new DataBaseError(`Error in DB try save persist user`);
     }
   }
 
-  public async Remove(t: User): Promise<void> {
-    if (t == undefined) {
-      throw new Error('argument user is undefined');
+  public async Update(user: User): Promise<void> {
+    try {
+      const result = await this.repository.update(user.Id, user);
+
+      if (!(result && result.affected === 1)) {
+        throw new DataBaseError(``);
+      }
+    } catch (error) {
+      throw new DataBaseError(`User not updated`);
     }
+  }
 
-    const result = await this.repository.remove(t);
+  public async Delete(user: User): Promise<void> {
+    try {
+      const result = await this.repository.delete(user.Id);
 
-    if (!result) {
-      throw new EntityNotFound('user not found in database');
+      if (!(result && result.affected === 1)) {
+        throw new DataBaseError('');
+      }
+    } catch {
+      throw new DataBaseError('User not deleted');
     }
   }
 }

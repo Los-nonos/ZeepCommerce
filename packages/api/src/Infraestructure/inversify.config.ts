@@ -92,7 +92,7 @@ import RenewTokenAdapter from '../API/Http/Adapter/Auth/RenewTokenAdapter';
 import ChangePasswordAdapter from '../API/Http/Adapter/Auth/ChangePasswordAdapter';
 
 import Validator from '../API/Http/Validator/Validator';
-import CategoryRepositoryInterface from '../Domain/Interfaces/CategoryRepositoryInterface';
+import CategoryRepositoryInterface from '../Domain/Interfaces/ICategoryRepository';
 import CategoryRepository from '../Persistance/Repositories/CategoryRepository';
 
 var container = new Container();

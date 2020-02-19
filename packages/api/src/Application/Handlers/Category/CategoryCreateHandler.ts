@@ -2,7 +2,7 @@ import Category from '../../../Domain/Entities/Category';
 import CategoryCreateHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryCreateHandlerInterface';
 import CategoryCreateCommand from '../../Commands/Category/CategoryCreateCommand';
 import { injectable, inject } from 'inversify';
-import CategoryRepositoryInterface from '../../../Domain/Interfaces/CategoryRepositoryInterface';
+import CategoryRepositoryInterface from '../../../Domain/Interfaces/ICategoryRepository';
 import TYPES from '../../../Infraestructure/DI/types';
 
 @injectable()
