@@ -1,4 +1,3 @@
-import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
 import { BadRequest } from '../../Errors/BadRequest';
@@ -12,16 +11,16 @@ class EditUserRoleAdapter {
   constructor(@inject(Validator) validator: Validator) {
     this.validator = validator;
   }
-  public async from(req: Request): Promise<EditUserRoleCommand> {
-    const error = this.validator.validate(req.body, EditUserRoleSchema);
-    const errorId = this.validator.validate(req.params, IdSchema);
+  public async from(body: any, params: any): Promise<EditUserRoleCommand> {
+    const error = this.validator.validate(body, EditUserRoleSchema);
+    const errorId = this.validator.validate(params, IdSchema);
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
     if (errorId) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(errorId)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(errorId.details)));
     }
-    return new EditUserRoleCommand(Number(req.params.id), req.body.name);
+    return new EditUserRoleCommand(Number(params.id), body.name);
   }
 }
 

@@ -100,12 +100,6 @@ export const UserEditSchema = Joi.object().keys({
     .required(),
 });
 
-export const UserDeleteSchema = Joi.object().keys({
-  id: Joi.number()
-    .min(0)
-    .required(),
-});
-
 export const FindUserSchema = Joi.object().keys({
   id: Joi.number()
     .min(0)

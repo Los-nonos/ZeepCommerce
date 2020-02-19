@@ -22,7 +22,7 @@ class ShowProductAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: ProductFindCommand = await this.adapter.ShowByIdAdapter(req);
+    const command: ProductFindCommand = await this.adapter.ShowByIdAdapter(req.params);
     const response: Product = await this.handler.FindOne(command);
 
     const presenter = new FindByIdProductPresenter(response);

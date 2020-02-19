@@ -1,7 +1,6 @@
-import { Request } from 'express';
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
-import { InvalidData } from '../../Errors/BadRequest';
+import { BadRequest } from '../../Errors/BadRequest';
 import ChangePasswordCommand from '../../../../Application/Commands/Auth/ChangePasswordCommand';
 import { ChangePasswordSchema } from '../../Validator/Schemas/LoginSchema';
 
@@ -11,12 +10,12 @@ class ChangePasswordAdapter {
   constructor(@inject(Validator) validator: Validator) {
     this.validator = validator;
   }
-  public async from(req: Request): Promise<ChangePasswordCommand> {
-    const error = this.validator.validator(req.body, ChangePasswordSchema);
+  public async from(req: any): Promise<ChangePasswordCommand> {
+    const error = this.validator.validate(req, ChangePasswordSchema);
     if (error) {
-      throw new InvalidData(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
-    return new ChangePasswordCommand(req.body.username, req.body.password);
+    return new ChangePasswordCommand(req.username, req.password);
   }
 }
 

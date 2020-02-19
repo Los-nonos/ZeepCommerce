@@ -1,21 +1,24 @@
-import { injectable } from 'inversify';
-import { Request } from 'express';
+import { injectable, inject } from 'inversify';
 import ProductDeleteCommand from '../../../../Application/Commands/Product/ProductDeleteCommand';
-import IdSchema from '../../Validator/Schemas/IdSchema';
-import { InvalidData } from '../../Errors/BadRequest';
+import { IdSchema } from '../../Validator/Schemas/Common';
+import { BadRequest } from '../../Errors/BadRequest';
+import Validator from '../../Validator/Validator';
 
 @injectable()
 class DeleteProductAdapter {
-  public async from(req: Request): Promise<ProductDeleteCommand> {
-    const { id }: any = req.params;
+  private readonly validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    const resultId = IdSchema.validate({ id });
+  public async from(req: any): Promise<ProductDeleteCommand> {
+    const resultId = this.validator.validate(req, IdSchema);
 
-    if (resultId.error) {
-      throw new InvalidData(resultId.error.message);
+    if (resultId) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(resultId.details)));
     }
 
-    return new ProductDeleteCommand(resultId.value.id);
+    return new ProductDeleteCommand(Number(req.id));
   }
 }
 

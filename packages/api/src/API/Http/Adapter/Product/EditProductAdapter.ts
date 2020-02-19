@@ -1,44 +1,38 @@
-import { Request } from 'express';
-import { InvalidData } from '../../Errors/BadRequest';
-import IdSchema from '../../Validator/Schemas/IdSchema';
-import NameSchema from '../../Validator/Schemas/NameSchema';
-import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
-import PriceSchema from '../../Validator/Schemas/PriceSchema';
+import { BadRequest } from '../../Errors/BadRequest';
+import { IdSchema } from '../../Validator/Schemas/Common';
+import { StoreProductSchema } from '../../Validator/Schemas/ProductSchema';
 import ProductEditCommand from '../../../../Application/Commands/Product/ProductEditCommand';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
+import Validator from '../../Validator/Validator';
 
 @injectable()
 class EditProductAdapter {
-  public async from(req: Request) {
-    const { id }: any = req.params;
-    const { name, price, description }: any = req.body;
+  private readonly validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    const resultId = IdSchema.validate({ id: id });
-    const resultName = NameSchema.validate({ name: name });
-    const resultPrice = PriceSchema.validate({ price: price });
-    const resultDescription = DescriptionSchema.validate({ description: description });
+  public async from(body: any, params: any) {
+    const error = this.validator.validate(body, StoreProductSchema);
 
-    if (resultId.error) {
-      throw new InvalidData(resultId.error.message);
+    const errorId = this.validator.validate(params, IdSchema);
+
+    if (error) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
 
-    if (resultName.error) {
-      throw new InvalidData(resultName.error.message);
-    }
-
-    if (resultPrice.error) {
-      throw new InvalidData(resultPrice.error.message);
-    }
-
-    if (resultDescription.error) {
-      throw new InvalidData(resultDescription.error.message);
+    if (errorId) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(errorId.details)));
     }
 
     return new ProductEditCommand(
-      resultId.value.id,
-      resultName.value.name,
-      resultPrice.value.price,
-      resultDescription.value.description,
+      params.id,
+      body.name,
+      body.description,
+      body.basePrice,
+      body.tax,
+      body.costPrice,
+      body.margin,
     );
   }
 }

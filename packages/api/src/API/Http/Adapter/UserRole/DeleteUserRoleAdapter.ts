@@ -1,4 +1,3 @@
-import { Request, Response } from 'express';
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
 import { BadRequest } from '../../Errors/BadRequest';
@@ -11,12 +10,12 @@ class DeleteUserRoleAdapter {
   constructor(@inject(Validator) validator: Validator) {
     this.validator = validator;
   }
-  public async from(req: Request): Promise<DeleteUserRoleCommand> {
-    const error = this.validator.validate(req.params, IdSchema);
+  public async from(params: any): Promise<DeleteUserRoleCommand> {
+    const error = this.validator.validate(params, IdSchema);
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
-    return new DeleteUserRoleCommand(Number(req.params.id));
+    return new DeleteUserRoleCommand(Number(params.id));
   }
 }
 

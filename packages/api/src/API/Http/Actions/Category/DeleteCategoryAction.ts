@@ -20,7 +20,7 @@ class DeleteCategoryAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: CategoryDeleteCommand = await this.adapter.from(req);
+    const command: CategoryDeleteCommand = await this.adapter.from(req.params);
     await this.handler.Handle(command);
 
     return res.status(HTTP_CODES.NO_CONTENT).end();

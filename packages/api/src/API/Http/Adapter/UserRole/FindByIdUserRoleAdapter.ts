@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request } from 'express';
 import { inject, injectable } from 'inversify';
 import Validator from '../../Validator/Validator';
 import { BadRequest } from '../../Errors/BadRequest';
@@ -11,12 +11,12 @@ class FindByIdUserRoleAdapter {
   constructor(@inject(Validator) validator: Validator) {
     this.validator = validator;
   }
-  public async from(req: Request): Promise<FindByIdUserRoleCommand> {
-    const error = this.validator.validate(req.params, IdSchema);
+  public async from(params: any): Promise<FindByIdUserRoleCommand> {
+    const error = this.validator.validate(params, IdSchema);
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
-    return new FindByIdUserRoleCommand(Number(req.params.id));
+    return new FindByIdUserRoleCommand(Number(params.id));
   }
 }
 

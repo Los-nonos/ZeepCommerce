@@ -3,7 +3,15 @@ import ProductCreateCommand from './ProductCreateCommand';
 class ProductEditCommand extends ProductCreateCommand {
   private id: number;
 
-  constructor(id: number, description: string, basePrice: number, tax: number, costPrice: number, margin: number) {
+  constructor(
+    id: number,
+    name: string,
+    description: string,
+    basePrice: number,
+    tax: number,
+    costPrice: number,
+    margin: number,
+  ) {
     super(name, description, basePrice, tax, costPrice, margin);
 
     this.id = id;

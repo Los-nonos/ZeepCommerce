@@ -10,7 +10,7 @@ class DeleteUserRoleHandler {
   constructor(@inject(INTERFACES.IUserRolesRepository) repository: IUserRoleRepository) {
     this.repository = repository;
   }
-  public async execute(command: DeleteUserRoleCommand): Promise<any> {
+  public async execute(command: DeleteUserRoleCommand): Promise<void> {
     const role = await this.repository.FindById(command.getId());
 
     if (!role) {

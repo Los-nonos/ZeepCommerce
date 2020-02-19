@@ -5,6 +5,8 @@ import { success } from '../../Presenters/Base/success';
 import { HTTP_CODES } from '../../Enums/HttpCodes';
 import CreateUserRoleAdapter from '../../Adapter/UserRole/CreateUserRoleAdapter';
 import CreateUserRoleHandler from '../../../../Application/Handlers/UserRole/CreateUserRoleHandler';
+import CreateUserRoleCommand from '../../../../Application/Commands/UserRole/CreateUserRoleCommand';
+import UserRole from '../../../../Domain/Entities/UserRole';
 
 @injectable()
 class CreateUserRoleAction {
@@ -18,8 +20,8 @@ class CreateUserRoleAction {
     this.handler = handler;
   }
   public async execute(req: Request, res: Response) {
-    const command: any = this.adapter.from(req);
-    const response: any = await this.handler.execute(command);
+    const command: CreateUserRoleCommand = await this.adapter.from(req.body);
+    const response: UserRole = await this.handler.execute(command);
     const presenter = new Presenter(response);
 
     res.status(HTTP_CODES.OK).json(success(presenter.getData(), 'UserRole created satisfully'));
