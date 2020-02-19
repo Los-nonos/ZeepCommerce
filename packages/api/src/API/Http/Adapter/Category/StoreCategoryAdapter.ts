@@ -16,7 +16,7 @@ class StoreCategoryAdapter {
     const storeCategoryResult = this.validator.validate(req, CategoryCreateSchema);
 
     if (storeCategoryResult) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(storeCategoryResult)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(storeCategoryResult.details)));
     }
 
     return new CategoryCreateCommand(req.name, req.description);

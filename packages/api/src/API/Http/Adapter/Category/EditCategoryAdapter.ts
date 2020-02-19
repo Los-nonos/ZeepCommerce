@@ -18,11 +18,11 @@ class EditCategoryAdapter {
     const categoryEditResult = this.validator.validate(body, CategoryEditSchema);
 
     if (categoryEditResultId) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(categoryEditResultId)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(categoryEditResultId.details)));
     }
 
     if (categoryEditResult) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(categoryEditResult)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(categoryEditResult.details)));
     }
 
     return new CategoryEditCommand(Number(params.id), body.name, body.description);

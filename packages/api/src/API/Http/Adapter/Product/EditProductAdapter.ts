@@ -18,11 +18,11 @@ class EditProductAdapter {
     const errorId = this.validator.validate(params, IdSchema);
 
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
 
     if (errorId) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(errorId)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(errorId.details)));
     }
 
     return new ProductEditCommand(

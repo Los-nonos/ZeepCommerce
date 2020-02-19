@@ -15,7 +15,7 @@ class DeleteProductAdapter {
     const resultId = this.validator.validate(req, IdSchema);
 
     if (resultId) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(resultId)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(resultId.details)));
     }
 
     return new ProductDeleteCommand(Number(req.id));

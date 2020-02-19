@@ -14,7 +14,7 @@ class LoginAdapter {
     const error = this.validator.validate(req, LoginSchema);
 
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
 
     return new LoginCommand(req.username, req.password);

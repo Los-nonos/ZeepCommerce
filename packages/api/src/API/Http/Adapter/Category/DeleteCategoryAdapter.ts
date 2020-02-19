@@ -17,7 +17,7 @@ class DeleteCategoryAdapter {
     const error = this.validator.validate(req, CategoryDeleteSchema);
 
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
 
     return new CategoryDeleteCommand(Number(req.id));

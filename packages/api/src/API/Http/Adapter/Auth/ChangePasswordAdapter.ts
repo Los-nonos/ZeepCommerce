@@ -13,7 +13,7 @@ class ChangePasswordAdapter {
   public async from(req: any): Promise<ChangePasswordCommand> {
     const error = this.validator.validate(req, ChangePasswordSchema);
     if (error) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(error)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
     return new ChangePasswordCommand(req.username, req.password);
   }

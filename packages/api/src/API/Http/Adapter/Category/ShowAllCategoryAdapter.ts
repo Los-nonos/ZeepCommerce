@@ -21,7 +21,7 @@ class ShowAllCategoryAdapter {
       const findIdCategoryResult = this.validator.validate(req, IdSchema);
 
       if (findIdCategoryResult) {
-        throw new BadRequest(JSON.stringify(this.validator.validationResult(findIdCategoryResult)));
+        throw new BadRequest(JSON.stringify(this.validator.validationResult(findIdCategoryResult.details)));
       }
     }
 

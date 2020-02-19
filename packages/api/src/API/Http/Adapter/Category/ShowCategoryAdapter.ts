@@ -17,7 +17,7 @@ class ShowCategoryAdapter {
     const findCategoryResult = this.validator.validate(req.body, CategoryShowSchema);
 
     if (findCategoryResult) {
-      throw new BadRequest(JSON.stringify(this.validator.validationResult(findCategoryResult)));
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(findCategoryResult.details)));
     }
 
     return new CategoryFindCommand(req.body.id, req.body.name);

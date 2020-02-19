@@ -1,32 +1,44 @@
-import { Request } from 'express';
 import { UserEditSchema } from '../../Validator/Schemas/UserSchema';
-import { InvalidData } from '../../Errors/BadRequest';
+import { BadRequest } from '../../Errors/BadRequest';
 import EditUserCommand from '../../../../Application/Commands/User/EditUserCommand';
-import { injectable } from 'inversify';
+import { injectable, inject } from 'inversify';
+import Validator from '../../Validator/Validator';
+import { IdSchema } from '../../Validator/Schemas/Common';
 
 @injectable()
 class EditUserAdapter {
-  public async from(req: Request) {
-    const editUserResult = UserEditSchema.validate(req.params.body);
+  private readonly validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    if (editUserResult.error || editUserResult.errors) {
-      throw new InvalidData(editUserResult.error.message || editUserResult.errors.message);
+  public async from(body: any, params: any) {
+    const errorId = this.validator.validate(params, IdSchema);
+    const error = this.validator.validate(body, UserEditSchema);
+
+    if (errorId) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(errorId.details)));
     }
+
+    if (error) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
+    }
+
     return new EditUserCommand(
-      editUserResult.value.userId,
-      editUserResult.value.userName,
-      editUserResult.value.userLastName,
-      editUserResult.value.userDni,
-      editUserResult.value.userAge,
-      editUserResult.value.userBirthYear,
-      editUserResult.value.userPassword,
-      editUserResult.value.userPhoneNumber,
-      editUserResult.value.userCellphoneNumber,
-      editUserResult.value.userPhoneAreaCode,
-      editUserResult.value.userCity,
-      editUserResult.value.userState,
-      editUserResult.value.userCountry,
-      editUserResult.value.userEmail,
+      params.id,
+      body.name,
+      body.lastname,
+      body.dni,
+      body.age,
+      body.birthYear,
+      body.password,
+      body.phoneNumber,
+      body.cellphoneNumber,
+      body.phoneAreaCode,
+      body.city,
+      body.state,
+      body.country,
+      body.email,
     );
   }
 }

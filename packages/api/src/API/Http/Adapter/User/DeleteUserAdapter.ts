@@ -1,6 +1,5 @@
-import { Request } from 'express';
-import { UserDeleteSchema } from '../../Validator/Schemas/UserSchema';
-import { InvalidData } from '../../Errors/BadRequest';
+import { IdSchema } from '../../Validator/Schemas/Common';
+import { BadRequest } from '../../Errors/BadRequest';
 import DeleteUserCommand from '../../../../Application/Commands/User/DeleteUserCommand';
 import { injectable, inject } from 'inversify';
 import Validator from '../../Validator/Validator';
@@ -13,14 +12,14 @@ class DeleteUserAdapter {
     this.validator = validator;
   }
 
-  public async from(req: Request) {
-    const error = this.validator.validator(req.query, UserDeleteSchema);
+  public async from(params: any) {
+    const error = this.validator.validate(params, IdSchema);
 
     if (error) {
-      throw new InvalidData(JSON.stringify(error.details[0].message));
+      throw new BadRequest(JSON.stringify(error.details));
     }
 
-    return new DeleteUserCommand(req.query.id);
+    return new DeleteUserCommand(params.id);
   }
 }
 

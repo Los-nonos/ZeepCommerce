@@ -1,35 +1,24 @@
-import { Request } from 'express';
-import NameSchema from '../../Validator/Schemas/NameSchema';
-import PriceSchema from '../../Validator/Schemas/PriceSchema';
-import DescriptionSchema from '../../Validator/Schemas/DescriptionSchema';
+import { StoreProductSchema } from '../../Validator/Schemas/ProductSchema';
 import ProductCreateCommand from '../../../../Application/Commands/Product/ProductCreateCommand';
-import { InvalidData } from '../../Errors/BadRequest';
+import { BadRequest } from '../../Errors/BadRequest';
+import { injectable, inject } from 'inversify';
+import Validator from '../../Validator/Validator';
 
+@injectable()
 class StoreProductAdapter {
-  public async from(req: Request) {
-    const { name, price, description }: any = req.body;
+  private readonly validator: Validator;
+  constructor(@inject(Validator) validator: Validator) {
+    this.validator = validator;
+  }
 
-    const resultName = NameSchema.validate({ name: name });
-    const resultPrice = PriceSchema.validate({ price: price });
-    const resultDescription = DescriptionSchema.validate({ description: description });
+  public async from(body: any) {
+    const error = this.validator.validate(body, StoreProductSchema);
 
-    if (resultName.error) {
-      throw new InvalidData(resultName.error.message);
+    if (error) {
+      throw new BadRequest(JSON.stringify(this.validator.validationResult(error.details)));
     }
 
-    if (resultPrice.error) {
-      throw new InvalidData(resultPrice.error.message);
-    }
-
-    if (resultDescription.error) {
-      throw new InvalidData(resultDescription.error.message);
-    }
-
-    return new ProductCreateCommand(
-      resultName.value.name,
-      resultPrice.value.price,
-      resultDescription.value.description,
-    );
+    return new ProductCreateCommand(body.name, body.description, body.basePrice, body.tax, body.costPrice, body.margin);
   }
 }
 
