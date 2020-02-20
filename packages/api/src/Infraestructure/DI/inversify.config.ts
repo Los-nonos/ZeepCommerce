@@ -1,5 +1,4 @@
 import { Container } from 'inversify';
-import 'reflect-metadata';
 import TYPES from './types';
 
 import CreateUserHandlerInterface from '../Interfaces/User/CreateUserHandlerInterface';
@@ -39,6 +38,7 @@ import UserRepository from '../../Persistance/Repositories/UserRepository';
 import IUserRepository from '../../Domain/Interfaces/IUserRepository';
 import UserRoleRepository from '../../Persistance/Repositories/UserRoleRepository';
 import IUserRoleRepository from '../../Domain/Interfaces/IUserRoleRepository';
+import CategoryRepositoryInterface from '../../Domain/Interfaces/ICategoryRepository';
 
 //Erros imports
 import ErrorHandler from '../utils/ErrorHandler';
@@ -87,6 +87,28 @@ import RenewTokenAdapter from '../../API/Http/Adapter/Auth/RenewTokenAdapter';
 import ChangePasswordAdapter from '../../API/Http/Adapter/Auth/ChangePasswordAdapter';
 
 import Validator from '../../API/Http/Validator/Validator';
+import CategoryRepository from '../../Persistance/Repositories/CategoryRepository';
+import CategoryCreateHandler from '../../Application/Handlers/Category/CategoryCreateHandler';
+import CategoryEditHandler from '../../Application/Handlers/Category/CategoryEditHandler';
+import CategoryDeleteHandler from '../../Application/Handlers/Category/CategoryDeleteHandler';
+import CategoryFindHandler from '../../Application/Handlers/Category/CategoryFindHandler';
+
+import CategoryCreateHandlerInterface from '../Interfaces/Category/CategoryCreateHandlerInterface';
+import CategoryEditHandlerInterface from '../Interfaces/Category/CategoryEditHandlerInterface';
+import CategoryDeleteHandlerInterface from '../Interfaces/Category/CategoryDeleteHandlerInterface';
+import CategoryFindHandlerInterface from '../Interfaces/Category/CategoryFindHandlerInterface';
+
+import StoreCategoryAdapter from '../../API/Http/Adapter/Category/StoreCategoryAdapter';
+import EditCategoryAdapter from '../../API/Http/Adapter/Category/EditCategoryAdapter';
+import DeleteCategoryAdapter from '../../API/Http/Adapter/Category/DeleteCategoryAdapter';
+import ShowAllCategoryAdapter from '../../API/Http/Adapter/Category/ShowAllCategoryAdapter';
+import ShowCategoryAdapter from '../../API/Http/Adapter/Category/ShowCategoryAdapter';
+
+import CreateCategoryAction from '../../API/Http/Actions/Category/CreateCategoryAction';
+import EditCategoryAction from '../../API/Http/Actions/Category/EditCategoryAction';
+import DeleteCategoryAction from '../../API/Http/Actions/Category/DeleteCategoryAction';
+import ShowAllCategoryAction from '../../API/Http/Actions/Category/ShowAllCategoryAction';
+import ShowCategoryAction from '../../API/Http/Actions/Category/ShowCategoryAction';
 
 var container = new Container();
 
@@ -117,6 +139,12 @@ container.bind<DeleteUserRoleAction>(DeleteUserRoleAction).toSelf();
 container.bind<FindByIdUserRoleAction>(FindByIdUserRoleAction).toSelf();
 container.bind<FindUserRoleAction>(FindUserRoleAction).toSelf();
 
+container.bind<CreateCategoryAction>(CreateCategoryAction).toSelf();
+container.bind<EditCategoryAction>(EditCategoryAction).toSelf();
+container.bind<DeleteCategoryAction>(DeleteCategoryAction).toSelf();
+container.bind<ShowAllCategoryAction>(ShowAllCategoryAction).toSelf();
+container.bind<ShowCategoryAction>(ShowCategoryAction).toSelf();
+
 //adapters
 //product
 container.bind<StoreProductAdapter>(StoreProductAdapter).toSelf();
@@ -144,6 +172,12 @@ container.bind<DeleteUserRoleAdapter>(DeleteUserRoleAdapter).toSelf();
 container.bind<FindByIdUserRoleAdapter>(FindByIdUserRoleAdapter).toSelf();
 container.bind<FindUserRoleAdapter>(FindUserRoleAdapter).toSelf();
 
+container.bind<StoreCategoryAdapter>(StoreCategoryAdapter).toSelf();
+container.bind<EditCategoryAdapter>(EditCategoryAdapter).toSelf();
+container.bind<DeleteCategoryAdapter>(DeleteCategoryAdapter).toSelf();
+container.bind<ShowAllCategoryAdapter>(ShowAllCategoryAdapter).toSelf();
+container.bind<ShowCategoryAdapter>(ShowCategoryAdapter).toSelf();
+
 //handlers
 //product
 container.bind<ProductCreateHandlerInterface>(TYPES.IProductCreateHandler).to(ProductCreateHandler);
@@ -170,12 +204,18 @@ container.bind<DeleteUserRoleHandler>(DeleteUserRoleHandler).toSelf();
 container.bind<FindByIdUserRoleHandler>(FindByIdUserRoleHandler).toSelf();
 container.bind<FindUserRoleHandler>(FindUserRoleHandler).toSelf();
 
+container.bind<CategoryCreateHandlerInterface>(TYPES.ICategoryCreateHandler).to(CategoryCreateHandler);
+container.bind<CategoryEditHandlerInterface>(TYPES.ICategoryEditHandler).to(CategoryEditHandler);
+container.bind<CategoryDeleteHandlerInterface>(TYPES.ICategoryDeleteHandler).to(CategoryDeleteHandler);
+container.bind<CategoryFindHandlerInterface>(TYPES.ICategoryFindHandler).to(CategoryFindHandler);
+
 // Errors services
 container.bind<ErrorHandler>(ErrorHandler).toSelf();
 
 //repositories
 container.bind<IUserRepository>(TYPES.IUserRepository).to(UserRepository);
 container.bind<IUserRoleRepository>(TYPES.IUserRolesRepository).to(UserRoleRepository);
+container.bind<CategoryRepositoryInterface>(TYPES.ICategoryRepository).to(CategoryRepository);
 
 container.bind<Validator>(Validator).toSelf();
 

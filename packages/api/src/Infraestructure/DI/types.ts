@@ -3,16 +3,12 @@ let TYPES = {
   IHashService: Symbol('IHashService'),
 
   //Product Interfaces
-  //IProductController: Symbol('ProductControllerInterface'),
-  //IProductAdapter: Symbol('ProductAdapterInterface'),
   IProductCreateHandler: Symbol('ProductCreateHandlerInterface'),
   IProductEditHandler: Symbol('ProductEditHandlerInterface'),
   IProductDeleteHandler: Symbol('ProductDeleteHandlerInterface'),
   IProductFindHandler: Symbol('ProductFindHandlerInterface'),
 
   //User Interfaces
-  //IUserController: Symbol('UserControllerInterface'),
-  //IUserAdapter: Symbol('UserAdapterInterface'),
   ICreateUserHandler: Symbol('CreateUserHandlerInterface'),
   IDeleteUserHandler: Symbol('DeleteUserHandlerInterface'),
   IEditUserHandler: Symbol('EditUserHandlerInterface'),
@@ -27,7 +23,6 @@ let TYPES = {
   ICategoryFindAllHandler: Symbol('CategoryFindAllHandlerInterface'),
   ICategoryRepository: Symbol('CategoryRepositoryInterface'),
 
-  IUserController: Symbol('UserControllerInterface'),
   IUserAdapter: Symbol('UserAdapterInterface'),
   IUserRepository: Symbol('IUserRepository'),
 

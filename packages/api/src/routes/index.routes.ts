@@ -5,8 +5,8 @@ import authRoutes from './auth.routes';
 import categoryRoutes from './category.routes';
 import { Router } from 'express';
 
-import swaggerUi from 'swagger-ui-express';
-import * as swaggerDocument from '../utils/swagger.json';
+import * as swaggerUi from 'swagger-ui-express';
+const swaggerDocument = require('../utils/swagger.json');
 
 const router = Router();
 
