@@ -2,6 +2,7 @@ import IProductRepository from '../../Domain/Interfaces/IProductRepository';
 import { Repository, getRepository } from 'typeorm';
 import Product from '../../Domain/Entities/Product';
 import { EntityNotFound } from '../../Infraestructure/Errors/EntityNotFound';
+import { DataBaseError } from '../../Infraestructure/Errors/DataBaseError';
 
 class ProductRepository implements IProductRepository {
   private readonly repository: Repository<Product>;
@@ -28,13 +29,29 @@ class ProductRepository implements IProductRepository {
 
     return product;
   }
-  Persist(product: Product): Promise<Product> {
-    throw new Error('Method not implemented.');
+  public async Persist(product: Product): Promise<Product> {
+    try {
+      return await this.repository.save(product);
+    } catch {
+      throw new DataBaseError(`Product not saved, failed db`);
+    }
   }
-  Delete(product: Product): Promise<void> {
-    throw new Error('Method not implemented.');
+  public async Delete(product: Product): Promise<void> {
+    try {
+      const result = await this.repository.delete(product);
+
+      if (!(result && result.affected === 1)) {
+        throw new Error();
+      }
+    } catch {
+      throw new DataBaseError(`Can not delete product`);
+    }
   }
-  Update(product: Product): Promise<void> {
-    throw new Error('Method not implemented.');
+  public async Update(product: Product): Promise<void> {
+    try {
+      await this.repository.update({ Id: product.Id }, product);
+    } catch {
+      throw new DataBaseError(`Product not saved, failed db`);
+    }
   }
 }
