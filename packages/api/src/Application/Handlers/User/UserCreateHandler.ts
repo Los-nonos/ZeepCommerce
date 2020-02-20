@@ -13,9 +13,9 @@ class UserCreateHandler implements CreateUserHandlerInterface {
     const dni = command.getUserDni();
 
     const user = new User();
-    user.name = name;
-    user.lastname = lastname;
-    user.dni = dni;
+    user.Name = name;
+    user.Lastname = lastname;
+    user.Dni = dni;
 
     try {
       return await user.save();

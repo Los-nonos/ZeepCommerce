@@ -23,7 +23,7 @@ class ShowAllUserAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: UserFindAllCommand = await this.adapter.from(req);
+    const command: UserFindAllCommand = await this.adapter.from(req.params);
     const response: User[] = await this.handler.FindAllUsers(command);
 
     const presenter = new FindUserPresenter(response);

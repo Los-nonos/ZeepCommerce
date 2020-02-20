@@ -15,8 +15,8 @@ class UserEditHandler implements EditUserHandlerInterface {
       if (!user) {
         throw new EntityNotFound('User not found');
       } else {
-        user.name = command.getUserName();
-        user.lastname = command.getUserLastName();
+        user.Name = command.getUserName();
+        user.Lastname = command.getUserLastName();
 
         return await user.save();
       }

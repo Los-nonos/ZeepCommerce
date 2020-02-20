@@ -19,12 +19,12 @@ class LoginHandler {
     if (!user) {
       throw new EntityNotFound(`not user found with name: ${command.getUsername()}`);
     }
-    if (user.blocked) {
+    if (user.Blocked) {
       throw new UnAuthorizedError(`user blocked`);
     }
     if (user.checkIfUnencryptedPasswordIsValid(command.getPassword())) {
       const token = jwt.sign(
-        { userId: user.id, username: user.name, roles: user.getRolesFromUserRole() },
+        { userId: user.Id, username: user.Name, roles: user.getRolesFromUserRole() },
         jwtConfig.jwtConfiguration().jwtSecret,
         {
           expiresIn: jwtConfig.jwtConfiguration().expirationTime,

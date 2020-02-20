@@ -10,7 +10,7 @@ class UserDeleteHandler implements DeleteUserHandlerInterface {
   public async Delete(command: DeleteUserCommand): Promise<string> {
     const id = command.getId();
 
-    const user = await User.findOne({ id: id });
+    const user = await User.findOne({ Id: id });
 
     if (!user) {
       throw new Error('User not found.');

@@ -13,7 +13,7 @@ class FindAllUsersHandler implements FindAllUsersHandlerInterface {
   public async FindAllUsers(command: FindAllUsersCommand): Promise<User[]> {
     try {
       const id = command.getId();
-      const users: User[] = await User.find({ where: { id: MoreThanOrEqual(id), limit: 20 } });
+      const users: User[] = await User.find({ where: { Id: MoreThanOrEqual(id), limit: 20 } });
       return users;
     } catch (error) {
       throw new DataBaseError('DB error');

@@ -12,19 +12,19 @@ class FindUserPresenter implements IPresenter {
   getData(): object {
     const array = this.result.map(user => {
       return {
-        id: user.id,
-        name: user.name,
-        lastname: user.lastname,
-        dni: user.dni ? user.dni : 'none',
-        age: user.userAge ? user.userAge : 'none',
-        birthYear: user.userBirthYear ? user.userBirthYear : 'none',
-        phoneArea: user.userPhoneAreaCode ? user.userPhoneAreaCode : 'none',
-        phoneNumber: user.userPhoneNumber ? user.userPhoneNumber : 'none',
-        cellPhoneNumber: user.userCellphoneNumber ? user.userCellphoneNumber : 'none',
-        city: user.userCity ? user.userCity : 'none',
-        state: user.userState ? user.userState : 'none',
-        country: user.userCountry ? user.userCountry : 'none',
-        email: user.userEmail,
+        id: user.Id,
+        name: user.Name,
+        lastname: user.Lastname,
+        dni: user.Dni ? user.Dni : 'none',
+        age: user.Age ? user.Age : 'none',
+        birthYear: user.BirthYear ? user.BirthYear : 'none',
+        phoneArea: user.PhoneAreaCode ? user.PhoneAreaCode : 'none',
+        phoneNumber: user.PhoneNumber ? user.PhoneNumber : 'none',
+        cellPhoneNumber: user.CellphoneNumber ? user.CellphoneNumber : 'none',
+        city: user.City ? user.City : 'none',
+        state: user.State ? user.State : 'none',
+        country: user.Country ? user.Country : 'none',
+        email: user.Email,
         roles: user.getRolesFromUserRole(),
       };
     });

@@ -1,11 +1,9 @@
-import Category from '../../../Domain/Entities/Category';
 import CategoryDeleteHandlerInterface from '../../../Infraestructure/Interfaces/Category/CategoryDeleteHandlerInterface';
 import CategoryDeleteCommand from '../../Commands/Category/CategoryDeleteCommand';
 import { injectable, inject } from 'inversify';
 import CategoryRepositoryInterface from '../../../Domain/Interfaces/ICategoryRepository';
-import TYPES from '../../../Infraestructure/types';
+import TYPES from '../../../Infraestructure/DI/types';
 import { EntityNotFound } from '../../../Infraestructure/Errors/EntityNotFound';
-import { DataBaseError } from '../../../Infraestructure/Errors/DataBaseError';
 
 @injectable()
 class CategoryDeleteHandler implements CategoryDeleteHandlerInterface {

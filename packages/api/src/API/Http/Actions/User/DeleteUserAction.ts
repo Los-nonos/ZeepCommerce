@@ -20,7 +20,7 @@ class DeleteUserAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: DeleteUserCommand = await this.adapter.from(req);
+    const command: DeleteUserCommand = await this.adapter.from(req.params);
     const response = await this.handler.Delete(command);
 
     res.status(HTTP_CODES.NO_CONTENT).end();

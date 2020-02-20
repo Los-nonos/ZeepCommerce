@@ -14,8 +14,8 @@ class ChangePasswordPresenter implements IPresenter {
 
   getData(): object {
     return {
-      name: this.user.name,
-      lastname: this.user.lastname,
+      name: this.user.Name,
+      lastname: this.user.Lastname,
     };
   }
 }

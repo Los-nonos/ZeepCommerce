@@ -21,7 +21,7 @@ class EditUserAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: EditUserCommand = await this.adapter.from(req);
+    const command: EditUserCommand = await this.adapter.from(req.body, req.params);
     const result = await this.handler.Edit(command);
 
     const presenter = new EditUserPresenter(result);

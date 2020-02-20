@@ -23,7 +23,7 @@ class StoreUserAction {
   }
 
   public async execute(req: Request, res: Response) {
-    const command: UserCreateCommand = await this.adapter.from(req);
+    const command: UserCreateCommand = await this.adapter.from(req.params);
     const response: User = await this.handler.Create(command);
 
     const presenter = new CreateUserPresenter(response);

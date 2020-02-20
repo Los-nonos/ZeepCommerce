@@ -1,8 +1,8 @@
 class EditUserRoleCommand {
-  @private id: number;
+  private id: number;
+  private name: string;
   constructor(id: number, name: string) {
     this.id = id;
-
     this.name = name;
   }
   public getId(): number {
