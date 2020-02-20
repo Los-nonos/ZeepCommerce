@@ -22,15 +22,8 @@ class Router {
   }
 
   catchErrors() {
-    this.express.use((error: Error, _req: Request, res: Response, next: NextFunction) => {
-      if (!error) {
-        next();
-      }
-
-      const errorHandler: ErrorHandler = container.get(ErrorHandler);
-
-      errorHandler.handle(error, res);
-    });
+    const errorHandler: ErrorHandler = container.get(ErrorHandler);
+    this.express.use(errorHandler.execute);
   }
 
   middlewares() {

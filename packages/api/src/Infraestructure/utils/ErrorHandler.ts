@@ -1,17 +1,16 @@
 import { injectable } from 'inversify';
-import { Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { InfraestructureError } from '../Errors/InfraestructureError';
-import { ApplicationError } from '../../API/Http/Errors/AppError';
 
 @injectable()
 class ErrorHandler {
-  public handle(error: Error, res: Response): void {
-    if (error instanceof InfraestructureError) {
-      res.status(error.getStatusCode()).send(error.message);
-    } else if (error instanceof ApplicationError) {
-      res.status(500).send('Internal server error');
+  public execute = async (e: any, _request: Request, response: Response, _next: NextFunction) => {
+    if (e instanceof InfraestructureError) {
+      return response.status(e.getStatusCode()).json(e.message);
     }
-  }
+
+    return response.status(e.statusCode).json({ message: e.message });
+  };
 }
 
 export default ErrorHandler;

@@ -12,6 +12,9 @@ const router = Router();
 
 router.get(
   '/products',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<ShowAllProductAction>(ShowAllProductAction);
     await action.execute(req, res);
@@ -20,6 +23,9 @@ router.get(
 
 router.get(
   '/products/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<ShowProductAction>(ShowProductAction);
     await action.execute(req, res);

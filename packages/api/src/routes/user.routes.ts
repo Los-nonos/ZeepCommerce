@@ -12,6 +12,9 @@ const router = Router();
 
 router.get(
   '/users',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper', 'client']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<ShowAllUserAction>(ShowAllUserAction);
     await action.execute(req, res);
@@ -20,6 +23,9 @@ router.get(
 
 router.get(
   '/users/:id',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper', 'client']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<ShowUserAction>(ShowUserAction);
     action.execute(req, res);
@@ -28,6 +34,9 @@ router.get(
 
 router.post(
   '/users',
+  (req: Request, res: Response, next: NextFunction) => {
+    authMiddleware(req, res, next, ['zeeper', 'client']);
+  },
   asyncMiddleware(async (req: Request, res: Response, _next: NextFunction) => {
     const action = DI.resolve<StoreUserAction>(StoreUserAction);
     await action.execute(req, res);

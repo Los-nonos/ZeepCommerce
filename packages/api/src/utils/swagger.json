@@ -4,14 +4,17 @@
     "description": "",
     "version": "1.0.0",
     "title": "Zeep Commerce API",
-    "contact": {
-      "email": "zeeporganization@gmail.com"
-    },
     "license": {
       "name": "MIT",
-      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+      "url": "https://opensource.org/licenses/MIT"
     }
   },
+  "servers": [
+    {
+      "url": "http://localhost:3001/",
+      "description": "Local server"
+    }
+  ],
   "tags": [
     {
       "name": "Login",
@@ -31,7 +34,7 @@
     }
   ],
   "paths": {
-    "/users": {
+    "/apiv1/users": {
       "post": {
         "tags": [
           "Users"
@@ -70,7 +73,7 @@
         }
       }
     },
-    "/users/{id}": {
+    "/apiv1/users/{id}": {
       "put": {
         "tags": [
           "Users"
@@ -173,6 +176,14 @@
             "type": "string"
           }
         }
+      }
+    },
+    "securitySchemes": {
+      "auth": {
+        "type": "apiKey",
+        "description": "",
+        "name": "Authorization",
+        "in": "header"
       }
     }
   }
