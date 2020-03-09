@@ -4,7 +4,11 @@ import React from 'react';
 import Head from 'next/head';
 
 // Components
-import NavBar from '../components/NavBar';
+// import NavBar from '../components/NavBar';
+import NavBarZeep from '../components/NavBarZeep';
+import Carousel from '../components/Carousel';
+import CardBody from '../components/CardBody';
+import Footer from '../components/Footer';
 
 const Main = (props: any) => {
   return (
@@ -15,7 +19,11 @@ const Main = (props: any) => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
 
-      <NavBar></NavBar>
+      {/* <NavBar></NavBar> */}
+      <NavBarZeep />
+      <Carousel />
+      <CardBody />
+      <Footer />
 
       {props.children}
     </>
