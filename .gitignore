@@ -1,5 +1,5 @@
-node_modules/*
-.idea/*
 .env
-./**/dist/*
-*.log
+public/js/app.js
+public/css/views
+build/
+node_modules/

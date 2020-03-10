@@ -1,1 +1,0 @@
-{"ast":null,"code":"import Home from '../views/containers/home';\nexport default Home;","map":{"version":3,"sources":["/usr/src/service/packages/website/pages/index.ts"],"names":["Home"],"mappings":"AAAA,OAAOA,IAAP,MAAiB,0BAAjB;AAEA,eAAeA,IAAf","sourcesContent":["import Home from '../views/containers/home';\n\nexport default Home;\n"]},"metadata":{},"sourceType":"module"}
