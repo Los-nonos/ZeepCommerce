@@ -7,10 +7,6 @@ import Main from '../../layouts/Main';
 import Parallax from '../../components/Parallax';
 
 class Home extends React.Component {
-  constructor(props: any) {
-    super(props);
-  }
-
   render() {
     return (
       <Main>

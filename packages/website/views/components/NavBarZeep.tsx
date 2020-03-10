@@ -1,7 +1,6 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-
-// import logoNav from '../components/00-Atoms/00-Global/01-img/logoNav.jpeg';
+//importar boton desde los atomos
+import Button from './Atoms/Global/CustomButton';
 
 class NavBarZeep extends React.Component {
   render() {
@@ -13,7 +12,7 @@ class NavBarZeep extends React.Component {
             {/* <img src="{logoNav}" alt="dsds" /> */}
           </div>
           <div className="navegacion">
-            <Button variant="contained" color="primary">
+            <Button content={'Shopping'} color="primary">
               Shopping
             </Button>
 

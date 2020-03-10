@@ -19,7 +19,6 @@ const Main = (props: any) => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
 
-      {/* <NavBar></NavBar> */}
       <NavBarZeep />
       <Carousel />
       <CardBody />
