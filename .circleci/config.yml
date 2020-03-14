@@ -8,17 +8,13 @@ jobs:
       - checkout
 
       - run:
-          name: Install Lerna and project's dependencies
+          name: Install project's dependencies and configure
           command: |
-            sudo npm install --global lerna
-            lerna bootstrap
+            yarn install
             cp .env.example .env
       - run:
-          name: Tests Suites
-          command: lerna run test
-      - run:
           name: Prettier rules
-          command: lerna run prettier:check
+          command: yarn run prettier:check
 
 workflows:
   version: 2

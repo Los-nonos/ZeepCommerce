@@ -1,5 +1,5 @@
 .env
 public/js/app.js
 public/css/views
-build/
-node_modules/
+build/*
+node_modules/*
