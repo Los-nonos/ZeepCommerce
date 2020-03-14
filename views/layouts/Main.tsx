@@ -4,7 +4,8 @@ import React from 'react';
 import Head from 'next/head';
 
 // Components
-import NavBar from '../components/NavBar';
+// import NavBar from '../components/NavBar';
+import NavBarCustomer from '../components/NavBarCustomer';
 
 const Main = (props: any) => {
   return (
@@ -15,7 +16,8 @@ const Main = (props: any) => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
       </Head>
 
-      <NavBar></NavBar>
+      {/* <NavBar></NavBar> */}
+      <NavBarCustomer />
 
       {props.children}
     </>
