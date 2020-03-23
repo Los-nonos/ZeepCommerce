@@ -13,9 +13,6 @@ jobs:
             yarn install
             cp .env.example .env
       - run:
-          name: Tests Suites
-          command: yarn run test
-      - run:
           name: Prettier rules
           command: yarn run prettier:check
 
