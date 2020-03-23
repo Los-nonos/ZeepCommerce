@@ -6,19 +6,21 @@ jobs:
     working_directory: ~/stage
     steps:
       - checkout
-
       - run:
-          name: Install Lerna and project's dependencies
+          name: Install Yarn and project's dependencies
           command: |
-            sudo npm install --global lerna
-            lerna bootstrap
+            curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+            sudo apt update
+            sudo apt install --no-install-recommends yarn
+            yarn install
             cp .env.example .env
       - run:
           name: Tests Suites
-          command: lerna run test
+          command: yarn run test
       - run:
           name: Prettier rules
-          command: lerna run prettier:check
+          command: yarn run prettier:check
 
 workflows:
   version: 2
