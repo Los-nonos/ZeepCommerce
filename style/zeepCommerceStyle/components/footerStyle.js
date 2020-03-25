@@ -1,4 +1,4 @@
-import { container, primaryColor } from 'style/zeepCommerceStyle/components/footerStyle';
+import { container, primaryColor } from '../../zeepCommerceStyles';
 
 const footerStyle = {
   block: {
