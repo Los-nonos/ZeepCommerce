@@ -7,9 +7,14 @@ jobs:
     steps:
       - checkout
       - run:
+<<<<<<< HEAD
+          name: Install project's dependencies and configure
+          command: |
+=======
           name: Install Yarn and project's dependencies
           command: |
             sudo apt install yarn
+>>>>>>> 01e8a7df376a5a9fcd2054384ca888f3901a5b46
             yarn install
             cp .env.example .env
       - run:

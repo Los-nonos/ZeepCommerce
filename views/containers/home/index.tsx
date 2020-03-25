@@ -5,6 +5,7 @@ import Head from 'next/head';
 
 import Main from '../../layouts/Main';
 import Parallax from '../../components/Parallax';
+import { getQueryHash } from '../../../helpers/queryBuilder';
 
 class Home extends React.Component {
   constructor(props: any) {
@@ -16,6 +17,7 @@ class Home extends React.Component {
       <Main>
         <Head>
           <title>Home</title>
+          <link rel="stylesheet" href={`../style/index.scss?q=${getQueryHash()}`} />
         </Head>
         <Parallax />
         <Link href="/login">

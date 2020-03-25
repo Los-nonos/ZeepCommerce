@@ -14,7 +14,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt-get update && sudo apt-get install -y yarn
 
 # Lerna
-sudo yarn global add lerna
+# sudo yarn global add lerna
 
 # PM2 - Server only
 # sudo yarn global add pm2
