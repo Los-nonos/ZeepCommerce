@@ -2,9 +2,7 @@ import React from 'react';
 
 // Components
 import Main from '../../layouts/Main';
-import Head from 'next/head';
 import Description from '../../components/Description';
-import Link from 'next/link';
 
 class LoginPage extends React.Component {
   constructor(props: any) {
@@ -13,15 +11,8 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <Main>
-        <Head>
-          <title>Zeep - Login</title>
-          <link href="../../static/build/scss/login.css" rel="stylesheet" />
-        </Head>
+      <Main pageName="Zeep - Login">
         <Description />
-        <Link href="/">
-          <a>Ir al Inicio</a>
-        </Link>
       </Main>
     );
   }
