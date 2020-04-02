@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../components/Atoms/Footer/Footer';
 
 // Next
 import Head from 'next/head';
@@ -18,6 +19,8 @@ const Main = (props: any) => {
 
       {/* <NavBar></NavBar> */}
       <NavBarCustomer />
+      {/* nuevo footer */}
+      <Footer />
 
       {props.children}
     </>
