@@ -8,35 +8,29 @@ import PropTypes from 'prop-types';
 // Components
 // import NavBar from '../components/NavBar';
 //import NavBarCustomer from '../components/NavBarCustomer';
-import GridContainer from '../components/patterns/molecules/GridContainer';
 import Header from '../components/Atoms/Header/Header';
 import HeaderLinks from '../components/Atoms/Header/HeaderLinks';
+import GridContainer from 'views/components/patterns/molecules/GridContainer';
 
-const Main = (props: any) => {
-  const { pageName, children } = props;
+function Main(props) {
+  const { pageName, children, ...rest } = props;
 
   return (
-    <>
+    <div>
       <Head>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
         <title>{pageName}</title>
       </Head>
 
-      <Header absolute color="transparent" brand="Zeep Commerce" rightLinks={<HeaderLinks />} />
+      <Header absolute color="transparent" brand="Zeep Commerce" rightLinks={<HeaderLinks />} {...rest} />
 
-      <GridContainer justify="center">{children}</GridContainer>
+      <GridContainer>{children}</GridContainer>
       <Footer />
-    </>
+    </div>
   );
-};
+}
 
-Main.defaultTypes = {
-  pageName: 'Zeep - Landing',
-};
-
-Main.PropTypes = {
+Main.propTypes = {
   pageName: PropTypes.string,
   children: PropTypes.node,
 };
