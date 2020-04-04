@@ -14,8 +14,8 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 
 // core components
-import CustomDropdown from '../CustomDropdown/CustomDropdown.js';
-import Button from '../CustomButtons/Button.js';
+import CustomDropdown from '../../Atoms/CustomDropdown/CustomDropdown.js';
+import Button from '../../Atoms/CustomButtons/Button.js';
 
 import styles from '../../../../style/zeepCommerceStyle/components/headerLinksStyle.js';
 

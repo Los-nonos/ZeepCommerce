@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import Main from '../../layouts/Main';
-import Description from '../../components/Description';
+import Description from '../../layouts/Login/Description';
 
 class LoginPage extends React.Component {
   render() {

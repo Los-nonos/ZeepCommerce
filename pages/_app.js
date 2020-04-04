@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import App from 'next/app';
 import Router from 'next/router';
 
-import PageChange from '../views/components/Atoms/PageChange/PageChange';
+import PageChange from '../views/components/Molecules/PageChange/PageChange';
 
 import 'public/style/index.scss?v=1.0.0';
 

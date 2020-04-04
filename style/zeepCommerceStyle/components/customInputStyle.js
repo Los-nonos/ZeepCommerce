@@ -60,7 +60,7 @@ const customInputStyle = {
     },
   },
   input: {
-    color: '#495057',
+    color: '#fff',
     height: 'unset',
     '&,&::placeholder': {
       fontSize: '14px',

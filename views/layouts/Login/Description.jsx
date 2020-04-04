@@ -7,16 +7,16 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Email from '@material-ui/icons/Email';
 import LockOutlined from '@material-ui/icons/LockOutlined';
 
-import GridContainer from './Atoms/Grid/GridContainer';
-import GridItem from './Atoms/Grid/GridItem';
-import CustomInput from './Atoms/CustomInput/CustomInput';
-import Button from './Atoms/CustomButtons/Button';
-import Card from './Atoms/Card/Card';
-import CardBody from './Atoms/Card/CardBody';
-import CardHeader from './Atoms/Card/CardHeader';
-import CardFooter from './Atoms/Card/CardFooter';
+import GridContainer from '../../components/Atoms/Grid/GridContainer';
+import GridItem from '../../components/Atoms/Grid/GridItem';
+import CustomInput from '../../components/Atoms/CustomInput/CustomInput';
+import Button from '../../components/Atoms/CustomButtons/Button';
+import Card from '../../components/Atoms/Card/Card';
+import CardBody from '../../components/Atoms/Card/CardBody';
+import CardHeader from '../../components/Atoms/Card/CardHeader';
+import CardFooter from '../../components/Atoms/Card/CardFooter';
 import { makeStyles } from '@material-ui/core';
-import styles from '../../style/zeepCommerceStyle/pages/loginPage';
+import styles from '../../../style/zeepCommerceStyle/pages/loginPage';
 
 const useStyles = makeStyles(styles);
 
@@ -42,7 +42,7 @@ export default function Description(props) {
                 </CardHeader>
                 <CardBody>
                   <CustomInput
-                    labelText="Email.."
+                    labelText="Email"
                     id="email"
                     formControlProps={{
                       fullWidth: true,
@@ -74,9 +74,21 @@ export default function Description(props) {
                   />
                 </CardBody>
                 <CardFooter className={classes.cardFooter}>
+                  <GridContainer>
+                    <GridItem>
+                      <p>
+                        No tiene cuenta? Creela {' '}<a href="/signup">Aquí</a>
+                      </p>
+                    </GridItem>
+                    <GridItem>
+                      <p>
+                        No recuerda su contraseña? Recuperela {' '}<a href="/signup">Aquí</a>
+                      </p>
+                    </GridItem>
+                  </GridContainer>
                   <Button simple size="lg">
-                    Get started
-                  </Button>
+                      Get started
+                     </Button>
                 </CardFooter>
               </form>
             </Card>
