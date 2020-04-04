@@ -55,7 +55,7 @@ export default function Header(props) {
   });
   const brandComponent = (
     <Link href="/" as="/">
-      <Button color="#065A66" simple className={classes.title}>
+      <Button simple className={classes.title}>
         {brand}
       </Button>
     </Link>

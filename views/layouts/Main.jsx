@@ -11,14 +11,23 @@ import PropTypes from 'prop-types';
 import Header from '../components/Atoms/Header/Header';
 import HeaderLinks from '../components/Atoms/Header/HeaderLinks';
 import GridContainer from 'views/components/patterns/molecules/GridContainer';
+import { withStyles } from '@material-ui/core';
+
+const styles = {
+  body: {
+    margin: 0,
+    padding: 0,
+  },
+};
 
 function Main(props) {
   const { pageName, children, ...rest } = props;
 
   return (
-    <div>
+    <div style={{ margin: '0px', padding: '0px' }}>
       <Head>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <link rel="stylesheet" href="style/index.scss?v=1.0.0" />
         <title>{pageName}</title>
       </Head>
 
@@ -35,4 +44,4 @@ Main.propTypes = {
   children: PropTypes.node,
 };
 
-export default Main;
+export default withStyles(styles)(Main);

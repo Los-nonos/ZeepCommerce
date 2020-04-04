@@ -2,11 +2,10 @@ import React from 'react';
 
 // imports material-ui/core
 import InputAdornment from '@material-ui/core/InputAdornment';
-import Icon from '@material-ui/core/Icon';
 
 // imports material-ui/icons
 import Email from '@material-ui/icons/Email';
-import People from '@material-ui/icons/People';
+import LockOutlined from '@material-ui/icons/LockOutlined';
 
 import GridContainer from './Atoms/Grid/GridContainer';
 import GridItem from './Atoms/Grid/GridItem';
@@ -67,7 +66,7 @@ export default function Description(props) {
                       type: 'password',
                       endAdornment: (
                         <InputAdornment position="end">
-                          <Icon className={classes.inputIconsColor}>lock_outline</Icon>
+                          <LockOutlined className={classes.inputIconsColor} />
                         </InputAdornment>
                       ),
                       autoComplete: 'off',
@@ -75,7 +74,7 @@ export default function Description(props) {
                   />
                 </CardBody>
                 <CardFooter className={classes.cardFooter}>
-                  <Button simple color="#fff" size="lg">
+                  <Button simple size="lg">
                     Get started
                   </Button>
                 </CardFooter>
