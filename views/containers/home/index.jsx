@@ -8,7 +8,7 @@ import Parallax from '../../components/Molecules/Parallax/Parallax';
 import { getQueryHash } from '../../../helpers/queryBuilder';
 
 class Home extends React.Component {
-  constructor(props: any) {
+  constructor(props) {
     super(props);
   }
 

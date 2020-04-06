@@ -1,12 +1,12 @@
 import { ApiClient } from './ApiClient';
 
 class ProductApi {
-  private api: ApiClient;
+  api;
   constructor() {
     this.api = new ApiClient();
   }
 
-  public getAllProducts(id: number | undefined) {
+  getAllProducts(id) {
     if (id) {
       return this.api.get(`/apiv1/products?search=${id}`);
     } else {
@@ -14,7 +14,7 @@ class ProductApi {
     }
   }
 
-  public getProduct(id: number) {
+  getProduct(id) {
     if (!id) {
       throw new Error('id is required');
     }
@@ -22,7 +22,7 @@ class ProductApi {
     return this.api.get(`/apiv1/products/${id}`);
   }
 
-  public saveProduct(data: any) {
+  saveProduct(data) {
     if (!data) {
       throw new Error('data is required');
     }
@@ -30,7 +30,7 @@ class ProductApi {
     return this.api.post('/apiv1/products', data);
   }
 
-  public editProduct(id: number, data: any) {
+  editProduct(id, data) {
     if (!id) {
       throw new Error('id is required');
     }
@@ -41,7 +41,7 @@ class ProductApi {
     return this.api.put(`/apiv1/products/${id}`, data);
   }
 
-  public deleteProduct(id: number) {
+  deleteProduct(id) {
     if (!id) {
       throw new Error('id is required');
     }

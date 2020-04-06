@@ -1,4 +1,4 @@
-export const getQueryHash = (): string => {
+export const getQueryHash = () => {
   // @ts-ignore
   if (!process.env.BASIC_AUTH_KEY) {
     return Date.now().toString();

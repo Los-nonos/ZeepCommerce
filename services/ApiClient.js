@@ -1,7 +1,7 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios from 'axios';
 
 export class ApiClient {
-  private axiosConfig: AxiosRequestConfig;
+  axiosConfig;
   constructor() {
     this.axiosConfig = {
       headers: {
@@ -10,19 +10,19 @@ export class ApiClient {
     };
   }
 
-  public get(endpoint: any): Promise<AxiosResponse> {
+  get(endpoint) {
     return axios.get(endpoint, this.axiosConfig);
   }
 
-  public post(endpoint: any, body: any): Promise<AxiosResponse> {
+  post(endpoint, body) {
     return axios.post(endpoint, body, this.axiosConfig);
   }
 
-  public put(endpoint: any, data: any): Promise<AxiosResponse> {
+  put(endpoint, data) {
     return axios.put(endpoint, data, this.axiosConfig);
   }
 
-  public delete(endpoint: any): Promise<AxiosResponse> {
+  delete(endpoint) {
     return axios.delete(endpoint, this.axiosConfig);
   }
 }
