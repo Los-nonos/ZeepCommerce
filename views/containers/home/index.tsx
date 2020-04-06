@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 
 import Main from '../../layouts/Main';
-import Parallax from '../../components/Parallax';
+import Parallax from '../../components/Molecules/Parallax/Parallax';
 import { getQueryHash } from '../../../helpers/queryBuilder';
 
 class Home extends React.Component {
