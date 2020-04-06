@@ -77,18 +77,18 @@ export default function Description(props) {
                   <GridContainer>
                     <GridItem>
                       <p>
-                        No tiene cuenta? Creela {' '}<a href="/signup">Aquí</a>
+                        No tiene cuenta? Creela <a href="/signup">Aquí</a>
                       </p>
                     </GridItem>
                     <GridItem>
                       <p>
-                        No recuerda su contraseña? Recuperela {' '}<a href="/signup">Aquí</a>
+                        No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
                       </p>
                     </GridItem>
                   </GridContainer>
                   <Button simple size="lg">
-                      Get started
-                     </Button>
+                    Get started
+                  </Button>
                 </CardFooter>
               </form>
             </Card>
