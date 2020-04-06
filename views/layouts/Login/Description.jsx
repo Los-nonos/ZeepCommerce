@@ -38,7 +38,7 @@ export default function Description(props) {
             <Card>
               <form className={classes.form}>
                 <CardHeader color="primary" className={classes.cardHeader}>
-                  <h4>Login</h4>
+                  <h4>INICIAR SESIÓN</h4>
                 </CardHeader>
                 <CardBody>
                   <CustomInput
@@ -77,7 +77,7 @@ export default function Description(props) {
                   <GridContainer direction="column" alignContent="center" size="auto">
                     <GridContainer direction="row" alignContent="center" justify="space-between" size="auto">
                       <Button simple size="lg">
-                        Login
+                        Iniciar sesión
                       </Button>
                       <Button simple size="lg">
                         Registrese
