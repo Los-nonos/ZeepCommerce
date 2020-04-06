@@ -74,21 +74,19 @@ export default function Description(props) {
                   />
                 </CardBody>
                 <CardFooter className={classes.cardFooter}>
-                  <GridContainer>
-                    <GridItem>
-                      <p>
-                        No tiene cuenta? Creela <a href="/signup">Aquí</a>
-                      </p>
-                    </GridItem>
-                    <GridItem>
-                      <p>
-                        No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
-                      </p>
-                    </GridItem>
+                  <GridContainer direction="column" alignContent="center" size="auto">
+                    <GridContainer direction="row" alignContent="center" justify="space-between" size="auto">
+                      <Button simple size="lg">
+                        Login
+                      </Button>
+                      <Button simple size="lg">
+                        Registrese
+                      </Button>
+                    </GridContainer>
+                    <p>
+                      No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
+                    </p>
                   </GridContainer>
-                  <Button simple size="lg">
-                    Get started
-                  </Button>
                 </CardFooter>
               </form>
             </Card>
