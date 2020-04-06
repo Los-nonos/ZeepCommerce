@@ -6,9 +6,9 @@
   "scripts": {
     "start": "next",
     "build": "next build && sass styles:static/build",
-    "linter:check": "eslint './**/*.tsx'",
-    "prettier:check": "prettier -c './**/*.tsx'",
-    "prettier:run": "prettier --write './**/*.ts'",
+    "linter:check": "eslint './**/*.jsx'",
+    "prettier:check": "prettier -c './**/*.jsx'",
+    "prettier:run": "prettier --write './**/*.jsx'",
     "export": "next export"
   },
   "dependencies": {
