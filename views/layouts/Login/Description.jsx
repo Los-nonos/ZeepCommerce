@@ -29,6 +29,7 @@ export default function Description(props) {
         backgroundImage: 'url(/img/bg2.jpg)',
         backgroundSize: 'cover',
         width: '100%',
+        height: '80%',
         backgroundPosition: 'top center',
       }}
     >
