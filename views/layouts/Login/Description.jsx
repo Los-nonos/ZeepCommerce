@@ -84,7 +84,7 @@ export default function Description(props) {
                       </Button>
                     </GridContainer>
                     <p>
-                      No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
+                      ¿No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
                     </p>
                   </GridContainer>
                 </CardFooter>

@@ -10,7 +10,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
           <meta name="theme-color" content="#000000" />
-          <link rel="shortcut icon" href={'/img/favicon.png'} />
+          <link rel="shortcut icon" href={'/img/logos/favicon.png'} />
           <link rel="apple-touch-icon" sizes="76x76" href={'assets/img/apple-icon.png'} />
           {/* Fonts and icons */}
           <link

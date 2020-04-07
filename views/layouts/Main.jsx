@@ -14,17 +14,16 @@ function Main(props) {
   const { pageName, children, ...rest } = props;
 
   return (
-    <div>
+    <>
       <Head>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <link rel="stylesheet" href="style/index.scss?v=1.0.0" />
         <title>{pageName}</title>
       </Head>
-
       <Header absolute color="transparent" brand="Zeep Commerce" rightLinks={<HeaderLinks />} {...rest} />
-      <GridContainer>{children}</GridContainer>
+      {children}
       <Footer />
-    </div>
+    </>
   );
 }
 
