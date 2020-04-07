@@ -1,1 +1,0 @@
-{"name":"zeepweb","version":"1.0.0","main":"server.js","author":{"name":"los-ñoños"},"license":"MIT","dependencies":{"next":"^9.2.0","react":"^16.12.0","react-dom":"^16.12.0","react-router-dom":"^5.1.2"},"devDependencies":{"@types/react":"^16.9.17","typescript":"^3.7.5"},"readme":"ERROR: No README data found!","_id":"zeepweb@1.0.0"}
