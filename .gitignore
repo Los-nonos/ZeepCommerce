@@ -4,3 +4,4 @@ public/css/views
 build/*
 node_modules/*
 .next/*
+.idea/*
