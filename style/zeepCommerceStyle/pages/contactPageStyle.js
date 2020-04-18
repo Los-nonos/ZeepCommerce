@@ -4,7 +4,7 @@ const style = {
   cardHeader: {
     top: '100px',
     height: '100%',
-    minHeight: '80vh',
+    minHeight: '70vh',
     minWidth: '300px',
     display: 'inherit',
     position: 'relative',
@@ -43,7 +43,7 @@ const style = {
     position: 'relative',
     paddingTop: '10vh',
     color: '#FFFFFF',
-    paddingBottom: '106px',
+    paddingBottom: '150px',
     overflow: 'hidden',
   },
   fromContact: {

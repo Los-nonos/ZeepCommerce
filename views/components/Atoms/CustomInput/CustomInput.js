@@ -74,7 +74,7 @@ export default function CustomInput(props) {
 
 CustomInput.propTypes = {
   labelText: PropTypes.node,
-  labelClasses: PropTypes.object,
+  labelClasses: PropTypes.string,
   labelProps: PropTypes.object,
   id: PropTypes.string,
   inputProps: PropTypes.object,

@@ -1,10 +1,11 @@
 import React from 'react';
-import GridItem from '../../components/Atoms/Grid/GridItem';
-import GridContainer from '../../components/Atoms/Grid/GridContainer';
-import Card from '../../components/Atoms/Card/Card';
-import contactPageStyle from '../../../style/zeepCommerceStyle/pages/contactPageStyle.js'
+import GridItem from '../../Atoms/Grid/GridItem';
+import GridContainer from '../../Atoms/Grid/GridContainer';
+import Card from '../../Atoms/Card/Card';
+import contactPageStyle from '../../../../style/zeepCommerceStyle/pages/contactPageStyle.js'
 import withStyles from '@material-ui/core/styles/withStyles';
-import CustomInput from '../../components/Atoms/CustomInput/CustomInput';
+import CustomInput from '../../Atoms/CustomInput/CustomInput';
+import RegularButton from '../../Atoms/CustomButtons/Button';
 
 class Description extends React.Component{
   render() {
@@ -21,9 +22,6 @@ class Description extends React.Component{
                         <GridItem classKey={'grid-xs-6'}>
                           <CustomInput labelClasses={classes.inputs} labelText={'Nombre'} formControlProps={{name: 'name'}} />
                         </GridItem>
-                        <GridItem classKey={'grid-xs-6'}>
-                          <CustomInput labelClasses={classes.inputs} labelText={'Apellido'} formControlProps={{name: 'surname'}} />
-                        </GridItem>
                         <GridItem classKey={'grid-xs-12'}>
                           <CustomInput labelClasses={classes.inputs} labelText={'Email'} formControlProps={{name: 'email'}} />
                         </GridItem>
@@ -35,12 +33,21 @@ class Description extends React.Component{
                                        inputProps={{'multiline': true, rows:'5'}}
                                        formControlProps={{name: 'message'}} />
                         </GridItem>
+                        <GridItem classKey={'grid-xs-12'}>
+                          <RegularButton className={{zIndex: '400'}} fullWidth={true} color={'success'} simple={true} >Send</RegularButton>
+                        </GridItem>
                       </GridContainer>
                     </form>
                 </GridItem>
                 <GridItem xs={6}>
                   <GridContainer  justify={'center'} direction={'row'} className={`${classes.fromContact} ${classes.leftRight}`}>
-                    <div style={{top: '50%', left: '50%', heigth: '100%'}}><p>hola</p></div>
+                    <div style={{top: '25%', left: '25%', heigth: '100%', display: 'block', position: 'absolute'}}>
+                      <h2>Zeep Contact</h2>
+                      <h5>Ubicación:</h5>
+                      <div style={{height: '30vh', width: '30vh', top: '10vh', left: '10vh', backgroundColor: '#fff' }}>
+
+                      </div>
+                    </div>
                   </GridContainer>
                 </GridItem>
               </GridContainer>

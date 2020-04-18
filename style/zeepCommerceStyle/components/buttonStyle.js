@@ -11,6 +11,7 @@ import {
 const buttonStyle = {
   button: {
     minHeight: 'auto',
+    zIndex: '400',
     minWidth: 'auto',
     backgroundColor: grayColor,
     color: '#FFFFFF',
