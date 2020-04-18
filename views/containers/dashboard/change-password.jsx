@@ -2,7 +2,7 @@ import React from 'react';
 
 // Components
 import Main from '../../layouts/Main';
-import Description from '../../layouts/dashboard/changePasswordModal.jsx';
+import Description from '../../components/Organisms/dashboard/changePasswordModal.jsx';
 
 class LoginPage extends React.Component {
   render() {
