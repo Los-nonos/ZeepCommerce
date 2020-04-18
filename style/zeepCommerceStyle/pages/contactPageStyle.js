@@ -4,7 +4,7 @@ const style = {
   cardHeader: {
     top: '100px',
     height: '100%',
-    minHeight: '70vh',
+    minHeight: '120vh',
     minWidth: '300px',
     display: 'inherit',
     position: 'relative',
@@ -61,6 +61,12 @@ const style = {
   },
   inputs: {
     color: `${successColor} !important`
+  },
+  buttons: {
+    zIndex: '400', left: '30% !important'
+  },
+  grids: {
+    minWidth: '600px',
   }
 }
 

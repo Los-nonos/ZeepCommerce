@@ -16,35 +16,40 @@ class Description extends React.Component{
           <Card className={classes.cardHeader}>
             <GridContainer direction={'column'} >
               <GridContainer justify={'center'} direction={'row'} >
-                <GridItem xs={6}>
-                    <form>
-                      <GridContainer className={`${classes.fromContact} ${classes.leftRight}`} >
-                        <GridItem classKey={'grid-xs-6'}>
-                          <CustomInput labelClasses={classes.inputs} labelText={'Nombre'} formControlProps={{name: 'name'}} />
-                        </GridItem>
-                        <GridItem classKey={'grid-xs-12'}>
+                <GridItem sm={6} xs={6}>
+
+                </GridItem>
+                <GridItem sm={6} xs={6}>
+                  <GridContainer className={`${classes.fromContact} ${classes.leftRight}`} >
+                    <GridItem xs={12}>
+                      <CustomInput labelClasses={classes.inputs} labelText={'Nombre'} formControlProps={{name: 'name'}} />
+                    </GridItem>
+                    <GridItem xs={12}>
+                      <GridContainer >
+                        <GridItem xs={5}>
                           <CustomInput labelClasses={classes.inputs} labelText={'Email'} formControlProps={{name: 'email'}} />
                         </GridItem>
-                        <GridItem classKey={'grid-xs-12'}>
+                        <GridItem xs={5}>
                           <CustomInput labelClasses={classes.inputs} labelText={'Telefono'} formControlProps={{name: 'phoneNumber'}} />
                         </GridItem>
-                        <GridItem classKey={'grid-xs-12'}>
-                          <CustomInput labelClasses={classes.inputs} labelText={'Message'}
-                                       inputProps={{'multiline': true, rows:'5'}}
-                                       formControlProps={{name: 'message'}} />
-                        </GridItem>
-                        <GridItem classKey={'grid-xs-12'}>
-                          <RegularButton className={{zIndex: '400'}} fullWidth={true} color={'success'} simple={true} >Send</RegularButton>
-                        </GridItem>
                       </GridContainer>
-                    </form>
+                    </GridItem>
+                    <GridItem xs={12}>
+                      <CustomInput labelClasses={classes.inputs} labelText={'Message'}
+                                   inputProps={{'multiline': true, rows:'5'}}
+                                   formControlProps={{name: 'message'}} />
+                    </GridItem>
+                    <GridItem xs={12}>
+                      <RegularButton className={classes.buttons} color={'success'} simple={true} >Send</RegularButton>
+                    </GridItem>
+                  </GridContainer>
                 </GridItem>
-                <GridItem xs={6}>
+                <GridItem xs={12}>
                   <GridContainer  justify={'center'} direction={'row'} className={`${classes.fromContact} ${classes.leftRight}`}>
-                    <div style={{top: '25%', left: '25%', heigth: '100%', display: 'block', position: 'absolute'}}>
+                    <div style={{top: '90%', left: '40%', heigth: '100%', display: 'block', position: 'absolute'}}>
                       <h2>Zeep Contact</h2>
                       <h5>Ubicación:</h5>
-                      <div style={{height: '30vh', width: '30vh', top: '10vh', left: '10vh', backgroundColor: '#fff' }}>
+                      <div style={{height: '30vh', width: '30vh', backgroundColor: '#fff' }}>
 
                       </div>
                     </div>
