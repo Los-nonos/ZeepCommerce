@@ -12,7 +12,7 @@ const customInputStyle = {
       borderWidth: '1px !important',
     },
     '&:after': {
-      borderColor: primaryColor,
+      borderColor: successColor,
     },
   },
   underlineError: {
@@ -35,7 +35,7 @@ const customInputStyle = {
   },
   labelRoot: {
     ...defaultFont,
-    color: '#AAAAAA !important',
+    color: successColor,
     fontWeight: '400',
     fontSize: '14px',
     lineHeight: '1.42857',
@@ -54,9 +54,11 @@ const customInputStyle = {
   formControl: {
     margin: '0 0 17px 0',
     paddingTop: '27px',
+    zIndex: 400,
+    width: '70%',
     position: 'relative',
     '& svg,& .fab,& .far,& .fal,& .fas,& .material-icons': {
-      color: '#495057',
+      //color: '#495057',
     },
   },
   input: {
@@ -70,7 +72,7 @@ const customInputStyle = {
       opacity: '1',
     },
     '&::placeholder': {
-      color: '#AAAAAA',
+      color: successColor,
     },
   },
   whiteInput: {

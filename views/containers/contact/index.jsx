@@ -6,7 +6,7 @@ class ContactContainer extends React.Component {
   render() {
     return (
       <>
-        <Main>
+        <Main pageName={'Contact - Zeep'}>
           <Description />
         </Main>
       </>

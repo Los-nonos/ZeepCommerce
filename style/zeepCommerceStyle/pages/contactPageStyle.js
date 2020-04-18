@@ -1,17 +1,20 @@
-import {container} from '../../zeepCommerceStyles';
+import { container, primaryColor, successColor } from '../../zeepCommerceStyles';
 
 const style = {
   cardHeader: {
     top: '100px',
     height: '100%',
+    minHeight: '80vh',
+    minWidth: '300px',
     display: 'inherit',
     position: 'relative',
     margin: '0',
     padding: '0',
     border: '0',
+    backgroundColor: primaryColor,
     alignItems: 'center',
     '&:before': {
-      background: 'rgba(0, 0, 0, 0.5)',
+      //background: primaryColor,
     },
     '&:before,&:after': {
       position: 'absolute',
@@ -44,9 +47,20 @@ const style = {
     overflow: 'hidden',
   },
   fromContact: {
-    maxWidth: '100px',
-    marginLeft: '0px !important',
-    marginRight: '0px !important'
+    //maxWidth: '40vh',
+    paddingTop: '8vh',
+    marginLeft: '10vh !important',
+    marginRight: '0px !important',
+    display: 'block',
+    height: '35vh',
+    width: '100%',
+    alignItems: 'center',
+    alignContent: 'center',
+    justify: 'center',
+    color: '#fff'
+  },
+  inputs: {
+    color: `${successColor} !important`
   }
 }
 
