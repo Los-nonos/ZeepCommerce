@@ -18,6 +18,10 @@ class ProductCard extends React.Component {
     this.setState({ data: this.props.data });
   }
 
+  onClicked = () => {
+    this.props.onProductSelected(this.props.data.id);
+  };
+
   render() {
     const { classes } = this.props;
     if (!this.state.data) {
@@ -25,7 +29,7 @@ class ProductCard extends React.Component {
     }
 
     return (
-      <Card className={classes.card}>
+      <Card onClick={this.onClicked} className={classes.card}>
         <CardBody>
           <img src={this.state.data.image} alt={'40px'} className={classes.image} />
         </CardBody>
@@ -34,7 +38,7 @@ class ProductCard extends React.Component {
             <h6 style={{ color: '#fff' }}>{this.state.data.productName}</h6>
             <p>{this.state.data.productDescription}</p>
             <p>{`PRECIO: ${this.state.data.price}`}</p>
-            {this.state.data.promotion ? <p>PROMOCIONADO</p> : <></>}
+            {this.state.data.promotion ? <p className={classes.promotionText}>PROMOCIONADO</p> : <></>}
           </GridContainer>
         </CardFooter>
       </Card>

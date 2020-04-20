@@ -25,6 +25,7 @@ class Home extends React.Component {
   getProductFromAPI = () => {
     return [
       {
+        id: 1,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Notebook',
@@ -32,6 +33,7 @@ class Home extends React.Component {
         price: 100,
       },
       {
+        id: 2,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Nootebook',
@@ -40,6 +42,7 @@ class Home extends React.Component {
         promotion: true,
       },
       {
+        id: 3,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Nootebook',
@@ -48,6 +51,7 @@ class Home extends React.Component {
         promotion: true,
       },
       {
+        id: 4,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Nootebook',

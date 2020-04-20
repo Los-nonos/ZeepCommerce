@@ -1,4 +1,4 @@
-import { primaryColor } from '../../zeepCommerceStyles';
+import { dangerColor } from '../../zeepCommerceStyles';
 
 const style = {
   image: {
@@ -12,6 +12,9 @@ const style = {
     heigth: '150px',
     maxHeigth: '150px',
     maxWidth: '250px',
+  },
+  promotionText: {
+    color: dangerColor,
   },
 };
 export default style;

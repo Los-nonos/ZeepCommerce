@@ -25,11 +25,16 @@ class ProductSection extends React.Component {
     const arrayJSX = arrayProducts.map(product => {
       return (
         <GridItem xs={4}>
-          <ProductCard data={product} />
+          <ProductCard onProductSelected={this.onProductSelected} data={product} />
         </GridItem>
       );
     });
     return <GridContainer direction={'row'}>{arrayJSX}</GridContainer>;
+  };
+
+  onProductSelected = id => {
+    console.log(id);
+    window.location = `localhost/product/${id}`;
   };
 
   render() {
