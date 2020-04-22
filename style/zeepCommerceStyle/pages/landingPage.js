@@ -1,36 +1,35 @@
-import { container, title } from "assets/jss/nextjs-material-kit.js";
+import { container, title, main, mainRaised, mlAuto, mrAuto, section } from '../../zeepCommerceStyles';
 
 const landingPageStyle = {
+  section,
   container: {
-    zIndex: "12",
-    color: "#FFFFFF",
-    ...container
+    ...container,
+    zIndex: '2',
   },
+  mlAuto,
+  mrAuto,
   title: {
     ...title,
-    display: "inline-block",
-    position: "relative",
-    marginTop: "30px",
-    minHeight: "32px",
-    color: "#FFFFFF",
-    textDecoration: "none"
+    display: 'inline-block',
+    position: 'relative',
+    marginTop: '30px',
+    minHeight: '32px',
+    color: '#FFFFFF',
+    textDecoration: 'none',
   },
   subtitle: {
-    fontSize: "1.313rem",
-    maxWidth: "500px",
-    margin: "10px auto 0"
+    fontSize: '1.313hv',
+    maxWidth: '500px',
+    margin: '10px auto 0',
   },
-  main: {
-    background: "#FFFFFF",
-    position: "relative",
-    zIndex: "3"
+  main,
+  mainRaised,
+  containerSection: {
+    ...container,
   },
-  mainRaised: {
-    margin: "-60px 30px 0px",
-    borderRadius: "6px",
-    boxShadow:
-      "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)"
-  }
+  textCenter: {
+    text: 'center',
+  },
 };
 
 export default landingPageStyle;
