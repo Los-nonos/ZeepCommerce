@@ -1,10 +1,13 @@
 import React from 'react';
 import Card from '../../Atoms/Card/Card';
+import CardHeader from '../../Atoms/Card/CardHeader';
 import CardBody from '../../Atoms/Card/CardBody';
 import CardFooter from '../../Atoms/Card/CardFooter';
-import GridContainer from '../../Atoms/Grid/GridContainer';
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '../../Atoms/CustomButtons/Button';
 import style from '../../../../style/zeepCommerceStyle/components/productCardStyle';
 import { withStyles } from '@material-ui/core/styles';
+import Favorite from '@material-ui/icons/Favorite';
 
 class ProductCard extends React.Component {
   constructor(props) {
@@ -29,17 +32,27 @@ class ProductCard extends React.Component {
     }
 
     return (
-      <Card onClick={this.onClicked} className={classes.card}>
-        <CardBody>
-          <img src={this.state.data.image} alt={'40px'} className={classes.image} />
+      <Card plain product>
+        <CardHeader noShadow image>
+          <a href="#pablo">
+            <img src={this.state.data.image} alt="40px" height="200px" />
+          </a>
+        </CardHeader>
+        <CardBody plain>
+          <a href="#pablo">
+            <h4 className={classes.cardTitle}>{this.state.data.productName}</h4>
+          </a>
+          <p className={classes.description}>{this.props.data.productDescription}</p>
         </CardBody>
-        <CardFooter>
-          <GridContainer direction={'column'}>
-            <h6 style={{ color: '#fff' }}>{this.state.data.productName}</h6>
-            <p>{this.state.data.productDescription}</p>
-            <p>{`PRECIO: ${this.state.data.price}`}</p>
-            {this.state.data.promotion ? <p className={classes.promotionText}>PROMOCIONADO</p> : <></>}
-          </GridContainer>
+        <CardFooter plain className={classes.justifyContentBetween}>
+          <div className={classes.priceContainer}>
+            <span className={classes.price}>{this.state.data.price}</span>
+          </div>
+          <Tooltip id="tooltip-top" title="Saved to Wishlist" placement="left" classes={{ tooltip: classes.tooltip }}>
+            <Button justIcon simple color="rose" className={classes.pullRight}>
+              <Favorite />
+            </Button>
+          </Tooltip>
         </CardFooter>
       </Card>
     );
