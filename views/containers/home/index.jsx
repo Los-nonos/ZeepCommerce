@@ -5,8 +5,7 @@ import Head from 'next/head';
 
 import Main from '../../layouts/Main';
 import Parallax from '../../components/Molecules/Parallax/Parallax';
-import { getQueryHash } from '../../../helpers/queryBuilder';
-import Card from '../../components/Atoms/Card/Card';
+import Botton from '../../components/Atoms/CustomButtons/Button';
 import ProductSection from '../../components/Organism/ProductSection/ProductSection';
 import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
@@ -35,7 +34,7 @@ class Home extends React.Component {
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Notebook',
-        productDescription: 'notebook asus',
+        productDescription: 'Notebook Asus',
         price: 100,
       },
       {
@@ -43,7 +42,7 @@ class Home extends React.Component {
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Nootebook',
-        productDescription: 'notebook apple',
+        productDescription: 'Notebook Apple',
         price: 500,
         promotion: true,
       },
@@ -52,7 +51,7 @@ class Home extends React.Component {
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Nootebook',
-        productDescription: 'notebook apple',
+        productDescription: 'Notebook Apple',
         price: 500,
         promotion: true,
       },
@@ -61,7 +60,7 @@ class Home extends React.Component {
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
         productName: 'Nootebook',
-        productDescription: 'notebook apple',
+        productDescription: 'Notebook Apple',
         price: 500,
         promotion: true,
       },
@@ -88,9 +87,24 @@ class Home extends React.Component {
             <div className={classes.section}>
               <div className={classes.containerSection}>
                 <GridContainer>
-                  <GridItem md={12} sm={12} className={classes.textCenter}>
+                  <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Productos Destacados</h2>
                     {this.getProducts()}
+                  </GridItem>
+                  <GridItem md={12} sm={12} className={classes.sectionSplited}>
+                    <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>
+                      Productos Más Vendidos
+                    </h2>
+                    {this.getProducts()}
+                  </GridItem>
+                  <GridItem md={12} sm={12} className={classes.sectionSplited}>
+                    <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
+                    {this.getProducts()}
+                  </GridItem>
+                  <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
+                    <Botton simple fullWidth color="primary" className={classes.title} href={'/products'}>
+                      Ver más
+                    </Botton>
                   </GridItem>
                 </GridContainer>
               </div>

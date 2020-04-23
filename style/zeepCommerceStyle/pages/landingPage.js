@@ -21,6 +21,7 @@ const landingPageStyle = {
     fontSize: '1.313hv',
     maxWidth: '500px',
     margin: '10px auto 0',
+    paddingBottom: '50px',
   },
   main,
   mainRaised,
@@ -29,6 +30,9 @@ const landingPageStyle = {
   },
   textCenter: {
     text: 'center',
+  },
+  sectionSplited: {
+    paddingTop: '100px',
   },
 };
 
