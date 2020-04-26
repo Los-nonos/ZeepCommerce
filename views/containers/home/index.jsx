@@ -1,11 +1,8 @@
 import React from 'react';
 
-import Link from 'next/link';
-import Head from 'next/head';
-
 import Main from '../../layouts/Main';
 import Parallax from '../../components/Molecules/Parallax/Parallax';
-import Botton from '../../components/Atoms/CustomButtons/Button';
+import Button from '../../components/Atoms/CustomButtons/Button';
 import ProductSection from '../../components/Organism/ProductSection/ProductSection';
 import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
@@ -16,10 +13,6 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import style from '../../../style/zeepCommerceStyle/pages/landingPage';
 
 class Home extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   getProducts = () => {
     //TODO: get api products for landing page
     const arrayProducts = this.getProductFromAPI();
@@ -72,7 +65,7 @@ class Home extends React.Component {
     return (
       <Main pageName="Home - Zeep">
         <div>
-          <Parallax filter="dark" small image="/img/bg2.jpg">
+          <Parallax filter="dark" small>
             <div className={classes.container}>
               <GridContainer>
                 <GridItem md={8} sm={8} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
@@ -102,9 +95,9 @@ class Home extends React.Component {
                     {this.getProducts()}
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-                    <Botton simple fullWidth color="primary" className={classes.title} href={'/products'}>
+                    <Button simple fullWidth color="primary" className={classes.title} href={'/products'}>
                       Ver más
-                    </Botton>
+                    </Button>
                   </GridItem>
                 </GridContainer>
               </div>

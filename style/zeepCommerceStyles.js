@@ -18,7 +18,7 @@ const hexToRgb = input => {
   return parseInt(first, 16) + ', ' + parseInt(second, 16) + ', ' + parseInt(last, 16);
 };
 
-const primaryColor = '#090809';
+const primaryColor = ['#090809', '#090909'];
 const warningColor = '#ff9800';
 const dangerColor = '#93032E';
 const successColor = '#065A66';

@@ -10,6 +10,9 @@ const style = {
     textAlign: 'center',
     marginBottom: '0px !important',
   },
+  border: {
+    borderRadius: '6px'
+  },
   cardDescription: {
     color: grayColor,
     textAlign: 'center',
@@ -31,9 +34,10 @@ const style = {
     float: 'right',
   },
   justifyContentBetween: {
+    ...mlAuto,
     WebkitBoxPack: 'justify!important',
     justifyContent: 'space-between !important',
-    backgroundColor: primaryColor,
+    backgroundColor: primaryColor[0],
   },
 };
 export default style;

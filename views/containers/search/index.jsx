@@ -27,7 +27,7 @@ class SeachProducts extends React.Component {
         id: 2,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Nootebook',
+        productName: 'Notebook',
         productDescription: 'Notebook Apple',
         price: 500,
         promotion: true,
@@ -36,7 +36,7 @@ class SeachProducts extends React.Component {
         id: 3,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Nootebook',
+        productName: 'Notebook',
         productDescription: 'Notebook Apple',
         price: 500,
         promotion: true,
@@ -45,7 +45,7 @@ class SeachProducts extends React.Component {
         id: 4,
         image:
           'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Nootebook',
+        productName: 'Notebook',
         productDescription: 'Notebook Apple',
         price: 500,
         promotion: true,

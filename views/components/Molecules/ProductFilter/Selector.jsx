@@ -1,5 +1,4 @@
 import React from 'react';
-
 // import atom components
 import Card from '../../Atoms/Card/Card';
 import CardBody from '../../Atoms/Card/CardBody';
@@ -9,11 +8,9 @@ import Clearfix from '../../Atoms/Clearfix/Clearfix';
 
 import classNames from 'classnames';
 import nouislider from 'nouislider';
-
 // import icons from material iu
 import Cached from '@material-ui/icons/Cached';
 import Check from '@material-ui/icons/Check';
-
 // import components from material iu
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -33,9 +30,9 @@ class ProductSelector extends React.Component {
   }
 
   componentDidMount() {
-    var slider = this.slider1.current;
-    var priceLow = this.priceLow.current;
-    var priceHigh = this.priceHigh.current;
+    let slider = this.slider1.current;
+    let priceLow = this.priceLow.current;
+    let priceHigh = this.priceHigh.current;
     nouislider
       .create(slider, {
         start: this.state.priceRange,
@@ -58,7 +55,7 @@ class ProductSelector extends React.Component {
     const { classes } = this.props;
     const filters = this.props.filters;
 
-    const collapses = filters.map(filter => {
+    return filters.map(filter => {
       return {
         title: filter.title,
         content: filter.options.map(option => {
@@ -68,9 +65,9 @@ class ProductSelector extends React.Component {
                 <Checkbox
                   tabIndex={-1}
                   onClick={() => this.handleToggle(option.id)}
-                  checked={this.state.checked.indexOf(option.id) !== -1 ? true : false}
-                  checkedIcon={<Check className={classes.checkedIcon} />}
-                  icon={<Check className={classes.uncheckedIcon} />}
+                  checked={this.state.checked.indexOf(option.id) !== -1}
+                  checkedIcon={<Check className={classes.checkedIcon}/>}
+                  icon={<Check className={classes.uncheckedIcon}/>}
                   classes={{
                     checked: classes.checked,
                     root: classes.checkRoot,
@@ -84,7 +81,6 @@ class ProductSelector extends React.Component {
         }),
       };
     });
-    return collapses;
   };
 
   handleToggle(value) {
