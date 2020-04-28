@@ -33,7 +33,7 @@ const transition = {
   transition: 'all 0.33s cubic-bezier(0.685, 0.0473, 0.346, 1)',
 };
 
-const conatinerFluid = {
+const containerFluid = {
   paddingRight: '15px',
   paddingLeft: '15px',
   marginRight: 'auto',
@@ -41,7 +41,7 @@ const conatinerFluid = {
   width: '100%',
 };
 const container = {
-  ...conatinerFluid,
+  ...containerFluid,
   '@media (min-width: 576px)': {
     maxWidth: '540px',
   },
