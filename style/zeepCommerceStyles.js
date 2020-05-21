@@ -223,7 +223,7 @@ export {
   drawerWidth,
   transition,
   container,
-  conatinerFluid,
+  containerFluid,
   boxShadow,
   card,
   defaultFont,
