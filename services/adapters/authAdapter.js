@@ -6,23 +6,23 @@ class AuthAdapter {
     const { status, data } = response;
 
     if (!isError(status)) {
-      const { token } = data.data;
-      delete data.data.token;
+      const { token } = data;
+      delete data.token;
 
       return {
         type: actionNames.loggedIn,
         token,
-        user: data.data,
+        user: data.user,
       };
     }
-    const { code, details } = data.errors;
+    const { error } = data;
 
     return {
       type: actionNames.loginFailed,
       error: {
         code: status,
-        type: code,
-        errors: details.errors,
+        type: null,
+        errors: error,
       },
     };
   };
@@ -31,15 +31,15 @@ class AuthAdapter {
     const { status, data } = response;
 
     if (!isError(status)) {
-      const { token } = data.data;
-      delete data.data.token;
+      const { token } = data;
+      delete data.token;
 
       return {
         type: actionNames.renewToken,
         token,
       };
     }
-    const { code, details } = data.errors;
+    const { code, details } = data;
 
     return {
       type: actionNames.loginFailed,

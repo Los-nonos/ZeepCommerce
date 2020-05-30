@@ -1,15 +1,16 @@
-import { push } from '../../config/history';
+import Router from "next/router";
+//import { push } from '../../config/history';
 
 export const redirectTo = path => {
-  push(path);
+  Router.push(path);
 };
 
 export const redirectToWithState = (path, state) => {
-  push(path, state);
+  Router.push(path, state);
 };
 
 export const pages = {
-  login: '/auth/login-page',
+  login: '/login',
   products: '/products',
   dashboard: '/dashboard/',
   error: '/auth/error',

@@ -1,4 +1,4 @@
-//import { createBrowserHistory } from 'history';
+import { createBrowserHistory } from 'history';
 
 const isServer = process.browser;
 
@@ -6,8 +6,8 @@ let history;
 if(isServer) {
   history = {};
 } else {
-  //history = createBrowserHistory();
-  history = {};
+  history = createBrowserHistory();
+  // history = {};
 }
 
 export default history;

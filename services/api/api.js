@@ -6,7 +6,7 @@ import authStorage from '../localStorage/authStorage';
 class ApiFech {
   constructor() {
     this.apiUrl = () => {
-      return process.env.API_URL;
+      return 'http://localhost/api';
     };
   }
 

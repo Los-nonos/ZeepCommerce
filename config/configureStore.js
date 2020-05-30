@@ -7,7 +7,7 @@ import createReducer from './reducers';
 // eslint-disable-next-line import/no-cycle
 import rootSaga from '../sagas';
 
-const isProd = process.env.NODE_ENV === 'production';
+const isProd = false;
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
