@@ -31,8 +31,8 @@ class ProductCard extends React.Component {
     }
 
     return (
-      <Card plain product>
-        <CardBody plain className={classNames(classes.mlAuto, classes.border, classes.mrAuto)}>
+      <Card plain={true} product>
+        <CardBody plain={true} className={classNames(classes.mlAuto, classes.border, classes.mrAuto)}>
           <a href="#pablo">
             <img src={this.state.data.image} alt="40px" height="200px" />
           </a>

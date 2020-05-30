@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'next/app';
 import Router from 'next/router';
+import configureStore from '../config/configureStore';
+import { Provider } from 'react-redux';
 
 import PageChange from '../views/components/Molecules/PageChange/PageChange';
 
@@ -22,21 +24,22 @@ Router.events.on('routeChangeError', () => {
 });
 
 export default class MyApp extends App {
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {};
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
 
-    if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-    }
-
+    //Anything returned here can be accessed by the client
     return { pageProps };
   }
   render() {
+    //pageProps that were returned  from 'getInitialProps' are stored in the props i.e. pageprops
     const { Component, pageProps } = this.props;
+    const store = configureStore();
     return (
-      <React.Fragment>
-        <Component {...pageProps} />
-      </React.Fragment>
+      <Provider store={store}>
+        <React.Fragment>
+          <Component {...pageProps} />
+        </React.Fragment>
+      </Provider>
     );
   }
 }

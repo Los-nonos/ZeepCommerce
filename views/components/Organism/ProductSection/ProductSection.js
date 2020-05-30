@@ -5,10 +5,10 @@ import ProductCard from '../../Molecules/ProductCard/Card';
 
 class ProductSection extends React.Component {
   getProductsContainer = arrayProducts => {
-    return arrayProducts.map(product => {
+    return arrayProducts.map((product, key) => {
       return (
-        <GridItem md={4} sm={4}>
-          <ProductCard onProductSelected={this.onProductSelected} data={product} />
+        <GridItem md={4} sm={4} key={key}>
+          <ProductCard onProductSelected={this.onProductSelected} data={product}/>
         </GridItem>
       );
     });
