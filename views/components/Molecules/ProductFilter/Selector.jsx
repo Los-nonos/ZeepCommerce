@@ -66,8 +66,8 @@ class ProductSelector extends React.Component {
                   tabIndex={-1}
                   onClick={() => this.handleToggle(option.id)}
                   checked={this.state.checked.indexOf(option.id) !== -1}
-                  checkedIcon={<Check className={classes.checkedIcon}/>}
-                  icon={<Check className={classes.uncheckedIcon}/>}
+                  checkedIcon={<Check className={classes.checkedIcon} />}
+                  icon={<Check className={classes.uncheckedIcon} />}
                   classes={{
                     checked: classes.checked,
                     root: classes.checkRoot,

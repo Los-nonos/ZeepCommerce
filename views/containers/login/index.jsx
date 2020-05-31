@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
     const username = e.target.elements.username.value;
     const password = e.target.elements.password.value;
     this.dispatch(actions.login(username, password));
-  }
+  };
 
   renderError() {
     const { classes } = this.props;
