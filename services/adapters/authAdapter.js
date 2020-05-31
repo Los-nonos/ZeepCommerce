@@ -39,14 +39,14 @@ class AuthAdapter {
         token,
       };
     }
-    const { code, details } = data;
+    const { error } = data;
 
     return {
       type: actionNames.loginFailed,
       error: {
         code: status,
-        type: code,
-        errors: details.errors,
+        type: null,
+        errors: error,
       },
     };
   };

@@ -9,6 +9,8 @@ import PageChange from '../views/components/Molecules/PageChange/PageChange';
 
 import 'public/style/index.scss?v=1.0.0';
 
+const store = configureStore();
+
 Router.events.on('routeChangeStart', url => {
   console.log(`Loading: ${url}`);
   document.body.classList.add('body-page-transition');
@@ -33,7 +35,6 @@ export default class MyApp extends App {
   render() {
     //pageProps that were returned  from 'getInitialProps' are stored in the props i.e. pageprops
     const { Component, pageProps } = this.props;
-    const store = configureStore();
     return (
       <Provider store={store}>
         <React.Fragment>
@@ -43,3 +44,5 @@ export default class MyApp extends App {
     );
   }
 }
+
+export const dispatch = store.dispatch;

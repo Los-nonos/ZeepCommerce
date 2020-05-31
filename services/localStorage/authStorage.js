@@ -3,6 +3,7 @@ import localStorageService from './localStorageService';
 import auth from '../api/auth';
 import { actionNames } from '../../utils/constants/actionConstants';
 // eslint-disable-next-line import/no-cycle
+import { dispatch } from '../../pages/_app';
 import jwt from '../externalsModules/jwt';
 
 class AuthStorage {

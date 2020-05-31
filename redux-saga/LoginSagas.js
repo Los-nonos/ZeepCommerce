@@ -2,7 +2,7 @@ import { call, put, all } from 'redux-saga/effects';
 // eslint-disable-next-line import/no-cycle
 import auth from '../services/api/auth';
 import { actionNames } from '../utils/constants/actionConstants';
-import { redirectTo, redirectToWithState, pages } from '../utils/helpers/redirectTo';
+import { redirectTo, pages } from '../utils/helpers/redirectTo';
 
 export function* login(action) {
   const { username, password } = action;
@@ -18,7 +18,7 @@ export function* login(action) {
       put({ type: 'LOADING_TOGGLE' }),
       put({ type: actionNames.saveSession, token: res.token, roles: res.user.roles }),
     ]);
-    redirectToWithState(pages.dashboard, { previousPath: 'login' });
+    redirectTo(pages.dashboard);
   }
 }
 
