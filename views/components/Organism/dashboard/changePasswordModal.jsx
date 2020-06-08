@@ -4,19 +4,19 @@ import React from 'react';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 // imports material-ui/icons
-import Email from '@material-ui/icons/Email';
 import LockOutlined from '@material-ui/icons/LockOutlined';
+import LockOpenOutlined from '@material-ui/icons/LockOpenOutlined';
 
-import GridContainer from '../../components/Atoms/Grid/GridContainer';
-import GridItem from '../../components/Atoms/Grid/GridItem';
-import CustomInput from '../../components/Atoms/CustomInput/CustomInput';
-import Button from '../../components/Atoms/CustomButtons/Button';
-import Card from '../../components/Atoms/Card/Card';
-import CardBody from '../../components/Atoms/Card/CardBody';
-import CardHeader from '../../components/Atoms/Card/CardHeader';
-import CardFooter from '../../components/Atoms/Card/CardFooter';
+import GridContainer from '../../Atoms/Grid/GridContainer';
+import GridItem from '../../Atoms/Grid/GridItem';
+import CustomInput from '../../Atoms/CustomInput/CustomInput';
+import Button from '../../Atoms/CustomButtons/Button';
+import Card from '../../Atoms/Card/Card';
+import CardBody from '../../Atoms/Card/CardBody';
+import CardHeader from '../../Atoms/Card/CardHeader';
+import CardFooter from '../../Atoms/Card/CardFooter';
 import { makeStyles } from '@material-ui/core';
-import styles from '../../../style/zeepCommerceStyle/pages/loginPage';
+import styles from '../../../../style/zeepCommerceStyle/pages/changePassword';
 
 const useStyles = makeStyles(styles);
 
@@ -39,26 +39,42 @@ export default function Description(props) {
             <Card>
               <form className={classes.form}>
                 <CardHeader color="primary" className={classes.cardHeader}>
-                  <h4>INICIAR SESIÓN</h4>
+                  <h4>CAMBIAR CONTRASEÑA</h4>
                 </CardHeader>
                 <CardBody>
                   <CustomInput
-                    labelText="Email"
+                    labelText="Contraseña actual"
                     id="email"
                     formControlProps={{
                       fullWidth: true,
                     }}
                     inputProps={{
-                      type: 'email',
+                      type: 'password',
                       endAdornment: (
                         <InputAdornment position="end">
-                          <Email className={classes.inputIconsColor} />
+                          <LockOpenOutlined className={classes.inputIconsColor} />
                         </InputAdornment>
                       ),
                     }}
                   />
                   <CustomInput
-                    labelText="Password"
+                    labelText="Contraseña nueva"
+                    id="pass"
+                    formControlProps={{
+                      fullWidth: true,
+                    }}
+                    inputProps={{
+                      type: 'password',
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <LockOutlined className={classes.inputIconsColor} />
+                        </InputAdornment>
+                      ),
+                      autoComplete: 'off',
+                    }}
+                  />
+                  <CustomInput
+                    labelText="Repita la contraseña"
                     id="pass"
                     formControlProps={{
                       fullWidth: true,
@@ -75,19 +91,9 @@ export default function Description(props) {
                   />
                 </CardBody>
                 <CardFooter className={classes.cardFooter}>
-                  <GridContainer direction="column" alignContent="center" size="auto">
-                    <GridContainer direction="row" alignContent="center" justify="space-between" size="auto">
-                      <Button simple size="lg">
-                        Iniciar sesión
-                      </Button>
-                      <Button simple size="lg">
-                        Registrese
-                      </Button>
-                    </GridContainer>
-                    <p>
-                      ¿No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
-                    </p>
-                  </GridContainer>
+                  <Button simple size="lg">
+                    Reemplazar contraseña
+                  </Button>
                 </CardFooter>
               </form>
             </Card>

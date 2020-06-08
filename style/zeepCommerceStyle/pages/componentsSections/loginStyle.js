@@ -1,6 +1,6 @@
-import { container } from "assets/jss/nextjs-material-kit.js";
+import { container } from '../../../zeepCommerceStyles';
 
-import image from "assets/img/sign.jpg";
+import image from "../../../../public/logoNav.jpeg";
 
 const loginStyle = {
   section: {

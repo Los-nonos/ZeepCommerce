@@ -1,3 +1,5 @@
+import { primaryColor } from '../../zeepCommerceStyles';
+
 const parallaxStyle = theme => ({
   parallax: {
     height: "90vh",
@@ -10,7 +12,8 @@ const parallaxStyle = theme => ({
     padding: "0",
     border: "0",
     display: "flex",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundColor: primaryColor[0]
   },
   filter: {
     "&:before": {
