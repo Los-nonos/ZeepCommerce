@@ -4,7 +4,7 @@ import React from 'react';
 import Main from '../../layouts/Main';
 import Description from '../../layouts/dashboard/changePasswordModal.jsx';
 
-class LoginPage extends React.Component {
+class ChangePasswordPage extends React.Component {
   render() {
     return (
       <Main pageName="Zeep - Change password">
@@ -14,4 +14,4 @@ class LoginPage extends React.Component {
   }
 }
 
-export default LoginPage;
+export default ChangePasswordPage;
