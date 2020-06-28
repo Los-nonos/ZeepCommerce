@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import Main from '../../layouts/Main';
 import Parallax from '../../components/Molecules/Parallax/Parallax';
@@ -8,57 +9,32 @@ import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
 
 import classNames from 'classnames';
+import  * as actions from '../../../actions/HomeActions';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import style from '../../../style/zeepCommerceStyle/pages/landingPage';
+import { pages } from '../../../utils/helpers/redirectTo';
 
 class Home extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+
+    this.dispatch = props.dispatch;
+    this.loadProducts();
+  }
+
+  loadProducts = () => {
+    this.dispatch(actions.LoadProductsForHome());
+  }
+
   getProducts = () => {
     //TODO: get api products for landing page
-    const arrayProducts = this.getProductFromAPI();
-
-    return <ProductSection data={arrayProducts.slice(0, 3)} />;
+    const arrayProducts = this.props.products;
   };
 
-  getProductFromAPI = () => {
-    return [
-      {
-        id: 1,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Notebook',
-        productDescription: 'Notebook Asus',
-        price: 100,
-      },
-      {
-        id: 2,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Nootebook',
-        productDescription: 'Notebook Apple',
-        price: 500,
-        promotion: true,
-      },
-      {
-        id: 3,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Nootebook',
-        productDescription: 'Notebook Apple',
-        price: 500,
-        promotion: true,
-      },
-      {
-        id: 4,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Nootebook',
-        productDescription: 'Notebook Apple',
-        price: 500,
-        promotion: true,
-      },
-    ];
-  };
 
   render() {
     const { classes } = this.props;
@@ -82,20 +58,20 @@ class Home extends React.Component {
                 <GridContainer>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Productos Destacados</h2>
-                    {this.getProducts()}
+                    <ProductSection data={this.props.featuredProducts.slice(0, 3)} />;
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>
                       Productos Más Vendidos
                     </h2>
-                    {this.getProducts()}
+                    <ProductSection data={this.props.selledProducts.slice(0, 3)} />;
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
-                    {this.getProducts()}
+                    <ProductSection data={this.props.products.slice(0, 3)} />;
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-                    <Button simple fullWidth color="primary" className={classes.title} href={'/products'}>
+                    <Button simple fullWidth color="primary" className={classes.title} href={pages.products}>
                       Ver más
                     </Button>
                   </GridItem>
@@ -109,4 +85,8 @@ class Home extends React.Component {
   }
 }
 
-export default withStyles(style)(Home);
+const mapStateToProps = state => {
+  return state.homeReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(style)(Home));

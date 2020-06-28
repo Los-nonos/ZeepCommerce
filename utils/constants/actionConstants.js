@@ -8,7 +8,7 @@ export const actionNames = {
   renewToken: 'RENEW_TOKEN',
   checkRoles: 'CHECK_ROLES',
 
-  search: 'SEARCH',
+  search: 'SEARCH_PRODUCTS',
   seeDetails: 'SEE_DETAILS',
   showDetails: 'SHOW_DETAILS',
 
@@ -27,4 +27,18 @@ export const actionNames = {
   loadingToggle: 'LOADING_TOGGLE',
   closeNotification: 'CLOSE_NOTIFICATION',
   showNotification: 'SHOW_NOTIFICATION',
+
+  loadProducts: 'LOAD_PRODUCTS',
+  loadProductsSuccessfully: 'LOAD_PRODUCTS_SUCCESSFULLY',
+  loadProductsFail: 'LOAD_PRODUCTS_FAIL',
+
+  loadProductsByFilterSuccessfully: 'LOAD_PRODUCTS_BY_FILTER_SUCCESSFULLY',
+  loadProductsByFilterFail: 'LOAD_PRODUCTS_BY_FILTER_FAIL',
+
+  nextSearchPage: 'NEXT_SEARCH_PAGE',
+  previousSearchPage: 'PREVIOUS_SEARCH_PAGE',
+  selectSearchPage: 'SELECT_SEARCH_PAGE',
+
+  loadProductsWithDetailsSuccesful: 'LOAD_PRODUCT_WITH_DETAILS_SUCCESFUL',
+  loadProductWithDetailsFail: 'LOAD_PRODUCT_WITH_DETAILS_FAIL',
 }

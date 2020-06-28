@@ -5,17 +5,20 @@ import { login, loginFailed } from './redux-saga/LoginSagas';
 import { saveSession, deleteSession, renewToken } from './redux-saga/SessionSagas';
 import { checkRoles } from './redux-saga/PermissionsSagas';
 import { changePassword } from './actions/UserAccountActions';
+import { loadProducts } from './redux-saga/HomeSagas';
+import { searchProducts } from './redux-saga/ProductsSagas';
 
 const sagas = [
   takeLatest(actionNames.login, login),
   takeLatest(actionNames.saveSession, saveSession),
   takeLatest(actionNames.deleteSession, deleteSession),
-  // takeLatest(actionNames.loadFilters, loadFilters),
-  // takeLatest(actionNames.search, searchProducts),
+  takeLatest(actionNames.search, searchProducts),
+  takeLatest(actionNames.loadProducts, loadProducts),
   takeLatest(actionNames.renewToken, renewToken),
   takeLatest(actionNames.loginFailed, loginFailed),
   takeLatest(actionNames.checkRoles, checkRoles),
   takeLatest(actionNames.changePassword, changePassword),
+  // takeLatest(actionNames.loadFilters, loadFilters),
 ];
 
 export default function* rootSaga() {
