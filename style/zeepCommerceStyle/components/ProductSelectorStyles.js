@@ -1,4 +1,4 @@
-import { mlAuto, mrAuto, cardTitle, grayColor, whiteColor } from '../../zeepCommerceStyles';
+import { mlAuto, mrAuto, cardTitle, grayColor, whiteColor, primaryColor } from '../../zeepCommerceStyles';
 import tooltipsStyles from '../tooltipsStyle';
 import customCheckboxRadioSwitch from '../customCheckboxRadioSwitch';
 
@@ -42,6 +42,10 @@ const style = {
       backgroundColor: 'unset',
     },
   },
+  label: {
+    color: primaryColor[0],
+    width: '100%'
+  }
 };
 
 export default style;

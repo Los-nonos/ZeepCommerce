@@ -1,15 +1,13 @@
 import { actionNames } from "../utils/constants/actionConstants";
 
 export const stateDefault = {
-  filters: {
-    categoryName: [],
-    filterNames: [],
-    filterOptions: [],
-    valueFilterOption: "",
-    query: ""
-  },
+  filters: [],
   products: [],
   productWithDetails: {},
+  priceRange: {
+    min: 500,
+    max: 800,
+  },
   page: 1,
   totalPages: 1
 };
@@ -19,14 +17,10 @@ const searchReducer = (state = stateDefault, action) => {
     case actionNames.loadFiltersSuccesful:
       return {
         ...state,
-        filters: {
-          categoryName: action.body.categories,
-          filterName: action.body.filterNames,
-          filterOption: action.body.filterOptions
-        }
+        filters: action.filters,
       };
     case actionNames.loadFiltersFail:
-      return { ...state };
+      return { ...state, filters: [] };
     case actionNames.loadProductsByFilterSuccessfully:
       return {
         ...state,

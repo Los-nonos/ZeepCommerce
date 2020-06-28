@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 // import atom components
 import Card from '../../Atoms/Card/Card';
 import CardBody from '../../Atoms/Card/CardBody';
@@ -21,11 +22,16 @@ import withStyles from '@material-ui/core/styles/withStyles';
 import style from '../../../../style/zeepCommerceStyle/components/ProductSelectorStyles';
 
 class ProductSelector extends React.Component {
+  slider1 = React.createRef();
+  priceLow = React.createRef();
+  priceHigh = React.createRef();
+
   constructor(props) {
     super(props);
     this.state = {
-      checked: [1, 3],
-      priceRange: [350, 450],
+      currentFilters: [],
+      priceRange: [600, 700],
+      categorySelected: '',
     };
   }
 
@@ -37,7 +43,7 @@ class ProductSelector extends React.Component {
       .create(slider, {
         start: this.state.priceRange,
         connect: true,
-        range: { min: 300, max: 500 },
+        range: { min: this.props.priceRange.min, max: this.props.priceRange.max },
         step: 1,
       })
       .on('update', function(values) {
@@ -48,45 +54,82 @@ class ProductSelector extends React.Component {
       });
   }
 
-  slider1 = React.createRef();
-  priceLow = React.createRef();
-  priceHigh = React.createRef();
   renderFilters = () => {
     const { classes } = this.props;
-    const filters = this.props.filters;
 
-    return filters.map(filter => {
-      return {
-        title: filter.title,
-        content: filter.options.map(option => {
-          return (
-            <FormControlLabel
-              control={
-                <Checkbox
-                  tabIndex={-1}
-                  onClick={() => this.handleToggle(option.id)}
-                  checked={this.state.checked.indexOf(option.id) !== -1}
-                  checkedIcon={<Check className={classes.checkedIcon} />}
-                  icon={<Check className={classes.uncheckedIcon} />}
-                  classes={{
-                    checked: classes.checked,
-                    root: classes.checkRoot,
-                  }}
-                />
-              }
-              classes={{ label: classes.label }}
-              label={option.title}
+    if(this.state.categorySelected === '') {
+      return [];
+    }
+
+    const filters = this.props.filters;
+    const categoryFilters = filters.map(filter => {
+      if (filter.name === this.state.categorySelected) {
+        return filter.filters;
+      }
+    });
+
+    const renderFilters = categoryFilters.map(categoryFilter => {
+      return categoryFilter.map(filter => {
+        return {
+          title: filter.name,
+          content: filter.options.map(option => {
+            return (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    tabIndex={-1}
+                    onClick={() => this.handleToggle(option.id)}
+                    checked={this.state.currentFilters.indexOf(option.id) !== -1}
+                    checkedIcon={<Check className={classes.checkedIcon} />}
+                    icon={<Check className={classes.uncheckedIcon} />}
+                    classes={{
+                      checked: classes.checked,
+                      root: classes.checkRoot,
+                    }}
+                  />
+                }
+                classes={{ label: classes.label }}
+                label={option.name}
+              />
+            );
+          })
+        }
+      })
+    })
+
+    return renderFilters[0];
+  };
+
+  renderCategories = () => {
+    const { classes } = this.props;
+
+    return this.props.filters.map(category => {
+      return (
+        <FormControlLabel
+          control={
+            <Checkbox
+              tabIndex={-1}
+              onClick={() => this.handleCategory(category.name)}
+              checked={this.state.categorySelected === category.name}
+              checkedIcon={<Check className={classes.checkedIcon} />}
+              icon={<Check className={classes.uncheckedIcon} />}
+              classes={{
+                checked: classes.checked,
+                root: classes.checkRoot,
+              }}
             />
-          );
-        }),
-      };
+          }
+          classes={{ label: classes.label }}
+          label={category.name}
+        />
+      );
     });
   };
 
   handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+    const { currentFilters } = this.state;
+    const currentIndex = currentFilters.indexOf(value);
+    const newChecked = [...currentFilters];
 
     if (currentIndex === -1) {
       newChecked.push(value);
@@ -95,8 +138,16 @@ class ProductSelector extends React.Component {
     }
 
     this.setState({
-      checked: newChecked,
+      currentFilters: newChecked,
     });
+  }
+
+  handleCategory(name) {
+    if (this.state.categorySelected === name) {
+      this.setState({ categorySelected: '' });
+    } else {
+      this.setState({ categorySelected: name });
+    }
   }
 
   render() {
@@ -126,20 +177,24 @@ class ProductSelector extends React.Component {
                       data-currency="$"
                       className={classNames(classes.pullLeft, classes.priceSlider)}
                     >
-                      {this.props.minPrice}
+                      {this.props.priceRange.min}
                     </span>
                     <span
                       ref={this.priceHigh}
                       data-currency="$"
                       className={classNames(classes.pullRight, classes.priceSlider)}
                     >
-                      {this.props.maxPrice}
+                      {this.props.priceRange.max}
                     </span>
                     <br />
                     <br />
                     <div ref={this.slider1} className="slider-blue" />
                   </CardBody>
                 ),
+              },
+              {
+                title: 'Categories',
+                content: this.renderCategories(),
               },
               ...this.renderFilters(),
             ]}
@@ -150,4 +205,8 @@ class ProductSelector extends React.Component {
   }
 }
 
-export default withStyles(style)(ProductSelector);
+const mapStateToProps = state => {
+  return state.productsReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(style)(ProductSelector));

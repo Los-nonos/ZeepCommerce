@@ -1,9 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import GridContainer from '../../Atoms/Grid/GridContainer';
 import GridItem from '../../Atoms/Grid/GridItem';
 import ProductCard from '../../Molecules/ProductCard/Card';
 
 class ProductSection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.dispatch = props.dispatch;
+  }
   getProductsContainer = arrayProducts => {
     return arrayProducts.map((product, key) => {
       return (
@@ -14,9 +19,17 @@ class ProductSection extends React.Component {
     });
   };
 
+  onProductSelected = (uuid) => {
+    this.dispatch(this.props.seeDetails(uuid));
+  }
+
   render() {
-    return <GridContainer>{this.getProductsContainer(this.props.data)}</GridContainer>;
+    return <GridContainer>{this.getProductsContainer(this.props.products)}</GridContainer>;
   }
 }
 
-export default ProductSection;
+const mapStateToProps = state => {
+  return state.productsReducer;
+}
+
+export default connect(mapStateToProps)(ProductSection);

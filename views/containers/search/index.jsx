@@ -1,94 +1,104 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import Parallax from '../../components/Molecules/Parallax/Parallax';
 import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
 import SectionProducts from '../../components/Organism/ProductSection/ProductSection';
+
 import { withStyles } from '@material-ui/core';
 import ProductFilter from '../../components/Molecules/ProductFilter/Selector';
-
 import Main from '../../layouts/Main';
-
 import classNames from 'classnames';
+import * as actions from '../../../actions/SearchActions'
 
 import style from '../../../style/zeepCommerceStyle/pages/searchProductsStyles';
 
-class SeachProducts extends React.Component {
-  getProducts = () => {
-    return [
-      {
-        id: 1,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Notebook',
-        productDescription: 'Notebook Asus',
-        price: 100,
-      },
-      {
-        id: 2,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Notebook',
-        productDescription: 'Notebook Apple',
-        price: 500,
-        promotion: true,
-      },
-      {
-        id: 3,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Notebook',
-        productDescription: 'Notebook Apple',
-        price: 500,
-        promotion: true,
-      },
-      {
-        id: 4,
-        image:
-          'https://static.bhphoto.com/images/images500x500/asus_ux534ftc_bh74_i7_10510u_16gb_512ssd_gtx1650_1572345160_1508643.jpg',
-        productName: 'Notebook',
-        productDescription: 'Notebook Apple',
-        price: 500,
-        promotion: true,
-      },
-    ];
-  };
+class SearchProducts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: this.props.page,
+      orderBy: "registrationDate",
+      order: "desc",
+      currentFilters: []
+    };
 
-  getFilters = () => {
-    return [
+    this.dispatch = props.dispatch;
+    this.handleLoadSearchProducts();
+  }
+
+  handleLoadSearchProducts = () => {
+    this.dispatch(actions.loadFilters());
+    this.dispatch(actions.filterProducts(
+      this.state.currentFilters,
+      this.state.page,
+      this.state.orderBy,
+      this.state.order
+    ));
+  }
+
+  listProducts = () => {
+    const products = [];
+
+    for (const product of this.props.products) {
+      const characteristics = [];
+
+      for (const characteristic of product.characteristics) {
+        characteristics.push(characteristic.value);
+      }
+      let listOfCharacteristics = characteristics.toString();
+      listOfCharacteristics = listOfCharacteristics.replace(/,/gi, ", ");
+
+      const dataProduct = {
+        visibleData: [product.name, product.price, listOfCharacteristics],
+        uuid: product.uuid,
+        id: product.id
+      };
+
+      products.push(dataProduct);
+    }
+
+    return products;
+  }
+
+  pagination = () => {
+    const pages = [
       {
-        title: 'Marca',
-        options: [
-          {
-            id: 1,
-            title: 'asus',
-            selected: true,
-          },
-          {
-            id: 2,
-            title: 'apple',
-            selected: false,
-          },
-        ],
-      },
-      {
-        title: 'Color',
-        options: [
-          {
-            id: 3,
-            title: 'Azul',
-            selected: true,
-          },
-          {
-            id: 4,
-            title: 'Rojo',
-            selected: false,
-          },
-        ],
-      },
+        text: "PREV",
+        onClick: () => {
+          this.dispatch(actions.previousPage());
+        }
+      }
     ];
+    for (let index = 1; index <= this.props.totalPages; index++) {
+      if (index === this.props.page) {
+        pages.push({ text: index, active: true });
+      } else {
+        pages.push({
+          text: index,
+          onClick: () => {
+            this.dispatch(actions.selectPage(index));
+          }
+        });
+      }
+    }
+    pages.push({
+      text: "NEXT",
+      onClick: () => {
+        this.dispatch(actions.nextPage());
+      }
+    });
+    return pages;
   };
 
   render() {
+    if (this.state.page !== this.props.page) {
+      this.setState({ page: this.props.page });
+      this.handleLoadSearchProducts();
+    }
+
     const { classes } = this.props;
     return (
       <Main pageName="Products - Zeep">
@@ -109,10 +119,15 @@ class SeachProducts extends React.Component {
               <div className={classes.containerSection}>
                 <GridContainer>
                   <GridItem md={3} sm={3}>
-                    <ProductFilter maxPrice="500" minPrice="300" filters={this.getFilters()} />
+                    <ProductFilter
+                      loadFilters={actions.loadFilters}
+                      filterProducts={actions.filterProducts}
+                    />
                   </GridItem>
                   <GridItem md={9} sm={9}>
-                    <SectionProducts data={this.getProducts()} />
+                    <SectionProducts
+                      seeDetails={actions.seeDetails}
+                    />
                   </GridItem>
                 </GridContainer>
               </div>
@@ -124,4 +139,16 @@ class SeachProducts extends React.Component {
   }
 }
 
-export default withStyles(style)(SeachProducts);
+SearchProducts.propTypes = {
+  classes: PropTypes.object.isRequired,
+  dispatch: PropTypes.func,
+  page: PropTypes.number,
+  message: PropTypes.string,
+  products: PropTypes.array
+};
+
+const mapStateToProps = state => {
+  return state.productsReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(style)(SearchProducts));

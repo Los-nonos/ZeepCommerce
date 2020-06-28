@@ -8,7 +8,7 @@ class SearchAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadFiltersSuccesful,
-        body: data.data
+        filters: data.data.categories
       };
     }
 
@@ -28,7 +28,7 @@ class SearchAdapter {
 
     if (!isError(status)) {
       return {
-        type: actionNames.loadProductsByFilterSuccesful,
+        type: actionNames.loadProductsByFilterSuccessfully,
         products: data.items,
         totalPages: data.pageCount
       };

@@ -2,11 +2,12 @@ import axios from 'axios';
 import { handler } from './handlerErrors';
 // eslint-disable-next-line import/no-cycle
 import authStorage from '../localStorage/authStorage';
+import { env } from '../../config/environment';
 
 class ApiFech {
   constructor() {
     this.apiUrl = () => {
-      return 'http://localhost/api';
+      return env('API_ENDPOINT', 'http://localhost/api');
     };
   }
 
