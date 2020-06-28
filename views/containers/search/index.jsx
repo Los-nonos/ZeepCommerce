@@ -64,6 +64,11 @@ class SearchProducts extends React.Component {
     this.handleLoadSearchProducts();
   }
 
+  handleFilters = (filters) => {
+    console.log(filters);
+    this.setState({currentFilters: filters});
+  }
+
   pagination = () => {
     const pages = [
       {
@@ -120,7 +125,12 @@ class SearchProducts extends React.Component {
               <div className={classes.containerSection}>
                 <GridContainer>
                   <GridItem md={3} sm={3}>
-                    <ProductFilter loadFilters={actions.loadFilters} filterProducts={actions.filterProducts} />
+                    <ProductFilter
+                      loadFilters={actions.loadFilters}
+                      filterProducts={actions.filterProducts}
+                      handleFilters={this.handleFilters}
+                      currentFilters={this.state.currentFilters}
+                    />
                   </GridItem>
                   <GridItem md={9} sm={9}>
                     <SectionProducts data={this.props.products} seeDetails={actions.seeDetails} />

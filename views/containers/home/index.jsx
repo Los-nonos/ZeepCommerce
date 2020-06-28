@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import Main from '../../layouts/Main';
 import Parallax from '../../components/Molecules/Parallax/Parallax';
 import Button from '../../components/Atoms/CustomButtons/Button';
-import ProductSection from '../../components/Organism/ProductSection/ProductSection';
+
+import HomeProductSection from '../../components/Organism/ProductSection/HomeProductSection';
 import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
 
@@ -50,17 +51,17 @@ class Home extends React.Component {
                 <GridContainer>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Productos Destacados</h2>
-                    <ProductSection data={this.props.featuredProducts.slice(0, 3)} />
+                    <HomeProductSection data={this.props.featuredProducts.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>
                       Productos Más Vendidos
                     </h2>
-                    <ProductSection data={this.props.selledProducts.slice(0, 3)} />
+                    <HomeProductSection data={this.props.selledProducts.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
-                    <ProductSection data={this.props.products.slice(0, 3)} />
+                    <HomeProductSection data={this.props.products.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
                     <Button simple fullWidth color="primary" className={classes.title} onClick={() => { redirectTo(pages.products) }}>

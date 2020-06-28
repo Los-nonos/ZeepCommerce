@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import GridContainer from '../../Atoms/Grid/GridContainer';
+import PropTypes from 'prop-types';
+
 import GridItem from '../../Atoms/Grid/GridItem';
 import ProductCard from '../../Molecules/ProductCard/Card';
+import GridContainer from '../../Atoms/Grid/GridContainer';
 
-class ProductSection extends React.Component {
+class HomeProductSection extends React.Component{
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
   }
-  
+
   getProductsContainer = arrayProducts => {
     return arrayProducts.map((product, key) => {
       return (
@@ -25,12 +27,16 @@ class ProductSection extends React.Component {
   }
 
   render() {
-    return <GridContainer>{this.getProductsContainer(this.props.products)}</GridContainer>;
+    return <GridContainer>{this.getProductsContainer(this.props.data)}</GridContainer>;
   }
 }
 
-const mapStateToProps = state => {
-  return state.productsReducer;
+HomeProductSection.propTypes = {
+  data: PropTypes.object.isRequired,
 }
 
-export default connect(mapStateToProps)(ProductSection);
+const mapStateToProps = state => {
+  return state.homeReducer;
+}
+
+export default connect(mapStateToProps)(HomeProductSection);
