@@ -6,8 +6,9 @@ import { createLogger } from 'redux-logger';
 import createReducer from './reducers';
 // eslint-disable-next-line import/no-cycle
 import rootSaga from '../sagas';
+import { env } from './environment';
 
-const isProd = false;
+const isProd = env('NODE_ENV', 'production') === 'production';
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares
