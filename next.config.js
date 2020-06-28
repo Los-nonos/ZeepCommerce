@@ -1,34 +1,12 @@
-const dotenv = require('dotenv');
-dotenv.config({ path: __dirname + '/../../.env' });
+const withPlugins = require('next-compose-plugins');
+const withImages = require('next-images');
+const withSass = require('@zeit/next-sass');
 const webpack = require('webpack');
+const path = require('path');
 
-const webpackCfg = {
-  commonCfg: require('./webpack.config'),
-};
-
-function appendWebpackCfg(configObj, webpackConfig) {
-  let index;
-  if (configObj.rules) {
-    for (index = 0; index < configObj.rules.length; index++) {
-      webpackConfig.module.rules.push(configObj.rules[index]);
-    }
-  }
-  if (configObj.plugins) {
-    for (index = 0; index < configObj.plugins.length; index++) {
-      webpackConfig.plugins.push(configObj.plugins[index]);
-    }
-  }
-  webpackConfig.node = {
-    fs: 'empty',
-  };
-}
-
-module.exports = {
-  distDir: 'build',
-  pageExtensions: ['ts', 'tsx'],
-  webpack(config) {
-    appendWebpackCfg(webpackCfg.commonCfg, config);
-    config.plugins.push(new webpack.EnvironmentPlugin(process.env));
+module.exports = withPlugins([[withSass], [withImages]], {
+  webpack(config, options) {
+    config.resolve.modules.push(path.resolve('./'));
     return config;
   },
-};
+});

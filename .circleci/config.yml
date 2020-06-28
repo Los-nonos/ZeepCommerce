@@ -6,10 +6,10 @@ jobs:
     working_directory: ~/stage
     steps:
       - checkout
-
       - run:
-          name: Install project's dependencies and configure
+          name: Install Yarn and project's dependencies
           command: |
+            sudo apt install yarn
             yarn install
             cp .env.example .env
       - run:
