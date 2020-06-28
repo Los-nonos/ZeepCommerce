@@ -4,7 +4,7 @@
   "author": "los-ñoños",
   "license": "MIT",
   "scripts": {
-    "start": "next start",
+    "start": "yarn run build && next start",
     "dev": "next",
     "build": "next build && sass styles:static/build",
     "linter:check": "eslint './**/*.jsx'",
