@@ -12,6 +12,9 @@
     "prettier:run": "prettier --write './**/*.jsx'",
     "export": "next export"
   },
+  "engines": {
+    "node": "12.x"
+  },
   "dependencies": {
     "@babel/helper-call-delegate": "^7.8.7",
     "@material-ui/core": "^4.9.2",
