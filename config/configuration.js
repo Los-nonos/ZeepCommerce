@@ -1,3 +1,5 @@
+import { env } from './environment';
+
 export const config = (route, defaultValue = null) => {
   let finalValue = defaultValue;
   if(route.includes('.'))
@@ -19,6 +21,12 @@ export const config = (route, defaultValue = null) => {
   }
 }
 
-const configValues = {
+export const isProduction = () => {
+  return env('NODE_ENV', 'production') === 'production';
+};
 
+const configValues = {
+  url:{
+    api: isProduction() ? 'https://backendzeep.herokuapp.com/api' : 'http://localhost/api',
+  }
 }
