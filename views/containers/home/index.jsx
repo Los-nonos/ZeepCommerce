@@ -11,6 +11,7 @@ import GridItem from '../../components/Atoms/Grid/GridItem';
 
 import classNames from 'classnames';
 import * as actions from '../../../actions/HomeActions';
+import * as productActions from '../../../actions/SearchActions';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import style from '../../../styles/zeepCommerceStyle/pages/landingPage';
@@ -51,17 +52,17 @@ class Home extends React.Component {
                 <GridContainer>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Productos Destacados</h2>
-                    <HomeProductSection data={this.props.featuredProducts.slice(0, 3)} />
+                    <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.featuredProducts.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>
                       Productos Más Vendidos
                     </h2>
-                    <HomeProductSection data={this.props.selledProducts.slice(0, 3)} />
+                    <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.selledProducts.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
-                    <HomeProductSection data={this.props.products.slice(0, 3)} />
+                    <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.products.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
                     <Button simple fullWidth color="primary" className={classes.title} onClick={() => { redirectTo(pages.products) }}>
