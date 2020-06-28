@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import GridContainer from '../../Atoms/Grid/GridContainer';
 import GridItem from '../../Atoms/Grid/GridItem';
 import ProductCard from '../../Molecules/ProductCard/Card';
@@ -25,12 +24,8 @@ class ProductSection extends React.Component {
   }
 
   render() {
-    return <GridContainer>{this.getProductsContainer(this.props.products)}</GridContainer>;
+    return <GridContainer>{this.getProductsContainer(this.props.data)}</GridContainer>;
   }
 }
 
-const mapStateToProps = state => {
-  return state.productsReducer;
-}
-
-export default connect(mapStateToProps)(ProductSection);
+export default ProductSection;

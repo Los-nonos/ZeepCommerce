@@ -17,7 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import CustomDropdown from '../../Atoms/CustomDropdown/CustomDropdown.js';
 import Button from '../../Atoms/CustomButtons/Button.js';
 
-import styles from '../../../../style/zeepCommerceStyle/components/headerLinksStyle.js';
+import styles from '../../../../styles/zeepCommerceStyle/components/headerLinksStyle.js';
 
 const useStyles = makeStyles(styles);
 

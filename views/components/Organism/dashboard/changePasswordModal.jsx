@@ -16,7 +16,7 @@ import CardBody from '../../Atoms/Card/CardBody';
 import CardHeader from '../../Atoms/Card/CardHeader';
 import CardFooter from '../../Atoms/Card/CardFooter';
 import { makeStyles } from '@material-ui/core';
-import styles from '../../../../style/zeepCommerceStyle/pages/changePassword';
+import styles from '../../../../styles/zeepCommerceStyle/pages/changePassword';
 
 const useStyles = makeStyles(styles);
 

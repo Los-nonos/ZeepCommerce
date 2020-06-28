@@ -19,7 +19,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 
-import style from '../../../../style/zeepCommerceStyle/components/ProductSelectorStyles';
+import style from '../../../../styles/zeepCommerceStyle/components/ProductSelectorStyles';
 
 class ProductSelector extends React.Component {
   slider1 = React.createRef();
@@ -69,10 +69,11 @@ class ProductSelector extends React.Component {
     });
 
     const renderFilters = categoryFilters.map(categoryFilter => {
-      return categoryFilter.map(filter => {
+      return categoryFilter.map((filter, key) => {
         return {
+          key,
           title: filter.name,
-          content: filter.options.map(option => {
+          content: filter.options.map((option, key) => {
             return (
               <FormControlLabel
                 control={
@@ -90,6 +91,7 @@ class ProductSelector extends React.Component {
                 }
                 classes={{ label: classes.label }}
                 label={option.name}
+                key={key}
               />
             );
           }),
@@ -103,7 +105,7 @@ class ProductSelector extends React.Component {
   renderCategories = () => {
     const { classes } = this.props;
 
-    return this.props.filters.map(category => {
+    return this.props.filters.map((category, key) => {
       return (
         <FormControlLabel
           control={
@@ -121,6 +123,7 @@ class ProductSelector extends React.Component {
           }
           classes={{ label: classes.label }}
           label={category.name}
+          key={key}
         />
       );
     });

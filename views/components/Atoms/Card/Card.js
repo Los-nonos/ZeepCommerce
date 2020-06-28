@@ -8,7 +8,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 
 // core components
-import styles from '../../../../style/zeepCommerceStyle/components/cardStyle.js';
+import styles from '../../../../styles/zeepCommerceStyle/components/cardStyle.js';
 
 const useStyles = makeStyles(styles);
 

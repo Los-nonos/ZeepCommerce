@@ -15,7 +15,7 @@ import Drawer from '@material-ui/core/Drawer';
 // @material-ui/icons
 import Menu from '@material-ui/icons/Menu';
 // core components
-import styles from '../../../../style/zeepCommerceStyle/components/headerStyle.js';
+import styles from '../../../../styles/zeepCommerceStyle/components/headerStyle.js';
 
 const useStyles = makeStyles(styles);
 

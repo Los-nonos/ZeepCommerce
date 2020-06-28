@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 // core components
-import { infoColor, title } from '../../../../style/zeepCommerceStyles';
+import { infoColor, title } from '../../../../styles/zeepCommerceStyles';
 
 const useStyles = makeStyles({
   progress: {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import classNames from 'classnames';
 import ImageGallery from "react-image-gallery";
 import Header from '../../components/Molecules/Header/Header';
@@ -9,12 +10,9 @@ import GridItem from '../../components/Atoms/Grid/GridItem';
 import Button from '@material-ui/core/Button';
 import { ShoppingCart } from '@material-ui/icons';
 import Accordion from '../../components/Atoms/Accordion/Accordion';
-import FormControl from '@material-ui/core/FormControl';
-import MenuItem from '@material-ui/core/MenuItem';
-import Select from '@material-ui/core/Select';
 import { withStyles } from '@material-ui/core';
 
-import productDetailsStyles from '../../../style/zeepCommerceStyle/pages/productDetailsStyle';
+import productDetailsStyles from '../../../styles/zeepCommerceStyle/pages/productDetailsStyle';
 
 class ProductDetails extends React.Component{
   constructor(props) {
@@ -27,35 +25,28 @@ class ProductDetails extends React.Component{
   handleSelect = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
   componentDidMount() {
     window.scrollTo(0, 0);
     document.body.scrollTop = 0;
   }
 
+  cleanCharacteristics = () => {
+    return this.props.productWithDetails.characteristics.map(characteristic => {
+      return <li>{characteristic.name}</li>;
+    });
+  }
+
+  clearImages = () => {
+    return [{ original: this.props.productWithDetails.image, thumbnail: this.props.productWithDetails.image }];
+  }
+
   render() {
     const { classes } = this.props;
-    const images = [
-      {
-        original: '',
-        thumbnail: ''
-      },
-      {
-        original: '',
-        thumbnail: ''
-      },
-      {
-        original: '',
-        thumbnail: ''
-      },
-      {
-        original: '',
-        thumbnail: ''
-      }
-    ]
     return (
       <div className={classes.productPage}>
         <Header
-          brand="Material Kit PRO React"
+          brand="Zeep Commerce"
           links={<HeaderLinks dropdownHoverColor="rose" />}
           fixed
           color="transparent"
@@ -88,12 +79,12 @@ class ProductDetails extends React.Component{
                     showFullscreenButton={false}
                     showPlayButton={false}
                     startIndex={3}
-                    items={images}
+                    items={this.clearImages()}
                   />
                 </GridItem>
                 <GridItem md={6} sm={6}>
-                  <h2 className={classes.title}>Becky Silk Blazer</h2>
-                  <h3 className={classes.mainPrice}>$335</h3>
+                  <h2 className={classes.title}>{this.props.productWithDetails.name}</h2>
+                  <h3 className={classes.mainPrice}>${this.props.productWithDetails.price}</h3>
                   <Accordion
                     active={0}
                     activeColor="primary"
@@ -102,49 +93,21 @@ class ProductDetails extends React.Component{
                         title: "Description",
                         content: (
                           <p className={classes.text}>
-                            Eres{"'"} daring {"'"}Grigri Fortune{"'"} swimsuit
-                            has the fit and coverage of a bikini in a one-piece
-                            silhouette. This fuchsia style is crafted from the
-                            label{"'"}s sculpting peau douce fabric and has
-                            flattering cutouts through the torso and back. Wear
-                            yours with mirrored sunglasses on vacation.
+                            {this.props.productWithDetails.description}
                           </p>
                         )
                       },
                       {
-                        title: "Designer Information",
-                        content: (
-                          <p className={classes.text}>
-                            An infusion of West Coast cool and New York
-                            attitude, Rebecca Minkoff is synonymous with It girl
-                            style. Minkoff burst on the fashion scene with her
-                            best-selling {"'"}Morning After Bag{"'"} and later
-                            expanded her offering with the Rebecca Minkoff
-                            Collection - a range of luxe city staples with a{" "}
-                            {'"'}downtown romantic{'"'} theme.
-                          </p>
-                        )
-                      },
-                      {
-                        title: "Details and Care",
+                        title: "Characteristics",
                         content: (
                           <ul className={classes.text}>
-                            <li>
-                              Storm and midnight-blue stretch cotton-blend
-                            </li>
-                            <li>
-                              Notch lapels, functioning buttoned cuffs, two
-                              front flap pockets, single vent, internal pocket
-                            </li>
-                            <li>Two button fastening</li>
-                            <li>84% cotton, 14% nylon, 2% elastane</li>
-                            <li>Dry clean</li>
+                            {this.cleanCharacteristics()}
                           </ul>
                         )
                       }
                     ]}
                   />
-                  <GridContainer className={classes.pickSize}>
+                  {/*<GridContainer className={classes.pickSize}>
                     <GridItem md={6} sm={6}>
                       <label>Select color</label>
                       <FormControl
@@ -245,9 +208,9 @@ class ProductDetails extends React.Component{
                         </Select>
                       </FormControl>
                     </GridItem>
-                  </GridContainer>
+                  </GridContainer>*/}
                   <GridContainer className={classes.pullRight}>
-                    <Button round color="rose">
+                    <Button round color="primary">
                       Add to Cart &nbsp; <ShoppingCart />
                     </Button>
                   </GridContainer>
@@ -261,4 +224,8 @@ class ProductDetails extends React.Component{
   }
 }
 
-export default withStyles(productDetailsStyles)(ProductDetails);
+const mapStateToProps = state => {
+  return state.productsReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(productDetailsStyles)(ProductDetails));

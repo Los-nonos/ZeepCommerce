@@ -13,7 +13,7 @@ import Main from '../../layouts/Main';
 import classNames from 'classnames';
 import * as actions from '../../../actions/SearchActions';
 
-import style from '../../../style/zeepCommerceStyle/pages/searchProductsStyles';
+import style from '../../../styles/zeepCommerceStyle/pages/searchProductsStyles';
 
 class SearchProducts extends React.Component {
   constructor(props) {
@@ -59,6 +59,10 @@ class SearchProducts extends React.Component {
 
     return products;
   };
+
+  componentDidMount() {
+    this.handleLoadSearchProducts();
+  }
 
   pagination = () => {
     const pages = [
@@ -119,7 +123,7 @@ class SearchProducts extends React.Component {
                     <ProductFilter loadFilters={actions.loadFilters} filterProducts={actions.filterProducts} />
                   </GridItem>
                   <GridItem md={9} sm={9}>
-                    <SectionProducts seeDetails={actions.seeDetails} />
+                    <SectionProducts data={this.props.products} seeDetails={actions.seeDetails} />
                   </GridItem>
                 </GridContainer>
               </div>

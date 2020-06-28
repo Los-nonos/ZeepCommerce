@@ -11,7 +11,7 @@ import { makeStyles } from '@material-ui/core/styles';
 // @material-ui/icons
 import Favorite from '@material-ui/icons/Favorite';
 
-import styles from '../../../../style/zeepCommerceStyle/components/footerStyle';
+import styles from '../../../../styles/zeepCommerceStyle/components/footerStyle';
 
 const useStyles = makeStyles(styles);
 

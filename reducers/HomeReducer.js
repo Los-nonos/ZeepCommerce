@@ -8,13 +8,13 @@ export const defaultState = {
 
 const homeReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case actionNames.loadProductsSuccessfully:
+    case actionNames.loadProductsHomeSuccessfully:
       return { ...state,
         products: action.products,
         selledProducts: action.selledProducts,
         featuredProducts: action.featuredProducts
       };
-    case actionNames.loadProductsFail:
+    case actionNames.loadProductsHomeFail:
       return { ...state, products: [], featuredProducts: [], selledProducts: [] };
     default:
       return state;

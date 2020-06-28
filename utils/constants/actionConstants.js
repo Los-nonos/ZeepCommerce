@@ -41,4 +41,8 @@ export const actionNames = {
 
   loadProductsWithDetailsSuccesful: 'LOAD_PRODUCT_WITH_DETAILS_SUCCESFUL',
   loadProductWithDetailsFail: 'LOAD_PRODUCT_WITH_DETAILS_FAIL',
+  loadProductsHomeSuccessfully: 'LOAD_PRODUCTS_HOME_SUCCESSFULLY',
+  loadProductsHomeFail: 'LOAD_PRODUCTS_HOME_FAIL',
+  loadProductsForHome: 'LOAD_PRODUCTS_FOR_HOME',
+
 }

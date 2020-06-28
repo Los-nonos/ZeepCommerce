@@ -12,8 +12,8 @@ import classNames from 'classnames';
 import * as actions from '../../../actions/HomeActions';
 
 import withStyles from '@material-ui/core/styles/withStyles';
-import style from '../../../style/zeepCommerceStyle/pages/landingPage';
-import { pages } from '../../../utils/helpers/redirectTo';
+import style from '../../../styles/zeepCommerceStyle/pages/landingPage';
+import { pages, redirectTo } from '../../../utils/helpers/redirectTo';
 
 class Home extends React.Component {
   constructor(props) {
@@ -26,11 +26,6 @@ class Home extends React.Component {
 
   loadProducts = () => {
     this.dispatch(actions.LoadProductsForHome());
-  };
-
-  getProducts = () => {
-    //TODO: get api products for landing page
-    const arrayProducts = this.props.products;
   };
 
   render() {
@@ -55,20 +50,20 @@ class Home extends React.Component {
                 <GridContainer>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Productos Destacados</h2>
-                    <ProductSection data={this.props.featuredProducts.slice(0, 3)} />;
+                    <ProductSection data={this.props.featuredProducts.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>
                       Productos Más Vendidos
                     </h2>
-                    <ProductSection data={this.props.selledProducts.slice(0, 3)} />;
+                    <ProductSection data={this.props.selledProducts.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
-                    <ProductSection data={this.props.products.slice(0, 3)} />;
+                    <ProductSection data={this.props.products.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-                    <Button simple fullWidth color="primary" className={classes.title} href={pages.products}>
+                    <Button simple fullWidth color="primary" className={classes.title} onClick={() => { redirectTo(pages.products) }}>
                       Ver más
                     </Button>
                   </GridItem>

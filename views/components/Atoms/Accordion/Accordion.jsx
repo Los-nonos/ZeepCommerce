@@ -10,7 +10,7 @@ import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 // @material-ui/icons
 import ExpandMore from '@material-ui/icons/ExpandMore';
 
-import accordionStyle from '../../../../style/zeepCommerceStyle/components/accordionStyle.js';
+import accordionStyle from '../../../../styles/zeepCommerceStyle/components/accordionStyle.js';
 
 class Accordion extends React.Component {
   constructor(props) {

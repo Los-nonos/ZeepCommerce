@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 
 // core components
 
-import buttonStyle from '../../../../style/zeepCommerceStyle/components/buttonStyle.js';
+import buttonStyle from '../../../../styles/zeepCommerceStyle/components/buttonStyle.js';
 
 const makeComponentStyles = makeStyles(() => ({
   ...buttonStyle,

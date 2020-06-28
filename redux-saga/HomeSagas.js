@@ -1,4 +1,4 @@
-import { all, put } from 'redux-saga/effects';
+import { call, all, put } from 'redux-saga/effects';
 import home from '../services/api/home';
 import { actionNames } from '../utils/constants/actionConstants';
 import { pages, redirectTo } from '../utils/helpers/redirectTo';

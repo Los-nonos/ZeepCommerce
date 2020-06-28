@@ -6,14 +6,15 @@ import { saveSession, deleteSession, renewToken } from './redux-saga/SessionSaga
 import { checkRoles } from './redux-saga/PermissionsSagas';
 import { changePassword } from './actions/UserAccountActions';
 import { loadProducts } from './redux-saga/HomeSagas';
-import { loadFilters, searchProducts, seeDetails } from './redux-saga/ProductsSagas';
+import { loadFilters, loadProductsByFilter, searchProducts, seeDetails } from './redux-saga/ProductsSagas';
 
 const sagas = [
   takeLatest(actionNames.login, login),
   takeLatest(actionNames.saveSession, saveSession),
   takeLatest(actionNames.deleteSession, deleteSession),
   takeLatest(actionNames.search, searchProducts),
-  takeLatest(actionNames.loadProducts, loadProducts),
+  takeLatest(actionNames.loadProducts, loadProductsByFilter),
+  takeLatest(actionNames.loadProductsForHome, loadProducts),
   takeLatest(actionNames.renewToken, renewToken),
   takeLatest(actionNames.loginFailed, loginFailed),
   takeLatest(actionNames.checkRoles, checkRoles),

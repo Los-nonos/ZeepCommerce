@@ -16,7 +16,7 @@ import CardFooter from '../../components/Atoms/Card/CardFooter';
 import Button from '../../components/Atoms/CustomButtons/Button';
 
 import * as actions from '../../../actions/LoginActions';
-import loginStyle from '../../../style/zeepCommerceStyle/pages/componentsSections/loginStyle';
+import loginStyle from '../../../styles/zeepCommerceStyle/pages/componentsSections/loginStyle';
 import { withStyles } from '@material-ui/core';
 
 class LoginPage extends React.Component {

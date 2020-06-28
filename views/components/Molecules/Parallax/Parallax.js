@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 
 // core components
-import styles from '../../../../style/zeepCommerceStyle/components/parallaxStyle';
+import styles from '../../../../styles/zeepCommerceStyle/components/parallaxStyle';
 
 const useStyles = makeStyles(styles);
 

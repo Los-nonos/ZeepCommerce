@@ -3,7 +3,7 @@ import Card from '../../Atoms/Card/Card';
 import CardBody from '../../Atoms/Card/CardBody';
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '../../Atoms/CustomButtons/Button';
-import style from '../../../../style/zeepCommerceStyle/components/productCardStyle';
+import style from '../../../../styles/zeepCommerceStyle/components/productCardStyle';
 import { withStyles } from '@material-ui/core/styles';
 import Favorite from '@material-ui/icons/Favorite';
 import classNames from 'classnames';

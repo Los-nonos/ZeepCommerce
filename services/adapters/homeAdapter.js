@@ -7,15 +7,16 @@ class HomeAdapter {
 
     if (!isError(status)) {
       return {
-        type: actionNames.loadProductsSuccessfully,
-        products: data.items,
-        totalPages: data.pageCount,
+        type: actionNames.loadProductsHomeSuccessfully,
+        products: data.products,
+        selledProducts: data.selledProducts,
+        featuredProducts: data.featuredProducts,
       };
     }
 
     const { code, details } = data.errors;
     return {
-      type: actionNames.loadProductsFail,
+      type: actionNames.loadProductsHomeFail,
       error: {
         code: status,
         type: code,
