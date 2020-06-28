@@ -1,8 +1,8 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 // Components
 import Main from '../../layouts/Main';
-import Description from '../../layouts/dashboard/changePasswordModal.jsx';
+import Description from '../../components/Organism/dashboard/changePasswordModal';
 
 class ChangePasswordPage extends React.Component {
   render() {
@@ -14,4 +14,8 @@ class ChangePasswordPage extends React.Component {
   }
 }
 
-export default ChangePasswordPage;
+const mapStateToProps = state => {
+  return state.dashboardReducer;
+}
+
+export default connect(mapStateToProps)(ChangePasswordPage);

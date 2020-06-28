@@ -17,4 +17,5 @@ export const pages = {
   closeModal: '/close-modal',
   closePasswordModal: '/close-password-modal',
   closeUpdateModal: '/close-update-modal',
+  productsDetails: '/products/details',
 };

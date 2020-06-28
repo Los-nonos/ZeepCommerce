@@ -6,7 +6,7 @@ import { saveSession, deleteSession, renewToken } from './redux-saga/SessionSaga
 import { checkRoles } from './redux-saga/PermissionsSagas';
 import { changePassword } from './actions/UserAccountActions';
 import { loadProducts } from './redux-saga/HomeSagas';
-import { loadFilters, searchProducts } from './redux-saga/ProductsSagas';
+import { loadFilters, searchProducts, seeDetails } from './redux-saga/ProductsSagas';
 
 const sagas = [
   takeLatest(actionNames.login, login),
@@ -19,6 +19,7 @@ const sagas = [
   takeLatest(actionNames.checkRoles, checkRoles),
   takeLatest(actionNames.changePassword, changePassword),
   takeLatest(actionNames.loadFilters, loadFilters),
+  takeLatest(actionNames.seeDetails, seeDetails),
   // takeLatest(actionNames.loadFilters, loadFilters),
 ];
 

@@ -9,11 +9,12 @@ class ProductSection extends React.Component {
     super(props);
     this.dispatch = props.dispatch;
   }
+  
   getProductsContainer = arrayProducts => {
     return arrayProducts.map((product, key) => {
       return (
         <GridItem md={4} sm={4} key={key}>
-          <ProductCard onProductSelected={this.onProductSelected} data={product}/>
+          <ProductCard onProductSelected={this.onProductSelected} data={product} />
         </GridItem>
       );
     });

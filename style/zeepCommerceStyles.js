@@ -235,6 +235,7 @@ export {
   roseColor,
   grayColor,
   whiteColor,
+  blackColor,
   primaryBoxShadow,
   infoBoxShadow,
   successBoxShadow,
@@ -259,4 +260,5 @@ export {
   section,
   mlAuto,
   mrAuto,
+  hexToRgb,
 };

@@ -83,7 +83,7 @@ export function* seeDetails(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({ type: actionNames.showViewModal })
     ]);
+    redirectTo(pages.productsDetails);
   }
 }

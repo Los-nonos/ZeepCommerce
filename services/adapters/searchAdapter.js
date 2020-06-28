@@ -49,7 +49,6 @@ class SearchAdapter {
     const { status, data } = seeDetailsResponse;
 
     if (!isError(status)) {
-      console.log(data);
       return {
         type: actionNames.loadProductsWithDetailsSuccesful,
         productWithDetails: data.data

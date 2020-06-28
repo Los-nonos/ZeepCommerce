@@ -21,7 +21,7 @@ class ProductCard extends React.Component {
   }
 
   onClicked = () => {
-    this.props.onProductSelected(this.props.data.id);
+    this.props.onProductSelected(this.props.data.uuid);
   };
 
   render() {

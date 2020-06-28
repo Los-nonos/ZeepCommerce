@@ -3,10 +3,19 @@ import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import routes from '../../utils/routes/dashboardRoutes'
+import Header from '../components/Molecules/Header/Header';
+import Footer from '../components/Molecules/Footer/Footer';
 
 const dashboardLayoutStyles = {};
 
 class DashboardLayout extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      mobileOpen: false,
+    };
+  }
+
   render() {
     const { classes, ...rest } = this.props;
     return (
