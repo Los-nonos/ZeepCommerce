@@ -64,10 +64,10 @@ class SearchProducts extends React.Component {
     this.handleLoadSearchProducts();
   }
 
-  handleFilters = (filters) => {
+  handleFilters = filters => {
     console.log(filters);
-    this.setState({currentFilters: filters});
-  }
+    this.setState({ currentFilters: filters });
+  };
 
   pagination = () => {
     const pages = [

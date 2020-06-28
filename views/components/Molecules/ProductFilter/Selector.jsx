@@ -158,19 +158,19 @@ class ProductSelector extends React.Component {
   }
 
   resetFilters = () => {
-    this.setState({currentFilters: []});
+    this.setState({ currentFilters: [] });
 
     this.handleSubmit();
-  }
+  };
 
   handleSaveFilters = () => {
     console.log(this.state.currentFilters);
     this.props.handleFilters(this.state.currentFilters);
-  }
+  };
 
   handleSubmit = () => {
     this.dispatch(this.props.filterProducts(this.state.currentFilters, 1));
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -180,7 +180,13 @@ class ProductSelector extends React.Component {
           <h4 className={classes.cardTitle + ' ' + classes.textLeft}>
             Refine
             <Tooltip id="tooltip-top" title="Reset Filter" placement="top" classes={{ tooltip: classes.tooltip }}>
-              <Button link onClick={this.resetFilters} justIcon size="sm" className={classes.pullRight + ' ' + classes.refineButton}>
+              <Button
+                link
+                onClick={this.resetFilters}
+                justIcon
+                size="sm"
+                className={classes.pullRight + ' ' + classes.refineButton}
+              >
                 <Cached />
               </Button>
             </Tooltip>

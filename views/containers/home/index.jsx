@@ -52,20 +52,34 @@ class Home extends React.Component {
                 <GridContainer>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Productos Destacados</h2>
-                    <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.featuredProducts.slice(0, 3)} />
+                    <HomeProductSection
+                      seeDetails={productActions.seeDetails}
+                      data={this.props.featuredProducts.slice(0, 3)}
+                    />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>
                       Productos Más Vendidos
                     </h2>
-                    <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.selledProducts.slice(0, 3)} />
+                    <HomeProductSection
+                      seeDetails={productActions.seeDetails}
+                      data={this.props.selledProducts.slice(0, 3)}
+                    />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
                     <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.products.slice(0, 3)} />
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
-                    <Button simple fullWidth color="primary" className={classes.title} onClick={() => { redirectTo(pages.products) }}>
+                    <Button
+                      simple
+                      fullWidth
+                      color="primary"
+                      className={classes.title}
+                      onClick={() => {
+                        redirectTo(pages.products);
+                      }}
+                    >
                       Ver más
                     </Button>
                   </GridItem>
