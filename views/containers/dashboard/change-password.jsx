@@ -16,6 +16,6 @@ class ChangePasswordPage extends React.Component {
 
 const mapStateToProps = state => {
   return state.dashboardReducer;
-}
+};
 
 export default connect(mapStateToProps)(ChangePasswordPage);

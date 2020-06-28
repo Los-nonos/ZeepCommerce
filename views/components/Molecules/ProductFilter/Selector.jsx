@@ -57,7 +57,7 @@ class ProductSelector extends React.Component {
   renderFilters = () => {
     const { classes } = this.props;
 
-    if(this.state.categorySelected === '') {
+    if (this.state.categorySelected === '') {
       return [];
     }
 
@@ -92,10 +92,10 @@ class ProductSelector extends React.Component {
                 label={option.name}
               />
             );
-          })
-        }
-      })
-    })
+          }),
+        };
+      });
+    });
 
     return renderFilters[0];
   };
@@ -207,6 +207,6 @@ class ProductSelector extends React.Component {
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(style)(ProductSelector));

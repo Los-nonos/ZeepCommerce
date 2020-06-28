@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core';
 import ProductFilter from '../../components/Molecules/ProductFilter/Selector';
 import Main from '../../layouts/Main';
 import classNames from 'classnames';
-import * as actions from '../../../actions/SearchActions'
+import * as actions from '../../../actions/SearchActions';
 
 import style from '../../../style/zeepCommerceStyle/pages/searchProductsStyles';
 
@@ -20,9 +20,9 @@ class SearchProducts extends React.Component {
     super(props);
     this.state = {
       page: this.props.page,
-      orderBy: "registrationDate",
-      order: "desc",
-      currentFilters: []
+      orderBy: 'registrationDate',
+      order: 'desc',
+      currentFilters: [],
     };
 
     this.dispatch = props.dispatch;
@@ -31,13 +31,10 @@ class SearchProducts extends React.Component {
 
   handleLoadSearchProducts = () => {
     this.dispatch(actions.loadFilters());
-    this.dispatch(actions.filterProducts(
-      this.state.currentFilters,
-      this.state.page,
-      this.state.orderBy,
-      this.state.order
-    ));
-  }
+    this.dispatch(
+      actions.filterProducts(this.state.currentFilters, this.state.page, this.state.orderBy, this.state.order),
+    );
+  };
 
   listProducts = () => {
     const products = [];
@@ -49,28 +46,28 @@ class SearchProducts extends React.Component {
         characteristics.push(characteristic.value);
       }
       let listOfCharacteristics = characteristics.toString();
-      listOfCharacteristics = listOfCharacteristics.replace(/,/gi, ", ");
+      listOfCharacteristics = listOfCharacteristics.replace(/,/gi, ', ');
 
       const dataProduct = {
         visibleData: [product.name, product.price, listOfCharacteristics],
         uuid: product.uuid,
-        id: product.id
+        id: product.id,
       };
 
       products.push(dataProduct);
     }
 
     return products;
-  }
+  };
 
   pagination = () => {
     const pages = [
       {
-        text: "PREV",
+        text: 'PREV',
         onClick: () => {
           this.dispatch(actions.previousPage());
-        }
-      }
+        },
+      },
     ];
     for (let index = 1; index <= this.props.totalPages; index++) {
       if (index === this.props.page) {
@@ -80,15 +77,15 @@ class SearchProducts extends React.Component {
           text: index,
           onClick: () => {
             this.dispatch(actions.selectPage(index));
-          }
+          },
         });
       }
     }
     pages.push({
-      text: "NEXT",
+      text: 'NEXT',
       onClick: () => {
         this.dispatch(actions.nextPage());
-      }
+      },
     });
     return pages;
   };
@@ -119,15 +116,10 @@ class SearchProducts extends React.Component {
               <div className={classes.containerSection}>
                 <GridContainer>
                   <GridItem md={3} sm={3}>
-                    <ProductFilter
-                      loadFilters={actions.loadFilters}
-                      filterProducts={actions.filterProducts}
-                    />
+                    <ProductFilter loadFilters={actions.loadFilters} filterProducts={actions.filterProducts} />
                   </GridItem>
                   <GridItem md={9} sm={9}>
-                    <SectionProducts
-                      seeDetails={actions.seeDetails}
-                    />
+                    <SectionProducts seeDetails={actions.seeDetails} />
                   </GridItem>
                 </GridContainer>
               </div>
@@ -144,11 +136,11 @@ SearchProducts.propTypes = {
   dispatch: PropTypes.func,
   page: PropTypes.number,
   message: PropTypes.string,
-  products: PropTypes.array
+  products: PropTypes.array,
 };
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(style)(SearchProducts));

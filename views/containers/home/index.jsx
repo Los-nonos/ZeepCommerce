@@ -9,7 +9,7 @@ import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
 
 import classNames from 'classnames';
-import  * as actions from '../../../actions/HomeActions';
+import * as actions from '../../../actions/HomeActions';
 
 import withStyles from '@material-ui/core/styles/withStyles';
 import style from '../../../style/zeepCommerceStyle/pages/landingPage';
@@ -18,9 +18,7 @@ import { pages } from '../../../utils/helpers/redirectTo';
 class Home extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = {};
 
     this.dispatch = props.dispatch;
     this.loadProducts();
@@ -28,13 +26,12 @@ class Home extends React.Component {
 
   loadProducts = () => {
     this.dispatch(actions.LoadProductsForHome());
-  }
+  };
 
   getProducts = () => {
     //TODO: get api products for landing page
     const arrayProducts = this.props.products;
   };
-
 
   render() {
     const { classes } = this.props;
@@ -87,6 +84,6 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
   return state.homeReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(style)(Home));

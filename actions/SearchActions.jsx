@@ -6,14 +6,12 @@ export function nextPage() {
   };
 }
 
-
 export function selectPage(index) {
   return {
     type: actionNames.selectSearchPage,
-    index
+    index,
   };
 }
-
 
 export function previousPage() {
   return {
@@ -21,11 +19,10 @@ export function previousPage() {
   };
 }
 
-
 export function seeDetails(uuid) {
   return {
     type: actionNames.seeDetails,
-    uuid
+    uuid,
   };
 }
 
@@ -35,7 +32,7 @@ export function filterProducts(filters, page, orderBy, order) {
     filters,
     page,
     orderBy,
-    order
+    order,
   };
 }
 

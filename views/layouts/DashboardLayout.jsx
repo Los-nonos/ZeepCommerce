@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-import routes from '../../utils/routes/dashboardRoutes'
+import routes from '../../utils/routes/dashboardRoutes';
 import Header from '../components/Molecules/Header/Header';
 import Footer from '../components/Molecules/Footer/Footer';
 
@@ -32,17 +32,12 @@ class DashboardLayout extends React.Component {
             {...rest}
           />
           <div className={classes.mainPanel} ref="mainPanel">
-            <Header
-              routes={routes}
-              handleDrawerToggle={this.handleDrawerToggle}
-              color={"primary"}
-              {...rest}
-            />
+            <Header routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'primary'} {...rest} />
             <div className={classes.content}>
               <div className={classes.container}>
                 <Switch>
                   {routes.map((prop, key) => {
-                    if (prop.layout === "/dashboard") {
+                    if (prop.layout === '/dashboard') {
                       return (
                         <Route
                           path={prop.layout + prop.path}
