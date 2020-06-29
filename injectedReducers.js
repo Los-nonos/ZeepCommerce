@@ -4,6 +4,7 @@ import generalReducer from './reducers/generalReducers';
 import dashboardReducer from './reducers/dashboardReducer';
 import homeReducer from './reducers/HomeReducer';
 import productsReducer from './reducers/ProductsReducer';
+import authReducer from './reducers/authReducer';
 
 export default {
   errorReducer,
@@ -12,4 +13,5 @@ export default {
   dashboardReducer,
   homeReducer,
   productsReducer,
+  authReducer
 }

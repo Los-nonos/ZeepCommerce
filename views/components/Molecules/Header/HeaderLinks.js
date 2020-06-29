@@ -18,6 +18,7 @@ import CustomDropdown from '../../Atoms/CustomDropdown/CustomDropdown.js';
 import Button from '../../Atoms/CustomButtons/Button.js';
 
 import styles from '../../../../styles/zeepCommerceStyle/components/headerLinksStyle.js';
+import { pages } from '../../../../utils/helpers/redirectTo';
 
 const useStyles = makeStyles(styles);
 
@@ -26,8 +27,11 @@ export default function HeaderLinks(props) {
   return (
     <List className={classes.list}>
       <ListItem className={classes.listItem}>
-        <Link href="/">
+        <Link href={pages.home}>
           <a className={classes.dropdownLink}>Inicio</a>
+        </Link>
+        <Link href={pages.signup}>
+          <a className={classes.dropdownLink}>Registrate</a>
         </Link>
       </ListItem>
     </List>

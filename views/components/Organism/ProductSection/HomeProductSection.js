@@ -32,7 +32,7 @@ class HomeProductSection extends React.Component{
 }
 
 HomeProductSection.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.array.isRequired,
 }
 
 const mapStateToProps = state => {

@@ -1,7 +1,3 @@
-import React from 'react';
+import Signup from '../views/containers/login/Signup';
 
-class Dummy extends React.Component {
-
-}
-
-export default Dummy;
+export default Signup;
