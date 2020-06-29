@@ -2,6 +2,8 @@
 import React from "react";
 // nodejs library to set properties for components
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
+import * as actions from '../../../actions/SignUpActions'
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
@@ -36,24 +38,16 @@ class SignUpPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      checked: []
+      checked: true
     };
+
     this.handleToggle = this.handleToggle.bind(this);
+    this.dispatch = props.dispatch;
   }
 
-  handleToggle(value) {
-    const { checked } = this.state;
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
+  handleToggle() {
     this.setState({
-      checked: newChecked
+      checked: !this.state.checked,
     });
   }
 
@@ -65,6 +59,22 @@ class SignUpPage extends React.Component {
   handleRegister = (e) => {
     e.preventDefault();
 
+    const fields = [
+      'name',
+      'surname',
+      'username',
+      'email',
+      'password',
+    ];
+
+    const formElements = e.target.elements;
+    const personalData = fields
+      .map(field => ({
+        [field]: formElements.namedItem(field).value
+      }))
+      .reduce((current, next) => ({ ...current, ...next }));
+
+    this.dispatch(actions.signUp(personalData))
   }
   render() {
     const { classes, ...rest } = this.props;
@@ -239,12 +249,12 @@ class SignUpPage extends React.Component {
                             label={
                               <span>
                                 I agree to the{" "}
-                                <a href="#pablo">terms and conditions</a>.
+                                <a href="">terms and conditions</a>.
                               </span>
                             }
                           />
                           <div className={classes.textCenter}>
-                            <Button round color="primary">
+                            <Button round color="primary" type={'submit'} >
                               Get started
                             </Button>
                           </div>
@@ -264,7 +274,12 @@ class SignUpPage extends React.Component {
 }
 
 SignUpPage.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  dispatch: PropTypes.func,
 };
 
-export default withStyles(signupPageStyle)(SignUpPage);
+const mapStateToProps = state => {
+  return state.authReducer;
+}
+
+export default connect(mapStateToProps)(withStyles(signupPageStyle)(SignUpPage));

@@ -50,6 +50,26 @@ class AuthAdapter {
       },
     };
   };
+
+  signUpAdapter = response => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.signUpSuccessfully,
+      };
+    }
+    const { error } = data;
+
+    return {
+      type: actionNames.signUpFail,
+      error: {
+        code: status,
+        type: null,
+        errors: error,
+      },
+    };
+  }
 }
 
 export default new AuthAdapter();

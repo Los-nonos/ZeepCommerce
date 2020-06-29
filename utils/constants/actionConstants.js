@@ -44,5 +44,7 @@ export const actionNames = {
   loadProductsHomeSuccessfully: 'LOAD_PRODUCTS_HOME_SUCCESSFULLY',
   loadProductsHomeFail: 'LOAD_PRODUCTS_HOME_FAIL',
   loadProductsForHome: 'LOAD_PRODUCTS_FOR_HOME',
-
+  signUp: 'SIGN_UP',
+  signUpSuccessfully: 'SIGN_UP_SUCCESSFULLY',
+  signUpFail: 'SIGN_UP_FAIL',
 }
