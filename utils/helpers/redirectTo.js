@@ -10,6 +10,7 @@ export const redirectToWithState = (path, state) => {
 };
 
 export const pages = {
+  home: '/',
   login: '/login',
   products: '/products',
   dashboard: '/dashboard',
@@ -18,4 +19,6 @@ export const pages = {
   closePasswordModal: '/close-password-modal',
   closeUpdateModal: '/close-update-modal',
   productsDetails: '/products/details',
+  forgotPassword: '/forgot',
+  signup: '/signup',
 };

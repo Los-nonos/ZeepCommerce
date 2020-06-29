@@ -7,7 +7,7 @@ import {
   roseColor,
   grayColor,
   title
-} from "assets/jss/nextjs-material-kit.js";
+} from "../../zeepCommerceStyles";
 
 const infoStyle = {
   infoArea: {
@@ -21,7 +21,7 @@ const infoStyle = {
     marginRight: "10px"
   },
   primary: {
-    color: primaryColor
+    color: primaryColor[0]
   },
   warning: {
     color: warningColor
