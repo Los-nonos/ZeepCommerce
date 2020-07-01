@@ -27,6 +27,6 @@ export const isProduction = () => {
 
 const configValues = {
   url:{
-    api: isProduction() ? 'https://backendzeep.herokuapp.com/api' : 'http://localhost/api',
+    api: isProduction() ? env('API_URL', 'http://localhost/api') : 'http://localhost/api',
   }
 }
