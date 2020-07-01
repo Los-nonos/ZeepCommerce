@@ -6,9 +6,9 @@ import routes from '../../utils/routes/dashboardRoutes';
 import Header from '../components/Molecules/Header/Header';
 import Footer from '../components/Molecules/Footer/Footer';
 import Sidebar from '../components/Organism/Sidebar/Sidebar';
-import Loader from '../components/Organism/Loader/Loader';
 
 import dashboardLayoutStyles from '../../styles/zeepCommerceStyle/layout/dashboardLayoutStyle';
+import Head from 'next/head';
 
 class DashboardLayout extends React.Component {
   constructor(props) {
@@ -19,10 +19,13 @@ class DashboardLayout extends React.Component {
   }
 
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes, children, title, ...rest } = this.props;
     return (
       <>
         {/*<Loader />*/}
+        <Head>
+          <title>{title}</title>
+        </Head>
         <div className={classes.wrapper}>
           <Sidebar
             routes={routes}
@@ -36,7 +39,7 @@ class DashboardLayout extends React.Component {
             <Header routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'primary'} {...rest} />
             <div className={classes.content}>
               <div className={classes.container}>
-
+                {children}
               </div>
             </div>
             <Footer />
