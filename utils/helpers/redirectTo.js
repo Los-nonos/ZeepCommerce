@@ -21,4 +21,5 @@ export const pages = {
   productsDetails: '/products/details',
   forgotPassword: '/forgot',
   signup: '/signup',
+  cart: '/cart'
 };
