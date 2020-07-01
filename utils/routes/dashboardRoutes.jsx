@@ -18,7 +18,7 @@ const routes = [
     name: 'Compras',
     icon: ShoppingBasket,
     layout: '/dashboard',
-  }
+  },
 ];
 
 export default routes;

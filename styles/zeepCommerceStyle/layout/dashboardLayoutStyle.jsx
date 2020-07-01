@@ -1,40 +1,40 @@
-import { drawerWidth, transition, container } from "../../zeepCommerceStyles";
+import { drawerWidth, transition, container } from '../../zeepCommerceStyles';
 
 const appStyle = theme => ({
   wrapper: {
-    position: "relative",
-    top: "0",
-    height: "100vh"
+    position: 'relative',
+    top: '0',
+    height: '100vh',
   },
   mainPanel: {
-    [theme.breakpoints.up("md")]: {
-      width: `calc(100% - ${drawerWidth}px)`
+    [theme.breakpoints.up('md')]: {
+      width: `calc(100% - ${drawerWidth}px)`,
     },
-    overflow: "auto",
-    position: "relative",
-    float: "right",
+    overflow: 'auto',
+    position: 'relative',
+    float: 'right',
     ...transition,
-    maxHeight: "100%",
-    width: "100%",
-    overflowScrolling: "touch"
+    maxHeight: '100%',
+    width: '100%',
+    overflowScrolling: 'touch',
   },
   content: {
-    marginTop: "70px",
-    padding: "30px 15px",
-    minHeight: "calc(100vh - 123px)"
+    marginTop: '70px',
+    padding: '30px 15px',
+    minHeight: 'calc(100vh - 123px)',
   },
   container,
   map: {
-    marginTop: "70px"
+    marginTop: '70px',
   },
   title: {
-    textAlign: "center"
+    textAlign: 'center',
   },
   center: {
-    display: "flex",
-    minWidth: "100%",
-    justifyContent: "center"
-  }
+    display: 'flex',
+    minWidth: '100%',
+    justifyContent: 'center',
+  },
 });
 
 export default appStyle;
