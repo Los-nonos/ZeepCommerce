@@ -73,7 +73,8 @@ const sidebarStyle = theme => ({
       right: "15px",
       width: "calc(100% - 30px)",
       backgroundColor: infoColor
-    }
+    },
+    cursor: 'pointer',
   },
   logoLink: {
     ...defaultFont,
@@ -98,7 +99,7 @@ const sidebarStyle = theme => ({
     display: "inline-block",
     maxHeight: "30px",
     marginLeft: "10px",
-    marginRight: "15px"
+    marginRight: "15px",
   },
   img: {
     width: "inherit",
@@ -145,7 +146,19 @@ const sidebarStyle = theme => ({
     display: "block",
     textDecoration: "none",
     "&:hover,&:focus,&:visited,&": {
-      color: whiteColor
+      color: whiteColor,
+    },
+    '&:hover': {
+      //backgroundColor: blackColor,
+      color: whiteColor,
+    }
+  },
+  textLink: {
+    cursor: 'pointer',
+    '&:hover': {
+     // backgroundColor: blackColor,
+      color: whiteColor,
+      textDecoration: "none",
     }
   },
   itemLink: {
@@ -157,7 +170,8 @@ const sidebarStyle = theme => ({
     display: "block",
     padding: "10px 15px",
     backgroundColor: "transparent",
-    ...defaultFont
+    ...defaultFont,
+    textDecoration: "none",
   },
   itemIcon: {
     width: "24px",
@@ -168,7 +182,7 @@ const sidebarStyle = theme => ({
     marginRight: "15px",
     textAlign: "center",
     verticalAlign: "middle",
-    color: "rgba(" + hexToRgb(whiteColor) + ", 0.8)"
+    color: "rgba(" + hexToRgb(blackColor) + ", 0.8)"
   },
   itemIconRTL: {
     marginRight: "3px",

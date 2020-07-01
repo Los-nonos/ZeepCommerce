@@ -5,8 +5,10 @@ import { withStyles } from '@material-ui/core';
 import routes from '../../utils/routes/dashboardRoutes';
 import Header from '../components/Molecules/Header/Header';
 import Footer from '../components/Molecules/Footer/Footer';
+import Sidebar from '../components/Organism/Sidebar/Sidebar';
+import Loader from '../components/Organism/Loader/Loader';
 
-const dashboardLayoutStyles = {};
+import dashboardLayoutStyles from '../../styles/zeepCommerceStyle/layout/dashboardLayoutStyle';
 
 class DashboardLayout extends React.Component {
   constructor(props) {
@@ -20,11 +22,10 @@ class DashboardLayout extends React.Component {
     const { classes, ...rest } = this.props;
     return (
       <>
-        <Loader />
+        {/*<Loader />*/}
         <div className={classes.wrapper}>
           <Sidebar
             routes={routes}
-            logo={logo}
             handleDrawerToggle={this.handleDrawerToggle}
             open={this.state.mobileOpen}
             color={this.state.color}
@@ -35,22 +36,7 @@ class DashboardLayout extends React.Component {
             <Header routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'primary'} {...rest} />
             <div className={classes.content}>
               <div className={classes.container}>
-                <Switch>
-                  {routes.map((prop, key) => {
-                    if (prop.layout === '/dashboard') {
-                      return (
-                        <Route
-                          path={prop.layout + prop.path}
-                          component={props => {
-                            const Component = prop.component;
-                            return <Component {...props} {...userInfo} />;
-                          }}
-                          key={key}
-                        />
-                      );
-                    }
-                  })}
-                </Switch>
+
               </div>
             </div>
             <Footer />

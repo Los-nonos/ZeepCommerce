@@ -1,7 +1,6 @@
 import React from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
-import { NavLink } from "react-router-dom";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import Drawer from "@material-ui/core/Drawer";
@@ -13,20 +12,16 @@ import Icon from "@material-ui/core/Icon";
 // core components
 
 import sidebarStyle from "../../../../styles/zeepCommerceStyle/components/sidebarStyle";
+import { Link } from '@material-ui/core';
+import { pages, redirectTo } from '../../../../utils/helpers/redirectTo';
 
 const Sidebar = ({ ...props }) => {
   // verifies if routeName is the one active (in browser input)
-  function activeRoute(routeName) {
-    return props.location.pathname.indexOf(routeName) > -1;
-  }
-  const { classes, color, logo, image, logoText, routes, userRoles } = props;
+  const { classes, color, logo, image, logoText, routes } = props;
   let links = (
     <List className={classes.list}>
       {routes.map((prop, key) => {
-        if (
-          (userRoles.includes(prop.rol) || prop.rol === "") &&
-          prop.layout === "/dashboard"
-        ) {
+        if (prop.layout === "/dashboard") {
           let activePro = " ";
           let listItemClasses;
           if (prop.path === "/upgrade-to-pro") {
@@ -36,20 +31,23 @@ const Sidebar = ({ ...props }) => {
             });
           } else {
             listItemClasses = classNames({
-              [" " + classes[color]]: activeRoute(prop.layout + prop.path)
+              [" " + classes[color]]: false
             });
           }
           const whiteFontClasses = classNames({
-            [" " + classes.whiteFont]: activeRoute(prop.layout + prop.path)
+            [" " + classes.whiteFont]: false
           });
           return (
-            <NavLink
+            <Link
               to={prop.layout + prop.path}
               className={activePro + classes.item}
               activeClassName="active"
               key={key}
             >
-              <ListItem button className={classes.itemLink + listItemClasses}>
+              <ListItem button
+                        className={classes.itemLink + listItemClasses}
+                        onClick={() => {redirectTo(prop.layout + prop.path)}}
+              >
                 {typeof prop.icon === "string" ? (
                   <Icon
                     className={classNames(classes.itemIcon, whiteFontClasses)}
@@ -67,7 +65,7 @@ const Sidebar = ({ ...props }) => {
                   disableTypography={true}
                 />
               </ListItem>
-            </NavLink>
+            </Link>
           );
         } else {
           return null;
@@ -77,12 +75,9 @@ const Sidebar = ({ ...props }) => {
   );
   let brand = (
     <div className={classes.logo}>
-      <a href={`/dashboard`} className={classNames(classes.logoLink)}>
-        <div className={classes.logoImage}>
-          <img src={logo} alt="logo" className={classes.img} />
-        </div>
-        {logoText}
-      </a>
+      <div onClick={() => {redirectTo(pages.home)}} className={classes.logoImage}>
+        <img src={logo} alt="logo" className={classes.img} />
+      </div>
     </div>
   );
   return (

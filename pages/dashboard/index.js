@@ -1,11 +1,12 @@
 import React from 'react';
+import DashboardLayout from '../../views/layouts/DashboardLayout';
 
 class IndexDashboard extends React.Component {
   render() {
     return (
-      <Sidebar>
-
-      </Sidebar>
+      <DashboardLayout />
     );
   }
 }
+
+export default IndexDashboard;
