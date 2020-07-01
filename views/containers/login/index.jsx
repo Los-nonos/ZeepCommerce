@@ -18,6 +18,7 @@ import Button from '../../components/Atoms/CustomButtons/Button';
 import * as actions from '../../../actions/LoginActions';
 import loginStyle from '../../../styles/zeepCommerceStyle/pages/componentsSections/loginStyle';
 import { withStyles } from '@material-ui/core';
+import { pages, redirectTo } from '../../../utils/helpers/redirectTo';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -109,12 +110,12 @@ class LoginPage extends React.Component {
                           <Button type={'submit'} simple size="lg">
                             Iniciar sesión
                           </Button>
-                          <Button simple size="lg">
+                          <Button simple size="lg" onClick={() => redirectTo(pages.signup)}>
                             Registrese
                           </Button>
                         </GridContainer>
                         <p>
-                          ¿No recuerda su contraseña? Recuperela <a href="/signup">Aquí</a>
+                          ¿No recuerda su contraseña? Recuperela <a href={pages.forgotPassword}>Aquí</a>
                         </p>
                       </GridContainer>
                     </CardFooter>

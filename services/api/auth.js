@@ -27,6 +27,18 @@ class Auth {
     }
     return authAdapter.renewToken(response);
   };
+
+  signUp = async personalInformation => {
+    let signUpResponse;
+    try
+    {
+      signUpResponse = await Api.post('auth/signup', personalInformation);
+    }catch (err) {
+      signUpResponse = err;
+    }
+
+    return authAdapter.signUpAdapter(signUpResponse);
+  }
 }
 
 export default new Auth();

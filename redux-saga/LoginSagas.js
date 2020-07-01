@@ -18,7 +18,7 @@ export function* login(action) {
       put({ type: 'LOADING_TOGGLE' }),
       put({ type: actionNames.saveSession, token: res.token, roles: res.user.roles }),
     ]);
-    redirectTo(pages.dashboard);
+    redirectTo(pages.home);
   }
 }
 
@@ -27,4 +27,29 @@ export function* loginFailed(action) {
 
   yield all([put({ type: actionNames.loginError, error }), put({ type: actionNames.deleteSession })]);
   redirectTo(pages.login);
+}
+
+export function* signUp(action) {
+  const { name, surname, email, username, password } = action;
+
+  const body = {
+    name,
+    surname,
+    email,
+    username,
+    password
+  }
+
+  yield all([put({ type: 'LOADING_TOGGLE' })]);
+  const res = yield call(auth.signUp, body);
+
+  if (res.error) {
+    yield all([put(res), put({ type: 'LOADING_TOGGLE' })]);
+  } else {
+    yield all([
+      put(res),
+      put({ type: 'LOADING_TOGGLE' }),
+    ]);
+    redirectTo(pages.home);
+  }
 }

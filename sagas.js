@@ -1,6 +1,6 @@
 import { all, takeLatest } from 'redux-saga/effects';
 import { actionNames } from './utils/constants/actionConstants';
-import { login, loginFailed } from './redux-saga/LoginSagas';
+import { login, loginFailed, signUp } from './redux-saga/LoginSagas';
 // eslint-disable-next-line import/no-cycle
 import { saveSession, deleteSession, renewToken } from './redux-saga/SessionSagas';
 import { checkRoles } from './redux-saga/PermissionsSagas';
@@ -21,6 +21,7 @@ const sagas = [
   takeLatest(actionNames.changePassword, changePassword),
   takeLatest(actionNames.loadFilters, loadFilters),
   takeLatest(actionNames.seeDetails, seeDetails),
+  takeLatest(actionNames.signUp, signUp),
   // takeLatest(actionNames.loadFilters, loadFilters),
 ];
 
