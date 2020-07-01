@@ -242,7 +242,7 @@ class SignUpPage extends React.Component {
                                   root: classes.checkRoot
                                 }}
                                 checked={
-                                  this.state.checked.indexOf(1) !== -1
+                                  this.state.checked
                                 }
                               />
                             }

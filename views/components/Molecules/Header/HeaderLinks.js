@@ -1,7 +1,7 @@
 /*eslint-disable*/
 import React from 'react';
 import Link from 'next/link';
-
+import classNames from 'classnames';
 // @material-ui/core components
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
@@ -25,7 +25,7 @@ const useStyles = makeStyles(styles);
 export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
-    <List className={classes.list}>
+    <List className={classes.list + " " + classes.mlAuto}>
       <ListItem className={classes.listItem}>
         <Link href={pages.home}>
           <a className={classes.dropdownLink}>Inicio</a>

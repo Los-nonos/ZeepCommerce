@@ -48,7 +48,7 @@ const headerStyle = {
     flexWrap: 'nowrap',
   },
   flex: {
-    flex: 1,
+    flex: 0,
   },
   title: {
     ...defaultFont,
