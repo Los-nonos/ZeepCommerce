@@ -13,6 +13,7 @@ import Accordion from '../../components/Atoms/Accordion/Accordion';
 import { withStyles } from '@material-ui/core';
 
 import productDetailsStyles from '../../../styles/zeepCommerceStyle/pages/productDetailsStyle';
+import Main from '../../layouts/Main';
 
 class ProductDetails extends React.Component{
   constructor(props) {
@@ -45,69 +46,60 @@ class ProductDetails extends React.Component{
     const { classes } = this.props;
     return (
       <div className={classes.productPage}>
-        <Header
-          brand="Zeep Commerce"
-          links={<HeaderLinks dropdownHoverColor="rose" />}
-          fixed
-          color="transparent"
-          changeColorOnScroll={{
-            height: 100,
-            color: "rose"
-          }}
-        />
-        <Parallax
-          image={require("public/img/bg2.jpg")}
-          filter="rose"
-          className={classes.pageHeader}
-        >
-          <div className={classes.container}>
-            <GridContainer className={classes.titleRow}>
-              <GridItem md={4} className={classes.mlAuto}>
-                <Button color="white" className={classes.floatRight}>
-                  <ShoppingCart /> 0 items
-                </Button>
-              </GridItem>
-            </GridContainer>
-          </div>
-        </Parallax>
-        <div className={classNames(classes.section, classes.sectionGray)}>
-          <div className={classes.container}>
-            <div className={classNames(classes.main, classes.mainRaised)}>
-              <GridContainer>
-                <GridItem md={6} sm={6}>
-                  <ImageGallery
-                    showFullscreenButton={false}
-                    showPlayButton={false}
-                    startIndex={3}
-                    items={this.clearImages()}
-                  />
+        <Main pageName={this.props.productWithDetails.name}>
+          <Parallax
+            image={require("public/img/bg2.jpg")}
+            filter="rose"
+            className={classes.pageHeader}
+          >
+            <div className={classes.container}>
+              <GridContainer className={classes.titleRow}>
+                <GridItem md={4} className={classes.mlAuto}>
+                  <Button color="white" className={classes.floatRight}>
+                    <ShoppingCart /> 0 items
+                  </Button>
                 </GridItem>
-                <GridItem md={6} sm={6}>
-                  <h2 className={classes.title}>{this.props.productWithDetails.name}</h2>
-                  <h3 className={classes.mainPrice}>${this.props.productWithDetails.price}</h3>
-                  <Accordion
-                    active={0}
-                    activeColor="primary"
-                    collapses={[
-                      {
-                        title: "Description",
-                        content: (
-                          <p className={classes.text}>
-                            {this.props.productWithDetails.description}
-                          </p>
-                        )
-                      },
-                      {
-                        title: "Characteristics",
-                        content: (
-                          <ul className={classes.text}>
-                            {this.cleanCharacteristics()}
-                          </ul>
-                        )
-                      }
-                    ]}
-                  />
-                  {/*<GridContainer className={classes.pickSize}>
+              </GridContainer>
+            </div>
+          </Parallax>
+          <div className={classNames(classes.section, classes.sectionGray)}>
+            <div className={classes.container}>
+              <div className={classNames(classes.main, classes.mainRaised)}>
+                <GridContainer>
+                  <GridItem md={6} sm={6}>
+                    <ImageGallery
+                      showFullscreenButton={false}
+                      showPlayButton={false}
+                      startIndex={3}
+                      items={this.clearImages()}
+                    />
+                  </GridItem>
+                  <GridItem md={6} sm={6}>
+                    <h2 className={classes.title}>{this.props.productWithDetails.name}</h2>
+                    <h3 className={classes.mainPrice}>${this.props.productWithDetails.price}</h3>
+                    <Accordion
+                      active={0}
+                      activeColor="primary"
+                      collapses={[
+                        {
+                          title: "Description",
+                          content: (
+                            <p className={classes.text}>
+                              {this.props.productWithDetails.description}
+                            </p>
+                          )
+                        },
+                        {
+                          title: "Characteristics",
+                          content: (
+                            <ul className={classes.text}>
+                              {this.cleanCharacteristics()}
+                            </ul>
+                          )
+                        }
+                      ]}
+                    />
+                    {/*<GridContainer className={classes.pickSize}>
                     <GridItem md={6} sm={6}>
                       <label>Select color</label>
                       <FormControl
@@ -209,16 +201,17 @@ class ProductDetails extends React.Component{
                       </FormControl>
                     </GridItem>
                   </GridContainer>*/}
-                  <GridContainer className={classes.pullRight}>
-                    <Button round color="primary">
-                      Add to Cart &nbsp; <ShoppingCart />
-                    </Button>
-                  </GridContainer>
-                </GridItem>
-              </GridContainer>
+                    <GridContainer className={classes.pullRight}>
+                      <Button round color="primary">
+                        Add to Cart &nbsp; <ShoppingCart />
+                      </Button>
+                    </GridContainer>
+                  </GridItem>
+                </GridContainer>
+              </div>
             </div>
           </div>
-        </div>
+        </Main>
       </div>
     )
   }

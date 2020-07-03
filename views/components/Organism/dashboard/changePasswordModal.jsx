@@ -15,24 +15,13 @@ import Card from '../../Atoms/Card/Card';
 import CardBody from '../../Atoms/Card/CardBody';
 import CardHeader from '../../Atoms/Card/CardHeader';
 import CardFooter from '../../Atoms/Card/CardFooter';
-import { makeStyles } from '@material-ui/core';
-import styles from '../../../../styles/zeepCommerceStyle/pages/changePassword';
+import { withStyles } from '@material-ui/core';
+import styles from '../../../../styles/zeepCommerceStyle/pages/changePasswordStyle';
 
-const useStyles = makeStyles(styles);
-
-export default function Description(props) {
-  const classes = useStyles();
-  return (
-    <div
-      className={classes.pageHeader}
-      style={{
-        backgroundImage: 'url(/img/bg2.jpg)',
-        backgroundSize: 'cover',
-        width: '100%',
-        height: '80%',
-        backgroundPosition: 'top center',
-      }}
-    >
+class Description extends React.Component{
+  render() {
+    const { classes } = this.props;
+    return (
       <div className={classes.container}>
         <GridContainer justify="center">
           <GridItem xs={12} sm={6} md={4}>
@@ -100,6 +89,8 @@ export default function Description(props) {
           </GridItem>
         </GridContainer>
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+export default withStyles(styles)(Description);

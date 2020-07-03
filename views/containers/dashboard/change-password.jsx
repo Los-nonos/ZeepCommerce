@@ -1,15 +1,26 @@
 import React from 'react';
 import { connect } from 'react-redux';
 // Components
-import Main from '../../layouts/Main';
+import * as actions from '../../../actions/DashboardActions'
 import Description from '../../components/Organism/dashboard/changePasswordModal';
+import DashboardLayout from '../../layouts/DashboardLayout';
+import { Roles } from '../../../utils/constants/Roles';
 
 class ChangePasswordPage extends React.Component {
+  constructor(props) {
+    super(props);
+    this.dispatch = props.dispatch;
+  }
+
+  componentDidMount() {
+    this.dispatch(actions.checkRoles([Roles.webcustomer]))
+  }
+
   render() {
     return (
-      <Main pageName="Zeep - Change password">
+      <DashboardLayout pageName="Zeep - Change password">
         <Description />
-      </Main>
+      </DashboardLayout>
     );
   }
 }

@@ -36,7 +36,7 @@ class DashboardLayout extends React.Component {
             {...rest}
           />
           <div className={classes.mainPanel} ref="mainPanel">
-            <Header routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'primary'} {...rest} />
+            <Header brand={'Dashboard'} routes={routes} handleDrawerToggle={this.handleDrawerToggle} color={'primary'} {...rest} />
             <div className={classes.content}>
               <div className={classes.container}>{children}</div>
             </div>

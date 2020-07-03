@@ -2,9 +2,9 @@
 import { select } from 'redux-saga/effects';
 import { pages, redirectTo } from '../utils/helpers/redirectTo';
 
-const isLogged = state => state.login.loggedIn;
+const isLogged = state => state.loginReducer.loggedIn;
 
-const getUserData = state => state.login.userData;
+const getUserData = state => state.loginReducer.userData;
 
 function isUserAllowed(userRoles, allowedRoles) {
   for (const userRol of userRoles) {

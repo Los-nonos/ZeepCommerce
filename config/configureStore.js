@@ -8,7 +8,7 @@ import createReducer from './reducers';
 import rootSaga from '../sagas';
 import { env } from './environment';
 
-const isProd = env('NODE_ENV', 'production') === 'production';
+const isProd = env('NODE_ENV', 'production') !== 'production';
 
 export default function configureStore(initialState = {}, history) {
   // Create the store with two middlewares

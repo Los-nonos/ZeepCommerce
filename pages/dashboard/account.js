@@ -1,7 +1,3 @@
-import React from 'react';
+import AccountPage from '../../views/containers/dashboard/AccountPage';
 
-class Dummy extends React.Component {
-
-}
-
-export default Dummy;
+export default AccountPage;

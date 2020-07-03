@@ -5,7 +5,7 @@ const signupPageStyle = {
     ...container,
     zIndex: '2',
     position: 'relative',
-    paddingTop: '20vh',
+    paddingTop: '3vh',
     color: '#FFFFFF',
     paddingBottom: '64px',
     overflow: 'hidden',
@@ -24,7 +24,7 @@ const signupPageStyle = {
     border: '0',
     alignItems: 'center',
     '&:before': {
-      background: 'rgba(0, 0, 0, 0.5)',
+      //background: 'rgba(0, 0, 0, 0.5)',
     },
     '&:before,&:after': {
       position: 'absolute',
