@@ -5,7 +5,7 @@ import {
   successColor,
   infoColor,
   roseColor
-} from "assets/jss/nextjs-material-kit.js";
+} from "../../zeepCommerceStyles";
 
 const badgeStyle = {
   badge: {
