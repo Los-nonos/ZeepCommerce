@@ -4,5 +4,5 @@ export function checkRoles(roles) {
   return {
     type: actionNames.checkRoles,
     roles,
-  }
+  };
 }

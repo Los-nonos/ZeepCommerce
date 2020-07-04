@@ -18,7 +18,7 @@ import CardFooter from '../../Atoms/Card/CardFooter';
 import { withStyles } from '@material-ui/core';
 import styles from '../../../../styles/zeepCommerceStyle/pages/changePasswordStyle';
 
-class Description extends React.Component{
+class Description extends React.Component {
   render() {
     const { classes } = this.props;
     return (
