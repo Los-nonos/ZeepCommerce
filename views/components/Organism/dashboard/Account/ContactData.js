@@ -54,10 +54,12 @@ class ContactData extends React.Component {
       <GridContainer alignItems={'center'}>
         <GridItem md={9}>
           {this.state.showContactData ? (
-            <GridContainer>
+            <GridContainer alignItems={'center'} style={{
+              backgroundColor: '#000'
+            }}>
               <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
-                  labelText="Street"
+                  labelText="Calle"
                   id="street"
                   error={this.props.formErrors.street !== undefined}
                   formControlProps={{
@@ -73,7 +75,7 @@ class ContactData extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={1}>
                 <CustomInput
-                  labelText="Number"
+                  labelText="Número"
                   id="addressNumber"
                   error={this.props.formErrors.addressNumber !== undefined}
                   formControlProps={{
@@ -89,7 +91,7 @@ class ContactData extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
-                  labelText="City"
+                  labelText="Ciudad"
                   id="city"
                   error={this.props.formErrors.city !== undefined}
                   formControlProps={{
@@ -104,7 +106,7 @@ class ContactData extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
-                  labelText="State/Province"
+                  labelText="Provincia"
                   id="state"
                   error={this.props.formErrors.state !== undefined}
                   formControlProps={{
@@ -119,7 +121,7 @@ class ContactData extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={2}>
                 <CustomInput
-                  labelText="Postal code"
+                  labelText="Código postal"
                   id="postalCode"
                   error={this.props.formErrors.postalCode !== undefined}
                   formControlProps={{
@@ -150,7 +152,7 @@ class ContactData extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
-                  labelText="Phone number"
+                  labelText="Número de telefono"
                   id="phoneNumber"
                   error={this.props.formErrors.phoneNumber !== undefined}
                   formControlProps={{
@@ -166,7 +168,7 @@ class ContactData extends React.Component {
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
                 <CustomInput
-                  labelText="Pais"
+                  labelText="País"
                   id="country"
                   required
                   error={this.props.formErrors.country !== undefined}

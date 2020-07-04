@@ -3,6 +3,7 @@ import { actionNames } from '../utils/constants/actionConstants';
 const defaultState = {
   changePasswordModalShow: false,
   formValues: {},
+  formErrors: {},
 };
 
 const dashboardReducer = (state = defaultState, action) => {

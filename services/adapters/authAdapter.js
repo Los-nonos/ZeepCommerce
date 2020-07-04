@@ -70,6 +70,27 @@ class AuthAdapter {
       },
     };
   }
+
+  changePassword = response => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.passwordChangedSuccessfully,
+        message: 'Contraseña cambiada exitosamente',
+      };
+    }
+    const { error } = data;
+
+    return {
+      type: actionNames.passwordChangedFail,
+      error: {
+        code: status,
+        type: null,
+        errors: error,
+      },
+    };
+  }
 }
 
 export default new AuthAdapter();

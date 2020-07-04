@@ -47,4 +47,11 @@ export const actionNames = {
   signUp: 'SIGN_UP',
   signUpSuccessfully: 'SIGN_UP_SUCCESSFULLY',
   signUpFail: 'SIGN_UP_FAIL',
+  loadUserById: 'LOAD_USER_BY_ID',
+  loadUserSuccessfully: 'LOAD_USER_SUCCESSFULLY',
+  loadUserFail: 'LOAD_USER_FAIL',
+  loadOrdersFail: 'LOAD_ORDERS_FAIL',
+  loadOrdersSuccessfully: 'LOAD_ORDERS_SUCCESSFULLY',
+
+
 }

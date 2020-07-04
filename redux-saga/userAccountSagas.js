@@ -5,22 +5,9 @@ import { actionNames } from '../utils/constants/actionConstants';
 import { pages, redirectTo } from '../utils/helpers/redirectTo';
 
 export function* changePassword(action) {
-  const { data } = action;
-
-  if (data.newPassword !== data.newPasswordConfirmation) {
-    yield all([
-      put({
-        type: actionNames.showNotification,
-        error: {
-          code: 422,
-          type: 'UNPROCESSABLE ENTITY',
-          detail: 'New password and Confirm new password must match',
-        },
-      }),
-    ]);
-  } else {
+  const { id, oldPassword, newPassword } = action;
     yield all([put({ type: actionNames.loadingToggle })]);
-    const res = yield call(userAccount.changePassword, data);
+    const res = yield call(userAccount.changePassword, id, oldPassword, newPassword);
 
     if (res.error) {
       if (res.error.code === 401 || res.error.code === 403) {
@@ -41,5 +28,5 @@ export function* changePassword(action) {
       ]);
       redirectTo(pages.closePasswordModal);
     }
-  }
+
 }

@@ -13,10 +13,9 @@ import CustomLinearProgress from '../../../Atoms/CustomLinearProgress/CustomLine
 class PersonalData extends React.Component {
   constructor(props) {
     super(props);
-    const { profileImage, name, surname, country, maritalStatus, birthday, cuil } = props;
+    const { name, surname, country, maritalStatus, birthday, cuil } = props;
     this.state = {
       showPersonalData: true,
-      selectedImage: null,
       formValues: {
         name: name,
         surname: surname,
@@ -24,7 +23,6 @@ class PersonalData extends React.Component {
         maritalStatus: maritalStatus,
         birthday: birthday,
         cuil: cuil,
-        profileImage: profileImage ? profileImage : '',
       },
     };
   }
@@ -54,7 +52,9 @@ class PersonalData extends React.Component {
       <GridContainer alignItems={'center'}>
         <GridItem md={9}>
           {this.state.showPersonalData ? (
-            <GridContainer alignItems={'center'}>
+            <GridContainer alignItems={'center'} style={{
+              backgroundColor: '#000'
+            }}>
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Nombre"
@@ -141,7 +141,7 @@ class PersonalData extends React.Component {
                   labelText="D.N.I"
                   id="dni"
                   required
-                  error={this.props.formErrors.country !== undefined}
+                  error={this.props.formErrors.dni !== undefined}
                   formControlProps={{
                     fullWidth: true,
                   }}
@@ -158,7 +158,7 @@ class PersonalData extends React.Component {
             <GridContainer justify={'center'}>
               <GridItem md={8}>
                 <Badge custom classes={classes.customBadge} color={'success'}>
-                  {this.fieldsCompleted()}/7
+                  {this.fieldsCompleted()}/6
                 </Badge>
                 <CustomLinearProgress
                   variant="determinate"

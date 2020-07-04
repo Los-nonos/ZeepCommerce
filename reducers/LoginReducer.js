@@ -19,6 +19,14 @@ const loginReducer = (state = stateDefault, action) => {
       return { ...state, changePasswordModalShow: true };
     case actionNames.closeChangePasswordModal:
       return { ...state, changePasswordModalShow: false };
+    case actionNames.passwordChangedFail:
+      return { ...state };
+    case actionNames.passwordChangedSuccessfully:
+      return { ...state };
+    case actionNames.signUpSuccessfully:
+      return { ...state, signUpSuccessfully: true };
+    case actionNames.signUpFail:
+      return { ...state, signUpSuccessfully: false };
     default:
       return state;
   }

@@ -6,7 +6,7 @@ import {
   warningBoxShadow,
   dangerBoxShadow,
   container
-} from "assets/jss/nextjs-material-kit.js";
+} from "../../zeepCommerceStyles";
 
 const snackbarContentStyle = {
   root: {

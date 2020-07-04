@@ -4,7 +4,7 @@ import { login, loginFailed, signUp } from './redux-saga/LoginSagas';
 // eslint-disable-next-line import/no-cycle
 import { saveSession, deleteSession, renewToken } from './redux-saga/SessionSagas';
 import { checkRoles } from './redux-saga/PermissionsSagas';
-import { changePassword } from './actions/UserAccountActions';
+import { changePassword } from './redux-saga/userAccountSagas';
 import { loadProducts } from './redux-saga/HomeSagas';
 import { loadFilters, loadProductsByFilter, searchProducts, seeDetails } from './redux-saga/ProductsSagas';
 

@@ -1,5 +1,12 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function closeNotification() {
+  return {
+    type: actionNames.closeNotification
+  };
+}
+
+
 export function loadingToggle() {
   return {
     type: actionNames.loadingToggle,

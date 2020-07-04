@@ -35,8 +35,8 @@ export default function HeaderLinks(props) {
             <a className={classes.dropdownLink}>Mi Cuenta</a>
           </Link>
         ) : (
-            <Link href={pages.signup}>
-              <a className={classes.dropdownLink}>Registrate</a>
+            <Link href={pages.login}>
+              <a className={classes.dropdownLink}>Login</a>
             </Link>
           )
         }
