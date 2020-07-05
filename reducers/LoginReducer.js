@@ -2,7 +2,7 @@ import { actionNames } from '../utils/constants/actionConstants';
 
 const stateDefault = {
   loggedIn: false,
-  userData: null,
+  userData: {},
   error: { errors: {} },
   changePasswordModalShow: false,
 };

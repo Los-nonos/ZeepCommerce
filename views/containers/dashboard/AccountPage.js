@@ -9,6 +9,8 @@ import ContactData from '../../components/Organism/dashboard/Account/ContactData
 import OrdersData from '../../components/Organism/dashboard/Account/OrdersData';
 import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';
+import Button from '../../components/Atoms/CustomButtons/Button';
+import { isLogged } from '../../../utils/helpers/isLogged';
 const styles = {};
 
 class AccountPage extends React.Component {
@@ -18,11 +20,10 @@ class AccountPage extends React.Component {
       formValues: {},
     }
     this.dispatch = props.dispatch;
-  }
-
-  componentDidMount() {
     this.dispatch(actions.checkRoles([Roles.webcustomer]));
-    this.dispatch(actions.getUserById(this.props.userData.id));
+    if(isLogged) {
+      this.dispatch(actions.getUserById(this.props.userData.id));
+    }
   }
 
   updateValues = values => {
@@ -30,6 +31,13 @@ class AccountPage extends React.Component {
       formValues: { ...this.state.formValues, ...values },
     });
   };
+
+  handleSubmit = () => {
+    const body = this.state.formValues;
+    body.id = this.props.userData.id;
+
+    this.dispatch(actions.updateCustomer(body));
+  }
 
   render() {
     const { classes } = this.props;
@@ -63,6 +71,9 @@ class AccountPage extends React.Component {
               classes={classes}
               returnValues={this.updateValues}
             />
+          </GridItem>
+          <GridItem md={3}>
+            <Button fullWidth={true} round={true} simple={true} onClick={this.handleSubmit}>Guardar</Button>
           </GridItem>
         </GridContainer>
       </DashboardLayout>

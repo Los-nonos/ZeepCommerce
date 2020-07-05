@@ -52,6 +52,10 @@ export const actionNames = {
   loadUserFail: 'LOAD_USER_FAIL',
   loadOrdersFail: 'LOAD_ORDERS_FAIL',
   loadOrdersSuccessfully: 'LOAD_ORDERS_SUCCESSFULLY',
+  updateCustomer: 'UPDATE_CUSTOMER',
+  forgotPassword: 'FORGOT_PASSWORD',
+  forgotPasswordFail: 'FORGOT_PASSWORD_FAIL',
+  forgotPasswordSuccessfully: 'FORGOT_PASSWORD_SUCCESSFULLY',
 
 
 }

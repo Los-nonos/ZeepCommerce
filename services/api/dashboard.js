@@ -12,6 +12,7 @@ class Dashboard {
 
     return dashboardAdapter.getOrders(response);
   }
+
   getUserById = async (id) => {
     let response;
     try {

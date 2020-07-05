@@ -53,3 +53,25 @@ export function* signUp(action) {
     redirectTo(pages.home);
   }
 }
+
+export function* forgotPassword(action) {
+  const { email } = action;
+
+  const body = {
+    email,
+  }
+
+  yield all([put({ type: actionNames.loadingToggle })]);
+  const res = yield call(auth.forgot, body);
+
+  if (res.error) {
+    yield all([put(res), put({ type: actionNames.loadingToggle })]);
+  } else {
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({type: actionNames.showNotification, message: res.message }),
+    ]);
+    redirectTo(pages.home);
+  }
+}

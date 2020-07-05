@@ -58,7 +58,7 @@ class OrdersData extends React.Component{
               <GridItem md={4}>
                 <CustomInput
                   labelText="Condición de IVA"
-                  id="dni"
+                  id="vatCondition"
                   required
                   error={this.props.formErrors.vatCondition !== undefined}
                   formControlProps={{
@@ -75,7 +75,7 @@ class OrdersData extends React.Component{
               <GridItem md={4}>
                 <CustomInput
                   labelText="Clave de impuestos"
-                  id="dni"
+                  id="taxationKey"
                   required
                   error={this.props.formErrors.taxationKey !== undefined}
                   formControlProps={{
@@ -92,7 +92,7 @@ class OrdersData extends React.Component{
               <GridItem md={4}>
                 <CustomInput
                   labelText="Ingresos brutos"
-                  id="dni"
+                  id="grossIncome"
                   required
                   error={this.props.formErrors.grossIncome !== undefined}
                   formControlProps={{

@@ -39,6 +39,16 @@ class Auth {
 
     return authAdapter.signUpAdapter(signUpResponse);
   }
+  forgot = async body => {
+    let response;
+    try {
+      response = await Api.post('auth/forgot', body);
+    }catch (err) {
+      response = err;
+    }
+
+    return authAdapter.forgotAdapter(response);
+  };
 }
 
 export default new Auth();

@@ -1,6 +1,4 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 import routes from '../../utils/routes/dashboardRoutes';
 import Header from '../components/Molecules/Header/Header';
@@ -44,7 +42,9 @@ class DashboardLayout extends React.Component {
               {...rest}
             />
             <div className={classes.content}>
-              <div className={classes.container}>{children}</div>
+              <div className={classes.container}>
+                {children}
+              </div>
             </div>
             <Footer />
           </div>
@@ -54,8 +54,5 @@ class DashboardLayout extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  return state.dashboardReducer;
-};
 
-export default connect(mapStateToProps)(withStyles(dashboardLayoutStyles)(DashboardLayout));
+export default withStyles(dashboardLayoutStyles)(DashboardLayout);

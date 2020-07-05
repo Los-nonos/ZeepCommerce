@@ -1,5 +1,13 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function forgot(email) {
+  return {
+    type: actionNames.forgotPassword,
+    email
+  };
+}
+
+
 export function changePassword(id, oldPassword, newPassword) {
   return {
     type: actionNames.changePassword,
