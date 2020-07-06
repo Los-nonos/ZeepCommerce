@@ -10,9 +10,12 @@ class OrderCard extends React.Component {
 
     return (
       <div>
-        <CardBody />
-
+        <CardBody>
+          <p>{this.props.order.name}</p>
+        </CardBody>
       </div>
     );
   }
 }
+
+export default OrderCard;
