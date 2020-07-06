@@ -1,5 +1,12 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function getOrders() {
+  return {
+    type: actionNames.loadOrders,
+  }
+}
+
+
 export function updateCustomer(formValues) {
   return {
     type: actionNames.updateCustomer,

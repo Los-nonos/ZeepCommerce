@@ -50,6 +50,7 @@ export const actionNames = {
   loadUserById: 'LOAD_USER_BY_ID',
   loadUserSuccessfully: 'LOAD_USER_SUCCESSFULLY',
   loadUserFail: 'LOAD_USER_FAIL',
+  loadOrders: 'LOAD_ORDERS',
   loadOrdersFail: 'LOAD_ORDERS_FAIL',
   loadOrdersSuccessfully: 'LOAD_ORDERS_SUCCESSFULLY',
   updateCustomer: 'UPDATE_CUSTOMER',

@@ -4,6 +4,7 @@ const defaultState = {
   changePasswordModalShow: false,
   formValues: {},
   formErrors: {},
+  orders: [],
 };
 
 const dashboardReducer = (state = defaultState, action) => {
@@ -12,6 +13,10 @@ const dashboardReducer = (state = defaultState, action) => {
       return { ...state, changePasswordModalShow: true };
     case actionNames.closeChangePasswordModal:
       return { ...state, changePasswordModalShow: false };
+    case actionNames.loadOrdersFail:
+      return {...state, orders:[]};
+    case actionNames.loadOrdersSuccessfully:
+      return {...state, orders:action.orders}
     default:
       return state;
   }

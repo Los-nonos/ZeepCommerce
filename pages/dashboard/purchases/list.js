@@ -1,11 +1,3 @@
-import React from 'react';
+import OrdersListPage from '../../../views/containers/dashboard/OrdersListPage';
 
-class Dummy extends React.Component {
-  render() {
-    return (
-      <div></div>
-    )
-  }
-}
-
-export default Dummy;
+export default OrdersListPage;
