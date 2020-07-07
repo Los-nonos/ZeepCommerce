@@ -65,7 +65,6 @@ class SearchProducts extends React.Component {
   }
 
   handleFilters = filters => {
-    console.log(filters);
     this.setState({ currentFilters: filters });
   };
 

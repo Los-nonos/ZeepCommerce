@@ -26,3 +26,10 @@ export function checkRoles(roles) {
     roles,
   };
 }
+
+export function getOrder(uuid) {
+  return {
+    type: actionNames.loadOrderByUuid,
+    uuid,
+  };
+}

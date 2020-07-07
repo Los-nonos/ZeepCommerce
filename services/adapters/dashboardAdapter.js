@@ -43,6 +43,27 @@ class DashboardAdapter {
       },
     };
   }
+
+  getOrderByUuidAdapt = (response) => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.loadOrderByUuidSuccessfully,
+        orderWithDetails: data.data
+      };
+    }
+    const { error } = data;
+
+    return {
+      type: actionNames.loadOrderByUuidFail,
+      error: {
+        code: status,
+        type: null,
+        errors: error,
+      },
+    };
+  }
 }
 
 export default new DashboardAdapter();

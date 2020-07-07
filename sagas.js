@@ -7,7 +7,7 @@ import { checkRoles } from './redux-saga/PermissionsSagas';
 import { changePassword } from './redux-saga/userAccountSagas';
 import { loadProducts } from './redux-saga/HomeSagas';
 import { loadFilters, loadProductsByFilter, searchProducts, seeDetails } from './redux-saga/ProductsSagas';
-import { getOrders, getUserById } from './redux-saga/DashboardSagas';
+import { getOrderByUuid, getOrders, getUserById } from './redux-saga/DashboardSagas';
 
 const sagas = [
   takeLatest(actionNames.login, login),
@@ -25,6 +25,7 @@ const sagas = [
   takeLatest(actionNames.signUp, signUp),
   takeLatest(actionNames.loadUserById, getUserById),
   takeLatest(actionNames.loadOrders, getOrders),
+  takeLatest(actionNames.loadOrderByUuid, getOrderByUuid),
 ];
 
 export default function* rootSaga() {

@@ -5,6 +5,7 @@ const defaultState = {
   formValues: {},
   formErrors: {},
   orders: [],
+  orderWithDetails: {},
 };
 
 const dashboardReducer = (state = defaultState, action) => {
@@ -17,6 +18,10 @@ const dashboardReducer = (state = defaultState, action) => {
       return {...state, orders:[]};
     case actionNames.loadOrdersSuccessfully:
       return {...state, orders:action.orders}
+    case actionNames.loadOrderByUuidSuccessfully:
+      return {...state, orderWithDetails:action.orderWithDetails}
+    case actionNames.loadOrderByUuidFail:
+      return {...state, orderWithDetails : {}}
     default:
       return state;
   }

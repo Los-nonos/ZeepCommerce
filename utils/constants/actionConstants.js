@@ -57,6 +57,9 @@ export const actionNames = {
   forgotPassword: 'FORGOT_PASSWORD',
   forgotPasswordFail: 'FORGOT_PASSWORD_FAIL',
   forgotPasswordSuccessfully: 'FORGOT_PASSWORD_SUCCESSFULLY',
+  loadOrderByUuidSuccessfully: 'LOAD_ORDER_BY_UUID_SUCCESSFULLY',
+  loadOrderByUuidFail: 'LOAD_ORDER_BY_UUID_FAIL',
+  loadOrderByUuid: 'LOAD_ORDER_BY_UUID',
 
 
 }

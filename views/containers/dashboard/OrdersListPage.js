@@ -21,11 +21,15 @@ class OrdersListPage extends React.Component {
     return this.props.orders.map((order, key) => {
       return (
         <GridItem md={10} sm={10} key={key}>
-          <OrderCard order={order}/>
+          <OrderCard order={order} onOrderSelected={this.onOrderSelected}/>
         </GridItem>
       );
     });
   };
+
+  onOrderSelected = (uuid) => {
+    this.dispatch(actions.getOrder(uuid));
+  }
 
   render() {
     return (

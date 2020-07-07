@@ -48,3 +48,26 @@ export function* getUserById(action) {
     ]);
   }
 }
+
+export function* getOrderByUuid(action) {
+  const { uuid } = action;
+  const res = yield call(dashboard.getOrderByUuid, uuid);
+
+  if(res.error) {
+    if (res.error.code === 401 || res.error.code === 403) {
+      yield all([put({ type: actionNames.handleError, error: res.error })]);
+      redirectTo(pages.error);
+    }
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+      put({ type: actionNames.showNotification, error: res.error }),
+    ]);
+  }else {
+    yield all([
+      put(res),
+      put({ type: actionNames.loadingToggle }),
+    ])
+    redirectTo(pages.orderDetails)
+  }
+}

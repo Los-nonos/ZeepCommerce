@@ -23,6 +23,17 @@ class Dashboard {
 
     return dashboardAdapter.getUserByIdAdapt(response);
   };
+
+  getOrderByUuid = async (uuid) => {
+    let response;
+    try {
+      response = await Api.get(`/orders/${uuid}`);
+    }catch (err) {
+      response = err;
+    }
+
+    return dashboardAdapter.getOrderByUuidAdapt(response);
+  }
 }
 
 export default new Dashboard();

@@ -11,12 +11,14 @@ class OrderCard extends React.Component {
     super(props);
     this.state = {};
   }
+  
   /*TODO: centrar order*/
+
   render() {
     const { classes } = this.props;
     return (
         <CardBody>
-          <GridContainer classNames={classes.container} alignContent={'center'} onClick={() => {redirectTo(`/dashboard/purchases/${this.props.order.uuid}/details`)}}>
+          <GridContainer classNames={classes.container} alignContent={'center'} onClick={this.props.onOrderSelected(this.props.order.uuid)}>
           <GridItem md={4} sm={4} classNames={classes.center} direction="row"
                     justify="center"
                     alignItems="center">
