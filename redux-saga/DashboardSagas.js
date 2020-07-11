@@ -68,6 +68,6 @@ export function* getOrderByUuid(action) {
       put(res),
       put({ type: actionNames.loadingToggle }),
     ])
-    redirectTo(pages.orderDetails)
+    redirectTo(pages.orderDetails);
   }
 }

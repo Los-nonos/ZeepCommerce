@@ -14,13 +14,8 @@ class OrdersDetailPage extends React.Component{
     this.loadOrder();
   }
 
-  componentDidMount() {
-    const router = useRouter()
-    console.log(router.params);
-  }
-
   loadOrder = () => {
-    this.dispatch(actions.getOrder(this.props.uuid))
+    this.dispatch(actions.getOrder(this.props.uuid));
   }
 
   render() {

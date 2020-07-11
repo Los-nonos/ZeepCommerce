@@ -19,21 +19,21 @@ class OrderCard extends React.Component {
     return (
         <CardBody>
           <GridContainer classNames={classes.container} alignContent={'center'} onClick={this.props.onOrderSelected(this.props.order.uuid)}>
-          <GridItem md={4} sm={4} classNames={classes.center} direction="row"
-                    justify="center"
-                    alignItems="center">
-            <p>{this.props.order.name}</p>
-          </GridItem>
             <GridItem md={4} sm={4} classNames={classes.center} direction="row"
                       justify="center"
                       alignItems="center">
-            <p>{this.props.order.price}</p>
-          </GridItem>
+              <p>{this.props.order.name}</p>
+            </GridItem>
             <GridItem md={4} sm={4} classNames={classes.center} direction="row"
                       justify="center"
                       alignItems="center">
-            <p>{this.props.order.orderNumber}</p>
-          </GridItem>
+              <p>{this.props.order.price}</p>
+            </GridItem>
+            <GridItem md={4} sm={4} classNames={classes.center} direction="row"
+                      justify="center"
+                      alignItems="center">
+              <p>{this.props.order.orderNumber}</p>
+            </GridItem>
           </GridContainer>
         </CardBody>
     );
