@@ -1,9 +1,9 @@
-import React from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import Snackbar from "../Snackbar/Snackbar";
-import Close from "@material-ui/icons/Close";
-import Check from "@material-ui/icons/Check";
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import Snackbar from '../Snackbar/Snackbar';
+import Close from '@material-ui/icons/Close';
+import Check from '@material-ui/icons/Check';
 
 class Notification extends React.Component {
   constructor(props) {
@@ -17,8 +17,8 @@ class Notification extends React.Component {
     return (
       <Snackbar
         place="tr"
-        color={"danger"}
-        icon={this.props.notificationColor === "danger" ? Close : Check}
+        color={'danger'}
+        icon={this.props.notificationColor === 'danger' ? Close : Check}
         message={this.props.message}
         open={this.props.notification}
         closeNotification={closeNotification}
@@ -31,7 +31,7 @@ Notification.propTypes = {
   closeNotification: PropTypes.func,
   notificationColor: PropTypes.string,
   message: PropTypes.string,
-  notification: PropTypes.bool
+  notification: PropTypes.bool,
 };
 
 const mapStateToProps = state => {

@@ -6,6 +6,7 @@ const defaultState = {
   formErrors: {},
   orders: [],
   orderWithDetails: {},
+  cart: {},
 };
 
 const dashboardReducer = (state = defaultState, action) => {
@@ -15,16 +16,24 @@ const dashboardReducer = (state = defaultState, action) => {
     case actionNames.closeChangePasswordModal:
       return { ...state, changePasswordModalShow: false };
     case actionNames.loadOrdersFail:
-      return {...state, orders:[]};
+      return { ...state, orders: [] };
     case actionNames.loadOrdersSuccessfully:
-      return {...state, orders:action.orders}
+      return { ...state, orders: action.orders };
     case actionNames.loadOrderByUuidSuccessfully:
-      return {...state, orderWithDetails:action.orderWithDetails}
+      return { ...state, orderWithDetails: action.orderWithDetails };
     case actionNames.loadOrderByUuidFail:
-      return {...state, orderWithDetails : {}}
+      return { ...state, orderWithDetails: {} };
+    case actionNames.addProductInCartSuccessfully:
+      return { ...state, cart: { productsNumber: action.productsNumber } };
+    case actionNames.addProductInCartFail:
+      return { ...state };
+    case actionNames.removeProductInCartSuccessfully:
+      return { ...state, cart: { productsNumber: action.productsNumber } };
+    case actionNames.removeProductInCartFail:
+      return { ...state };
     default:
       return state;
   }
-}
+};
 
 export default dashboardReducer;

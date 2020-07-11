@@ -3,11 +3,7 @@ import DashboardLayout from '../../views/layouts/DashboardLayout';
 
 class IndexDashboard extends React.Component {
   render() {
-    return (
-      <DashboardLayout title={'Dashboard'}>
-
-      </DashboardLayout>
-    );
+    return <DashboardLayout title={'Dashboard'}></DashboardLayout>;
   }
 }
 

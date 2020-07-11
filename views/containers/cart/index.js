@@ -9,18 +9,13 @@ class CartIndex extends React.Component {
     this.dispatch = props.dispatch;
   }
 
-
   render() {
-    return (
-      <div>
-
-      </div>
-    );
+    return <div></div>;
   }
 }
 
 const mapStateToProps = state => {
   return state.dashboardReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(CartIndex));

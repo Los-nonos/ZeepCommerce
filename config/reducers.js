@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import injectedReducers from '../injectedReducers';
 //import history from './history';
 

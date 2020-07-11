@@ -9,7 +9,7 @@ class ProductSection extends React.Component {
     super(props);
     this.dispatch = props.dispatch;
   }
-  
+
   getProductsContainer = arrayProducts => {
     return arrayProducts.map((product, key) => {
       return (
@@ -20,9 +20,9 @@ class ProductSection extends React.Component {
     });
   };
 
-  onProductSelected = (uuid) => {
+  onProductSelected = uuid => {
     this.dispatch(this.props.seeDetails(uuid));
-  }
+  };
 
   render() {
     return <GridContainer>{this.getProductsContainer(this.props.products)}</GridContainer>;
@@ -31,6 +31,6 @@ class ProductSection extends React.Component {
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(ProductSection);

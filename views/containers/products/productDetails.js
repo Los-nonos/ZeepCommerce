@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
-import ImageGallery from "react-image-gallery";
+import ImageGallery from 'react-image-gallery';
 import Header from '../../components/Molecules/Header/Header';
 import HeaderLinks from '../../components/Molecules/Header/HeaderLinks';
 import Parallax from '../../components/Molecules/Parallax/Parallax';
@@ -15,12 +15,12 @@ import { withStyles } from '@material-ui/core';
 import productDetailsStyles from '../../../styles/zeepCommerceStyle/pages/productDetailsStyle';
 import Main from '../../layouts/Main';
 
-class ProductDetails extends React.Component{
+class ProductDetails extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      colorSelect: "0",
-      sizeSelect: "0"
+      colorSelect: '0',
+      sizeSelect: '0',
     };
   }
   handleSelect = event => {
@@ -36,22 +36,18 @@ class ProductDetails extends React.Component{
     return this.props.productWithDetails.characteristics.map(characteristic => {
       return <li>{characteristic.name}</li>;
     });
-  }
+  };
 
   clearImages = () => {
     return [{ original: this.props.productWithDetails.image, thumbnail: this.props.productWithDetails.image }];
-  }
+  };
 
   render() {
     const { classes } = this.props;
     return (
       <div className={classes.productPage}>
         <Main pageName={this.props.productWithDetails.name}>
-          <Parallax
-            image={require("public/img/bg2.jpg")}
-            filter="rose"
-            className={classes.pageHeader}
-          >
+          <Parallax image={require('public/img/bg2.jpg')} filter="rose" className={classes.pageHeader}>
             <div className={classes.container}>
               <GridContainer className={classes.titleRow}>
                 <GridItem md={4} className={classes.mlAuto}>
@@ -82,21 +78,13 @@ class ProductDetails extends React.Component{
                       activeColor="primary"
                       collapses={[
                         {
-                          title: "Description",
-                          content: (
-                            <p className={classes.text}>
-                              {this.props.productWithDetails.description}
-                            </p>
-                          )
+                          title: 'Description',
+                          content: <p className={classes.text}>{this.props.productWithDetails.description}</p>,
                         },
                         {
-                          title: "Characteristics",
-                          content: (
-                            <ul className={classes.text}>
-                              {this.cleanCharacteristics()}
-                            </ul>
-                          )
-                        }
+                          title: 'Characteristics',
+                          content: <ul className={classes.text}>{this.cleanCharacteristics()}</ul>,
+                        },
                       ]}
                     />
                     {/*<GridContainer className={classes.pickSize}>
@@ -213,12 +201,12 @@ class ProductDetails extends React.Component{
           </div>
         </Main>
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => {
   return state.productsReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(productDetailsStyles)(ProductDetails));

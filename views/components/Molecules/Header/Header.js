@@ -73,7 +73,7 @@ export default function Header(props) {
             brandComponent
           )}
         </div>
-        <Hidden style={{width: '400px'}} smDown implementation="css">
+        <Hidden style={{ width: '400px' }} smDown implementation="css">
           {rightLinks}
         </Hidden>
         <Hidden mdUp>

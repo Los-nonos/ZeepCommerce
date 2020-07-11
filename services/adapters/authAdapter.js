@@ -69,7 +69,7 @@ class AuthAdapter {
         errors: error,
       },
     };
-  }
+  };
 
   changePassword = response => {
     const { status, data } = response;
@@ -90,7 +90,7 @@ class AuthAdapter {
         errors: error,
       },
     };
-  }
+  };
 
   forgotAdapter = response => {
     const { status, data } = response;
@@ -111,7 +111,7 @@ class AuthAdapter {
         errors: error,
       },
     };
-  }
+  };
 }
 
 export default new AuthAdapter();

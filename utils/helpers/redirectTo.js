@@ -1,4 +1,4 @@
-import Router from "next/router";
+import Router from 'next/router';
 //import { push } from '../../config/history';
 
 export const redirectTo = path => {

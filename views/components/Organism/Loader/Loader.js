@@ -1,8 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import LoadingOverlay from "react-loading-overlay";
-import PropTypes from "prop-types";
-import { actionNames } from "../../../../utils/constants/actionConstants";
+import React from 'react';
+import { connect } from 'react-redux';
+import LoadingOverlay from 'react-loading-overlay';
+import PropTypes from 'prop-types';
+import { actionNames } from '../../../../utils/constants/actionConstants';
 
 const Loader = props => {
   const { loading, dispatch } = props;
@@ -16,12 +16,12 @@ const Loader = props => {
         styles={{
           wrapper: base => ({
             ...base,
-            position: "inherit"
+            position: 'inherit',
           }),
           overlay: base => ({
             ...base,
-            zIndex: "1500"
-          })
+            zIndex: '1500',
+          }),
         }}
       />
     </>
@@ -29,7 +29,7 @@ const Loader = props => {
 };
 
 Loader.propTypes = {
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
 };
 
 const mapStateToProps = state => {

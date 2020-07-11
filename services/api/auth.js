@@ -30,20 +30,19 @@ class Auth {
 
   signUp = async personalInformation => {
     let signUpResponse;
-    try
-    {
+    try {
       signUpResponse = await Api.post('auth/signup', personalInformation);
-    }catch (err) {
+    } catch (err) {
       signUpResponse = err;
     }
 
     return authAdapter.signUpAdapter(signUpResponse);
-  }
+  };
   forgot = async body => {
     let response;
     try {
       response = await Api.post('auth/forgot', body);
-    }catch (err) {
+    } catch (err) {
       response = err;
     }
 

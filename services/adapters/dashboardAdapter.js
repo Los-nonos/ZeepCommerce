@@ -2,13 +2,13 @@ import { isError } from '../../utils/helpers/isError';
 import { actionNames } from '../../utils/constants/actionConstants';
 
 class DashboardAdapter {
-  getOrders = (response) => {
+  getOrders = response => {
     const { status, data } = response;
 
     if (!isError(status)) {
       return {
         type: actionNames.loadOrdersSuccessfully,
-        orders: data.data
+        orders: data.data,
       };
     }
     const { error } = data;
@@ -21,9 +21,9 @@ class DashboardAdapter {
         errors: error,
       },
     };
-  }
+  };
 
-  getUserByIdAdapt = (response) => {
+  getUserByIdAdapt = response => {
     const { status, data } = response;
 
     if (!isError(status)) {
@@ -42,15 +42,15 @@ class DashboardAdapter {
         errors: error,
       },
     };
-  }
+  };
 
-  getOrderByUuidAdapt = (response) => {
+  getOrderByUuidAdapt = response => {
     const { status, data } = response;
 
     if (!isError(status)) {
       return {
         type: actionNames.loadOrderByUuidSuccessfully,
-        orderWithDetails: data.data
+        orderWithDetails: data.data,
       };
     }
     const { error } = data;
@@ -63,7 +63,7 @@ class DashboardAdapter {
         errors: error,
       },
     };
-  }
+  };
 }
 
 export default new DashboardAdapter();

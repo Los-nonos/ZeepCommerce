@@ -60,6 +60,8 @@ export const actionNames = {
   loadOrderByUuidSuccessfully: 'LOAD_ORDER_BY_UUID_SUCCESSFULLY',
   loadOrderByUuidFail: 'LOAD_ORDER_BY_UUID_FAIL',
   loadOrderByUuid: 'LOAD_ORDER_BY_UUID',
-
-
-}
+  addProductInCartSuccessfully: 'ADD_PRODUCT_IN_CART_SUCCESSFULLY',
+  addProductInCartFail: 'ADD_PRODUCT_IN_CART_FAIL',
+  removeProductInCartSuccessfully: 'REMOVE_PRODUCT_IN_CART_SUCCESSFULLY',
+  removeProductInCartFail: 'REMOVE_PRODUCT_IN_CART_FAIL',
+};

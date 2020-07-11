@@ -2,38 +2,38 @@ import Api from './api';
 import dashboardAdapter from '../adapters/dashboardAdapter';
 
 class Dashboard {
-  getOrders = async (userId) => {
+  getOrders = async userId => {
     let response;
     try {
       response = await Api.get(`/orders?userId=${userId}`);
-    }catch (err) {
+    } catch (err) {
       response = err;
     }
 
     return dashboardAdapter.getOrders(response);
-  }
+  };
 
-  getUserById = async (id) => {
+  getUserById = async id => {
     let response;
     try {
       response = await Api.get(`users/${id}`);
-    }catch (err) {
+    } catch (err) {
       response = err;
     }
 
     return dashboardAdapter.getUserByIdAdapt(response);
   };
 
-  getOrderByUuid = async (uuid) => {
+  getOrderByUuid = async uuid => {
     let response;
     try {
       response = await Api.get(`/orders/${uuid}`);
-    }catch (err) {
+    } catch (err) {
       response = err;
     }
 
     return dashboardAdapter.getOrderByUuidAdapt(response);
-  }
+  };
 }
 
 export default new Dashboard();

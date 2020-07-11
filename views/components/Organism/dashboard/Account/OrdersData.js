@@ -11,20 +11,20 @@ import { withStyles } from '@material-ui/core';
 import modalStyle from '../../../../../styles/zeepCommerceStyle/modalStyle';
 import CustomInput from '../../../Atoms/CustomInput/CustomInput';
 
-class OrdersData extends React.Component{
+class OrdersData extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       showOrdersData: true,
       formValues: {
         country: '',
-      }
-    }
+      },
+    };
     this.dispatch = props.dispatch;
   }
 
   componentDidMount() {
-    this.dispatch(actions.checkRoles([Roles.webcustomer]))
+    this.dispatch(actions.checkRoles([Roles.webcustomer]));
   }
 
   fieldsCompleted = () => {
@@ -35,7 +35,7 @@ class OrdersData extends React.Component{
       }
     }
     return total;
-  }
+  };
 
   handleChange = e => {
     this.setState({ formValues: { ...this.state.formValues, [e.target.name]: e.target.value } });
@@ -52,9 +52,12 @@ class OrdersData extends React.Component{
       <GridContainer alignItems={'center'}>
         <GridItem md={9}>
           {this.state.showOrdersData ? (
-            <GridContainer alignItems={'center'} style={{
-              backgroundColor: '#000'
-            }}>
+            <GridContainer
+              alignItems={'center'}
+              style={{
+                backgroundColor: '#000',
+              }}
+            >
               <GridItem md={4}>
                 <CustomInput
                   labelText="Condición de IVA"
@@ -140,6 +143,6 @@ class OrdersData extends React.Component{
 
 const mapStateToProps = state => {
   return state.dashboardReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(modalStyle)(OrdersData));

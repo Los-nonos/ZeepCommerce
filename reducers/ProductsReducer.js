@@ -1,4 +1,4 @@
-import { actionNames } from "../utils/constants/actionConstants";
+import { actionNames } from '../utils/constants/actionConstants';
 
 export const stateDefault = {
   filters: [],
@@ -9,7 +9,7 @@ export const stateDefault = {
     max: 800,
   },
   page: 1,
-  totalPages: 1
+  totalPages: 1,
 };
 
 const searchReducer = (state = stateDefault, action) => {
@@ -25,7 +25,7 @@ const searchReducer = (state = stateDefault, action) => {
       return {
         ...state,
         products: action.products,
-        totalPages: action.totalPages
+        totalPages: action.totalPages,
       };
     case actionNames.loadProductsByFilterFail:
       return { ...state, products: [] };

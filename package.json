@@ -9,7 +9,7 @@
     "build": "next build && sass styles:static/build",
     "linter:check": "eslint './**/*.jsx'",
     "prettier:check": "prettier -c './**/*.jsx'",
-    "prettier:run": "prettier --write './**/*.jsx'",
+    "prettier:run": "prettier --write './**/*.jsx' && prettier --write './**/*.js'",
     "export": "next export"
   },
   "dependencies": {

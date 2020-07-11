@@ -11,7 +11,7 @@ const style = {
     marginBottom: '0px !important',
   },
   border: {
-    borderRadius: '6px'
+    borderRadius: '6px',
   },
   cardDescription: {
     color: grayColor,

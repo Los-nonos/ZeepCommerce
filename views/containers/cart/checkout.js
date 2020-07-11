@@ -13,7 +13,7 @@ class CartCheckout extends React.Component {
       <Main pageName={'Pagar - Zeep'}>
         <div className={classNames(classes.container)}>
           <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js" />
-          <MercadoPagoLayout cart={{description: 'Azucar blanca'}} />
+          <MercadoPagoLayout cart={{ description: 'Azucar blanca', transactionAmount: 350 }} />
         </div>
       </Main>
     );
@@ -22,6 +22,6 @@ class CartCheckout extends React.Component {
 
 const mapStateToProps = state => {
   return state.dashboardReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(CartCheckout));

@@ -5,6 +5,6 @@ const style = {
   center: {
     alignItems: 'center',
   },
-}
+};
 
 export default style;

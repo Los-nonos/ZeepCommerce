@@ -6,7 +6,7 @@ import GridItem from '../../Atoms/Grid/GridItem';
 import ProductCard from '../../Molecules/ProductCard/Card';
 import GridContainer from '../../Atoms/Grid/GridContainer';
 
-class HomeProductSection extends React.Component{
+class HomeProductSection extends React.Component {
   constructor(props) {
     super(props);
     this.dispatch = props.dispatch;
@@ -22,9 +22,9 @@ class HomeProductSection extends React.Component{
     });
   };
 
-  onProductSelected = (uuid) => {
+  onProductSelected = uuid => {
     this.dispatch(this.props.seeDetails(uuid));
-  }
+  };
 
   render() {
     return <GridContainer>{this.getProductsContainer(this.props.data)}</GridContainer>;
@@ -33,10 +33,10 @@ class HomeProductSection extends React.Component{
 
 HomeProductSection.propTypes = {
   data: PropTypes.array.isRequired,
-}
+};
 
 const mapStateToProps = state => {
   return state.homeReducer;
-}
+};
 
 export default connect(mapStateToProps)(HomeProductSection);

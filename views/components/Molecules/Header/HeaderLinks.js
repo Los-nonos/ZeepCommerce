@@ -25,7 +25,7 @@ const useStyles = makeStyles(styles);
 export default function HeaderLinks(props) {
   const classes = useStyles();
   return (
-    <List className={classes.list + " " + classes.mlAuto}>
+    <List className={classes.list + ' ' + classes.mlAuto}>
       <ListItem className={classes.listItem}>
         <Link href={pages.home}>
           <a className={classes.dropdownLink}>Inicio</a>
@@ -35,19 +35,13 @@ export default function HeaderLinks(props) {
             <a className={classes.dropdownLink}>Mi Cuenta</a>
           </Link>
         ) : (
-            <Link href={pages.login}>
-              <a className={classes.dropdownLink}>Login</a>
-            </Link>
-          )
-        }
+          <Link href={pages.login}>
+            <a className={classes.dropdownLink}>Login</a>
+          </Link>
+        )}
       </ListItem>
       <ListItem className={classes.listItem}>
-        <Button
-          href={pages.cart}
-          color={"white"}
-          className={classes.navButton}
-          round
-        >
+        <Button href={pages.cart} color={'white'} className={classes.navButton} round>
           <ShoppingCart className={classes.icons} /> buy now
         </Button>
       </ListItem>

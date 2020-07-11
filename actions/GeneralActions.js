@@ -2,10 +2,9 @@ import { actionNames } from '../utils/constants/actionConstants';
 
 export function closeNotification() {
   return {
-    type: actionNames.closeNotification
+    type: actionNames.closeNotification,
   };
 }
-
 
 export function loadingToggle() {
   return {
@@ -19,9 +18,9 @@ export function showNotification(message, isError = false, errorCode = 500) {
     message,
     error: isError
       ? {
-        code: errorCode,
-        detail: message,
-      }
+          code: errorCode,
+          detail: message,
+        }
       : null,
   };
 }

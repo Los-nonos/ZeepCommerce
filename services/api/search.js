@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-cycle
-import Api from "./api";
-import searchAdapter from "../adapters/searchAdapter";
+import Api from './api';
+import searchAdapter from '../adapters/searchAdapter';
 
 class Search {
   loadFilters = async () => {
@@ -17,9 +17,7 @@ class Search {
   searchProducts = async (query, page, orderBy, order) => {
     let searchResponse;
     try {
-      searchResponse = await Api.get(
-        `/search?page=${page}&orderBy=${orderBy}:${order}&${query}`
-      );
+      searchResponse = await Api.get(`/search?page=${page}&orderBy=${orderBy}:${order}&${query}`);
     } catch (err) {
       searchResponse = err;
     }
