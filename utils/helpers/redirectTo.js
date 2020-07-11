@@ -23,4 +23,5 @@ export const pages = {
   signup: '/signup',
   cart: '/cart',
   orderDetails: '/dashboard/purchases/detail',
+  checkout: '/cart/payment',
 };

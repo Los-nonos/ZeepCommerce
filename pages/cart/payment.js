@@ -1,7 +1,3 @@
-import React from 'react';
+import CartCheckout from '../../views/containers/cart/checkout';
 
-class Dummy extends React.Component {
-
-}
-
-export default Dummy;
+export default CartCheckout;

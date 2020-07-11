@@ -1,14 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-const styles = {};
+import MercadoPagoLayout from '../../components/Organism/ShoppingCart/MercadoPagoLayout';
+import styles from '../../../styles/zeepCommerceStyle/pages/cartCheckoutStyle';
+import classNames from 'classnames';
+import Main from '../../layouts/Main';
 
 class CartCheckout extends React.Component {
   render() {
+    const { classes } = this.props;
     return (
-      <div>
-
-      </div>
+      <Main pageName={'Pagar - Zeep'}>
+        <div className={classNames(classes.container)}>
+          <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js" />
+          <MercadoPagoLayout cart={{description: 'Azucar blanca'}} />
+        </div>
+      </Main>
     );
   }
 }
