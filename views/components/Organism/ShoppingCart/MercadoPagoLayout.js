@@ -1,6 +1,7 @@
 import React from 'react';
 import CustomButton from '../../Atoms/CustomButtons/Button';
 import { env } from '../../../../config/environment';
+import Input from '../../Atoms/CustomInput/CustomInput';
 
 class MercadoPagoLayout extends React.Component {
   doSubmit = false;
@@ -22,7 +23,7 @@ class MercadoPagoLayout extends React.Component {
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     if (!this.isServer()) {
       return new Promise((resolve, reject) => {
         try{
@@ -60,7 +61,6 @@ class MercadoPagoLayout extends React.Component {
           [field]: formElements.namedItem(field).value,
         }))
         .reduce((current, next) => ({ ...current, ...next }));
-      console.log($form);
       window.Mercadopago.createToken($form, this.sdkResponseHandler);
     }
   };
@@ -68,7 +68,6 @@ class MercadoPagoLayout extends React.Component {
   sdkResponseHandler = (status, response) => {
     if (status !== 200 && status !== 201) {
       alert('verifique la información proporcionada');
-      console.log(response);
     } else {
       this.setState({ token: response.id });
       this.doSubmit = true;
@@ -136,7 +135,6 @@ class MercadoPagoLayout extends React.Component {
   };
 
   listOptionsInstallments = () => {
-    console.log(this.state.installmentsOptions);
     return this.state.installmentsOptions.map(option => {
       return <option value={option.installments}>{option.recommended_message}</option>;
     });
@@ -149,15 +147,15 @@ class MercadoPagoLayout extends React.Component {
           <form onSubmit={this.doPay}>
             <p>
               <label htmlFor="description">Descripción</label>
-              <input type="text" name="description" id="description" value={this.props.cart.description} />
+              <Input type="text" inputProps={{ value: this.props.cart.description, name: 'description', multiline: true }} />
             </p>
             <p>
               <label htmlFor="transaction_amount">Monto a pagar</label>
-              <input name="transaction_amount" id="transaction_amount" readOnly={true} value={this.getAmount()} />
+              <Input name="transaction_amount" id="transaction_amount" inputProps={{value: this.getAmount(), readOnly: true }} />
             </p>
             <p>
               <label htmlFor="cardNumber">Número de la tarjeta</label>
-              <input
+              <Input
                 type="text"
                 id="cardNumber"
                 data-checkout="cardNumber"
@@ -186,11 +184,11 @@ class MercadoPagoLayout extends React.Component {
             </p>
             <p>
               <label htmlFor="cardholderName">Nombre y apellido</label>
-              <input type="text" id="cardholderName" onChange={this.handleSubmit} data-checkout="cardholderName" />
+              <Input type="text" id="cardholderName" onChange={this.handleSubmit} data-checkout="cardholderName" />
             </p>
             <p>
               <label htmlFor="cardExpirationMonth">Mes de vencimiento</label>
-              <input
+              <Input
                 type="text"
                 id="cardExpirationMonth"
                 name={'cardExpirationMonth'}
@@ -219,7 +217,7 @@ class MercadoPagoLayout extends React.Component {
             </p>
             <p>
               <label htmlFor="cardExpirationYear">Año de vencimiento</label>
-              <input
+              <Input
                 type="text"
                 id="cardExpirationYear"
                 name={'cardExpirationYear'}
@@ -248,7 +246,7 @@ class MercadoPagoLayout extends React.Component {
             </p>
             <p>
               <label htmlFor="securityCode">Código de seguridad</label>
-              <input
+              <Input
                 type="text"
                 id="securityCode"
                 name={'securityCode'}
@@ -287,7 +285,7 @@ class MercadoPagoLayout extends React.Component {
             </p>
             <p>
               <label htmlFor="docNumber">Número de documento</label>
-              <input
+              <Input
                 type="text"
                 id="docNumber"
                 name={'docNumber'}

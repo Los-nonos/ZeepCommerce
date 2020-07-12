@@ -7,14 +7,31 @@ import classNames from 'classnames';
 import Main from '../../layouts/Main';
 
 class CartCheckout extends React.Component {
+
+  getDescription = () => {
+    let description = '';
+    this.props.cart.productsSaved.forEach(product => {
+      description += `${product.name}, \n`;
+    });
+    return description.substring(0, description.length - 4);
+  }
+
+  calculateTotalPrice() {
+    let acumulated = 0;
+    this.props.cart.productsSaved.forEach(product => {
+      acumulated += (product.price * product.quantity);
+    });
+    return acumulated;
+  }
+
   render() {
     const { classes } = this.props;
     return (
       <Main pageName={'Pagar - Zeep'}>
-        <div className={classNames(classes.container)}>
+        <div style={{backgroundColor: '#000'}} className={classNames(classes.container)}>
           {this.props.paymentMethods.mercadoPago ? (
             <>
-              <MercadoPagoLayout cart={{ description: 'Azucar blanca', transactionAmount: 350 }} />
+              <MercadoPagoLayout cart={{ description: this.getDescription(), transactionAmount: this.calculateTotalPrice() }} />
             </>
           ) : null}
         </div>
