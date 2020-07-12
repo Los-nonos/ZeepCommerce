@@ -74,4 +74,5 @@ export const actionNames = {
   loadProductsFromShoppingCart: 'LOAD_PRODUCTS_FROM_SHOPPING_CART',
   loadProductsFromShoppingCartSuccessfully: 'LOAD_PRODUCTS_FROM_SHOPPING_CART_SUCCESSFULLY',
   loadProductsFromShoppingCartFail: 'LOAD_PRODUCTS_FROM_SHOPPING_CART_FAIL',
+  removeProductInCart: 'REMOVE_PRODUCT_IN_CART',
 };

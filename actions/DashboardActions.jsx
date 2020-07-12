@@ -1,5 +1,13 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function removeProduct(id) {
+  return {
+    type: actionNames.removeProductInCart,
+    id
+  };
+}
+
+
 export function loadProductsFromShoppingCart() {
   return {
     type: actionNames.loadProductsFromShoppingCart,

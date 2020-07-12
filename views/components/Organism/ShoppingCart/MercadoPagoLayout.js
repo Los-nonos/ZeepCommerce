@@ -22,11 +22,17 @@ class MercadoPagoLayout extends React.Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     if (!this.isServer()) {
-      window.Mercadopago.setPublishableKey(env('MERCADO_PAGO_KEY', 'APP_USR-854382a2-e53a-4386-8cc4-67c47ed02284'));
-      window.Mercadopago.getIdentificationTypes();
-      this.setState({ identificationType: '1' });
+      return new Promise((resolve, reject) => {
+        try{
+          window.Mercadopago.setPublishableKey(env('MERCADO_PAGO_KEY', 'APP_USR-854382a2-e53a-4386-8cc4-67c47ed02284'));
+          window.Mercadopago.getIdentificationTypes();
+          resolve();
+        }catch (e) {
+          reject(e);
+        }
+      });
     }
   }
 

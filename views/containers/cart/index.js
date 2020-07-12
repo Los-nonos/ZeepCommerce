@@ -32,8 +32,10 @@ class CartIndex extends React.Component {
 
   listProducts = () => {
     const { classes } = this.props;
-    const products = this.props.cart.productsSaved.map(product => {
-      return [
+    const products = [];
+
+    this.props.cart.productsSaved.forEach(product => {
+      products.push([
         <div className={classes.imgContainer} key={1}>
           <img src={product.images[0]} alt="..." className={classes.img} />
         </div>,
@@ -44,7 +46,7 @@ class CartIndex extends React.Component {
           <br />
           <small className={classes.tdNameSmall}>{product.brands[0]}</small>
         </span>,
-        product.characteristics[0].name,
+        product.characteristics[0].value,
         <span key={1}>
           <small className={classes.tdNumberSmall}>$</small>
           {product.price}
@@ -53,10 +55,10 @@ class CartIndex extends React.Component {
           {product.quantity}
           {` `}
           <div className={classes.buttonGroup}>
-            <Button color="info" size="sm" round className={classes.firstButton} onClick={this.removeProductQuantity(product.id)}>
+            <Button color="info" size="sm" round className={classes.firstButton} onClick={() => {this.removeProductQuantity(product.id)}}>
               <Remove />
             </Button>
-            <Button color="info" size="sm" round className={classes.lastButton} onClick={this.addProductQuantity(product.id)}>
+            <Button color="info" size="sm" round className={classes.lastButton} onClick={() => {this.addProductQuantity(product.id)}}>
               <Add />
             </Button>
           </div>
@@ -65,11 +67,11 @@ class CartIndex extends React.Component {
           <small className={classes.tdNumberSmall}>$</small>{this.calculateAmount(product.price, product.quantity)}
         </span>,
         <Tooltip key={1} id="close1" title="Remove item" placement="left" classes={{ tooltip: classes.tooltip }}>
-          <Button link round={true}>
+          <Button link round={true} onClick={() => {this.removeProduct(product.id)}}>
             <Close />
           </Button>
         </Tooltip>,
-      ];
+      ]);
     });
 
     products.push({
@@ -77,27 +79,25 @@ class CartIndex extends React.Component {
       colspan: '3',
       amount: (
         <span>
-          <small>€</small>2,346
+          <small>€</small>{this.calculateTotalPrice()}
         </span>
       ),
       col: {
         colspan: 3,
         text: (
-          <Button color="info" round onClick={this.setMercadoPago()}>
+          <Button color="info" round={true} link={true} onClick={() => this.setMercadoPago()}>
             Completar Compra <KeyboardArrowRight />
           </Button>
         ),
       },
     });
 
-    this.setState({ products, isMounted: true });
-  };
+    return products;
+  }
 
   setMercadoPago = () => {
-    if(!this.state.isMounted) {
-      return;
-    }
     this.dispatch(actions.mercadoPagoSelected());
+    redirectTo(pages.checkout);
   };
 
   isCartContainsProducts = () => {
@@ -108,18 +108,24 @@ class CartIndex extends React.Component {
     return price * quantity;
   }
 
+  calculateTotalPrice() {
+    let acumulated = 0;
+    this.props.cart.productsSaved.forEach(product => {
+      acumulated += (product.price * product.quantity);
+    });
+    return acumulated;
+  }
+
   removeProductQuantity = (id) => {
-    if(!this.state.isMounted) {
-      return;
-    }
     this.dispatch(actions.removeProductQuantityFromShoppingCart(id));
   }
 
   addProductQuantity = (id) => {
-    if(!this.state.isMounted) {
-      return;
-    }
     this.dispatch(actions.addProductQuantityFromShoppingCart(id));
+  }
+
+  removeProduct = (id) => {
+    this.dispatch(actions.removeProduct(id));
   }
 
   render() {
@@ -148,7 +154,7 @@ class CartIndex extends React.Component {
                     <h3 className={classes.cardTitle}>Shopping Cart</h3>
                     <Table
                       tableHead={['', 'PRODUCTO', 'COLOR', 'PRECIO', 'CANTIDAD', 'MONTO', '']}
-                      tableData={this.state.products}
+                      tableData={this.listProducts()}
                       tableShopping={true}
                       customHeadCellClasses={[
                         classes.textCenter,

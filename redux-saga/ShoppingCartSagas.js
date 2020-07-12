@@ -12,7 +12,7 @@ export function* addProductQuantityFromCart(action) {
 
   let products = productsSaved.map(product => {
     if(product.id === id) {
-      product.quantity -= 1;
+      product.quantity += 1;
       return product;
     }
     return product;
@@ -42,7 +42,7 @@ export function* removeProductQuantityFromCart(action) {
       }
     }
     return product;
-  })
+  });
 
   yield all([
     put({type: actionNames.saveProductsCart, products}),
