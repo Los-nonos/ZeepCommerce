@@ -1,9 +1,8 @@
 import React from 'react';
 import CardBody from '../../Atoms/Card/CardBody';
-import { redirectTo } from '../../../../utils/helpers/redirectTo';
 import GridContainer from '../../Atoms/Grid/GridContainer';
 import GridItem from '../../Atoms/Grid/GridItem';
-import orderCardStyle from '../../../../../ZeepCommerce/styles/zeepCommerceStyle/components/orderCardStyle';
+import orderCardStyle from '../../../../styles/zeepCommerceStyle/components/orderCardStyle';
 import { withStyles } from '@material-ui/core';
 
 class OrderCard extends React.Component {
