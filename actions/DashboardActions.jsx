@@ -1,5 +1,11 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function mercadoPagoSelected() {
+  return {
+    type: actionNames.mercadoPagoSelected,
+  };
+}
+
 export function getOrders() {
   return {
     type: actionNames.loadOrders,

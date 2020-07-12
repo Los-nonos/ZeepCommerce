@@ -64,4 +64,5 @@ export const actionNames = {
   addProductInCartFail: 'ADD_PRODUCT_IN_CART_FAIL',
   removeProductInCartSuccessfully: 'REMOVE_PRODUCT_IN_CART_SUCCESSFULLY',
   removeProductInCartFail: 'REMOVE_PRODUCT_IN_CART_FAIL',
+  mercadoPagoSelected: 'MERCADO_PAGO_SELECTED',
 };

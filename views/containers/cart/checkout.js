@@ -12,8 +12,12 @@ class CartCheckout extends React.Component {
     return (
       <Main pageName={'Pagar - Zeep'}>
         <div className={classNames(classes.container)}>
-          <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js" />
-          <MercadoPagoLayout cart={{ description: 'Azucar blanca', transactionAmount: 350 }} />
+          {this.props.paymentMethods.mercadoPago ? (
+            <>
+              <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js" />
+              <MercadoPagoLayout cart={{ description: 'Azucar blanca', transactionAmount: 350 }} />
+            </>
+          ) : null}
         </div>
       </Main>
     );

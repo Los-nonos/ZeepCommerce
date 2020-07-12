@@ -9,9 +9,14 @@ import Header from '../components/Molecules/Header/Header';
 import HeaderLinks from '../components/Molecules/Header/HeaderLinks';
 import GridContainer from '../components/Atoms/Grid/GridContainer';
 import Footer from '../components/Molecules/Footer/Footer';
+import Notification from '../components/Molecules/Notification/Notification';
 
 function Main(props) {
   const { pageName, children, ...rest } = props;
+
+  const onNotificationClosed = () => {
+
+  }
 
   return (
     <>
@@ -21,6 +26,7 @@ function Main(props) {
         <title>{pageName}</title>
       </Head>
       <Header absolute color="transparent" brand="Zeep Commerce" rightLinks={<HeaderLinks />} {...rest} />
+      <Notification />
       {children}
       <Footer />
     </>

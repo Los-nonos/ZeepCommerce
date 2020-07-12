@@ -6,7 +6,12 @@ const defaultState = {
   formErrors: {},
   orders: [],
   orderWithDetails: {},
-  cart: {},
+  cart: {
+    productsSaved: [],
+  },
+  paymentMethods: {
+    mercadoPago: false,
+  },
 };
 
 const dashboardReducer = (state = defaultState, action) => {
@@ -31,6 +36,13 @@ const dashboardReducer = (state = defaultState, action) => {
       return { ...state, cart: { productsNumber: action.productsNumber } };
     case actionNames.removeProductInCartFail:
       return { ...state };
+    case actionNames.mercadoPagoSelected:
+      return {
+        ...state,
+        paymentMethods: {
+          mercadoPago: true,
+        },
+      };
     default:
       return state;
   }
