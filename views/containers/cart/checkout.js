@@ -14,10 +14,7 @@ class CartCheckout extends React.Component {
         <div className={classNames(classes.container)}>
           {this.props.paymentMethods.mercadoPago ? (
             <>
-              <script src="https://secure.mlstatic.com/sdk/javascript/v1/mercadopago.js" />
-              {this.props.paymentMethods.mercadoPago ? (
-                <MercadoPagoLayout cart={{ description: 'Azucar blanca', transactionAmount: 350 }} />
-              ) : <></>}
+              <MercadoPagoLayout cart={{ description: 'Azucar blanca', transactionAmount: 350 }} />
             </>
           ) : null}
         </div>
