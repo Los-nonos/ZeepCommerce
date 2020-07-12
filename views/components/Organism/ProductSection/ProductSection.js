@@ -14,7 +14,7 @@ class ProductSection extends React.Component {
     return arrayProducts.map((product, key) => {
       return (
         <GridItem md={4} sm={4} key={key}>
-          <ProductCard onProductSelected={this.onProductSelected} data={product} />
+          <ProductCard onProductSelected={this.onProductSelected} addInShoppingCart={this.addInShoppingCart} data={product} />
         </GridItem>
       );
     });
@@ -23,6 +23,10 @@ class ProductSection extends React.Component {
   onProductSelected = uuid => {
     this.dispatch(this.props.seeDetails(uuid));
   };
+
+  addInShoppingCart = (id) => {
+    this.dispatch(this.props.addProductInShoppingCart(id));
+  }
 
   render() {
     return <GridContainer>{this.getProductsContainer(this.props.products)}</GridContainer>;

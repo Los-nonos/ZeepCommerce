@@ -34,6 +34,17 @@ class Dashboard {
 
     return dashboardAdapter.getOrderByUuidAdapt(response);
   };
+
+  getProductsFromShoppingCart = async products => {
+    let response;
+    try {
+      response = await Api.post(`payments/products`, { products });
+    }catch (err) {
+      response = err;
+    }
+
+    return dashboardAdapter.getProductsFromShoppingCartAdapt(response);
+  }
 }
 
 export default new Dashboard();

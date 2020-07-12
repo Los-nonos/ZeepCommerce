@@ -2,8 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 import ImageGallery from 'react-image-gallery';
-import Header from '../../components/Molecules/Header/Header';
-import HeaderLinks from '../../components/Molecules/Header/HeaderLinks';
 import Parallax from '../../components/Molecules/Parallax/Parallax';
 import GridContainer from '../../components/Atoms/Grid/GridContainer';
 import GridItem from '../../components/Atoms/Grid/GridItem';

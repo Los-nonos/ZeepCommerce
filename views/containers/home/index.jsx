@@ -16,6 +16,7 @@ import * as productActions from '../../../actions/SearchActions';
 import withStyles from '@material-ui/core/styles/withStyles';
 import style from '../../../styles/zeepCommerceStyle/pages/landingPage';
 import { pages, redirectTo } from '../../../utils/helpers/redirectTo';
+import * as generalActions from '../../../actions/GeneralActions';
 
 class Home extends React.Component {
   constructor(props) {
@@ -55,6 +56,7 @@ class Home extends React.Component {
                     <HomeProductSection
                       seeDetails={productActions.seeDetails}
                       data={this.props.featuredProducts.slice(0, 3)}
+                      addProductInShoppingCart={generalActions.addProductInShoppingCart}
                     />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
@@ -64,11 +66,16 @@ class Home extends React.Component {
                     <HomeProductSection
                       seeDetails={productActions.seeDetails}
                       data={this.props.selledProducts.slice(0, 3)}
+                      addProductInShoppingCart={generalActions.addProductInShoppingCart}
                     />
                   </GridItem>
                   <GridItem md={12} sm={12} className={classes.sectionSplited}>
                     <h2 className={`${classes.subtitle} ${classes.mlAuto} ${classes.mrAuto}`}>Nuestros Productos</h2>
-                    <HomeProductSection seeDetails={productActions.seeDetails} data={this.props.products.slice(0, 3)} />
+                    <HomeProductSection
+                      seeDetails={productActions.seeDetails}
+                      data={this.props.products.slice(0, 3)}
+                      addProductInShoppingCart={generalActions.addProductInShoppingCart}
+                    />
                   </GridItem>
                   <GridItem md={3} sm={3} className={classNames(classes.mlAuto, classes.mrAuto, classes.textCenter)}>
                     <Button

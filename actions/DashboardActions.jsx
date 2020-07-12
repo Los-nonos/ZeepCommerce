@@ -1,5 +1,28 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function loadProductsFromShoppingCart() {
+  return {
+    type: actionNames.loadProductsFromShoppingCart,
+  };
+}
+
+
+export function addProductQuantityFromShoppingCart(id) {
+  return {
+    type: actionNames.addProductQuantityFromCart,
+    id
+  };
+}
+
+
+export function removeProductQuantityFromShoppingCart(id) {
+  return {
+    type: actionNames.removeProductQuantityFromCart,
+    id
+  };
+}
+
+
 export function mercadoPagoSelected() {
   return {
     type: actionNames.mercadoPagoSelected,

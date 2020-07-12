@@ -1,5 +1,13 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
+export function addProductInShoppingCart(id) {
+  return {
+    type: actionNames.addProductInShoppingCart,
+    id
+  };
+}
+
+
 export function closeNotification() {
   return {
     type: actionNames.closeNotification,

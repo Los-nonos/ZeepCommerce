@@ -64,6 +64,27 @@ class DashboardAdapter {
       },
     };
   };
+
+  getProductsFromShoppingCartAdapt = (response) => {
+    const { status, data } = response;
+
+    if (!isError(status)) {
+      return {
+        type: actionNames.loadProductsFromShoppingCartSuccessfully,
+        products: data.data,
+      };
+    }
+    const { error } = data;
+
+    return {
+      type: actionNames.loadProductsFromShoppingCartFail,
+      error: {
+        code: status,
+        type: null,
+        errors: error,
+      },
+    };
+  }
 }
 
 export default new DashboardAdapter();

@@ -8,6 +8,12 @@ import { changePassword } from './redux-saga/userAccountSagas';
 import { loadProducts } from './redux-saga/HomeSagas';
 import { loadFilters, loadProductsByFilter, searchProducts, seeDetails } from './redux-saga/ProductsSagas';
 import { getOrderByUuid, getOrders, getUserById } from './redux-saga/DashboardSagas';
+import {
+  addProductInShoppingCart,
+  addProductQuantityFromCart, getProductsFromShoppingCart,
+  removeProductQuantityFromCart,
+  saveProductsInLocalStorage,
+} from './redux-saga/ShoppingCartSagas';
 
 const sagas = [
   takeLatest(actionNames.login, login),
@@ -26,6 +32,11 @@ const sagas = [
   takeLatest(actionNames.loadUserById, getUserById),
   takeLatest(actionNames.loadOrders, getOrders),
   takeLatest(actionNames.loadOrderByUuid, getOrderByUuid),
+  takeLatest(actionNames.removeProductQuantityFromCart, removeProductQuantityFromCart),
+  takeLatest(actionNames.addProductQuantityFromCart, addProductQuantityFromCart),
+  takeLatest(actionNames.saveProductsCart, saveProductsInLocalStorage),
+  takeLatest(actionNames.addProductInShoppingCart, addProductInShoppingCart),
+  takeLatest(actionNames.loadProductsFromShoppingCart, getProductsFromShoppingCart),
 ];
 
 export default function* rootSaga() {

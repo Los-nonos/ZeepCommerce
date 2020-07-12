@@ -65,4 +65,13 @@ export const actionNames = {
   removeProductInCartSuccessfully: 'REMOVE_PRODUCT_IN_CART_SUCCESSFULLY',
   removeProductInCartFail: 'REMOVE_PRODUCT_IN_CART_FAIL',
   mercadoPagoSelected: 'MERCADO_PAGO_SELECTED',
+  addProductQuantityFromCart: 'ADD_PRODUCT_QUANTITY_FROM_CART',
+  removeProductQuantityFromCart: 'REMOVE_PRODUCT_QUANTITY_FROM_CART',
+  addProductQuantityFromCartSuccessfully: 'ADD_PRODUCT_QUANTITY_FROM_CART_SUCCESSFULLY',
+  removeProductQuantityFromCartSuccessfully: 'REMOVE_PRODUCT_QUANTITY_FROM_CART_SUCCESSFULLY',
+  saveProductsCart: 'SAVE_PRODUCTS_CART',
+  addProductInShoppingCart: 'ADD_PRODUCT_IN_SHOPPING_CART',
+  loadProductsFromShoppingCart: 'LOAD_PRODUCTS_FROM_SHOPPING_CART',
+  loadProductsFromShoppingCartSuccessfully: 'LOAD_PRODUCTS_FROM_SHOPPING_CART_SUCCESSFULLY',
+  loadProductsFromShoppingCartFail: 'LOAD_PRODUCTS_FROM_SHOPPING_CART_FAIL',
 };

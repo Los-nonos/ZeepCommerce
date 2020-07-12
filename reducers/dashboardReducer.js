@@ -43,6 +43,14 @@ const dashboardReducer = (state = defaultState, action) => {
           mercadoPago: true,
         },
       };
+    case actionNames.removeProductQuantityFromCartSuccessfully:
+      return { ...state, cart: { productsSaved: action.products } };
+    case actionNames.addProductQuantityFromCartSuccessfully:
+      return { ...state, cart: { productsSaved: action.products } };
+    case actionNames.loadProductsFromShoppingCartSuccessfully:
+      return {...state, cart: { productsSaved: action.products }};
+    case actionNames.loadProductsFromShoppingCartFail:
+      return { ...state, cart: { productsSaved: [] }};
     default:
       return state;
   }
