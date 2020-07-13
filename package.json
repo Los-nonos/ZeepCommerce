@@ -4,7 +4,7 @@
   "author": "los-ñoños",
   "license": "MIT",
   "scripts": {
-    "start": "cp .env.example .env && yarn run build && next start -p $PORT",
+    "start": "next start",
     "dev": "next",
     "build": "next build && sass styles:static/build",
     "linter:check": "eslint './**/*.jsx'",
