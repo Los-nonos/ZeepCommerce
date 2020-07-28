@@ -24,6 +24,6 @@ export const isProduction = () => {
 
 const configValues = {
   url: {
-    api: isProduction() ? 'http://10.5.0.2/api' : 'http://10.5.0.2/api',
+    api: 'http://10.5.0.2/api',
   },
 };

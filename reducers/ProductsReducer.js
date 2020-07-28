@@ -1,7 +1,8 @@
 import { actionNames } from '../utils/constants/actionConstants';
 
 export const stateDefault = {
-  filters: [],
+  categories: [],
+  brands: [],
   products: [],
   productWithDetails: {},
   priceRange: {
@@ -17,7 +18,8 @@ const searchReducer = (state = stateDefault, action) => {
     case actionNames.loadFiltersSuccesful:
       return {
         ...state,
-        filters: action.filters,
+        categories: action.categories,
+        brands: action.brands
       };
     case actionNames.loadFiltersFail:
       return { ...state, filters: [] };

@@ -8,7 +8,8 @@ class SearchAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadFiltersSuccesful,
-        filters: data.data.categories,
+        categories: data.data.categories,
+        brands: data.data.brands,
       };
     }
 

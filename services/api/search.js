@@ -6,7 +6,7 @@ class Search {
   loadFilters = async () => {
     let loadResponse;
     try {
-      loadResponse = await Api.get(`categories/`);
+      loadResponse = await Api.get(`filters/`);
     } catch (err) {
       loadResponse = err;
     }

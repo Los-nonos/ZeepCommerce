@@ -32,6 +32,7 @@ class ProductSelector extends React.Component {
       currentFilters: this.props.currentFilters,
       priceRange: [600, 700],
       categorySelected: '',
+      brandSelected: ''
     };
 
     this.dispatch = props.dispatch;
@@ -63,7 +64,7 @@ class ProductSelector extends React.Component {
       return [];
     }
 
-    const filters = this.props.filters;
+    const filters = this.props.categories;
     const categoryFilters = filters.map(filter => {
       if (filter.name === this.state.categorySelected) {
         return filter.filters;
@@ -104,10 +105,37 @@ class ProductSelector extends React.Component {
     return renderFilters[0];
   };
 
+  renderBrands = () => {
+    const { classes } = this.props;
+
+    return this.props.brands.map((brand, key) => {
+      return (
+        <FormControlLabel
+          control={
+            <Checkbox
+              tabIndex={-1}
+              onClick={() => this.handleBrand(brand.name)}
+              checked={this.state.brandSelected === brand.name}
+              checkedIcon={<Check className={classes.checkedIcon} />}
+              icon={<Check className={classes.uncheckedIcon} />}
+              classes={{
+                checked: classes.checked,
+                root: classes.checkRoot,
+              }}
+            />
+          }
+          classes={{ label: classes.label }}
+          label={brand.name}
+          key={key}
+        />
+      );
+    });
+  }
+
   renderCategories = () => {
     const { classes } = this.props;
 
-    return this.props.filters.map((category, key) => {
+    return this.props.categories.map((category, key) => {
       return (
         <FormControlLabel
           control={
@@ -154,6 +182,14 @@ class ProductSelector extends React.Component {
       this.setState({ categorySelected: '' });
     } else {
       this.setState({ categorySelected: name });
+    }
+  }
+
+  handleBrand(name) {
+    if (this.state.brandSelected === name) {
+      this.setState({ brandSelected: '' });
+    } else {
+      this.setState({ brandSelected: name });
     }
   }
 
@@ -221,8 +257,12 @@ class ProductSelector extends React.Component {
                 ),
               },
               {
-                title: 'Categories',
+                title: 'Categorias',
                 content: this.renderCategories(),
+              },
+              {
+                title: 'Marcas',
+                content: this.renderBrands(),
               },
               ...this.renderFilters(),
             ]}

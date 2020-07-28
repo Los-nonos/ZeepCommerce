@@ -33,20 +33,19 @@ class ProductCard extends React.Component {
     if (!this.state.data) {
       return <></>;
     }
-
     return (
       <Card plain={true} product onClick={this.onClicked}>
         <CardBody plain={true} className={classNames(classes.mlAuto, classes.border, classes.mrAuto)}>
           <a href="" onClick={this.onClicked}>
-            <img src={this.state.data.image} alt="40px" height="200px" />
+            <img src={this.props.data.images[0]} alt="product image" height="200px" />
           </a>
           <a href="" onClick={this.onClicked}>
-            <h4 className={classes.cardTitle}>{this.state.data.productName}</h4>
+            <h4 className={classes.cardTitle}>{this.props.data.name}</h4>
           </a>
-          <p className={classes.description}>{this.props.data.productDescription}</p>
+          <p className={classes.description}>{this.props.data.description}</p>
           <div className={classes.justifyContentBetween}>
             <div className={classes.priceContainer}>
-              <span className={classes.price}>{`Precio: $${this.state.data.price}`}</span>
+              <span className={classes.price}>{`Precio: $${this.props.data.price.amount}`}</span>
             </div>
             <Tooltip id="tooltip-top" title="Saved to Wishlist" placement="left" classes={{ tooltip: classes.tooltip }}>
               <Button justIcon simple color="rose" className={classes.pullRight} onClick={this.addInShoppingCart}>
