@@ -11,9 +11,9 @@ import {
   blackColor,
 } from '../../zeepCommerceStyles';
 
-import tooltipsStyle from "../tooltipsStyle";
-import imagesStyles from "../imagesStyles";
-import customSelectStyle from "../customSelectStyle";
+import tooltipsStyle from '../tooltipsStyle';
+import imagesStyles from '../imagesStyles';
+import customSelectStyle from '../customSelectStyle';
 
 const productStyle = {
   mlAuto,
@@ -23,174 +23,174 @@ const productStyle = {
   ...tooltipsStyle,
   container: {
     ...container,
-    zIndex: 2
+    zIndex: 2,
   },
   mainRaised: {
-    ...mainRaised
+    ...mainRaised,
   },
   section: {
     ...section,
-    padding: "70px 0px"
+    padding: '70px 0px',
   },
   title: {
     ...title,
-    marginBottom: 0
+    marginBottom: 0,
   },
   sectionGray: {
-    background: grayColor
+    background: grayColor,
   },
   mainPrice: {
-    margin: "10px 0px 25px"
+    margin: '10px 0px 25px',
   },
   textCenter: {
-    textAlign: "center!important"
+    textAlign: 'center!important',
   },
   features: {
-    paddingTop: "30px"
+    paddingTop: '30px',
   },
   productPage: {
     backgroundColor: grayColor,
-    "& $mainRaised": {
-      margin: "-40vh 0 0",
-      padding: "40px"
+    '& $mainRaised': {
+      margin: '-40vh 0 0',
+      padding: '40px',
     },
-    "& .image-gallery-slide img": {
-      borderRadius: "3px",
-      maxWidth: "300px",
-      height: "auto"
+    '& .image-gallery-slide img': {
+      borderRadius: '3px',
+      maxWidth: '300px',
+      height: 'auto',
     },
-    "& .image-gallery-swipe": {
-      margin: "30px 0px",
-      overflow: "hidden",
-      width: "100%",
-      height: "auto",
-      textAlign: "center"
+    '& .image-gallery-swipe': {
+      margin: '30px 0px',
+      overflow: 'hidden',
+      width: '100%',
+      height: 'auto',
+      textAlign: 'center',
     },
-    "& .image-gallery-thumbnails > .image-gallery-thumbnails-container a": {
-      "&.active > div": {
-        opacity: "1",
-        borderColor: grayColor
+    '& .image-gallery-thumbnails > .image-gallery-thumbnails-container a': {
+      '&.active > div': {
+        opacity: '1',
+        borderColor: grayColor,
       },
-      "& > div": {
-        width: "80%",
-        maxWidth: "85px",
-        margin: "0 auto",
-        padding: "8px",
-        display: "block",
-        border: "1px solid transparent",
-        background: "transparent",
-        borderRadius: "3px",
-        opacity: ".8"
+      '& > div': {
+        width: '80%',
+        maxWidth: '85px',
+        margin: '0 auto',
+        padding: '8px',
+        display: 'block',
+        border: '1px solid transparent',
+        background: 'transparent',
+        borderRadius: '3px',
+        opacity: '.8',
       },
-      "& > div img": {
-        borderRadius: "3px",
-        width: "100%",
-        height: "auto",
-        textAlign: "center"
-      }
-    }
+      '& > div img': {
+        borderRadius: '3px',
+        width: '100%',
+        height: 'auto',
+        textAlign: 'center',
+      },
+    },
   },
   titleRow: {
-    marginTop: "-8vh"
+    marginTop: '-8vh',
   },
   floatRight: {
-    float: "right!important"
+    float: 'right!important',
   },
   pageHeader: {
-    minHeight: "60vh",
-    maxHeight: "600px",
-    height: "auto",
-    backgroundPosition: "top center"
+    minHeight: '60vh',
+    maxHeight: '600px',
+    height: 'auto',
+    backgroundPosition: 'top center',
   },
   relatedProducts: {
-    marginTop: "50px",
-    "& $title": {
-      marginBottom: "80px"
-    }
+    marginTop: '50px',
+    '& $title': {
+      marginBottom: '80px',
+    },
   },
   pickSize: {
-    marginTop: "50px"
+    marginTop: '50px',
   },
   pullRight: {
-    float: "right"
+    float: 'right',
   },
   cardCategory: {
-    textAlign: "center",
-    marginTop: "10px"
+    textAlign: 'center',
+    marginTop: '10px',
   },
   cardTitle: {
     ...cardTitle,
-    textAlign: "center"
+    textAlign: 'center',
   },
   cardDescription: {
-    textAlign: "center",
-    color: grayColor
+    textAlign: 'center',
+    color: grayColor,
   },
   textRose: {
-    color: roseColor
+    color: roseColor,
   },
   justifyContentBetween: {
-    justifyContent: "space-between!important"
+    justifyContent: 'space-between!important',
   },
   socialFeed: {
-    "& p": {
-      display: "table-cell",
-      verticalAlign: "top",
-      overflow: "hidden",
-      paddingBottom: "10px",
-      maxWidth: 300
+    '& p': {
+      display: 'table-cell',
+      verticalAlign: 'top',
+      overflow: 'hidden',
+      paddingBottom: '10px',
+      maxWidth: 300,
     },
-    "& i": {
-      fontSize: "20px",
-      display: "table-cell",
-      paddingRight: "10px"
-    }
+    '& i': {
+      fontSize: '20px',
+      display: 'table-cell',
+      paddingRight: '10px',
+    },
   },
   img: {
-    width: "20%",
-    marginRight: "5%",
-    marginBottom: "5%",
-    float: "left"
+    width: '20%',
+    marginRight: '5%',
+    marginBottom: '5%',
+    float: 'left',
   },
   block: {
-    color: "inherit",
-    padding: "0.9375rem",
-    fontWeight: "500",
-    fontSize: "12px",
-    textTransform: "uppercase",
-    borderRadius: "3px",
-    textDecoration: "none",
-    position: "relative",
-    display: "block"
+    color: 'inherit',
+    padding: '0.9375rem',
+    fontWeight: '500',
+    fontSize: '12px',
+    textTransform: 'uppercase',
+    borderRadius: '3px',
+    textDecoration: 'none',
+    position: 'relative',
+    display: 'block',
   },
   inlineBlock: {
-    display: "inline-block",
-    padding: "0px",
-    width: "auto"
+    display: 'inline-block',
+    padding: '0px',
+    width: 'auto',
   },
   list: {
-    marginBottom: "0",
-    padding: "0",
-    marginTop: "0"
+    marginBottom: '0',
+    padding: '0',
+    marginTop: '0',
   },
   left: {
-    float: "left!important",
-    display: "block"
+    float: 'left!important',
+    display: 'block',
   },
   right: {
-    padding: "15px 0",
-    margin: "0",
-    float: "right"
+    padding: '15px 0',
+    margin: '0',
+    float: 'right',
   },
   icon: {
-    top: "3px",
-    width: "18px",
-    height: "18px",
-    position: "relative"
+    top: '3px',
+    width: '18px',
+    height: '18px',
+    position: 'relative',
   },
   text: {
     color: blackColor,
-  }
+  },
 };
 
 export default productStyle;

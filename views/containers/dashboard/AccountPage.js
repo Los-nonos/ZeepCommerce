@@ -18,10 +18,10 @@ class AccountPage extends React.Component {
     super(props);
     this.state = {
       formValues: {},
-    }
+    };
     this.dispatch = props.dispatch;
     this.dispatch(actions.checkRoles([Roles.webcustomer]));
-    if(isLogged) {
+    if (isLogged) {
       this.dispatch(actions.getUserById(this.props.userData.id));
     }
   }
@@ -37,7 +37,7 @@ class AccountPage extends React.Component {
     body.id = this.props.userData.id;
 
     this.dispatch(actions.updateCustomer(body));
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -67,13 +67,12 @@ class AccountPage extends React.Component {
               phoneNumber={this.state.formValues.phoneNumber}
               linkedInUrl={this.state.formValues.linkedInUrl}
             />
-            <OrdersData
-              classes={classes}
-              returnValues={this.updateValues}
-            />
+            <OrdersData classes={classes} returnValues={this.updateValues} />
           </GridItem>
           <GridItem md={3}>
-            <Button fullWidth={true} round={true} simple={true} onClick={this.handleSubmit}>Guardar</Button>
+            <Button fullWidth={true} round={true} simple={true} onClick={this.handleSubmit}>
+              Guardar
+            </Button>
           </GridItem>
         </GridContainer>
       </DashboardLayout>
@@ -83,6 +82,6 @@ class AccountPage extends React.Component {
 
 const mapStateToProps = state => {
   return { ...state.dashboardReducer, ...state.loginReducer };
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(AccountPage));

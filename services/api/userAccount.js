@@ -6,15 +6,14 @@ class UserAccount {
     const body = { id, oldPassword, newPassword };
     let response;
 
-    try
-    {
+    try {
       response = await Api.post('auth/change-password', body);
     } catch (err) {
       response = err;
     }
 
     return userAccountAdapter.changePassword(response);
-  }
+  };
 }
 
 export default new UserAccount();

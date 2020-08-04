@@ -4,5 +4,5 @@ export function signUp(personalData) {
   return {
     type: actionNames.signUp,
     ...personalData,
-  }
+  };
 }

@@ -7,7 +7,7 @@ import { config } from '../../config/configuration';
 class ApiFech {
   constructor() {
     this.apiUrl = () => {
-      return config('url.api', 'http://localhost/api');
+      return config('url.api');
     };
   }
 

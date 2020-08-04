@@ -3,10 +3,9 @@ import { actionNames } from '../utils/constants/actionConstants';
 export function forgot(email) {
   return {
     type: actionNames.forgotPassword,
-    email
+    email,
   };
 }
-
 
 export function changePassword(id, oldPassword, newPassword) {
   return {
@@ -16,7 +15,6 @@ export function changePassword(id, oldPassword, newPassword) {
     newPassword,
   };
 }
-
 
 export function login(username, password) {
   return {

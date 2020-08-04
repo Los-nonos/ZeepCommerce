@@ -12,4 +12,4 @@ export default {
   dashboardReducer,
   homeReducer,
   productsReducer,
-}
+};

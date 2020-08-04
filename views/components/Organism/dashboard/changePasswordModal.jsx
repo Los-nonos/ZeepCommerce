@@ -37,7 +37,7 @@ class Description extends React.Component {
     const oldPassword = e.target.elements.oldPassword.value;
     const newPassword = e.target.elements.newPassword.value;
     const newRepeatPassword = e.target.elements.newRepeatPassword.value;
-    if(newPassword === newRepeatPassword) {
+    if (newPassword === newRepeatPassword) {
       this.dispatch(actions.changePassword(this.props.userData.id, oldPassword, newPassword));
     } else {
       this.dispatch(generalActions.showNotification('Las contraseñas no son iguales!', true, 400));
@@ -46,7 +46,7 @@ class Description extends React.Component {
 
   closeNotification = () => {
     this.dispatch(generalActions.closeNotification());
-  }
+  };
 
   render() {
     const { classes } = this.props;
@@ -128,6 +128,6 @@ class Description extends React.Component {
 
 const mapStateToProps = state => {
   return { ...state.loginReducer, ...state.generalReducer };
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(Description));

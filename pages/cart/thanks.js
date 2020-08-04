@@ -1,7 +1,5 @@
 import React from 'react';
 
-class Dummy extends React.Component {
-
-}
+class Dummy extends React.Component {}
 
 export default Dummy;

@@ -1,7 +1,8 @@
-import { actionNames } from "../utils/constants/actionConstants";
+import { actionNames } from '../utils/constants/actionConstants';
 
 export const stateDefault = {
-  filters: [],
+  categories: [],
+  brands: [],
   products: [],
   productWithDetails: {},
   priceRange: {
@@ -9,7 +10,7 @@ export const stateDefault = {
     max: 800,
   },
   page: 1,
-  totalPages: 1
+  totalPages: 1,
 };
 
 const searchReducer = (state = stateDefault, action) => {
@@ -17,7 +18,8 @@ const searchReducer = (state = stateDefault, action) => {
     case actionNames.loadFiltersSuccesful:
       return {
         ...state,
-        filters: action.filters,
+        categories: action.categories,
+        brands: action.brands
       };
     case actionNames.loadFiltersFail:
       return { ...state, filters: [] };
@@ -25,7 +27,7 @@ const searchReducer = (state = stateDefault, action) => {
       return {
         ...state,
         products: action.products,
-        totalPages: action.totalPages
+        totalPages: action.totalPages,
       };
     case actionNames.loadProductsByFilterFail:
       return { ...state, products: [] };

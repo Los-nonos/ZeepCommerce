@@ -42,9 +42,7 @@ class DashboardLayout extends React.Component {
               {...rest}
             />
             <div className={classes.content}>
-              <div className={classes.container}>
-                {children}
-              </div>
+              <div className={classes.container}>{children}</div>
             </div>
             <Footer />
           </div>
@@ -53,6 +51,5 @@ class DashboardLayout extends React.Component {
     );
   }
 }
-
 
 export default withStyles(dashboardLayoutStyles)(DashboardLayout);

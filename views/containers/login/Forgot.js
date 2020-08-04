@@ -94,6 +94,6 @@ class ForgotPassword extends React.Component {
 
 const mapStateToProps = state => {
   return state.loginReducer;
-}
+};
 
 export default connect(mapStateToProps)(withStyles(styles)(ForgotPassword));

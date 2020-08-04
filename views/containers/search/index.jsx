@@ -12,6 +12,7 @@ import ProductFilter from '../../components/Molecules/ProductFilter/Selector';
 import Main from '../../layouts/Main';
 import classNames from 'classnames';
 import * as actions from '../../../actions/SearchActions';
+import * as generalActions from '../../../actions/GeneralActions';
 
 import style from '../../../styles/zeepCommerceStyle/pages/searchProductsStyles';
 
@@ -65,7 +66,6 @@ class SearchProducts extends React.Component {
   }
 
   handleFilters = filters => {
-    console.log(filters);
     this.setState({ currentFilters: filters });
   };
 
@@ -133,7 +133,10 @@ class SearchProducts extends React.Component {
                     />
                   </GridItem>
                   <GridItem md={9} sm={9}>
-                    <SectionProducts data={this.props.products} seeDetails={actions.seeDetails} />
+                    <SectionProducts
+                      data={this.props.products}
+                      seeDetails={actions.seeDetails}
+                      addProductInShoppingCart={generalActions.addProductInShoppingCart} />
                   </GridItem>
                 </GridContainer>
               </div>

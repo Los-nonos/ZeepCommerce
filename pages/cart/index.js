@@ -1,11 +1,3 @@
-import React from 'react';
-
-class CartIndex extends React.Component{
-  render() {
-    return (
-      <h1>HOLA</h1>
-    );
-  }
-}
+import CartIndex from '../../views/containers/cart';
 
 export default CartIndex;

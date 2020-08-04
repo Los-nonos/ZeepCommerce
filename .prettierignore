@@ -13,3 +13,4 @@ logs/
 *.lock
 .prettierignore
 .gitignore
+.next/

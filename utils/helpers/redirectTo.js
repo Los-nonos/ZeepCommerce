@@ -1,4 +1,4 @@
-import Router from "next/router";
+import Router from 'next/router';
 //import { push } from '../../config/history';
 
 export const redirectTo = path => {
@@ -21,5 +21,7 @@ export const pages = {
   productsDetails: '/products/details',
   forgotPassword: '/forgot',
   signup: '/signup',
-  cart: '/cart'
+  cart: '/cart',
+  orderDetails: '/dashboard/purchases/detail',
+  checkout: '/cart/payment',
 };

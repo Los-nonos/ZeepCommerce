@@ -54,9 +54,12 @@ class ContactData extends React.Component {
       <GridContainer alignItems={'center'}>
         <GridItem md={9}>
           {this.state.showContactData ? (
-            <GridContainer alignItems={'center'} style={{
-              backgroundColor: '#000'
-            }}>
+            <GridContainer
+              alignItems={'center'}
+              style={{
+                backgroundColor: '#000',
+              }}
+            >
               <GridItem xs={12} sm={12} md={3}>
                 <CustomInput
                   labelText="Calle"

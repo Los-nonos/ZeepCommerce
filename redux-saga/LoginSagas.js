@@ -37,8 +37,8 @@ export function* signUp(action) {
     surname,
     email,
     username,
-    password
-  }
+    password,
+  };
 
   yield all([put({ type: 'LOADING_TOGGLE' })]);
   const res = yield call(auth.signUp, body);
@@ -46,10 +46,7 @@ export function* signUp(action) {
   if (res.error) {
     yield all([put(res), put({ type: 'LOADING_TOGGLE' })]);
   } else {
-    yield all([
-      put(res),
-      put({ type: 'LOADING_TOGGLE' }),
-    ]);
+    yield all([put(res), put({ type: 'LOADING_TOGGLE' })]);
     redirectTo(pages.home);
   }
 }
@@ -59,7 +56,7 @@ export function* forgotPassword(action) {
 
   const body = {
     email,
-  }
+  };
 
   yield all([put({ type: actionNames.loadingToggle })]);
   const res = yield call(auth.forgot, body);
@@ -70,7 +67,7 @@ export function* forgotPassword(action) {
     yield all([
       put(res),
       put({ type: actionNames.loadingToggle }),
-      put({type: actionNames.showNotification, message: res.message }),
+      put({ type: actionNames.showNotification, message: res.message }),
     ]);
     redirectTo(pages.home);
   }

@@ -52,9 +52,12 @@ class PersonalData extends React.Component {
       <GridContainer alignItems={'center'}>
         <GridItem md={9}>
           {this.state.showPersonalData ? (
-            <GridContainer alignItems={'center'} style={{
-              backgroundColor: '#000'
-            }}>
+            <GridContainer
+              alignItems={'center'}
+              style={{
+                backgroundColor: '#000',
+              }}
+            >
               <GridItem xs={12} sm={12} md={4}>
                 <CustomInput
                   labelText="Nombre"

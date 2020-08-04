@@ -1,5 +1,5 @@
-import { isError } from "../../utils/helpers/isError";
-import { actionNames } from "../../utils/constants/actionConstants";
+import { isError } from '../../utils/helpers/isError';
+import { actionNames } from '../../utils/constants/actionConstants';
 
 class SearchAdapter {
   loadFilters = loadResponse => {
@@ -8,7 +8,8 @@ class SearchAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadFiltersSuccesful,
-        filters: data.data.categories
+        categories: data.data.categories,
+        brands: data.data.brands,
       };
     }
 
@@ -18,8 +19,8 @@ class SearchAdapter {
       error: {
         code: status,
         type: code,
-        errors: details.errors
-      }
+        errors: details.errors,
+      },
     };
   };
 
@@ -30,7 +31,7 @@ class SearchAdapter {
       return {
         type: actionNames.loadProductsByFilterSuccessfully,
         products: data.items,
-        totalPages: data.pageCount
+        totalPages: data.pageCount,
       };
     }
 
@@ -40,8 +41,8 @@ class SearchAdapter {
       error: {
         code: status,
         type: code,
-        errors: details.errors
-      }
+        errors: details.errors,
+      },
     };
   };
 
@@ -51,7 +52,7 @@ class SearchAdapter {
     if (!isError(status)) {
       return {
         type: actionNames.loadProductsWithDetailsSuccesful,
-        productWithDetails: data.data
+        productWithDetails: data.data,
       };
     }
 
@@ -61,8 +62,8 @@ class SearchAdapter {
       error: {
         code: status,
         type: code,
-        errors: details.errors
-      }
+        errors: details.errors,
+      },
     };
   };
 }

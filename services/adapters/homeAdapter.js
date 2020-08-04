@@ -2,7 +2,7 @@ import { isError } from '../../utils/helpers/isError';
 import { actionNames } from '../../utils/constants/actionConstants';
 
 class HomeAdapter {
-  search = (searchResponse) => {
+  search = searchResponse => {
     const { status, data } = searchResponse;
 
     if (!isError(status)) {
@@ -20,10 +20,10 @@ class HomeAdapter {
       error: {
         code: status,
         type: code,
-        errors: details.errors
-      }
+        errors: details.errors,
+      },
     };
-  }
+  };
 }
 
 export default new HomeAdapter();

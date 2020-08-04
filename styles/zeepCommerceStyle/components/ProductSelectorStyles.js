@@ -44,8 +44,8 @@ const style = {
   },
   label: {
     color: primaryColor[0],
-    width: '100%'
-  }
+    width: '100%',
+  },
 };
 
 export default style;
