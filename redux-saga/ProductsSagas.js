@@ -79,10 +79,10 @@ export function* loadProductsByFilter(action) {
 }
 
 export function* seeDetails(action) {
-  const { slug } = action;
+  const { uuid } = action;
 
   yield all([put({ type: actionNames.loadingToggle })]);
-  const res = yield call(search.seeDetails, slug);
+  const res = yield call(search.seeDetails, uuid);
 
   if (res.error) {
     if (res.error.code === 401 || res.error.code === 403) {
