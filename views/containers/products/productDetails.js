@@ -70,7 +70,7 @@ class ProductDetails extends React.Component {
                   </GridItem>
                   <GridItem md={6} sm={6}>
                     <h2 className={classes.title}>{this.props.productWithDetails.name}</h2>
-                    <h3 className={classes.mainPrice}>${this.props.productWithDetails.price}</h3>
+                    <h3 className={classes.mainPrice}>${this.props.productWithDetails.price ? this.props.productWithDetails.price.amount : null}</h3>
                     <Accordion
                       active={0}
                       activeColor="primary"

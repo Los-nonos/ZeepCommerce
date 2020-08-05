@@ -4,7 +4,10 @@ export const stateDefault = {
   categories: [],
   brands: [],
   products: [],
-  productWithDetails: {},
+  productWithDetails: {
+    characteristics: [],
+    price: {}
+  },
   priceRange: {
     min: 500,
     max: 800,
@@ -46,7 +49,7 @@ const searchReducer = (state = stateDefault, action) => {
     case actionNames.loadProductsWithDetailsSuccesful:
       return { ...state, productWithDetails: action.productWithDetails };
     case actionNames.loadProductWithDetailsFail:
-      return { ...state, productWithDetails: {} };
+      return { ...state, productWithDetails: {characteristics: [], price: {}} };
     default:
       return state;
   }

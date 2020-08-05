@@ -7,6 +7,7 @@ import style from '../../../../styles/zeepCommerceStyle/components/productCardSt
 import { withStyles } from '@material-ui/core/styles';
 import Favorite from '@material-ui/icons/Favorite';
 import classNames from 'classnames';
+import { pages, redirectTo } from '../../../../utils/helpers/redirectTo';
 
 class ProductCard extends React.Component {
   constructor(props) {
